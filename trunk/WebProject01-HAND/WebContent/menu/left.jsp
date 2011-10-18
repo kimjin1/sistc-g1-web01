@@ -8,5 +8,6 @@
 </head>
 <body>
 좌측 메뉴 입니다.
+<a href="../menu/top.jsp" target="main">top</a>
 </body>
 </html>

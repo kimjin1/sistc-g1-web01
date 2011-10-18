@@ -8,6 +8,6 @@
 </head>
 <body>
 
-<a href="main.jsp" target="main"><img src="image/hand.png" border=0></a>
+<a href="../main.jsp" target="main"><img src="../image/hand.GIF" border=0></a>
 </body>
 </html>
