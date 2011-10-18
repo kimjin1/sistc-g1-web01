@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-상위 메뉴 입니다.
+
+<a href="main.jsp" target="main"><img src="image/hand.png" border=0></a>
 </body>
 </html>

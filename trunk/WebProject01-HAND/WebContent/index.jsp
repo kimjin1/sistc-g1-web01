@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=euc-kr">
 <title>HAND에 오신걸 환영합니다.</title>
-<meta name="generator" content="Namo WebEditor v6.0">
+
 </head>
 
 
@@ -19,7 +19,7 @@
     </frameset>
     <noframes>
 <body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
-<p>이 페이지를 보려면, 프레임을 볼 수 있는 브라우저가 필요합니다.</p>
+<p>Have A Nice Day ^^</p>
 </body>
     </noframes>
 </frameset>
