@@ -11,7 +11,7 @@
 </head>
 
 
-<frameset rows="10%, 90%" border="0">
+<frameset rows="10%, 90%" border="10">
     <frame name="top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/top.jsp">
     <frameset cols="20%, 80%">
     <frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp">
