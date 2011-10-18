@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 			<td width=80% height=90%>
-			∏ﬁ¿Œ
+
 			</td>
 		</tr>
 	</table>
