@@ -2,28 +2,27 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-<%-- 창배치 시험중 --%>
-<center>
-	<table border=1 width=800 height=600>
-		<tr>
-			<td rowspan=2 width=20%>
-			로그인
-			</td>
-			<td height=10%>
-			메뉴
-			</td>
-		</tr>
-		<tr>
-			<td width=80% height=90%>
 
-			</td>
-		</tr>
-	</table>
-</center>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>이 페이지를 보려면, 프레임을 볼 수 있는 브라우저가 필요합니다.</title>
+<meta name="generator" content="Namo WebEditor v6.0">
+</head>
+
+<frameset rows="10%, 90%" border="0">
+    <frame name="top" noresize scrolling="no" marginwidth="0" marginheight="0" namo_target_frame="top" src="menu/top.jsp">
+    <frameset cols="20%, 80%">
+    <frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0" namo_target_frame="left" src="menu/menu.jsp">
+        <frame name="main" noresize scrolling="yes" marginwidth="0" marginheight="0" namo_target_frame="main" src="main.jsp">
+    </frameset>
+    <noframes>
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p>이 페이지를 보려면, 프레임을 볼 수 있는 브라우저가 필요합니다.</p>
 </body>
+    </noframes>
+</frameset>
+
 </html>
+
+
+
