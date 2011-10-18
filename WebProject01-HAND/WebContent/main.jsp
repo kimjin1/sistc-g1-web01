@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+메인화면 입니다.
 
 </body>
 </html>
