@@ -34,7 +34,7 @@ public class CalendarServlet extends HttpServlet {
 		int endDate = result[0];
 		int offset = result[1];
 		
-		String output = "<table border=1 width=50% height=50%>";
+		String output = "<table border=1 width=100% height=100%>";
 		// 요일 표시
 		for(int i=0; i<7; i++){
 			output += "<th bgcolor=#ccccff>";
