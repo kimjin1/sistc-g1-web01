@@ -21,10 +21,10 @@
 			</tr>
 			<tr>	
 				<td width=80% height=90%>					 
-					<jsp:forward page="/CalendarServlet">
-						<jsp:param value='<%=year%>' name="year"/>
-						<jsp:param value='<%=month%>' name="month"/>
-					</jsp:forward>					 					
+					<jsp:include page="calendar.jsp">
+						<jsp:param value="<%=year%>" name="year"/>
+						<jsp:param value="<%=month%>" name="month"/>
+					</jsp:include>						
 				</td>
 				<td width=20% height=90%>
 					&nbsp;
