@@ -22,13 +22,13 @@
 </head>
 <body>
 	<center>
-		<table width=100% height=100%>
+		<table width=100% height=650 border=1>
 			<tr>
 
 			<%
 			for(int i=0; i<7; i++){
 			%>
-				<th bgcolor=#ccccff>
+				<th bgcolor=#E8E8E8>
 				<%
 				if(i==0){
 				%>
@@ -55,16 +55,17 @@
 			<%	
 				for(int j=0; j<7; j++){
 				%>
-					<td>
+					<td align=left valign=top>
 					<%
-					if(i==0 && i<offset-1){
+					if(i==0 && j<offset-1){
 					%>
 						&nbsp;
 					<%	
 					}else if(startDate <= endDate){
 					%>
-						<%=startDate%>
+						<b><%=startDate%></b>
 					<%	
+						startDate++;
 					}else{
 					%>
 						&nbsp;
