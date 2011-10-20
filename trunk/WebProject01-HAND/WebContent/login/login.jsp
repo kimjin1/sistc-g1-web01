@@ -19,8 +19,8 @@
 				<td><input type=text name=pwd size=16></td>
 			</tr>
 			<tr>
-				<td>&nbsp;&nbsp;<input type="checkbox" ></td>
-				<td width=20% align=light  >이메일 저장</td>			
+				
+				<td colspan=2 width=20% align=right  ><input type="checkbox" >이메일 저장</td>			
 			</tr>
 		</table>
 	</center>
