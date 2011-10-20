@@ -7,7 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-메인화면 입니다.
-
+	<table width=100% height=100%>
+		<tr>
+			<td height=100% align=center valign=middle>
+				<br><br><br><br><br><br><br><br>
+				<img src="image/fix.gif">
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
