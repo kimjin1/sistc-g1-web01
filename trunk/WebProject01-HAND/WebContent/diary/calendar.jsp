@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="com.diary.*"%>
-<%
-	
+<%	
 	String strYear = request.getParameter("year");
 	String strMonth = request.getParameter("month");
-	String[] week = {"일", "월", "화", "수", "목", "금", "토"}; 
+	 
 	int year = Integer.parseInt(strYear);
 	int month = Integer.parseInt(strMonth);
 	
@@ -13,7 +12,8 @@
 	int startDate = 1;
 	int endDate = result[0];
 	int offset = result[1];
-%>    
+%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,6 +29,7 @@
 		color:orange;
 	}	
 </style>
+	
 </head>
 <body>
 	<center>
@@ -37,6 +38,7 @@
 
 			<%
 			for(int i=0; i<7; i++){
+				String[] week = {"일", "월", "화", "수", "목", "금", "토"};
 			%>
 				<th width=14% height=5% bgcolor=#E8E8E8>
 				<%
@@ -73,7 +75,7 @@
 						&nbsp;&nbsp;&nbsp;
 					<%	
 					}else if(startDate <= endDate){
-					%>
+					%>						
 						<a href="../diary/event_detail.jsp?year=<%=year%>&month=<%=month%>&day=<%=startDate%>">
 						<b><%=startDate%></b>
 						</a>
