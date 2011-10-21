@@ -29,11 +29,24 @@
 		color:orange;
 	}	
 </style>
-	
+<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
+<script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
+<script type="text/javascript">Shadowbox.init();</script>
+<script type="text/javascript">
+function openDetail(year, month, day){	
+	Shadowbox.open({		
+		content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
+		player:"iframe",
+		title:year+"."+month+"."+day+" 일의 일정",
+		width:"320",
+		height:"440"		
+	});
+}
+</script>
 </head>
 <body>
 	<center>
-		<table width=100% height=600 border=1>
+		<table width=100% height=644 border=1>
 			<tr>
 
 			<%
@@ -75,11 +88,11 @@
 						&nbsp;&nbsp;&nbsp;
 					<%	
 					}else if(startDate <= endDate){
-					%>						
-						<a href="../diary/event_detail.jsp?year=<%=year%>&month=<%=month%>&day=<%=startDate%>">
-						<b><%=startDate%></b>
-						</a>
-					<%	
+					%>		
+						<a href="javascript:openDetail(<%=year%>,<%=month%>,<%=startDate%>)"> 
+						<b><%=startDate%></b>												
+						</a>											
+					<%													
 						startDate++;
 					}else{
 					%>

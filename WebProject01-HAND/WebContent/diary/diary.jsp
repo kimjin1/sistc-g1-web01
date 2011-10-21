@@ -14,7 +14,7 @@
 <style type="text/css">
 	iframe{
 		width:100%;
-		height:100%;						
+		height:100%; 				 						
 	}
 </style>
 <script type="text/javascript">
@@ -30,12 +30,9 @@
 <body>
 	<center>
 		<!-- 달력 부분 -->
-		<table width=100% height=700 cellspacing=0 cellpadding=0 border=1>
+		<table width=100% height=720 cellspacing=0 cellpadding=0 border=1>
 			<tr>
-				<th colspan=2 height=10%>
-				<%--
-				<%=year%>년&nbsp;<%=month%>월&nbsp;달력
-				 --%>
+				<th colspan=2>
 					<select id=year onchange='refreshCalendar()'>
 						<%
 						for(int i=year-70; i<year+70; i++){
@@ -69,12 +66,12 @@
 			</tr>
 			<tr>	
 				<td width=80% height=90%>
-				<iframe src="../diary/calendar.jsp?year=<%=year%>&month=<%=month%>" id="calendar">		
+				<iframe marginwidth=0 marginheight=0 src="../diary/calendar.jsp?year=<%=year%>&month=<%=month%>" id="calendar">		
 					<!-- 달력 출력 부분 -->
 				</iframe>															
 				</td>
-				<td width=20% height=90%>
-					<jsp:include page="../diary/event_list.jsp"/>
+				<td width=20%>
+					해당월의 일정 목록이 표시됩니다
 				</td>
 			</tr>
 		</table>
