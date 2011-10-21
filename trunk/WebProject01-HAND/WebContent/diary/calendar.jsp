@@ -38,7 +38,7 @@
 			<%
 			for(int i=0; i<7; i++){
 			%>
-				<th width=14% bgcolor=#E8E8E8>
+				<th width=14% height=5% bgcolor=#E8E8E8>
 				<%
 				if(i==0){
 				%>
