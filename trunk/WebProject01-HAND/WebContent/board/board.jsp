@@ -9,20 +9,20 @@
 <body>
 <center>
     <p>
-    
+    <p>
     <p>
     <table border=0 width=800 >
      <tr>
       <td align=left>
-         <img src="../include/image/write.gif" border=0>
+         <img src="../image/board/write.jpg" border=0>
         </td>
      </tr>
     </table>
     <table border=0 width=800 height=10 cellpadding="0" cellspacing="3">
-      <tr bgcolor=#ccccff>
+      <tr bgcolor=cccccc>
        <th width=10%>번호</th>
-       <th width=15%>제목</th>
-       <th width=45%>이름</th>
+       <th width=15%>이름</th>
+       <th width=45%>제목</th>
        <th width=20%>작성일</th>
        <th width=10%>조회수</th>
       </tr>
@@ -36,14 +36,13 @@
       <tr align=center>
        <td align=center>
      
-         <img src="../include/image/prev.gif" border=0>
-      
+         <img src="../image/board/prev.jpg" border=0>
+       		&nbsp;&nbsp;&nbsp;
+          	page /  pages
        
-         <img src="../include/image/next.gif" border=0>
+         <img src="../image/board/next.jpg" border=0>
         
        
-         &nbsp;&nbsp;&nbsp;
-          page /  pages
        </td>
        </tr>
        <tr >
@@ -54,8 +53,7 @@
          <option value=content>내용</option>
         </select>
         <input type=text name=ss size=15>
-        <input type=hidden name=page>
-        <input type=button value=찾기>
+        <input type=button value=검색>
        </td>
       </tr>
     </table>
