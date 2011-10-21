@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+ 방명록입니다
 </body>
 </html>
