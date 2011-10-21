@@ -3,41 +3,42 @@
 <%@ page import="com.diary.*" %>    
 <jsp:useBean id="myCalendar" class="com.diary.DiaryCalendar"></jsp:useBean>
 <%
-	int year;
-	int month;
-	String strYear = request.getParameter("year");
-	String strMonth = request.getParameter("month");
-	if(strYear == null && strMonth == null){
-		year = myCalendar.getCurrentYear();
-		month = myCalendar.getCurrentMonth();
-	}else{		
-		year = Integer.parseInt(strYear);
-		month = Integer.parseInt(strMonth);
-	}
+	int year = myCalendar.getCurrentYear();
+	int month = myCalendar.getCurrentMonth();
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>일정</title>
+<style type="text/css">
+	iframe{
+		width:100%;
+		height:100%;						
+	}
+</style>
 <script type="text/javascript">
 	function refreshCalendar(){
-		
+		var select_year = document.getElementById("year");
+		var select_month = document.getElementById("month");
+		var year = select_year.options[select_year.selectedIndex].value;
+		var month = select_month.options[select_month.selectedIndex].value;
+		calendar.location="../diary/calendar.jsp?year="+year+"&month="+month;
 	}
 </script>
 </head>
 <body>
 	<center>
 		<!-- 달력 부분 -->
-		<table width=100% height=700 border=1>
+		<table width=100% height=700 cellspacing=0 cellpadding=0 border=1>
 			<tr>
 				<th colspan=2 height=10%>
 				<%--
 				<%=year%>년&nbsp;<%=month%>월&nbsp;달력
 				 --%>
-					<select name=selyear>
+					<select id=year onchange='refreshCalendar()'>
 						<%
-						for(int i=year-100; i<year+100; i++){
+						for(int i=year-70; i<year+70; i++){
 							String output = "";
 							if(i==year){
 								output += "<option selected>"+i+"</option>";
@@ -49,7 +50,7 @@
 						%>	
 					</select>
 					년&nbsp;&nbsp;					
-					<select name=selmonth>
+					<select id=month onchange='refreshCalendar()'>
 						<%
 						for(int i=1; i<=12; i++){							
 							String output = "";
@@ -61,20 +62,19 @@
 							out.println(output);
 						}
 						%>						
-					</select>
+					</select>					
 					월&nbsp;&nbsp;
 					일정표
 				</th>
 			</tr>
 			<tr>	
-				<td width=80% height=90%>										 
-					<jsp:include page="../diary/calendar.jsp">
-						<jsp:param value="<%=year%>" name="year"/>
-						<jsp:param value="<%=month%>" name="month"/>
-					</jsp:include>														
+				<td width=80% height=90%>
+				<iframe src="../diary/calendar.jsp?year=<%=year%>&month=<%=month%>" id="calendar">		
+					<!-- 달력 출력 부분 -->
+				</iframe>															
 				</td>
 				<td width=20% height=90%>
-					<jsp:include page="../diary/eventlist.jsp"/>
+					<jsp:include page="../diary/event_list.jsp"/>
 				</td>
 			</tr>
 		</table>

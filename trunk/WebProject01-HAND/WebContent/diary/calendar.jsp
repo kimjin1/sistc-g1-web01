@@ -19,16 +19,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<style type="text/css">
+	a{
+		text-decoration:none;
+		color:black;
+	}
+	a:hover{
+		text-decoration:underline;
+		color:orange;
+	}	
+</style>
 </head>
 <body>
 	<center>
-		<table width=100% height=650 border=1>
+		<table width=100% height=600 border=1>
 			<tr>
 
 			<%
 			for(int i=0; i<7; i++){
 			%>
-				<th bgcolor=#E8E8E8>
+				<th width=14% bgcolor=#E8E8E8>
 				<%
 				if(i==0){
 				%>
@@ -45,9 +55,10 @@
 				}
 				%>				
 				</th>
+				
 			<%	
 			}
-			%>
+			%>			
 			<%
 			for(int i=0; i<6; i++){
 			%>
@@ -55,23 +66,25 @@
 			<%	
 				for(int j=0; j<7; j++){
 				%>
-					<td align=left valign=top>
+					<td align=left valign=top>					
 					<%
 					if(i==0 && j<offset-1){
 					%>
-						&nbsp;
+						&nbsp;&nbsp;&nbsp;
 					<%	
 					}else if(startDate <= endDate){
 					%>
+						<a href="../diary/event_detail.jsp?year=<%=year%>&month=<%=month%>&day=<%=startDate%>">
 						<b><%=startDate%></b>
+						</a>
 					<%	
 						startDate++;
 					}else{
 					%>
-						&nbsp;
+						&nbsp;&nbsp;&nbsp;
 					<%	
 					}
-					%>
+					%>					
 					</td>
 				<%	
 				}
