@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>사진방</title>
 </head>
 <body>
+<center>
+	<h3>사진방</h3>
 
+	
+</center>
 </body>
 </html>
