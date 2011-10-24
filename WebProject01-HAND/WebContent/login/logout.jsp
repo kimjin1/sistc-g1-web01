@@ -8,12 +8,12 @@
 </head>
 <body>
 	<center>
-		<table border=0 width=130 height=80 background="image/log_bg.jpg">
+		<table border=0 width=130 height=80 background="../image/login_image/log_bg.jpg">
 		<p>
 			<tr>
 				<td width=20% align=right>ID</td>
 				<td><input type=text name=id size=14></td>
-				<td rowspan=2><img src="image/logout.jpg"></td>	
+				<td rowspan=2><img src="../image/login_image/logout.jpg"></td>	
 			</tr>
 			<tr>
 				<td width=20% align=right>PW</td>
