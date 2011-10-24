@@ -13,7 +13,7 @@
 			<tr>
 				<td width=20% align=right>ID</td>
 				<td><input type=text name=id size=14></td>
-				<td rowspan=2><img src="image/log_in.jpg"></td>	
+				<td rowspan=2><img src="image/logout.jpg"></td>	
 			</tr>
 			<tr>
 				<td width=20% align=right>PW</td>
@@ -23,6 +23,7 @@
 				
 				<td colspan=2 width=20% align=right  ><input type="checkbox" >이메일 저장</td>			
 			</tr>
+			
 		</table>
 	</center>
 </body>
