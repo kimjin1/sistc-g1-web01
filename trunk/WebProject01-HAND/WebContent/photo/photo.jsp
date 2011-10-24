@@ -8,8 +8,69 @@
 </head>
 <body>
 <center>
-	<h3>荤柳规</h3>
+<h2>荤柳规ばば</h2>
+	
+	
+	
+	<table border=0	width=800 >
+	<tr>
+	<td>
+	<img src="../image/board/write.jpg" align=left>
+	</td></tr>
+	</table>
+	<table border=3	width=800>
+	<tr>
+	
+	
+		<td><img src="image/test.bmp" width=30%></td>
+		<td><img src="image/test.bmp" width=30%></td>
+		<td><img src="image/test.bmp" width=30%></td>
 
+		
+	
+	
+	</tr>
+	
+	<tr>
+	<td align=center width=30%>
+	力格
+	</td>
+	<td align=center width=30%>
+	力格
+	</td>
+	<td align=center width=30%>
+	力格
+	</td>
+	</tr>
+	
+	
+	</table>
+	<table>
+	<tr>
+       <td align=left>
+        <select name=fs>
+         <option value=name>累己磊</option>
+         <option value=subject>力格</option>
+        
+        </select>
+        <input type=text name=ss size=20>
+        
+        <input type=button value=茫扁 >
+       </td>
+           <tr align=center>
+       <td align=center>
+     
+         <img src="../image/board/prev.jpg" border=0>
+       		&nbsp;&nbsp;&nbsp;
+          	page /  pages
+       
+         <img src="../image/board/next.jpg" border=0>
+        
+       
+       </td>
+       </tr>
+	</table>
+	
 	
 </center>
 </body>
