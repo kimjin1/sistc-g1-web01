@@ -22,9 +22,10 @@
 	<tr>
 	
 	
-		<td><img src="image/test.bmp" width=30%></td>
-		<td><img src="image/test.bmp" width=30%></td>
-		<td><img src="image/test.bmp" width=30%></td>
+		
+		<td><a href=""><img src="image/test.bmp" width=30%></a></td>
+<td><a href=""><img src="image/test.bmp" width=30%></a></td>
+<td><a href=""><img src="image/test.bmp" width=30%></a></td>
 
 		
 	
