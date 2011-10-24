@@ -23,17 +23,13 @@
         
         <tr>
        	 	<td align=left colspan=4 valign=top height=200>
-        	 	<pre></pre>
+        	 	<textarea rows="25" cols="109" name=content></textarea>
         	</td>
        </tr>
        
 	</table>
 	<table border=5 width=800>
-		<tr>
-       	<td width=15% bgcolor=cccccc>비밀번호</td>
-       	<td width=25%></td>
-       	<td width=60%></td>
-       </tr>
+		
        <tr>
           <td align=center colspan=3>
            <input type=button value=등록>
