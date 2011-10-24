@@ -10,8 +10,8 @@
 	<table border=1 width=100%>
 		<tr>
 		
-			<td>
-				로그인 들어갈 자리
+			<td>			
+				<jsp:include page="../login/login.jsp"/>
 			</td>
 		</tr>
 		<tr>

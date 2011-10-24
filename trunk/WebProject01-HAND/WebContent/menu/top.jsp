@@ -9,8 +9,11 @@
 <body>
 	<table border=1>
 	<tr>
-		<td valign=bottom align=center width=120>
-			<a href="../main.jsp" target="main"><img src="../image/hand.GIF" border=0></a>
+		<td valign=bottom align=center width=24%>
+			<a href="../main.jsp" target="main">
+			<%--<img src="../image/hand.GIF" border=0> --%>
+			<font color="green" size="20"><b>HAND</b></font>
+			</a>
 		</td>
 		<td valign=bottom align=center width=100>
 			<a href="../home/home.jsp" target="main"><h3>HOME</h3></a>
