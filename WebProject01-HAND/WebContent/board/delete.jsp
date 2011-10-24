@@ -7,6 +7,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<center>
+    <p>
+    <p>
+    <p>
+    
+    <table border=0 width=300>
+      <tr>
+       <td width=30%>비밀번호</td>
+       <td width=70% align=left>
+        <input type=password name=pwd size=15>
+        <input type=hidden name=no 
+                  value=>
+        <input type=hidden name=page 
+                  value=>
+       </td>
+      </tr>
+      <tr>
+       <td colspan=2 align=center>
+        <input type=button value=삭제 onclick="del()">
+        <input type=button value=취소 
+          onclick="javascript:history.back()">
+       </td>
+      </tr>
+    </table>
+    </center>
 </body>
 </html>
