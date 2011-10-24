@@ -23,7 +23,7 @@
         
         <tr>
        	 	<td align=left colspan=4 valign=top height=200>
-        	 	<pre></pre>
+        	 	<textarea rows="25" cols="109" name=content></textarea>
         	</td>
        </tr>
        

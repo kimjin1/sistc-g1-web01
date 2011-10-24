@@ -11,9 +11,10 @@
      	<tr >
      	<td width=15% bgcolor=cccccc >답글쓰기</td>
      	<td align=left colspan=4 valign=top >
-         <pre></pre>
+        <textarea rows="5" cols="85" name=content></textarea>
         </td>
-       
+        
+        
         <td  width=15% align=right>
    
         <input type=button value=등록 size=20 >
