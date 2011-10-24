@@ -30,7 +30,7 @@
 <body>
 	<center>
 		<!-- 달력 부분 -->
-		<table width=100% height=720 cellspacing=0 cellpadding=0 border=1>
+		<table width=100% height=540 cellspacing=0 cellpadding=0 border=1>
 			<tr>
 				<th colspan=2>
 					<select id=year onchange='refreshCalendar()'>
