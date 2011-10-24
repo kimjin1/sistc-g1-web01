@@ -12,7 +12,7 @@
 		<table border=0 width=800 bgcolor=#ccccff>
 			<tr>
 				<td align=right width=20%>제목
-				<td align=left width=80%><input type=text size=15>
+				<td align=left width=80%><input type=text size=20>
 			</tr>
 			<tr>
 				<td align=right width=20% valign=top>내용</td>
