@@ -39,8 +39,8 @@
 	        <td width=30%><%=vo.getRegdate() %></td>
        		
 		</tr>     
-	    <tr height=65 bgcolor=cccccc>
-	        <td width=45% colspan="3" align=left><%=vo.getContent() %>
+	    <tr height=65 bgcolor=ccccccc>
+	        <td width=45% colspan="3" align=center><%=vo.getContent() %>
 	        
 	        </td>
 	   </tr> 
