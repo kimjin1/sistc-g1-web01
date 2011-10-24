@@ -60,4 +60,79 @@ public class VisitorDAO {
 		   dao=new VisitorDAO();
 	   return dao;
    }
+
+   public VisitorVO getContent(int no)
+   {
+	   VisitorVO vo=new VisitorVO();
+	   try
+	   {
+		   //연결
+		   getConnection();
+		   //쿼리문장 생성
+		   //조회수 증가
+		 
+		   
+		   String sql="select * from p_visitor";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, no);
+		   //실행
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   //VisitorVO에 값 입력
+		   vo.setName(rs.getString(1));
+		   vo.setHomepage(rs.getString(2));
+		   vo.setContent(rs.getString(3));
+		   vo.setRegdate(rs.getDate(4));
+		  
+		   rs.close();
+		   
+	   }catch(Exception ex)
+	   {
+		   System.out.println(ex.getMessage());
+	   }
+	   finally
+	   {
+		  disConnection();  
+	   }
+	   return vo;
+   }
+   
+   
+   public ArrayList<VisitorVO> 
+   getVisitorData()
+{
+ArrayList<VisitorVO> list=
+   new ArrayList<VisitorVO>();
+try
+{
+//연결
+getConnection();
+//쿼리문장 전송
+String sql="select * from p_visitor order by no desc";
+ps=conn.prepareStatement(sql);
+ResultSet rs=ps.executeQuery();
+//결과값
+while(rs.next())
+{
+VisitorVO vo=new VisitorVO();
+vo.setNo(rs.getInt(1));
+vo.setName(rs.getString(2));
+vo.setHomepage(rs.getString(3));
+vo.setContent(rs.getString(4));
+vo.setRegdate(rs.getDate(5));
+list.add(vo);
+}
+rs.close();
+//ArrayList에 첨부
+}catch(Exception ex)
+{
+System.out.println(ex.getMessage());
+}
+finally
+{
+disConnection(); 
+}
+return list;
+}
+
 }

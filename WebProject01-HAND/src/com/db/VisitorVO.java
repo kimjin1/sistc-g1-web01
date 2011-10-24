@@ -41,6 +41,6 @@ public class VisitorVO {
 	
 	
 	
-	//insert into p_visitor values(p_visitor_no_seq.nextval,'김준기','www.sfsfswfq.com','형들 보고싶어요',sysdate);
+	
 
 }
