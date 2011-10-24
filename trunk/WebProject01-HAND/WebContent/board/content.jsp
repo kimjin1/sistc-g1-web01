@@ -11,12 +11,26 @@
 <p>
 <p>
 <p>
-
+	
+	     <table border=5 width=800>
+     <tr>
+     <td align="left"><img src="../image/board/prev1.jpg" border=0>&nbsp;&nbsp;안녕하세요</td>
+    
+     
+     </tr>
+     <tr>
+     <td align="left"><img src="../image/board/prev1.jpg" border=0>&nbsp;&nbsp;안녕하세요</td>
+    
+     
+     </tr>
+     
+     </table>
+     
 	<table width=800 border=0 bordercolor=cccccc>
 	
 	
-      <tr height=25>
-        <td width=15% bgcolor=cccccc>제목</td>
+      <tr >
+        <td width=15% bgcolor=cccccc height=25>제목</td>
             <td align=left colspan=3>
             
             </td>
@@ -27,8 +41,8 @@
 			<img src="../image/board/main.jpg" border=0>	 
             </td>  
       </tr>
-      <tr height=25 >
-        <td width=15% bgcolor=cccccc>글쓴이</td>
+      <tr  >
+        <td width=15% bgcolor=cccccc height=25>글쓴이</td>
         <td width=20%></td>
         <td width=15% bgcolor=cccccc>작성일</td>
         <td width=20%></td>
@@ -40,13 +54,29 @@
          <pre></pre>
         </td>
       </tr>
+      
      </table>
-     <table width=800 border=0 bordercolor=cccccc>
-     	<tr height=50>
-     	<td>
+        <table width=800 border=5 bordercolor=cccccc height=100>
+     	<tr >
+     	<td width=15% bgcolor=cccccc >답글쓰기</td>
+     	<td align=left colspan=4 valign=top >
+         <pre></pre>
+        </td>
+       
+        <td  width=15% align=right>
+   
+        <input type=button value=등록 size=20 >
+    
+          
+        
+        
+     	</td>
      	</tr>
+     	
      
      </table>
+
+  
 </center>
 </body>
 </html>

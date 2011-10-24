@@ -7,6 +7,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+ <table width=800 border=5 bordercolor=cccccc height=100>
+     	<tr >
+     	<td width=15% bgcolor=cccccc >답글쓰기</td>
+     	<td align=left colspan=4 valign=top >
+         <pre></pre>
+        </td>
+       
+        <td  width=15% align=right>
+   
+        <input type=button value=등록 size=20 >
+    
+          
+        
+        
+     	</td>
+     	</tr>
+     	
+     
+     </table>
 </body>
 </html>
