@@ -38,15 +38,15 @@ function openDetail(year, month, day){
 		content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
 		player:"iframe",
 		title:year+"."+month+"."+day+" 일의 일정",
-		width:"320",
-		height:"440"		
+		width:"380",
+		height:"500"		
 	});
 }
 </script>
 </head>
 <body>
 	<center>
-		<table width=100% height=644 border=1>
+		<table width=100% height=480 border=1>
 			<tr>
 
 			<%
