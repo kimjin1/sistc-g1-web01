@@ -13,7 +13,7 @@
 	int no = Integer.parseInt(type);
 	String jsp="login.jsp";
 	switch(no){
-	
+	//case 1: jsp="join.jsp"; break;
 	}
 	String id=(String)session.getAttribute("id");
 	String logJsp="";

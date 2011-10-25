@@ -71,16 +71,16 @@ public class MemberDAO {
 			  }
 			  else
 			  {
-				  sql="select pwd,name from P_PERSON where id=?";
+				  sql="select pw,name from P_PERSON where id=?";
 				  ps=conn.prepareStatement(sql);
 				  ps.setString(1,id);
 				  rs=ps.executeQuery();
 				  rs.next();
-				  String db_pwd=rs.getString(1);
+				  String db_pw=rs.getString(1);
 				  String db_name=rs.getString(2);
 				  rs.close();
 				  
-				  if(db_pwd.equals(pwd))
+				  if(db_pw.equals(pwd))
 				  {
 					 result=db_name; 
 				  }
@@ -104,7 +104,7 @@ public class MemberDAO {
 		   int admin=0;
 		   try{
 			   getConnection();
-			   String sql="select admin from member where id=?";
+			   String sql="select admin from p_person where id=?";
 			   ps=conn.prepareStatement(sql);
 			   ps.setString(1, id);
 			   ResultSet rs=ps.executeQuery();
