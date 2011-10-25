@@ -29,15 +29,18 @@ function event_write(){
 							<td colspan=2 height=10% align="center">
 								<%-- 년,월,일까지 자동표시 시, 분을 선택 --%>
 							${param.year }. ${param.month }. ${param.day }.
-							&nbsp;&nbsp;&nbsp;&nbsp;  	 
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="hidden" name="year" value="${param.year }">  	 
+							<input type="hidden" name="month" value="${param.month }">
+							<input type="hidden" name="day" value="${param.day }">
 							<select name="hour">							
 									<c:forEach var="i" begin="1" end="24" step="1">
-										<option>${i }시</option>
+										<option value="${i }">${i }시</option>
 									</c:forEach>
 							</select>  
 							<select name="minute">
 									<c:forEach var="i" begin="0" end="59" step="1">
-										<option>${i }분</option>
+										<option value="${i }">${i }분</option>
 									</c:forEach>
 							</select></td>
 						</tr>
@@ -48,12 +51,14 @@ function event_write(){
 						</tr>
 						<tr>
 							<td width=16%>제목</td>
-							<td width=76%><input type=text name=subject size=45>
+							<td width=76%>
+								<input type=text name=subject size=45>
 							</td>
 						</tr>
 						<tr>
 							<td width=20% valign="top">내용</td>
-							<td width=80%><textarea rows=16 cols=43 name=content></textarea>
+							<td width=80%>
+								<textarea rows=16 cols=43 name=content></textarea>
 							</td>
 						</tr>
 						<tr>
