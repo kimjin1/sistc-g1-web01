@@ -6,7 +6,7 @@ public class DiaryVO {
 	private int no;
 	private String id;
 	private String subject;
-	private String msg;
+	private String Content;
 	private Date event_time;
 
 	public int getNo() {
@@ -27,11 +27,11 @@ public class DiaryVO {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getMsg() {
-		return msg;
+	public String getContent() {
+		return Content;
 	}
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setContent(String Content) {
+		this.Content = Content;
 	}
 	public Date getEvent_time() {
 		return event_time;
