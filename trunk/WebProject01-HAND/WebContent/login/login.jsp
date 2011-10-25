@@ -15,9 +15,9 @@ function login2()//로그인 창에 아무것도 적혀 있지 않으면 입력하라는 창이 나온다.
 	   f.id.focus();
 	   return;
 	}
-	if(f.pwd.value==""){
+	if(f.pw.value==""){
 		alert("Password를 입력하세요");
-		f.pwd.focus();
+		f.pw.focus();
 		return;
 	}
 	f.submit();
@@ -27,18 +27,18 @@ function login2()//로그인 창에 아무것도 적혀 있지 않으면 입력하라는 창이 나온다.
 </head>
 <body>
 	<center>
-	<form method=post action="login_ok" name="log_frm">
-		<table border=0 width=130 height=80 background="../image/login_image/log_bg.jpg">
+	<form method=post action="../login/login_ok.jsp" name="log_frm">
+		<table border=0 width=200 height=80 background="../image/login_image/log_bg.jpg">
 		<p>
 			<tr>
 				<td width=20% align=right>ID</td>
-				<td><input type=text name=id size=14></td>
+				<td ><input type=text name=id size=14></td>
 				<td rowspan=2 >	
 				<a href=javascript:login2()><img src="../image/login_image/log_in.jpg" border=0></a></td>	
 				</tr>
 			<tr>
 				<td width=20% align=right>PW</td>
-				<td><input type=password name=pwd size=14></td>
+				<td><input type=password name=pw size=14></td>
 			</tr>
 			<tr>
 				

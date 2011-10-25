@@ -3,11 +3,11 @@
     
     <%
     String id=request.getParameter("id");
-    String pwd=request.getParameter("pwd");
+    String pw=request.getParameter("pw");
     
     //DB
     MemberDAO dao=MemberDAO.newInstance();
-    String result=dao.isLogin(id,pwd);
+    String result=dao.isLogin(id,pw);
     
     int admin=dao.isAdmin(id);
     
@@ -34,7 +34,7 @@
         session.setAttribute("name", result);
         session.setAttribute("admin", admin);
         
-        response.sendRedirect("main.jsp?no=1");
+        response.sendRedirect("../login/logout.jsp");
     }
 	
     %>
