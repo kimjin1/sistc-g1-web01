@@ -7,37 +7,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-function write(){
-	alert("실행되었습니다");
-	var f = document.event_frm();
-	if(f.subject.value==""){
+function event_write(){
+	var frm = document.event_frm;
+	if(frm.subject.value=""){
 		alert("제목을 입력하세요");
-		f.subject.focus();
+		frm.subject.focus();
 		return;
 	}
-	if(f.content.value==""){
-		alert("내용을 입력하세요");
-		f.content.focus();
-		return;
-	}
-	alert("입력되었습니다");
-	f.submit();
-} 
+	frm.submit();
+}
 </script>
 </head>
 <body>
 	<center>
-		<table border=1 width=280 height=400
-			background="../image/diary/bg_content.png">
+		<table border=0 width=400 height=380 bgcolor="white">
 			<tr>
-				<td width=8%>&nbsp;</td>
-				<td width=92%>
+				<td valign="top">
 					<form method=post action="event_write_ok.jsp" name="event_frm">
-					<table width=100% height=100% border=1>
+					<table width=100% height=100% border=0>
 						<tr>
-							<td colspan=2 height=10% align="right">
+							<td colspan=2 height=10% align="center">
 								<%-- 년,월,일까지 자동표시 시, 분을 선택 --%>
-							${2011 }. ${10 }. ${25 }.
+							${param.year }. ${param.month }. ${param.day }.
 							&nbsp;&nbsp;&nbsp;&nbsp;  	 
 							<select name="hour">							
 									<c:forEach var="i" begin="1" end="24" step="1">
@@ -51,18 +42,28 @@ function write(){
 							</select></td>
 						</tr>
 						<tr>
+							<td colspan=2>
+								<hr>
+							</td>
+						</tr>
+						<tr>
 							<td width=16%>제목</td>
-							<td width=76%><input type=text name=subject size=26>
+							<td width=76%><input type=text name=subject size=45>
 							</td>
 						</tr>
 						<tr>
 							<td width=20% valign="top">내용</td>
-							<td width=80%><textarea rows=20 cols=25 name=content></textarea>
+							<td width=80%><textarea rows=16 cols=43 name=content></textarea>
 							</td>
 						</tr>
 						<tr>
-							<td colspan=2 align="center">
-								<input type="button" value="입력" onclick="write()">
+							<td colspan=2>
+								<hr>
+							</td>
+						</tr>						
+						<tr>
+							<td colspan=2 align="center">							
+								<input type="button" value="입력" onclick="event_write()">
 									&nbsp;&nbsp;
 								<input type="button" value="취소" onclick="javascript:history.back()">								 
 							</td>

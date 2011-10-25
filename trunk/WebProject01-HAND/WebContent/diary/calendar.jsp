@@ -7,7 +7,7 @@
 	int year = Integer.parseInt(strYear);
 	int month = Integer.parseInt(strMonth);
 	
-	DiaryCalendar myDC = new DiaryCalendar();	
+	DiaryCalendar myDC = DiaryCalendar.getInstance();	
 	int result[] = myDC.todayCalendar(year, month);
 	int startDate = 1;
 	int endDate = result[0];
@@ -38,8 +38,8 @@ function openDetail(year, month, day){
 		content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
 		player:"iframe",
 		title:year+"."+month+"."+day+" 일의 일정",
-		width:"380",
-		height:"500"		
+		width:"540",
+		height:"380"		
 	});
 }
 </script>

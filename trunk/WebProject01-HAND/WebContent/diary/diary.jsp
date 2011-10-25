@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="com.diary.*" %>    
-<jsp:useBean id="myCalendar" class="com.diary.DiaryCalendar"></jsp:useBean>
 <%
+	DiaryCalendar myCalendar = DiaryCalendar.getInstance();
 	int year = myCalendar.getCurrentYear();
 	int month = myCalendar.getCurrentMonth();
 %>    

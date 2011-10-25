@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%
-	request.setCharacterEncoding("euc-kr");
-	response.setCharacterEncoding("euc-kr");
 	String strYear = request.getParameter("year");
 	String strMonth = request.getParameter("month");
 	String strDay = request.getParameter("day");
@@ -15,12 +14,9 @@
 </head>
 <body>
 <center>
-	<table width=280 height=400 background="../image/diary/bg_content.png">
-		<tr>
-			<td width=8%>
-
-			</td>			
-			<td width=92% align=left>			
+	<table border=1 width=540 height=380 bgcolor="white">
+		<tr>			
+			<td align="left" valign="top">			
 				<%--
 					免仿秦具且 亲格
 					眉农冠胶, 老矫, 力格, 滚瓢(葛滴眉农, 昏力, 脚痹)
@@ -29,21 +25,33 @@
 				 	<tr>
 				 		<td width=10%>
 				 			<input type="checkbox">
+				 			&nbsp;&nbsp;
 				 		</td>
-				 		<td width=90% align="right">
-				 			<input type="button" value="货 老沥">
-				 			<input type="button" value="昏力">
+				 		<td width=90% align="left">
+							<a href="../diary/event_write.jsp?year=${param.year}&month=${param.month}&day=${param.day}">
+								货 老沥
+							</a>
+							&nbsp;&nbsp;
+							<a href="">昏力</a>				 			
+				 		</td>
+				 	</tr>
+				 	<tr>
+				 		<td colspan=3>
+				 			<hr>
+				 		</td>
+				 	</tr>
+				 	<tr>
+				 		<td>
+				 			<input type="checkbox">
+				 		</td>
+				 		<td>
+				 			力格
+				 		</td>
+				 		<td>
+				 			<input type="button" value="荐沥">
 				 		</td>
 				 	</tr>
 				 </table>
-				 老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废<br>
-				 老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废<br>
-				 老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废<br>
-				 老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废<br>
-				 老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废<br>
-				 老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废<br>
-				 老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废<br>
-				 老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废老沥格废<br>
 			</td>			
 		</tr>
 	</table>
