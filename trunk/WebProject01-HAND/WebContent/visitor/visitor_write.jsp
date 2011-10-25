@@ -38,7 +38,7 @@ function send(){
 	
 		<h1>방명록 쓰기</h1>
 		<form method=post action="visitor_write_ok.jsp"name="visitor_frm">
-		<table border=0 bordercolor=#ccccff width=500 bgcolor=#ccccff>
+		<table border=0  width=500 bgcolor=f5f0c5>
 		
 			<tr>
 				<td align=right width=20%>글 속성</td>

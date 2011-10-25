@@ -31,7 +31,7 @@
          for(VisitorVO vo:list)
          {
       %>
-    <table border=0 width=800>
+    <table border=0 width=800 bgcolor=f5f0c5>
         <tr height=25 bgcolor=#ccccff>
 
 	        <td width=15%>No.<%=vo.getNo() %></td>
@@ -39,11 +39,15 @@
 	        <td width=30%><%=vo.getRegdate() %></td>
        		
 		</tr>     
-	    <tr height=65 bgcolor=ccccccc>
+	    <tr height=65 >
 	        <td width=45% colspan="3" align=center><%=vo.getContent() %>
-	        
+	        </td>
+	        <tr>
+	        <td align=right colspan=3>
+	        <input type=button value=»èÁ¦>
 	        </td>
 	   </tr> 
+
 	</table>
 	<%
          }
