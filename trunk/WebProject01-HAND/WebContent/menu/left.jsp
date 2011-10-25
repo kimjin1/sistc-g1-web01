@@ -11,7 +11,7 @@
 		<tr>
 		
 			<td>			
-				<jsp:include page="../login/login.jsp"/>
+				<jsp:include page="../login/loginmain.jsp"/>
 			</td>
 		</tr>
 		<tr>
