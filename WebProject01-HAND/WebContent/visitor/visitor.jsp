@@ -21,7 +21,7 @@
      <tr>
       <td align=left>
        
-       <img src="../image/board/write.jpg" border=0>
+       <a href="visitor_write.jsp"><img src="../image/board/write.jpg" border=0></a>
       
       </td>
      </tr>

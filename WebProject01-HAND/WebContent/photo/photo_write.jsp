@@ -30,7 +30,7 @@
     
           <td align=center colspan=2>
            <input type=button value=등록>&nbsp;&nbsp;
-           <input type=button value=취소 >
+           <input type=button value=취소 onclick="javascript:history.back()">
           </td>
          </tr>
 		</table>

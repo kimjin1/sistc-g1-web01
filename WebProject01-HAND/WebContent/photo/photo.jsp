@@ -15,7 +15,7 @@
 	<table border=0	width=800 >
 	<tr>
 	<td>
-	<img src="../image/board/write.jpg" align=left>
+	<a href="photo_write.jsp"><img src="../image/board/write.jpg" align=left></a>
 	</td></tr>
 	</table>
 	<table border=3	width=800>
