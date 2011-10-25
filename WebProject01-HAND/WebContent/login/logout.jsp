@@ -9,20 +9,29 @@
 <body>
 	<center>
 		<table border=0 width=130 height=80 background="../image/login_image/log_bg.jpg">
-		<p>
+		
 			<tr>
-				<td width=20% align=right>ID</td>
-				<td><input type=text name=id size=14></td>
+				<td align=right>
+				<%
+				Integer in=(Integer)session.getAttribute("admin");
+				int admin=in.intValue();
+				if(admin==1){
+					%>
+					<font color=red><i>관리자</i></font><br>
+					<%
+				}
+				else{
+			%>
+			<font color=red><i>일반사용자</i></font><br>
+			<%
+				}
+			%>
+			<%=session.getAttribute("name") %>님 로그인중입니다
+				</td>
+				
 				<td rowspan=2><img src="../image/login_image/logout.jpg"></td>	
 			</tr>
-			<tr>
-				<td width=20% align=right>PW</td>
-				<td><input type=text name=pwd size=14></td>
-			</tr>
-			<tr>
-				
-				<td colspan=2 width=20% align=right  ><input type="checkbox" >이메일 저장</td>			
-			</tr>
+			
 			
 		</table>
 	</center>
