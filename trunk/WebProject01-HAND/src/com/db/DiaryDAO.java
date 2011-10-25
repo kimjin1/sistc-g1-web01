@@ -53,13 +53,15 @@ public class DiaryDAO {
 	// 신규 일정 등록
 	public void insertEvent(DiaryVO dVO){
 		try {
+			System.out.println(dVO.getId()+":"+dVO.getSubject()+":"+dVO.getContent()+dVO.getEvent_time());
 			getConnection();
 			String sql = "insert into p_diary values(p_diary_no_seq.nextVal, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, dVO.getId());
 			ps.setString(2, dVO.getSubject());
 			ps.setString(3, dVO.getContent());
-			ps.setDate(4, (Date) dVO.getEvent_time());
+			long time = dVO.getEvent_time().getTime();
+			ps.setDate(4, new java.sql.Date(time));
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

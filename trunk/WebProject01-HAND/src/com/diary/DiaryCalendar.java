@@ -46,8 +46,13 @@ public class DiaryCalendar {
 		return month;
 	}
 	
-	public Date valueToDate(){
+	public Date valueToDate(int[] ymdhm){
 		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, ymdhm[0]);
+		cal.set(Calendar.MONTH, ymdhm[1]);
+		cal.set(Calendar.DATE, ymdhm[2]);
+		cal.set(Calendar.HOUR, ymdhm[3]);
+		cal.set(Calendar.MINUTE, ymdhm[4]);
 		Date event = new Date(cal.getTimeInMillis());
 		return event;
 	}
