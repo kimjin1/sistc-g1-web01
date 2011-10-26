@@ -9,19 +9,18 @@
 function send(){
 	
 	var f=document.visitor_frm;
-	if(f.subject.value=="")
+	if(f.name.value=="")
 		{
 			alert("이름을 입력하세요");
-			f.subject.focus();
-			return;
-		}
-	
-	
+			f.name.focus();
+			return ;
+		}			
 	if(f.content.value=="")
 	{
 		alert("내용을 입력하세요");
 		f.content.focus();
-		return;
+		return ;
+	
 	}
 	f.submit();
 }
@@ -68,7 +67,7 @@ function send(){
 			
 			<tr>
 				<td align=center colspan=2>
-				<input type=submit value="등록" onclick="send()">
+				<input type=button value="등록" onclick="send()">
 				<input type=button value="취소" onclick="javascript:history.back()">
 				</td>
 			</tr>
