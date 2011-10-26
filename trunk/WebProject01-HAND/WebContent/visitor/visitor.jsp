@@ -50,8 +50,8 @@
          {
       %>
       <p>
-    <table border=3 width=400 bgcolor=f5f0c5>
-        <tr height=20 bgcolor=#ccccff>
+    <table border=3 width=400   background="../image/visitor/visitor.jpg" >
+        <tr height=20 >
 
 	        <td width=15%>No.<%=vo.getNo() %></td>
 	        <td width=15%><%=vo.getName() %></td>
