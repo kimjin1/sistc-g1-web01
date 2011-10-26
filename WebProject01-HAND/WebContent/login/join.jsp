@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>회원 가입</title>
 <style type="text/css">
- td{font-family: 휴먼매직체;font-size: 10pt}
- h3{font-family: 휴먼매직체;font-size: 15pt}
+ td{font-family: 휴먼매직체;font-size: 10pt;color:white}
+ h3{font-family: 휴먼매직체;font-size: 15pt;color:white}
 </style>
 </head>
 <body>
@@ -151,7 +151,7 @@
               <input type="reset" value="취소">
              </td>
            </tr>
-           
+           </table>
           </table> 
 	</center>
 </body>
