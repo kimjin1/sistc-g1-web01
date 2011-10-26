@@ -86,7 +86,7 @@ public class VisitorDAO {
 		return vo;
 	}
 
-	public ArrayList<VisitorVO> getVisitorData() {
+	public ArrayList<VisitorVO> getVisitorData(int page) {
 		ArrayList<VisitorVO> list = new ArrayList<VisitorVO>();
 		try {
 			// 연결
@@ -96,7 +96,13 @@ public class VisitorDAO {
 			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			// 결과값
+			//페이지별
+			int pagestart=(page*10)-10;//시작점
+			   int i=0;//10씩 나눠주는 변수 
+			   int j=0;//while의 횟수 
 			while (rs.next()) {
+				 if(i<10 && j>=pagestart)
+				   {
 				VisitorVO vo = new VisitorVO();
 				vo.setNo(rs.getInt(1));
 				vo.setName(rs.getString(2));
@@ -104,6 +110,11 @@ public class VisitorDAO {
 				vo.setContent(rs.getString(4));
 				vo.setRegdate(rs.getDate(5));
 				list.add(vo);
+				
+				i++;
+			}
+			
+			   j++;
 			}
 			rs.close();
 			// ArrayList에 첨부
@@ -139,5 +150,57 @@ public class VisitorDAO {
 		}
 
 	}
+	
+	//총페이지
+	 public int getTotalPage()
+	   {
+		   int total=0;
+		   try
+		   {
+			   getConnection();
+			   String sql="select count(*) from p_visitor";
+			   ps=conn.prepareStatement(sql);
+			   ResultSet rs=ps.executeQuery();
+			   rs.next();
+			   int count=rs.getInt(1);
+			   rs.close();
+			   
+			   total=count/10;//19/10 2
+			   if(count%10>0)
+				   total++;
+			   
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return total;
+	   }
+	//페이지별
+	 public int getBoardCount()
+	   {
+		   int count=0;
+		   try
+		   {
+			   getConnection();
+			   String sql="select count(*) from p_visitor";
+			   ps=conn.prepareStatement(sql);
+			   ResultSet rs=ps.executeQuery();
+			   rs.next();
+			   count=rs.getInt(1);
+			   rs.close();
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return count;
+	   }
 
 }

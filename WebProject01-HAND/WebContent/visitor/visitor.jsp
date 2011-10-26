@@ -1,12 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="java.util.*,com.db.*,java.text.*"%>
-    
-    
-    <%
-   VisitorDAO dao=new VisitorDAO();
-    ArrayList<VisitorVO> list= 
-    		         dao.getVisitorData();    
+    <%!
+     int totalpage=0;//총페이지(DB)
+     int curpage=1;//현재(수시로 변경)
+     
+     int back;//이전값
+     int forward;//다음값
 %>
+
+    
+
+  <jsp:useBean id="dao" class="com.db.VisitorDAO"/>
+  <%
+    String strPage=request.getParameter("page");
+    if(strPage==null)
+    	strPage="1";
+    curpage=Integer.parseInt(strPage);
+    ArrayList<VisitorVO> list=dao.getVisitorData(curpage);    
+    totalpage=dao.getTotalPage();
+    int count=dao.getBoardCount(); 
+    count=count-((curpage*10)-10);
+    //    30 1-(0) 2-(10) 3-(20) 
+%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -65,15 +82,39 @@
       <tr>
       
        <td align=right>
+        <%
+            if(curpage>1)
+            {
+            	back=curpage-1;
+         %>
+       <a href="../visitor/visitor.jsp?page=<%=back%>">
      <img src="../image/board/prev.jpg" border=0>
-    
+    	</a>
+    	<%
+            }
+         %>
          &nbsp;
-      
-         <img src="../image/board/next.jpg" border=0>
-         
+         <%
+            for(int i=1;i<=totalpage;i++)
+            {
+         %>
+               [<a href="../visitor/visitor.jsp?page=<%=i%>"><%=i %></a>]
+         <%
+            }
+         %>
+         <%
+             if(curpage<totalpage)
+             {
+            	 forward=curpage+1;
+         %>
+      	<a href="../visitor/visitor.jsp?page=<%=forward %>">
+         <img src="../image/board/next.jpg" border=0></a>
+         <%
+             }
+         %>
       
          &nbsp;&nbsp;&nbsp;
-
+  <%=curpage %> page / <%=totalpage %> pages
        </td>
       </tr>
     </table>
