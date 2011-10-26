@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="com.diary.*"%>
+    pageEncoding="EUC-KR" import="com.diary.*, com.db.*"%>
 <%	
+	DiaryDAO dao = DiaryDAO.getInstance();
 	String strYear = request.getParameter("year");
 	String strMonth = request.getParameter("month");
-	 
+	String id = (String)session.getAttribute("id");	 
 	int year = Integer.parseInt(strYear);
 	int month = Integer.parseInt(strMonth);
 	
@@ -33,7 +34,7 @@
 <script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
 <script type="text/javascript">Shadowbox.init();</script>
 <script type="text/javascript">
-function openDetail(year, month, day){	
+function openList(year, month, day){	
 	Shadowbox.open({		
 		content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
 		player:"iframe",
@@ -89,8 +90,9 @@ function openDetail(year, month, day){
 					<%	
 					}else if(startDate <= endDate){
 					%>		
-						<a href="javascript:openDetail(<%=year%>,<%=month%>,<%=startDate%>)"> 
-						<b><%=startDate%></b>												
+						<a href="javascript:openList(<%=year%>,<%=month%>,<%=startDate%>)"> 
+						<b><%=startDate%></b>		
+						<%=dao.getEventCount(id, year+"-"+month+"-"+startDate)%>										
 						</a>											
 					<%													
 						startDate++;
