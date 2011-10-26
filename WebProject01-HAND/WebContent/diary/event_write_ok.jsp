@@ -2,22 +2,31 @@
 <%@page import="com.db.DiaryDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="com.db.*, java.util.*"%>
-<% 
+<%	
+	request.setCharacterEncoding("euc-kr");
 	DiaryDAO dao = DiaryDAO.getInstance();
 	DiaryVO dVO = new DiaryVO();
+	
 	String id = (String)session.getAttribute("id");
-			
-	dVO.setId(id);
-	dVO.setSubject(request.getParameter("subject"));
-	dVO.setContent(request.getParameter("content"));
+	
+	String strYear = request.getParameter("year");
+	String strMonth = request.getParameter("month");
+	String strDay = request.getParameter("day");
+	String strHour = request.getParameter("hour");
+	String strMinute = request.getParameter("minute");
+	
 	DiaryCalendar myCal = DiaryCalendar.getInstance();
 	int ymdhm[] = {
-		Integer.parseInt(request.getParameter("year")),
-		Integer.parseInt(request.getParameter("month")),
-		Integer.parseInt(request.getParameter("day")),
-		Integer.parseInt(request.getParameter("hour")),
-		Integer.parseInt(request.getParameter("minute")),
-	};	
+		Integer.parseInt(strYear),
+		Integer.parseInt(strMonth),
+		Integer.parseInt(strDay),
+		Integer.parseInt(strHour),
+		Integer.parseInt(strMinute),
+	};
+	
+	dVO.setId(id);	
+	dVO.setSubject(request.getParameter("subject"));
+	dVO.setContent(request.getParameter("content"));	
 	Date event_time = myCal.valueToDate(ymdhm);
 	dVO.setEvent_time(event_time);
 	dao.insertEvent(dVO);
@@ -30,6 +39,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%response.sendRedirect("../diary/event_list.jsp"); %>
+	<%		
+		String ymd = "?year="+strYear+"&month="+strMonth+"&day="+strDay; 
+		response.sendRedirect("../diary/event_list.jsp"+ymd); 
+	%>
 </body>
 </html>

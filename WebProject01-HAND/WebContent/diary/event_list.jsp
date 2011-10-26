@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="com.db.*, java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%
-	String strYear = request.getParameter("year");
-	String strMonth = request.getParameter("month");
-	String strDay = request.getParameter("day");
+	DiaryDAO dao = DiaryDAO.getInstance();
+	String id = (String)session.getAttribute("id");
+	String ymd[] = {
+		request.getParameter("year"),
+		request.getParameter("month"),
+		request.getParameter("day")
+	};	
+	ArrayList<DiaryVO> dList = dao.getEventList(id, ymd); 
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -40,17 +45,20 @@
 				 			<hr>
 				 		</td>
 				 	</tr>
-				 	<tr>
-				 		<td>
-				 			<input type="checkbox">
-				 		</td>
-				 		<td>
-				 			제목
-				 		</td>
-				 		<td>
-				 			<input type="button" value="수정">
-				 		</td>
-				 	</tr>
+				 	<%-- 일정 목록 출력 부분 --%>
+				 	<c:forEach var="vo" items="<%=dList%>" varStatus="DiaryVO">
+					 	<tr>				 	
+						 	<td>
+						 		<input type="checkbox">
+						 	</td>
+						 	<td>				 			
+						 		${vo.getSubject() }
+						 	</td>
+						 	<td>
+						 		<input type="button" value="수정">
+						 	</td>				 		
+					 	</tr>
+				 	</c:forEach>
 				 </table>
 			</td>			
 		</tr>

@@ -8,13 +8,13 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 function event_write(){
-	var frm = document.event_frm;
-	if(frm.subject.value=""){
-		alert("力格阑 涝仿窍技夸");
-		frm.subject.focus();
+	var f = document.frm;	
+	if(f.subject.value==""){
+		alert("力格阑 涝仿窍技夸");		
+		f.subject.focus();
 		return;
 	}
-	frm.submit();
+	f.submit();
 }
 </script>
 </head>
@@ -23,7 +23,7 @@ function event_write(){
 		<table border=0 width=400 height=380 bgcolor="white">
 			<tr>
 				<td valign="top">
-					<form method=post action="event_write_ok.jsp" name="event_frm">
+					<form method=post action="../diary/event_write_ok.jsp" name="frm">
 					<table width=100% height=100% border=0>
 						<tr>
 							<td colspan=2 height=10% align="center">
@@ -50,9 +50,9 @@ function event_write(){
 							</td>
 						</tr>
 						<tr>
-							<td width=16%>力格</td>
-							<td width=76%>
-								<input type=text name=subject size=45>
+							<td width=20%>力格</td>
+							<td width=80%>
+								<input type="text" name="subject" size="45">
 							</td>
 						</tr>
 						<tr>
