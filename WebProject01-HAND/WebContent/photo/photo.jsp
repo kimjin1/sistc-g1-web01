@@ -12,7 +12,7 @@
 	
 	
 	
-	<table border=0	width=800 >
+	<table border=0	width=600 >
 	<tr>
 	<td>
 	<a href="photo_write.jsp"><img src="../image/board/write.jpg" align=left></a>
