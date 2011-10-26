@@ -76,18 +76,8 @@ function find()
 	             {
 	        %>
 	               <a href="board.jsp?type=3&no=<%=vo.getNo()%>&page=<%=curpage%>"><%=vo.getSubject() %></a>
-	        <% 
-	        	        
-	             }
-	             else//´ä±Û
-	             {
-	            	 for(int i=0;i<vo.getGrouplevel();i++)
-	            	 {
-	            		 out.println("&nbsp;&nbsp;");
-	            	 }
-	          %>
-	                 <img src="../include/image/re_icon.gif">
-	                 <a href="main.jsp?type=6&no=<%=vo.getNo()%>&page=<%=curpage%>"><%=vo.getSubject() %></a>
+	       
+	                
 	          <%
 	             }
 	          %>

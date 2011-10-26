@@ -8,7 +8,7 @@
  <jsp:setProperty name="vo" property="*"/>
 </jsp:useBean>
 <%
-	System.out.println(vo.getNo()+":"+vo.getSubject()+":"+vo.getContent());
+	
     //DAO에 데이터를 전송(vo)
     //insert 요청
     dao.insert(vo);
