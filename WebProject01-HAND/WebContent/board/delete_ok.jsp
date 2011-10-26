@@ -1,12 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<%
+    request.setCharacterEncoding("EUC-KR");
+%>
+<%
+	String pw=request.getParameter("pw");
+%>
+<jsp:useBean id="dao" class="com.db.BoardDAO"/>
+<jsp:useBean id="vo" class="com.db.BoardVO">
+<jsp:setProperty name="vo" property="*"/>
+</jsp:useBean>
+<%
+     //delete.jsp에서 넘겨준 데이터를 받는다 (no,page,pwd)
+     String strNo=request.getParameter("no");
+     String strPage=request.getParameter("page");
+     
+     //DAO에 전송 (DAO가 오라클과 연결후에 처리==결과값)
+     boolean bCheck= dao.delete(vo, pw);//DAO결과값
+     //결과값(1.비번이 틀릴때(back),2.실제 삭제(list.jsp))
+     if(bCheck==true)
+     {
+    	response.sendRedirect("../board/board.jsp?type=1&page="+strPage); 
+     }
+     else
+     {
+%>
+        <script>
+        alert("비밀번호가 틀립니다");
+        history.back();
+        </script>
+<% 
+     }
+%>

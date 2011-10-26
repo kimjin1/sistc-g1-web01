@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="com.db.*"%>
 <jsp:useBean id="dao" class="com.db.BoardDAO"/>
-<%
+<%	
     String strNo=request.getParameter("no");
     String strPage=request.getParameter("page");
-    
-    BoardVO vo=
+  	BoardVO vo=
        dao.getUpdateData(Integer.parseInt(strNo));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,7 +36,12 @@ function send()
 		f.content.focus();
 		return;
 	}
-	
+	if(f.pw.value=="")
+	{
+		alert("비밀번호를 입력하세요");
+		f.pw.focus();
+		return;
+	}
 	
 	
 	//전송 (데이터를 action에게 전송)
@@ -48,7 +52,7 @@ function send()
 </head>
 <body>
 <center>
-<form method=post action="../board/pwcheck.jsp" name=frm>
+<form method=post action="../board/update_ok.jsp" name=frm>
 	<table border=5 width=800>
 		<tr>
 	   		 <td width=20% bgcolor=cccccc>제목</td>
@@ -71,9 +75,14 @@ function send()
         <tr>
        	 	<td align=left colspan=4 valign=top height=200>
         	 	<textarea rows="25" cols="109" name=content><%=vo.getContent() %></textarea>
-        	 	<input type="hidden" value="<%=session.getAttribute("id")%>">
+        	 	<input type="hidden" name=id value="<%=session.getAttribute("id")%>">
         	</td>
        </tr>
+       <tr>
+          <td align=right width=20%>비밀번호</td>
+          <td align=left width=80%>
+           <input type=password name=pw size=10>
+          </td>
        
 	</table>
 	<table border=5 width=800>
