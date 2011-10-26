@@ -53,7 +53,7 @@ public class DiaryDAO {
 	// 신규 일정 등록
 	public void insertEvent(DiaryVO dVO){
 		try {
-			System.out.println(dVO.getId()+":"+dVO.getSubject()+":"+dVO.getContent()+dVO.getEvent_time());
+			//System.out.println(dVO.getId()+":"+dVO.getSubject()+":"+dVO.getContent()+":"+dVO.getEvent_time());
 			getConnection();
 			String sql = "insert into p_diary values(p_diary_no_seq.nextVal, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(sql);
@@ -155,5 +155,25 @@ public class DiaryDAO {
 			disConnection();
 		}
 		return dVO;
+	}
+	
+	// 년월일을 입력받아 해당 날짜의 일정 갯수를 출력한다
+	public int getEventCount(String ymd){
+		int count = 0;
+		try {
+			getConnection();
+			String sql = "select count(*) from p_diary where event_time=to_date(?, 'yyyy-MM-dd')";			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, ymd);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			count = rs.getInt(1);
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			disConnection();
+		}
+		return count;
 	}
 }
