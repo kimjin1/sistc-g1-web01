@@ -26,7 +26,7 @@
  	//답글이 아닐때까지 글번호를 증가시키며 찾는다	
  	for(int i=curNo+1; i<=maxNo; i++){				
  		prevVO = dao.getContent(i);
- 		System.out.println(i+":"+prevVO.getNo());
+ 	
  		if(prevVO.getNo() != 0 && prevVO.getGrouplevel()==0){
  			break;
  		}			
@@ -36,7 +36,7 @@
  	//GroupLevel이 0일때만 아래글로 표시한다
  	for(int i=curNo-1; i>=minNo; i--){		
  		nextVO = dao.getContent(i);
- 		System.out.println(i+":"+nextVO.getNo());
+ 		
  		if(nextVO.getNo() !=0 && nextVO.getGrouplevel()==0){
  			break;
  		}		
@@ -48,7 +48,7 @@
  	nextNo = nextVO.getNo();
  	prevSubject = prevVO.getSubject();
  	nextSubject = nextVO.getSubject();
- 	System.out.println(prevNo+":"+nextNo+":"+prevSubject+":"+nextSubject);
+ 	;
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

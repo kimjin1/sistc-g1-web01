@@ -59,6 +59,7 @@ function send()
         <tr>
        	 	<td align=left colspan=4 valign=top height=200>
         	 	<textarea rows="25" cols="109" name=content></textarea>
+        	 	<input type="hidden" name="id" value="<%=session.getAttribute("id")%>">
         	</td>
        </tr>
        

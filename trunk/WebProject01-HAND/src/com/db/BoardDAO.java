@@ -3,6 +3,8 @@ package com.db;
 import java.util.*;
 import java.sql.*;
 
+import org.apache.catalina.Session;
+
 public class BoardDAO {
 
 	private Connection conn;// 오라클 연결
@@ -71,10 +73,14 @@ public class BoardDAO {
 			   ps=conn.prepareStatement(sql);
 			   ResultSet rs=ps.executeQuery();
 			   
-			  
+			   //페이지별 출력
+			   int pagestart=(page*10)-10;//시작점
+			   int i=0;//10씩 나눠주는 변수 
+			   int j=0;//while의 횟수 
 			   while(rs.next())
 			   {
-				 
+				   if(i<10 && j>=pagestart)
+				   {
 					   //값을 가지고 온다 
 					   BoardVO vo=new BoardVO();
 					   vo.setNo(rs.getInt(1));
@@ -86,9 +92,13 @@ public class BoardDAO {
 					   vo.setGrouplevel(rs.getInt(7));
 					   
 					   list.add(vo);
-				
+					   
+					   i++;
+				   }
+				   j++;
 			   }
-			   
+			  
+			   //결과값을 ArrayList담아둔다
 		   }catch(Exception ex)
 		   {
 			   System.out.println(ex.getMessage());
@@ -300,6 +310,172 @@ public class BoardDAO {
 		   }
 		   return count;
 	   }
+	   
+	 //글 수정 data
+	   public BoardVO getUpdateData( int no)
+	   {
+		   BoardVO vo=new BoardVO();
+		   try
+		   {
+			  getConnection();
+			  String sql="select name,nvl(email,' '),"
+					  +"nvl(homepage,' '),"
+					  +"subject,content from p_board "
+					  +"where no=?";
+			  ps=conn.prepareStatement(sql);
+			  ps.setInt(1, no);
+			  ResultSet rs=ps.executeQuery();
+			  rs.next();
+			  vo.setName(rs.getString(1));
+			  vo.setEmail(rs.getString(2));
+			  vo.setHomepage(rs.getString(3));
+			  vo.setSubject(rs.getString(4));
+			  vo.setContent(rs.getString(5));
+			  rs.close();
+			  
+		   }catch(Exception ex)
+		   {
+			  System.out.println(ex.getMessage());   
+		   }
+		   finally
+		   {
+			  disConnection();
+		   }
+		   return vo;
+	   }
+	   
+	   //실제 수정
+	   public void update(BoardVO vo)
+	   {
+		  
+		   try
+		   {
+			  getConnection();
+			 
+				String sql="update p_board set "
+					+"name=?,email=?,homepage=?,"
+				    +"subject=?,content=?,"
+					+"regdate=sysdate "
+				    +"where no=?";
+				 ps=conn.prepareStatement(sql);
+				 ps.setString(1, vo.getName());
+				 ps.setString(2, vo.getEmail());
+				 ps.setString(3, vo.getHomepage());
+				 ps.setString(4, vo.getSubject());
+				 ps.setString(5, vo.getContent());
+				 ps.setInt(6,vo.getNo());
+				 ps.executeUpdate();
+			  
+		   }catch(Exception ex)
+		   {
+			  System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			  disConnection(); 
+		   }
+	   }
+	   //글 삭제
+	   public boolean delete(int no,String pw,String id)
+	   {
+		   boolean bCheck=false;
+		   try
+		   {
+			  /*
+			   *  1.오라클 연결
+			   *  2.퀴리작성 
+			   *    1)비밀번호 검색  select
+			   *      - 비밀번호가 틀릴때 
+			   *        bCheck=false 종료
+			   *      - 비밀번호가 맞을 경우
+			   *        bCheck=true
+			   *        1. depth를 검색(답글이 있는지 여부 확인) select
+			   *           1)depth==0
+			   *             ==> 삭제
+			   *           2)depth>0
+			   *             ==> 1. 본인게시물과 답글전체 삭제 delete
+			   *                 2. 답글은 그대로 유지 update
+			   *                    **본인게시물에 수정(관리자에 의해 삭제된 게시물)
+			   *           ===> 상위루트의 depth를 1개 감소 update
+			   */
+			   getConnection();
+			   String sql="select pw from p_person "
+						  +"where id=?";
+			   
+			   ps=conn.prepareStatement(sql);
+			   ps.setInt(1, no);
+			   //실행
+			   ResultSet rs=ps.executeQuery();
+			   rs.next();
+			   String db_pw=rs.getString(1);
+			   rs.close();
+			   ps.close();
+			   
+			   if(db_pw.equals(pw))
+			   {
+				   bCheck=true;
+				   sql="select depth,rootno from p_board "
+					   +"where no=?";
+				   ps=conn.prepareStatement(sql);
+				   ps.setInt(1, no);
+				   
+				   rs=ps.executeQuery();
+				   rs.next();
+				   int depth=rs.getInt(1);
+				   int root=rs.getInt(2);
+				   rs.close();
+				   ps.close();
+				   if(depth==0)//단독(답글이 없는 경우)
+				   {
+					   sql="delete from p_board "
+							+"where no=?";
+					   ps=conn.prepareStatement(sql);
+					   ps.setInt(1, no);
+					   ps.executeUpdate();
+					   ps.close();
+				   }
+				   else //답글이 있는 경우 
+				   {
+					   String str="관리자에 의해 삭제된 게시물입니다";
+					   sql="update p_board set subject=?,content=? "
+						   +"where no=?";
+					   ps=conn.prepareStatement(sql);
+					   ps.setString(1, str);
+					   ps.setString(2, str);
+					   ps.setInt(3,no);
+					   ps.executeUpdate();
+					   ps.close();
+				   }
+				   //상위 루트에 대해서 depth를 감소
+				   //rootno==0일때 본인 자신,rootno!=0 상위루트가 존재
+				   //rootno는 상위 게시물번호
+				   if(root!=0)
+				   {
+					   sql="update p_board set depth=depth-1 "
+						  +"where no=?";
+					   ps=conn.prepareStatement(sql);
+					   ps.setInt(1, root);
+					   ps.executeUpdate();
+					   ps.close();
+				   }
+				   
+			   }
+			   else
+			   {
+				   bCheck=false;
+			   }
+		   }catch(Exception ex)
+		   {
+			  System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			  disConnection();
+		   }
+		   return bCheck;
+	   }
+	  
+	   
 	// 최대 글번호와 최소 글번호 얻어오기
 		public int[] getMaxMin(){
 			int[] maxmin = new int[2];
@@ -318,6 +494,39 @@ public class BoardDAO {
 			}
 			return maxmin;
 		}
+		
+		public boolean isPwCheck(String id,String pw)
+		   {
+			   boolean bCheck=false;
+			   try
+			   {
+				  getConnection();
+				  String sql="select pw from p_person "
+						  +"where id=?";
+				  ps=conn.prepareStatement(sql);
+				  ps.setString(1, id);
+				  ResultSet rs=ps.executeQuery();
+				  rs.next();
+				  String db_pw=rs.getString(1);
+				  rs.close();
+				  
+				  if(db_pw.equals(pw))
+					  bCheck=true;
+				  else
+					  bCheck=false;
+				  
+			   }catch(Exception ex)
+			   {
+				  System.out.println(ex.getMessage()); 
+			   }
+			   finally
+			   {
+				  disConnection();  
+			   }
+			   return bCheck;
+		   }
+		
+		 
 	
 	
 }

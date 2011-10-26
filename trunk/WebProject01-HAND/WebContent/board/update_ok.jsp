@@ -1,12 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+    pageEncoding="EUC-KR" import="com.db.*"%>
+<%
+    request.setCharacterEncoding("EUC-KR");
+%>
+<%
+	String pw=request.getParameter("pw");
+%>
+<jsp:useBean id="dao" class="com.db.BoardDAO"/>
+<jsp:useBean id="vo" class="com.db.BoardVO">
+  <jsp:setProperty name="vo" property="*"/>
+</jsp:useBean>
+ <%
+ 
+    String strPage=request.getParameter("page");
+   
+	boolean pCheck = dao.isPwCheck(vo.getId(), pw);
+	if(pCheck==true){
+		System.out.print("엡데이트 실행");
+		//업데이트실행
+	 response.sendRedirect("../board.jsp?type=1&page="+strPage);
+				
+	}
+	
+ %>
