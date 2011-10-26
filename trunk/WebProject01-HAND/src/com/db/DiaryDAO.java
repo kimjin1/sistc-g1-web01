@@ -106,14 +106,15 @@ public class DiaryDAO {
 	}
 	
 	// 일정 목록 출력
-	public ArrayList<DiaryVO> getEventList(String id, String[] ymd){
+	public ArrayList<DiaryVO> getEventList(String id, String ymd){
 		ArrayList<DiaryVO> eventList = new ArrayList<DiaryVO>();
 		try {
 			getConnection();
 			//해당 ID의 해당일시의 일정만을 얻어와야 한다
-			String sql = "select no, id, subject, content, event_time from p_diary where id like ?";
+			String sql = "select no, id, subject, content, event_time from p_diary where id like ? and event_time=to_date(?, 'yyyy-MM-dd')";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
+			ps.setString(2, ymd);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				DiaryVO dVO = new DiaryVO();
@@ -158,13 +159,15 @@ public class DiaryDAO {
 	}
 	
 	// 년월일을 입력받아 해당 날짜의 일정 갯수를 출력한다
-	public int getEventCount(String ymd){
+	public int getEventCount(String id, String ymd){
+		//System.out.println(ymd);
 		int count = 0;
 		try {
 			getConnection();
-			String sql = "select count(*) from p_diary where event_time=to_date(?, 'yyyy-MM-dd')";			
+			String sql = "select count(*) from p_diary where id like ? and event_time=to_date(?, 'yyyy-MM-dd')";			
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, ymd);
+			ps.setString(1, id);
+			ps.setString(2, ymd);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			count = rs.getInt(1);

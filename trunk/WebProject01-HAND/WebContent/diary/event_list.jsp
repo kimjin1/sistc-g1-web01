@@ -4,11 +4,12 @@
 <%
 	DiaryDAO dao = DiaryDAO.getInstance();
 	String id = (String)session.getAttribute("id");
-	String ymd[] = {
-		request.getParameter("year"),
-		request.getParameter("month"),
-		request.getParameter("day")
-	};	
+
+	String strYear = request.getParameter("year");
+	String strMonth = request.getParameter("month");
+	String strDay = request.getParameter("day");
+
+	String ymd = strYear+"-"+strMonth+"-"+strDay;
 	ArrayList<DiaryVO> dList = dao.getEventList(id, ymd); 
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
