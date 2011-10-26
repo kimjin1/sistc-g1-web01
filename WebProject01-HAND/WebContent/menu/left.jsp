@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border=1 width=100%>
+<p><p><p><p>
+	<table border=0 width=200>
 		<tr>
 		
 			<td>			
@@ -17,16 +18,7 @@
 		<tr>
 			<td align=center>
 				<script src="http://widgetprovider.daum.net/view?url=http://widgetcfs1.daum.net/xml/3/widget/2011/01/26/17/13/4d3fd792c255e.xml&up_city=Seoul&up_color=aquamarine&&width=170&height=115&widgetId=1046&scrap=1" type="text/javascript"></script>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				즐겨찾기 들어갈 자리
-			</td>
-		</tr>
-		<tr>
-			<td>
-				(계획중)친구목록 or 친구찾기 넣을 계획
+				<script src="http://widgetprovider.daum.net/view?url=http://widgetcfs1.daum.net/xml/3/widget/2011/01/26/17/13/4d3fd792c255e.xml&up_city=Busan&up_color=aquamarine&&width=170&height=115&widgetId=1046&scrap=1" type="text/javascript"></script>
 			</td>
 		</tr>
 	</table>
