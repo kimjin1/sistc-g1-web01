@@ -59,13 +59,7 @@
 
     <table border=5 width=800>
       <tr>
-       <td align=left width=40%>이름
-       
-        <input type=text name=ss size=15>
-        <input type=hidden name=page 
-                 >
-        <input type=button value=찾기 >
-       </td>
+      
        <td align=right>
      <img src="../image/board/prev.jpg" border=0>
     

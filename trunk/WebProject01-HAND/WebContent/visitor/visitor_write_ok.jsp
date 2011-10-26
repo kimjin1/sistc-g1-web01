@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+    pageEncoding="EUC-KR" import="com.db.*"%>
+    <%
+    	request.setCharacterEncoding("euc-kr");
+    %>
+    <jsp:useBean id="dao" class="com.db.VisitorDAO"/>
+<jsp:useBean id="vo" class="com.db.VisitorVO">
+<jsp:setProperty name="vo" property="*"/>
+</jsp:useBean>
 
-</body>
-</html>
+
+
+<%
+	//DAO에 데이터를 전송(VO)
+	//insert 요청
+	dao.insert(vo);
+	//list.jsp이동
+	response.sendRedirect("visitor.jsp");
+%>
