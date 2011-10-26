@@ -57,6 +57,7 @@
 						 	</td>
 						 	<td>
 						 		<input type="button" value="수정">
+						 		<input type="button" value="삭제">
 						 	</td>				 		
 					 	</tr>
 				 	</c:forEach>

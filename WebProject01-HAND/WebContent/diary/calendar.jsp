@@ -34,14 +34,24 @@
 <script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
 <script type="text/javascript">Shadowbox.init();</script>
 <script type="text/javascript">
-function openList(year, month, day){	
-	Shadowbox.open({		
-		content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
-		player:"iframe",
-		title:year+"."+month+"."+day+" 일의 일정",
-		width:"540",
-		height:"380"		
-	});
+function openList(year, month, day){
+	var id = "<%=id%>";	
+	if(id==null){
+		alert("로그인 하세요");
+		return;
+	}else{
+		Shadowbox.open({		
+			content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
+			player:"iframe",
+			title:year+"."+month+"."+day+" 일의 일정",
+			width:"540",
+			height:"380",
+            options:{  
+                onClose: function(){ parent.location.reload(true); }               
+            } 			
+		});
+ 	
+	}
 }
 </script>
 </head>
@@ -91,10 +101,10 @@ function openList(year, month, day){
 					}else if(startDate <= endDate){
 					%>		
 						<a href="javascript:openList(<%=year%>,<%=month%>,<%=startDate%>)"> 
-						<b><%=startDate%></b>		
-						<%=dao.getEventCount(id, year+"-"+month+"-"+startDate)%>										
-						</a>											
-					<%													
+						<b><%=startDate%></b>													
+						</a>
+						<%=dao.getEventCount(id, year+"-"+month+"-"+startDate)%>
+					<%							
 						startDate++;
 					}else{
 					%>

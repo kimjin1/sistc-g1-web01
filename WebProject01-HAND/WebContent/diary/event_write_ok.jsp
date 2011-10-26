@@ -37,8 +37,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+function refreshParent(){
+	parent.location="../diary/calendar.jsp";
+}
+</script>
 </head>
-<body>
+<body onload="refreshParent()">
 	<%		
 		String ymd = "?year="+strYear+"&month="+strMonth+"&day="+strDay; 
 		response.sendRedirect("../diary/event_list.jsp"+ymd); 
