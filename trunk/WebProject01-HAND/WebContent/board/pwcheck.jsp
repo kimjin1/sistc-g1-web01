@@ -15,7 +15,7 @@
 <script type="text/javascript">
 function ok()
 {
-	parent.frm.id.value=document.frm.id.value;
+	parent.location="../board/update.jsp";
 	parent.Shadowbox.close();
 }
 function pwcheck()
@@ -34,7 +34,7 @@ function pwcheck()
 <body>
   <center>
   <p><p><p>
-    <form method=post action="../board/update_ok.jsp" name=frm>
+    <form method=post action="../board/pwcheck.jsp" name=frm>
     <table border=0 width=280>
      <tr>
       <td width=20% align=right>
@@ -80,6 +80,8 @@ function pwcheck()
      %>
      <tr>
       <td align=center colspan=2>
+      	<input type=hidden name=no value=<%=request.getParameter("no") %>">
+      	<input type=hidden name=page value=<%=request.getParameter("page") %>">
        <input type=button value=È®ÀÎ onclick="ok()">
       </td>
      </tr>

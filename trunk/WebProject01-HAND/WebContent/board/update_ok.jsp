@@ -8,18 +8,26 @@
 %>
 <jsp:useBean id="dao" class="com.db.BoardDAO"/>
 <jsp:useBean id="vo" class="com.db.BoardVO">
-  <jsp:setProperty name="vo" property="*"/>
+<jsp:setProperty name="vo" property="*"/>
 </jsp:useBean>
  <%
  
     String strPage=request.getParameter("page");
    
-	boolean pCheck = dao.isPwCheck(vo.getId(), pw);
+	boolean pCheck = dao.update(vo, pw);
 	if(pCheck==true){
-		System.out.print("엡데이트 실행");
+		
 		//업데이트실행
-	 response.sendRedirect("../board.jsp?type=1&page="+strPage);
+	 response.sendRedirect("../board/board.jsp?type=1&page="+strPage);
 				
 	}
-	
- %>
+	 else
+	{
+%>
+	       <script>
+	       alert("비밀번호가 틀립니다");
+	       history.back();
+	       </script>
+<%
+ 	 }
+%>
