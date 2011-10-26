@@ -22,6 +22,9 @@
 			<a href="../photo/photo.jsp" target="main"><h3>PHOTO</h3></a>
 		</td>
 		<td valign=bottom align=center width=100>
+			<a href="../file/file.jsp" target="main"><h3>FILE</h3></a>
+		</td>
+		<td valign=bottom align=center width=100>
 			<a href="../board/board.jsp" target="main"><h3>BOARD</h3></a>
 		</td>
 		<td valign=bottom align=center width=100>
