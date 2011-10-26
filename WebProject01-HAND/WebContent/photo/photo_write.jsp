@@ -5,6 +5,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>사진 업로드</title>
+<script type="text/javascript">
+function send(){
+	
+	var f=document.photo_frm;
+	if(f.subject.value=="")
+		{
+			alert("이름을 입력하세요");
+			f.subject.focus();
+			return;
+		}
+	
+	
+	if(f.content.value=="")
+	{
+		alert("내용을 입력하세요");
+		f.content.focus();
+		return;
+	}
+	f.submit();
+}
+</script>
 </head>
 <body>
 	<center>
