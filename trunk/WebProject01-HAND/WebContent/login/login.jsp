@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+
 <script type="text/javascript">
 function login2()//로그인 창에 아무것도 적혀 있지 않으면 입력하라는 창이 나온다.
 {
@@ -21,6 +22,21 @@ function login2()//로그인 창에 아무것도 적혀 있지 않으면 입력하라는 창이 나온다.
 		return;
 	}
 	f.submit();
+}
+</script>
+<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
+<script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
+<script type="text/javascript">Shadowbox.init();</script>
+<script type="text/javascript">
+function join_sb(){	
+	Shadowbox.open({		
+		content:"../login/join.jsp",
+		player:"iframe",
+		title:"회원 가입",
+		width:"700",
+		height:"600"
+		
+	});
 }
 </script>
 
@@ -43,7 +59,7 @@ function login2()//로그인 창에 아무것도 적혀 있지 않으면 입력하라는 창이 나온다.
 			<tr>
 				
 				<td colspan=3 width=20% align=right  ><input type="checkbox" >아이디 저장
-				<input type=button value=회원가입>
+				<input type=button value=회원가입 onclick="join_sb()">
 				</td>			
 			</tr>
 		</table>
