@@ -15,13 +15,7 @@ function send(){
 			f.subject.focus();
 			return;
 		}
-	if(f.pwd.value=="")
-		{
-			alert("패스워드를 입력하세요")
-			f.pwd.focus();
-			return;
-		
-		}
+	
 	
 	if(f.content.value=="")
 	{
@@ -39,7 +33,7 @@ function send(){
 		<h1>방명록 쓰기</h1>
 		<form method=post action="visitor_write_ok.jsp"name="visitor_frm">
 		<table border=0  width=500 bgcolor=f5f0c5>
-		
+		<%--
 			<tr>
 				<td align=right width=20%>글 속성</td>
 				<td align=left width=80%>
@@ -50,16 +44,19 @@ function send(){
 				</select>
 				</td>
 			</tr>
+			--%>
+			
+		
 			<tr>
 				<td align=right width=50%>작성자</td>
 				<td align=left width=30%>
-				<input type=text name=subject size=10>
+				<input type=text name=name size=10>
 				</td>
 			</tr>
 			<tr>
-			<td align=right width=50%>패스워드</td>
+			<td align=right width=50%>홈페이지</td>
 			<td align=left width=30%>
-			<input type=password name=pwd size=10></td>
+			<input type=text name=homepage size=25></td>
 			</tr>
 			
 			<tr>
@@ -71,7 +68,7 @@ function send(){
 			
 			<tr>
 				<td align=center colspan=2>
-				<input type=button value="등록" onclick="send()">
+				<input type=submit value="등록" onclick="send()">
 				<input type=button value="취소" onclick="javascript:history.back()">
 				</td>
 			</tr>
