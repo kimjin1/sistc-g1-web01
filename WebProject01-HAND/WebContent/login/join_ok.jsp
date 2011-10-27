@@ -33,7 +33,7 @@
     vo.setPw(pw);
     vo.setName(name);
    	vo.setBirth(birth);
-    vo.setName(name);
+    vo.setNickname(nickname);
     vo.setMemo(memo);
     vo.setEmail(email);
     vo.setPhoto(photo);
