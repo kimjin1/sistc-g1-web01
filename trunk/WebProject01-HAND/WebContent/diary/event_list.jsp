@@ -10,7 +10,7 @@
 	String strDay = request.getParameter("day");
 
 	String ymd = strYear+"-"+strMonth+"-"+strDay;
-	ArrayList<DiaryVO> dList = dao.getEventList(id, ymd); 
+	ArrayList<DiaryVO> dList = dao.getEventList(id, ymd); 	
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -56,9 +56,14 @@
 						 		${vo.getSubject() }
 						 	</td>
 						 	<td>
-						 		<input type="button" value="수정">
-						 		<input type="button" value="삭제">
+						 		${vo.getEvent_time() }
+						 	</td>
+						 	<td>
+						 		<input type="button" value="수정">						 		
 						 	</td>				 		
+						 	<td>
+						 		<input type="button" value="삭제">
+						 	</td>
 					 	</tr>
 				 	</c:forEach>
 				 </table>

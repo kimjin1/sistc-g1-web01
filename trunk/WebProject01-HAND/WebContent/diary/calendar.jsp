@@ -57,7 +57,7 @@ function openList(year, month, day){
 </head>
 <body>
 	<center>
-		<table width=100% height=480 border=1>
+		<table width=100% height=480 border=1 bordercolor=#ccccff>
 			<tr>
 
 			<%
@@ -92,17 +92,18 @@ function openList(year, month, day){
 			<%	
 				for(int j=0; j<7; j++){
 				%>
-					<td align=left valign=top>					
+					<th align=left valign=top>					
 					<%
 					if(i==0 && j<offset-1){
 					%>
-						&nbsp;&nbsp;&nbsp;
+						&nbsp;
+					</th>	
 					<%	
 					}else if(startDate <= endDate){
 					%>		
 						<a href="javascript:openList(<%=year%>,<%=month%>,<%=startDate%>)"> 
 						<b><%=startDate%></b>													
-						</a>
+						</a>						
 					<%							
 						if(MonthlyEvent[startDate-1] != 0){
 						%>
@@ -112,11 +113,11 @@ function openList(year, month, day){
 						startDate++;
 					}else{
 					%>
-						&nbsp;&nbsp;&nbsp;
+						&nbsp;
 					<%	
 					}
 					%>					
-					</td>
+					
 				<%	
 				}
 			%>

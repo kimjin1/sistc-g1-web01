@@ -46,6 +46,9 @@ create table p_file(no number primary key,
                     content varchar2(200),
                     path varchar2(1000) not null,
                     regdate date default sysdate,
+                    filename varchar2(260),
+                    filesize number,
+                    filetype varchar2(10),
                     flag number(1,0));
 --¸®ÇÃ
 drop table p_reply;
