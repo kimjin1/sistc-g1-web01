@@ -34,6 +34,19 @@ function login()
 	);
 }
 </script>
+<script type="text/javascript">
+function pwdCheck(){
+	var f = document.frm;		
+	if(f.pw.value==f.pw2.value){
+		f.pwdchk.style.color="blue";
+		f.pwdchk.value="※비밀번호가 일치합니다";
+		f.name.focus();
+	}else{			
+		f.pwdchk.style.color="red";
+		f.pwdchk.value="※비밀번호가 일치하지 않습니다";
+	}		
+}
+</script>
 </head>
 <body>
 	<center>
@@ -60,7 +73,9 @@ function login()
               <input type=password size=12 name=pw>
               &nbsp;&nbsp;&nbsp;
      			         비밀번호 확인
-     		 <input type=password size=12 name=pw2>
+     		 <input type=password size=12 name=pw2 onkeyup="pwdCheck()">
+     	
+     		 
             </td>
            </tr>
            
@@ -68,6 +83,7 @@ function login()
             <td align=right width=20%>이름</td>
             <td align=left width=80%>
               <input type=text size=12 name=name>
+              <input type=text size=27 name=pwdchk readonly>
             </td>
            </tr>
            
@@ -159,7 +175,7 @@ function login()
            <tr>
              <td align=right width=20% valign=top>소개</td>
              <td align=left width=80%>
-               <textarea rows="12" cols="50" name=content></textarea>
+               <textarea rows="12" cols="50" name=memo></textarea>
              </td>
            </tr>
            
