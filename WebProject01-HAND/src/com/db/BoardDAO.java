@@ -452,7 +452,7 @@ public class BoardDAO {
 			}
 			return maxmin;
 		}
-		/*
+		
 		public boolean isPwCheck(String id,String pw)
 		   {
 			   boolean bCheck=false;
@@ -483,8 +483,7 @@ public class BoardDAO {
 			   }
 			   return bCheck;
 		   }
-		
-		 */
+	
 	
 	
 }
