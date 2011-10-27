@@ -11,7 +11,9 @@
 %> 
 <jsp:useBean id="dao" class="com.db.BoardDAO"/>
 <%
+	String id=(String)session.getAttribute("id");
 	String strPage=request.getParameter("page");
+	String strNo=request.getParameter("no");
 	if(strPage==null)
 		strPage="1";
 	curpage=Integer.parseInt(strPage);
@@ -43,20 +45,25 @@ function find()
     }
 	f.submit();
 }
+function Login(no,page,type){
+	var id = "<%=id%>";		
+	if(id=="null"){
+		alert("로그인 하세요");
+		return;
+		      
+	}   else{
+		//성공했을때위치이동
+		  self.location.href="../board/board.jsp?type="+type+"&no="+no+"&page="+page;
+	}    		
+	
+	
+}
 </script>
 </head>
 <body>
 <center>
-    <table border=5  >
-     <tr>
-      <td align=left>
-       <a href="board.jsp?type=2">
-         <img src="../image/board/write.jpg" border=0>
-         </a>
-        </td>
-     </tr>
-    </table>
-    <table border=0 width=800 height=10 cellpadding="0" cellspacing="3">
+    
+    <table border=0 width=700 height=10 cellpadding="0" cellspacing="3">
       <tr bgcolor=cccccc>
        <th width=10%>번호</th>
        <th width=45%>제목</th>
@@ -108,11 +115,12 @@ function find()
            
 	
     </table>
-    
-    <hr width=800>
+ 
+
+    <hr width=700>
     <form method=post name=frm action="find.jsp">
-    <table border=0 width=800>
-      <tr >
+    <table border=0 width=700>
+      <tr>
        <td align=center>
     	 <%
             if(curpage>1)
@@ -149,6 +157,14 @@ function find()
          <%=curpage %> page / <%=totalpage %> pages
        
         </td>
+     
+      <td align="right" >
+      
+       <a href="javascript:Login(<%=strNo%>,<%=strPage%>,2)">
+         <img src="../image/board/write.jpg" border=0>
+         </a>
+        </td>
+    
        </tr>
        <tr >
        <td align=center>
@@ -165,6 +181,7 @@ function find()
         
       </tr>
     </table>
+    
    </form>
    </center>
 </body>

@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR" import="com.db.*"%>
 <jsp:useBean id="dao" class="com.db.BoardDAO"/>
 <%
+	String id=(String)session.getAttribute("id");
    //게시물 번호
    String strNo=request.getParameter("no");
 	int curNo = Integer.parseInt(strNo);
@@ -55,14 +56,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<style type="text/css">
+	a{
+		text-decoration:none;
+		color:black;
+	}
+	a:hover{
+		text-decoration:underline;
+		color:orange;
+	}	
+</style>
+<script type="text/javascript">
+function Login(no,page,type){
+	var id = "<%=id%>";		
+	if(id=="null"){
+		alert("로그인 하세요");
+		return;
+		      
+	}   else{
+		//성공했을때위치이동
+		  self.location.href="../board/board.jsp?type="+type+"&no="+no+"&page="+page;
+	}    		
+	
+	
+}
+</script>
 </head>
 <body>
 <center>
-<p>
-<p>
-<p>
 
-	<table border=10 width=800>
+
+	<table border=10 width="700" >
 	
      <tr>
      <td width=20%></td>
@@ -109,20 +133,21 @@
      
      </table>
      
-	<table width=800 border=0 bordercolor=cccccc>
+	<table width=700 border=0 bordercolor=cccccc>
 	
 	
       <tr >
         <td width=15% bgcolor=cccccc height=25>제목</td>
             <td align=left colspan=3><%=vo.getSubject() %></td>
             <td align=right colspan=2 >	
-            <a href="board.jsp?type=4&no=<%=strNo%>&page=<%=strPage%>">
+           
+            <a href="javascript:Login(<%=strNo%>,<%=strPage%>,4)">
    			<img src="../image/board/update.jpg" border=0>
    			</a>
-   			<a href="board.jsp?type=5&no=<%=strNo%>&page=<%=strPage%>">
+   			<a href="javascript:Login(<%=strNo%>,<%=strPage%>,5)">
    			<img src="../image/board/delete.jpg" border=0>
    			</a>
-   			<a href="board.jsp?type=2&no=<%=strNo%>&page=<%=strPage%>">
+   			<a href="javascript:Login(<%=strNo%>,<%=strPage%>,2)">
  			<img src="../image/board/write.jpg" border=0>
  			</a>
  			<a href="board.jsp?type=1&page=<%=strPage%>">
@@ -147,7 +172,7 @@
       </tr>
       
      </table>
-        <table width=800 border=5 bordercolor=cccccc height=100>
+        <table width=700 border=5 bordercolor=cccccc height=100>
      	<tr >
      	<td width=15% bgcolor=cccccc >답글쓰기</td>
      	<td align=left colspan=4 valign=top >
