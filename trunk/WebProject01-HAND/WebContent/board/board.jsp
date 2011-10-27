@@ -27,9 +27,9 @@
 </head>
 <body>
 <center>
-    <table border=1 width=1024 height=768>
+    <table border=1 width=700 height=600>
       <tr>
-       <td >
+       <td align="left" valign="top">
         
           <jsp:include page="<%=jsp %>"></jsp:include>
         </td>
