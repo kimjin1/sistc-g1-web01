@@ -156,7 +156,7 @@ public class BoardDAO {
 			   ps.executeUpdate();
 			   ps.close();
 			   
-			   sql="select subject,name,regdate,readnum,content from p_board where no=?";
+			   sql="select subject,name,regdate,readnum,content,id from p_board where no=?";
 			   ps=conn.prepareStatement(sql);
 			   ps.setInt(1, no);
 			   //실행
@@ -169,6 +169,7 @@ public class BoardDAO {
 			   vo.setRegdate(rs.getDate(3));
 			   vo.setReadnum(rs.getInt(4));
 			   vo.setContent(rs.getString(5));
+			   vo.setId(rs.getString(6));
 			   
 			   rs.close();
 			   
@@ -318,10 +319,7 @@ public class BoardDAO {
 		   try
 		   {
 			  getConnection();
-			  String sql="select name,nvl(email,' '),"
-					  +"nvl(homepage,' '),"
-					  +"subject,content from p_board "
-					  +"where no=?";
+			  String sql="select name,nvl(email,' '),nvl(homepage,' '),subject,content from p_board where no=?";
 			  ps=conn.prepareStatement(sql);
 			  ps.setInt(1, no);
 			  ResultSet rs=ps.executeQuery();
@@ -345,14 +343,28 @@ public class BoardDAO {
 	   }
 	   
 	   //실제 수정
-	   public void update(BoardVO vo)
+	   public boolean update(BoardVO vo,String pw)
 	   {
-		  
+		  boolean bCheck=false;
 		   try
 		   {
-			  getConnection();
 			 
-				String sql="update p_board set "
+			  getConnection();
+			  String sql="select pw from p_person "
+					  +"where id=?";
+			  ps=conn.prepareStatement(sql);
+			  ps.setString(1, vo.getId());
+			  ResultSet rs=ps.executeQuery();
+			  rs.next();
+			  String db_pw=rs.getString(1);
+			  rs.close();
+			  if(db_pw.equals(pw))
+			  {
+				  bCheck=true;
+				 
+			 
+			 
+				 sql="update p_board set "
 					+"name=?,email=?,homepage=?,"
 				    +"subject=?,content=?,"
 					+"regdate=sysdate "
@@ -365,6 +377,10 @@ public class BoardDAO {
 				 ps.setString(5, vo.getContent());
 				 ps.setInt(6,vo.getNo());
 				 ps.executeUpdate();
+			  }
+			  else{
+				  bCheck=false;
+			  }
 			  
 		   }catch(Exception ex)
 		   {
@@ -374,91 +390,33 @@ public class BoardDAO {
 		   {
 			  disConnection(); 
 		   }
+		   return bCheck;
 	   }
 	   //글 삭제
-	   public boolean delete(int no,String pw,String id)
+	   public boolean delete(BoardVO vo,String pw)
 	   {
 		   boolean bCheck=false;
 		   try
 		   {
-			  /*
-			   *  1.오라클 연결
-			   *  2.퀴리작성 
-			   *    1)비밀번호 검색  select
-			   *      - 비밀번호가 틀릴때 
-			   *        bCheck=false 종료
-			   *      - 비밀번호가 맞을 경우
-			   *        bCheck=true
-			   *        1. depth를 검색(답글이 있는지 여부 확인) select
-			   *           1)depth==0
-			   *             ==> 삭제
-			   *           2)depth>0
-			   *             ==> 1. 본인게시물과 답글전체 삭제 delete
-			   *                 2. 답글은 그대로 유지 update
-			   *                    **본인게시물에 수정(관리자에 의해 삭제된 게시물)
-			   *           ===> 상위루트의 depth를 1개 감소 update
-			   */
+			  
 			   getConnection();
-			   String sql="select pw from p_person "
+				  String sql="select pw from p_person "
 						  +"where id=?";
-			   
-			   ps=conn.prepareStatement(sql);
-			   ps.setInt(1, no);
-			   //실행
-			   ResultSet rs=ps.executeQuery();
-			   rs.next();
-			   String db_pw=rs.getString(1);
-			   rs.close();
-			   ps.close();
-			   
-			   if(db_pw.equals(pw))
-			   {
-				   bCheck=true;
-				   sql="select depth,rootno from p_board "
-					   +"where no=?";
-				   ps=conn.prepareStatement(sql);
-				   ps.setInt(1, no);
-				   
-				   rs=ps.executeQuery();
-				   rs.next();
-				   int depth=rs.getInt(1);
-				   int root=rs.getInt(2);
-				   rs.close();
-				   ps.close();
-				   if(depth==0)//단독(답글이 없는 경우)
-				   {
-					   sql="delete from p_board "
-							+"where no=?";
-					   ps=conn.prepareStatement(sql);
-					   ps.setInt(1, no);
-					   ps.executeUpdate();
-					   ps.close();
-				   }
-				   else //답글이 있는 경우 
-				   {
-					   String str="관리자에 의해 삭제된 게시물입니다";
-					   sql="update p_board set subject=?,content=? "
-						   +"where no=?";
-					   ps=conn.prepareStatement(sql);
-					   ps.setString(1, str);
-					   ps.setString(2, str);
-					   ps.setInt(3,no);
-					   ps.executeUpdate();
-					   ps.close();
-				   }
-				   //상위 루트에 대해서 depth를 감소
-				   //rootno==0일때 본인 자신,rootno!=0 상위루트가 존재
-				   //rootno는 상위 게시물번호
-				   if(root!=0)
-				   {
-					   sql="update p_board set depth=depth-1 "
-						  +"where no=?";
-					   ps=conn.prepareStatement(sql);
-					   ps.setInt(1, root);
-					   ps.executeUpdate();
-					   ps.close();
-				   }
-				   
+				  ps=conn.prepareStatement(sql);
+				  ps.setString(1, vo.getId());
+				  ResultSet rs=ps.executeQuery();
+				  rs.next();
+				  String db_pw=rs.getString(1);
+				  rs.close();
+				  ps.close();
+				  if(db_pw.equals(pw))
+				  {
+					  bCheck=true;
+				  sql="delete from p_board where no=?";
+				  ps=conn.prepareStatement(sql);
+				  ps.setInt(1, vo.getNo());
+				  ps.executeUpdate();	
+				  ps.close();
 			   }
 			   else
 			   {
@@ -494,7 +452,7 @@ public class BoardDAO {
 			}
 			return maxmin;
 		}
-		
+		/*
 		public boolean isPwCheck(String id,String pw)
 		   {
 			   boolean bCheck=false;
@@ -526,7 +484,7 @@ public class BoardDAO {
 			   return bCheck;
 		   }
 		
-		 
+		 */
 	
 	
 }
