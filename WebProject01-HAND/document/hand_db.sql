@@ -45,6 +45,7 @@ create table p_file(no number primary key,
                     id varchar2(10) not null,
                     content varchar2(200),
                     path varchar2(1000) not null,
+                    regdate date default sysdate,
                     flag number(1,0));
 --¸®ÇÃ
 drop table p_reply;
