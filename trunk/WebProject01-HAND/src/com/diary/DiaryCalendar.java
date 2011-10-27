@@ -25,7 +25,7 @@ public class DiaryCalendar {
 		return instance;
 	}
 	
-	public int[] todayCalendar(int year, int month){
+	public int[] getTodayCalendar(int year, int month){
 		int[] result = new int[2];		
 		stDay.set(year, month-1, 1);
 		edDay.set(year, month-1, stDay.getActualMaximum(Calendar.DATE));
@@ -34,6 +34,11 @@ public class DiaryCalendar {
 		return result;
 	}
 	
+	public int getLastDayOfMonth(int year, int month){
+		int[] result = getTodayCalendar(year, month);
+		return result[0];
+	}
+		
 	public int getCurrentYear(){
 		int year = 0;
 		year = stDay.get(Calendar.YEAR);
