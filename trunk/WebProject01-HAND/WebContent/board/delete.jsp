@@ -27,16 +27,16 @@ function del()
 </head>
 <body>
 <center>
-<form method=post action="../board/delete_ok.jsp?page=<%=strPage %>" name=frm>     
+<form method=post action="../board/delete_ok.jsp" name=frm>     
     <table border=0 width=300>
       <tr>
        <td width=30%>비밀번호</td>
        <td width=70% align=left>
         <input type=password name=pw size=15>
         <input type=hidden name=no 
-                  value=>
+                  value=<%=strNo %>>
         <input type=hidden name=page 
-                  value=>
+                  value=<%=strPage %>>
         <input type="hidden" name=id value="<%=session.getAttribute("id")%>">
        </td>
       </tr>
