@@ -6,14 +6,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>회원 가입</title>
 <style type="text/css">
- td{font-family: 휴먼매직체;font-size: 10pt;color:white}
- h3{font-family: 휴먼매직체;font-size: 15pt;color:white}
+ td{font-family: 휴먼매직체;font-size: 10pt}
+ h3{font-family: 휴먼매직체;font-size: 15pt}
 </style>
+<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
+<script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
+<script type="text/javascript">Shadowbox.init();</script>
+
+<script type="text/javascript">
+function login()
+{
+	var f=document.frm;
+	if(f.id.value=="")
+	{
+		alert("ID를 입력하세요");
+		f.id.focus();
+		return;
+	}
+	Shadowbox.open(
+	   {
+		   content:"../login/idcheck.jsp?id="+f.id.value,
+		   player:"iframe",
+		   title:"ID중복체크",
+		   width:300,
+		   height:150
+	   }
+	);
+}
+</script>
 </head>
 <body>
 	<center>
 	<P>
 		<h3>회원가입</h3>
+		<form method=post action="join_ok.jsp" name=frm >
 		 <table border=1 bordercolor=black width=600
      cellpadding="0" cellspacing="0">
        <tr>
@@ -31,10 +57,10 @@
            <tr>
             <td align=right width=20%>비밀번호</td>
             <td align=left width=80%>
-              <input type=password size=12 name=pwd>
+              <input type=password size=12 name=pw>
               &nbsp;&nbsp;&nbsp;
      			         비밀번호 확인
-     		 <input type=password size=12 name=pwd2>
+     		 <input type=password size=12 name=pw2>
             </td>
            </tr>
            
@@ -153,6 +179,7 @@
            </tr>
            </table>
           </table> 
+          </form>
 	</center>
 </body>
 </html>

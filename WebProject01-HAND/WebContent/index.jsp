@@ -6,15 +6,15 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=euc-kr">
 <title>HAND에 오신걸 환영합니다.</title>
+
 <script type="text/javascript">
 	var width = 1024;
 	var height = 768;
-
-	//self.location.reload(true);
-		
+	//self.location.reload(true);		
 	self.moveTo((screen.width/2)-(width/2), (screen.height/2)-(height/2));	
 	self.resizeTo(width, height);	
 </script>
+
 </head>
  
 <frameset rows="120, 1024" border="0">

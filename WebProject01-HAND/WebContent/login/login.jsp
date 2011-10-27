@@ -24,19 +24,10 @@ function login2()//로그인 창에 아무것도 적혀 있지 않으면 입력하라는 창이 나온다.
 	f.submit();
 }
 </script>
-<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
-<script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
-<script type="text/javascript">Shadowbox.init();</script>
 <script type="text/javascript">
-function join_sb(){	
-	Shadowbox.open({		
-		content:"../login/join.jsp",
-		player:"iframe",
-		title:"회원 가입",
-		width:"700",
-		height:"600"
-		
-	});
+function join_sb(){
+	window.open("../login/join.jsp","small","width=950,heigh=700,scrollbars=yes,menubar=yes");
+
 }
 </script>
 
