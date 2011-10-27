@@ -2,6 +2,7 @@ package com.db;
 
 import java.sql.*;
 import java.util.ArrayList;
+import com.diary.DiaryCalendar;
 
 public class DiaryDAO {
 	private Connection conn;
@@ -178,5 +179,38 @@ public class DiaryDAO {
 			disConnection();
 		}
 		return count;
+	}
+	
+	// 년월을 입력받아 해당월의 각 날짜별 일정 갯수를 배열에 저장해 반환한다
+	public int[] getEventCount(String id, String year, String month){
+		DiaryCalendar myCalendar = DiaryCalendar.getInstance();
+		int endDate = myCalendar.getLastDayOfMonth(Integer.parseInt(year), Integer.parseInt(month));
+		int monthlyEvent[] = new int[endDate];
+		int count = 0;
+		String sql = "";
+		try {
+			getConnection();
+			for(int i=0; i<endDate; i++){
+				sql = "select count(*) from p_diary where id like ? and event_time=to_date(?, 'yyyy-MM-dd')";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, id);
+				ps.setString(2, year+"-"+month+"-"+(i+1));
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				count = rs.getInt(1);
+				if(count != 0){
+					monthlyEvent[i] = count;
+				}else{
+					monthlyEvent[i] = 0;
+				}
+				rs.close();
+				ps.close();
+			}
+		} catch (Exception e) {
+			System.out.println("getEventCount:"+e.getMessage());
+		} finally {
+			disConnection();
+		}		
+		return monthlyEvent;
 	}
 }

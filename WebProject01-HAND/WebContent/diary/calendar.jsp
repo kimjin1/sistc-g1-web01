@@ -9,10 +9,11 @@
 	int month = Integer.parseInt(strMonth);
 	
 	DiaryCalendar myDC = DiaryCalendar.getInstance();	
-	int result[] = myDC.todayCalendar(year, month);
+	int result[] = myDC.getTodayCalendar(year, month);
 	int startDate = 1;
 	int endDate = result[0];
 	int offset = result[1];
+	int MonthlyEvent[] = dao.getEventCount(id, strYear, strMonth);
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,8 +36,8 @@
 <script type="text/javascript">Shadowbox.init();</script>
 <script type="text/javascript">
 function openList(year, month, day){
-	var id = "<%=id%>";	
-	if(id==null){
+	var id = "<%=id%>";		
+	if(id=="null"){
 		alert("로그인 하세요");
 		return;
 	}else{
@@ -49,8 +50,7 @@ function openList(year, month, day){
             options:{  
                 onClose: function(){ parent.location.reload(true); }               
             } 			
-		});
- 	
+		}); 	
 	}
 }
 </script>
@@ -103,8 +103,12 @@ function openList(year, month, day){
 						<a href="javascript:openList(<%=year%>,<%=month%>,<%=startDate%>)"> 
 						<b><%=startDate%></b>													
 						</a>
-						<%=dao.getEventCount(id, year+"-"+month+"-"+startDate)%>
 					<%							
+						if(MonthlyEvent[startDate-1] != 0){
+						%>
+							<%=MonthlyEvent[startDate-1] %>
+						<%	
+						}
 						startDate++;
 					}else{
 					%>
@@ -117,7 +121,7 @@ function openList(year, month, day){
 				}
 			%>
 				</tr>
-			<%	
+			<%
 			}
 			%>				
 		</table>
