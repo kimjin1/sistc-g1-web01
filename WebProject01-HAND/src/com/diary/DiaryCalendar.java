@@ -61,4 +61,16 @@ public class DiaryCalendar {
 		Date event = new Date(cal.getTimeInMillis());
 		return event;
 	}
+	
+	public Date valueToDate(String strYear, String strMonth, String strDay){
+		int year = Integer.parseInt(strYear);
+		int month = Integer.parseInt(strMonth)-1;
+		int day = Integer.parseInt(strDay);
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month);
+		cal.set(Calendar.DATE, day);
+		Date event = new Date(cal.getTimeInMillis());
+		return event;
+	}
 }
