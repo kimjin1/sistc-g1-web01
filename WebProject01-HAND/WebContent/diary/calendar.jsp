@@ -92,12 +92,11 @@ function openList(year, month, day){
 			<%	
 				for(int j=0; j<7; j++){
 				%>
-					<th align=left valign=top>					
+					<td align=left valign=top>					
 					<%
 					if(i==0 && j<offset-1){
 					%>
-						&nbsp;
-					</th>	
+						&nbsp;					
 					<%	
 					}else if(startDate <= endDate){
 					%>		
@@ -106,18 +105,18 @@ function openList(year, month, day){
 						</a>						
 					<%							
 						if(MonthlyEvent[startDate-1] != 0){
-						%>
-							<%=MonthlyEvent[startDate-1] %>
+						%>							
+							<%=MonthlyEvent[startDate-1] %>								
 						<%	
 						}
 						startDate++;
 					}else{
 					%>
-						&nbsp;
+						&nbsp;						
 					<%	
 					}
 					%>					
-					
+					</td>
 				<%	
 				}
 			%>
