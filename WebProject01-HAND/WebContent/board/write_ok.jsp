@@ -11,6 +11,7 @@
 	
     //DAO에 데이터를 전송(vo)
     //insert 요청
+    
     dao.insert(vo);
     //list.jsp이동
     response.sendRedirect("board.jsp?type=1");

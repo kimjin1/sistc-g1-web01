@@ -287,6 +287,7 @@ public class BoardDAO {
 			   disConnection();
 		   }
 	   }
+
 	   
 	   //게시판 번호 순차적 출력
 	   public int getBoardCount()
@@ -434,17 +435,30 @@ public class BoardDAO {
 	   }
 	  
 	   
-	// 최대 글번호와 최소 글번호 얻어오기
-		public int[] getMaxMin(){
+	  
+	// 윗글 번호 아랫글 번호
+		public int[] getMaxMin(int no){
 			int[] maxmin = new int[2];
 			try {
 				getConnection();
-				String sql = "select max(no), min(no) from p_board";
+				String sql = "select min(no) from p_board where no>?";
 				ps = conn.prepareStatement(sql);
+				ps.setInt(1, no);
 				ResultSet rs = ps.executeQuery();
 				rs.next();
 				maxmin[0] = rs.getInt(1);
-				maxmin[1] = rs.getInt(2);
+				rs.close();
+				
+				
+				sql = "select max(no) from p_board where no<?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, no);
+				rs = ps.executeQuery();
+				rs.next();
+				maxmin[1] = rs.getInt(1);
+				rs.close();
+				
+				
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			} finally {
@@ -483,6 +497,88 @@ public class BoardDAO {
 			   }
 			   return bCheck;
 		   }
+		// 글의 최대번호 최소 번호
+		public int[] getMaxnum(){
+			int[] count = new int[2];;
+			
+			try {
+				getConnection();
+				String sql = "select min(no) from p_board";
+				ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				count[0] = rs.getInt(1);
+				rs.close();
+				
+				
+				sql = "select max(no) from p_board";
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				rs.next();
+				count[1] = rs.getInt(1);
+				rs.close();
+				
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());	
+			} finally {
+				disConnection();
+			}
+			
+			return count;
+		}
+		
+		
+		
+		// 윗글 제목
+		public String maxSubject(int no){
+			
+			String maxSubject="";
+			try {
+				
+				getConnection();
+				
+				String sql = "select subject from p_board where no=?";
+				
+				ps=conn.prepareStatement(sql);
+				 ps.setInt(1, no);
+				  ResultSet rs=ps.executeQuery();
+				  rs.next();
+				  maxSubject=rs.getString(1);
+				  rs.close();
+				
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+			} finally {
+				disConnection();
+			}
+			return maxSubject;
+		}
+		
+		//아랫글 제목
+		
+	public String minSubject(int no){
+			
+			String minSubject="";
+			try {
+				
+				getConnection();
+				
+				String sql = "select subject from p_board where no=?";
+				
+				ps=conn.prepareStatement(sql);
+				 ps.setInt(1, no);
+				  ResultSet rs=ps.executeQuery();
+				  rs.next();
+				  minSubject=rs.getString(1);
+				  rs.close();
+				
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+			} finally {
+				disConnection();
+			}
+			return minSubject;
+		}
 	
 	
 	
