@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td align=center>
-				<a href=../setup/setup.jsp target="main"><img src=../image/edit.JPG broder=0 >&nbsp;환경 설정</a>
+				<a href=../setup/setup.jsp target="main" ><img src=../image/edit1.png width=20 height=20 broder=0>&nbsp;환경 설정</a>
 			</td>
 		</tr>
 	</table>
