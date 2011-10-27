@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="com.db.*"%>
+<jsp:useBean id="dao" class="com.db.BoardDAO"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,13 +14,6 @@ function send()
 	{
 		alert("제목을 입력하세요");
 		f.subject.focus();
-		return;
-	}
-	var f=document.frm;
-	if(f.name.value=="")
-	{
-		alert("이름을 입력하세요");
-		f.name.focus();
 		return;
 	}
 	
@@ -48,11 +42,11 @@ function send()
         </tr>
         <tr>
         	<td width=15% align=left bgcolor=cccccc>이름</td>
-        	<td width=25%><input type=text name=name size=15>
+        	<td width=25%><input type=text name=name size=15 value="<%=session.getAttribute("name")%>">
         	</td>
         	
         	<td width=15% align=left bgcolor=cccccc>Email</td>
-        	<td width=45%><input type=text name=email size=50>
+        	<td width=45%><input type=text name=email size=50 value="<%=session.getAttribute("email")%>">
         	</td>
         </tr>
         

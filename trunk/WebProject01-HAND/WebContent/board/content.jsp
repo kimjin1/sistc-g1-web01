@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="com.db.*"%>
 <jsp:useBean id="dao" class="com.db.BoardDAO"/>
-<%
+<%	
+
 	String id=(String)session.getAttribute("id");
    //게시물 번호
    String strNo=request.getParameter("no");
@@ -12,44 +13,18 @@
    BoardVO vo=
 		  dao.getContent(Integer.parseInt(strNo));
  //마지막글과 처음글일 경우를 처리하기 위해 최대 글번호와 최소 글번호를 추가로 얻어온다
- 	int maxmin[] = dao.getMaxMin();	
- 	int maxNo = maxmin[0];
- 	int minNo = maxmin[1];	
- 	//현재 글 번호를 기준으로 이전글과 다음글에 관련된 정보를 얻어온다
- 	int prevNo = 0;
- 	int nextNo = 0;
- 	String prevSubject = "";
- 	String nextSubject = "";
- 	BoardVO prevVO = new BoardVO();
- 	BoardVO nextVO = new BoardVO();
+ 	int maxmin[] = dao.getMaxMin(Integer.parseInt(strNo));	
+ 	int maxNo = maxmin[0]; 
+ 	int minNo = maxmin[1];
  	
- 	//윗글(글번호+1)이 답글일때(GroupLevel이 0이 아닐때)
- 	//답글이 아닐때까지 글번호를 증가시키며 찾는다	
- 	for(int i=curNo+1; i<=maxNo; i++){				
- 		prevVO = dao.getContent(i);
+ // 게시판 목록의 최고로 높은 번호 최고 작은 번호 가저오기
+	int countMaxMin[] = dao.getMaxnum();
+ 	int min = countMaxMin[0];
+ 	int max = countMaxMin[1];
  	
- 		if(prevVO.getNo() != 0 && prevVO.getGrouplevel()==0){
- 			break;
- 		}			
- 	}		
-
- 	//위와 마찬가지로 아래글(글번호-1)이 답글이면 제외시키고
- 	//GroupLevel이 0일때만 아래글로 표시한다
- 	for(int i=curNo-1; i>=minNo; i--){		
- 		nextVO = dao.getContent(i);
- 		
- 		if(nextVO.getNo() !=0 && nextVO.getGrouplevel()==0){
- 			break;
- 		}		
- 	}
-
- 	//윗글과 아랫글의 번호와 제목을 별도로 저장
- 	//답글의 경우엔 출력하지 않는다
- 	prevNo = prevVO.getNo();
- 	nextNo = nextVO.getNo();
- 	prevSubject = prevVO.getSubject();
- 	nextSubject = nextVO.getSubject();
- 	;
+ 	String maxSubject = dao.maxSubject(maxNo);
+ 	String minSubject = dao.minSubject(minNo);
+ 	 	 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -94,15 +69,16 @@ function Login(no,page,type){
 
      <%
 			//윗글이 존재한다면  출력
-			if(prevNo != 0){
+			if(Integer.parseInt(strNo) < max){
 	%>
      <img src="../image/board/prev1.jpg" border=0>
-     <a href="board.jsp?type=3&no=<%=prevNo%>&page=<%=strPage%>&maxno=<%=maxNo%>&minno=<%=minNo%>">
-     <%=prevSubject%>
+     <a href="board.jsp?type=3&no=<%=maxNo%>&page=<%=strPage%>">
+     <%=maxSubject%>
 	</a>
 	<%		
 			}else{
-	%>	
+	%>		
+			<img src="../image/board/prev1.jpg" border=0>
 			마지막 글입니다		
 	<%
 			}
@@ -115,15 +91,16 @@ function Login(no,page,type){
      <td width=20%></td>
 	<td width=80% align=left>
      <%											
-		if(nextNo != 0){
+		if(Integer.parseInt(strNo) > min){
 	%>
      <img src="../image/board/next1.jpg" border=0>
-     <a href="board.jsp?type=3&no=<%=nextNo%>&page=<%=strPage%>&maxno=<%=maxNo%>&minno=<%=minNo%>">
-								<%=nextSubject%>		
-							</a>
+     <a href="board.jsp?type=3&no=<%=minNo%>&page=<%=strPage%>">
+		<%=minSubject%>		
+	 </a> 
 	<%
 			}else{
 	%>	
+		<img src="../image/board/next1.jpg" border=0>
 		처음글 입니다		
 	<%
 	  		}
@@ -182,14 +159,12 @@ function Login(no,page,type){
         <td  width=15% align=right>
    
         <input type=button value=등록 size=20 >
-    
-          
+           
         
         
      	</td>
      	</tr>
-     	
-     
+     	     
      </table>
 
   
