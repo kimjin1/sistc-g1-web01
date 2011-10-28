@@ -23,7 +23,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-function event_write(){
+function event_modify(){
 	var f = document.frm;	
 	if(f.subject.value==""){
 		alert("제목을 입력하세요");		
@@ -39,16 +39,17 @@ function event_write(){
 		<table border=0 width=400 height=380 bgcolor="white">
 			<tr>
 				<td valign="top">
-					<form method=post action="../diary/event_write_ok.jsp" name="frm">
+					<form method=post action="../diary/event_modify_ok.jsp" name="frm">
 					<table width=100% height=100% border=0>
 						<tr>
 							<td colspan=2 height=10% align="center">
 								<%-- 년,월,일까지 자동표시 시, 분을 선택 --%>
 							<%=year %>. <%=month %>. <%=day %>.
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="hidden" name="year" value="${param.year }">  	 
-							<input type="hidden" name="month" value="${param.month }">
-							<input type="hidden" name="day" value="${param.day }">
+							<input type="hidden" name="no" value="<%=no%>">
+							<input type="hidden" name="year" value="<%=year%>">  	 
+							<input type="hidden" name="month" value="<%=month%>">
+							<input type="hidden" name="day" value="<%=day%>">
 							<select name="hour">							
 									<c:forEach var="i" begin="1" end="23" step="1">
 										<option value="${i }">${i }시</option>
@@ -68,13 +69,13 @@ function event_write(){
 						<tr>
 							<td width=20%>제목</td>
 							<td width=80%>
-								<input type="text" name="subject" size="45">
+								<input type="text" name="subject" size="45" value=<%=dVO.getSubject() %>>
 							</td>
 						</tr>
 						<tr>
 							<td width=20% valign="top">내용</td>
 							<td width=80%>
-								<textarea rows=16 cols=43 name=content></textarea>
+								<textarea rows=16 cols=43 name=content><%=dVO.getContent() %></textarea>
 							</td>
 						</tr>
 						<tr>
@@ -84,7 +85,7 @@ function event_write(){
 						</tr>						
 						<tr>
 							<td colspan=2 align="center">							
-								<input type="button" value="입력" onclick="event_write()">
+								<input type="button" value="수정" onclick="event_modify()">
 									&nbsp;&nbsp;
 								<input type="button" value="취소" onclick="javascript:history.back()">								 
 							</td>

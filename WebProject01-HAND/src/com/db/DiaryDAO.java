@@ -65,7 +65,6 @@ public class DiaryDAO {
 			ps.setString(3, dVO.getContent());
 
 			long time = dVO.getEvent_time().getTime();			
-			//ps.setDate(4, new java.sql.Date(time));
 			ps.setTimestamp(4, new java.sql.Timestamp(time));
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -78,14 +77,15 @@ public class DiaryDAO {
 	// 일정 수정
 	// 1)수정할 정보 얻어오기 - getEventContent()이용
 	// 2)실제수정
-	public void updateEvent(DiaryVO dVO){
+	public void modifyEvent(DiaryVO dVO){
 		try {
 			getConnection();
 			String sql = "update p_diary set subject=?, content=?, event_time=? where no=?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, dVO.getSubject());
-			ps.setString(2, dVO.getContent());
-			ps.setDate(3, (Date) dVO.getEvent_time());
+			ps.setString(2, dVO.getContent());			
+			long time = dVO.getEvent_time().getTime();			
+			ps.setTimestamp(3, new java.sql.Timestamp(time));
 			ps.setInt(4, dVO.getNo());
 			ps.executeUpdate();
 		} catch (SQLException e) {
