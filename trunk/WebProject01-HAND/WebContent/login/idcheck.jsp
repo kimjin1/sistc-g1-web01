@@ -45,7 +45,7 @@
 			</tr>
 			<tr>
 				<td colspan=2 align=center>
-					<font color=blue><b>결과</b></font><!-- b태그는 두꺼운 글씨 -->
+					<font color=black><b>결과</b></font><!-- b태그는 두꺼운 글씨 -->
 				</td>
 			</tr>
 				
@@ -56,7 +56,7 @@
            if(bCheck==true)
            {
         	   %>
-        	   <font color=yellow>
+        	   <font color=green>
         	   <%=id %>는 사용 가능 합니다
         	   </font>
         	   <%
