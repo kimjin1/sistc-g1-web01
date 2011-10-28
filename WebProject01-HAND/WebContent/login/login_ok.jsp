@@ -33,6 +33,7 @@
         session.setAttribute("id", id);
         session.setAttribute("name", result);
         session.setAttribute("admin", admin);
+        session.setAttribute("email", Email);
         
         response.sendRedirect("../login/logout.jsp");
     }
