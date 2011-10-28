@@ -72,18 +72,19 @@ public class MemberDAO {
 			  }
 			  else
 			  {
-				  sql="select pw,name from P_PERSON where id=?";
+				  sql="select pw,name,email from P_PERSON where id=?";
 				  ps=conn.prepareStatement(sql);
 				  ps.setString(1,id);
 				  rs=ps.executeQuery();
 				  rs.next();
 				  String db_pw=rs.getString(1);
 				  String db_name=rs.getString(2);
+				  String db_email=rs.getString(3);
 				  rs.close();
 				  
 				  if(db_pw.equals(pwd))
 				  {
-					 result=db_name; 
+					 result=db_name+":"+db_email; 
 				  }
 				  else
 				  {
