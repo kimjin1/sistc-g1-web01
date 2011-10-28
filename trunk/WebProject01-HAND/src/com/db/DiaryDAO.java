@@ -20,7 +20,7 @@ public class DiaryDAO {
 		try {
 			Class.forName(DRIVER);
 		} catch (ClassNotFoundException e) {
-			System.out.println(e.getMessage());
+			System.out.println("DiaryDAO():"+e.getMessage());
 		}
 	}
 
@@ -35,7 +35,7 @@ public class DiaryDAO {
 		try {
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("getConnection():"+e.getMessage());
 		}
 	}
 
@@ -49,7 +49,7 @@ public class DiaryDAO {
 				conn.close();
 			}
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("disConnection():"+e.getMessage());
 		}
 	}
 	
@@ -68,7 +68,7 @@ public class DiaryDAO {
 			ps.setTimestamp(4, new java.sql.Timestamp(time));
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("insertEvent():"+e.getMessage());
 		} finally {
 			disConnection();
 		}
@@ -104,7 +104,7 @@ public class DiaryDAO {
 			ps.setInt(1, no);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("modifyEvent():"+e.getMessage());
 		} finally {
 			disConnection();
 		}
@@ -135,7 +135,7 @@ public class DiaryDAO {
 			}
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("getEventList():"+e.getMessage());
 		} finally {
 			disConnection();
 		}
@@ -158,12 +158,12 @@ public class DiaryDAO {
 			dVO.setContent(rs.getString(4));			
 			//dVO.setEvent_time(rs.getDate(5));
 			long time = rs.getTimestamp(5).getTime();
-			System.out.println(time);
+			//System.out.println(time);
 			dVO.setEvent_time(new Date(time));
-			System.out.println(dVO.getEvent_time());
+			//System.out.println(dVO.getEvent_time());
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("getEventContent():"+e.getMessage());
 		} finally {
 			disConnection();
 		}
@@ -185,7 +185,7 @@ public class DiaryDAO {
 			count = rs.getInt(1);
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("getEventCount():"+e.getMessage());
 		} finally {
 			disConnection();
 		}
@@ -218,7 +218,7 @@ public class DiaryDAO {
 				ps.close();
 			}
 		} catch (Exception e) {
-			System.out.println("getEventCount:"+e.getMessage());
+			System.out.println("getEventCount():"+e.getMessage());
 		} finally {
 			disConnection();
 		}		
