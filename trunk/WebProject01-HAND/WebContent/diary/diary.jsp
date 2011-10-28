@@ -32,7 +32,7 @@
 		<!-- 달력 부분 -->
 		<table width=100% height=540 cellspacing=0 cellpadding=0 border=1>
 			<tr>
-				<th colspan=2>
+				<th colspan=2 valign="middle">
 					<select id=year onchange='refreshCalendar()'>
 						<%
 						for(int i=year-70; i<year+70; i++){
