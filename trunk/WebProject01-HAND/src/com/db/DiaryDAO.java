@@ -2,6 +2,8 @@ package com.db;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 import com.diary.DiaryCalendar;
 
 public class DiaryDAO {
@@ -61,8 +63,10 @@ public class DiaryDAO {
 			ps.setString(1, dVO.getId());
 			ps.setString(2, dVO.getSubject());
 			ps.setString(3, dVO.getContent());
-			long time = dVO.getEvent_time().getTime();
-			ps.setDate(4, new java.sql.Date(time));
+
+			long time = dVO.getEvent_time().getTime();			
+			//ps.setDate(4, new java.sql.Date(time));
+			ps.setTimestamp(4, new java.sql.Timestamp(time));
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -110,9 +114,9 @@ public class DiaryDAO {
 	public ArrayList<DiaryVO> getEventList(String id, String ymd){
 		ArrayList<DiaryVO> eventList = new ArrayList<DiaryVO>();
 		try {
+			//System.out.println(ymd);
 			getConnection();
-			//해당 ID의 해당일시의 일정만을 얻어와야 한다
-			String sql = "select no, id, subject, content, event_time from p_diary where id like ? and event_time=to_date(?, 'yyyy-MM-dd')";
+			String sql = "select no, id, subject, content, event_time from p_diary where id like ? and event_time like to_date(?, 'yyyy-MM-dd') order by event_time asc";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, ymd);
@@ -123,7 +127,10 @@ public class DiaryDAO {
 				dVO.setId(rs.getString(2));
 				dVO.setSubject(rs.getString(3));
 				dVO.setContent(rs.getString(4));
-				dVO.setEvent_time(rs.getDate(5));
+				long time = rs.getTimestamp(5).getTime();
+				//System.out.println(time);
+				dVO.setEvent_time(new Date(time));
+				//System.out.println(dVO.getEvent_time());
 				eventList.add(dVO);
 			}
 			rs.close();
@@ -140,7 +147,7 @@ public class DiaryDAO {
 		DiaryVO dVO = new DiaryVO();
 		try {
 			getConnection();
-			String sql = "select no, id, subject, content, event_time from p_diary where no=? ";
+			String sql = "select no, id, subject, content, event_time from p_diary where no=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, no);
 			ResultSet rs = ps.executeQuery();
@@ -148,8 +155,12 @@ public class DiaryDAO {
 			dVO.setNo(rs.getInt(1));
 			dVO.setId(rs.getString(2));
 			dVO.setSubject(rs.getString(3));
-			dVO.setContent(rs.getString(4));
-			dVO.setEvent_time(rs.getDate(5));
+			dVO.setContent(rs.getString(4));			
+			//dVO.setEvent_time(rs.getDate(5));
+			long time = rs.getTimestamp(5).getTime();
+			System.out.println(time);
+			dVO.setEvent_time(new Date(time));
+			System.out.println(dVO.getEvent_time());
 			rs.close();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -165,7 +176,7 @@ public class DiaryDAO {
 		int count = 0;
 		try {
 			getConnection();
-			String sql = "select count(*) from p_diary where id like ? and event_time=to_date(?, 'yyyy-MM-dd')";			
+			String sql = "select count(*) from p_diary where id like ? and event_time like to_date(?, 'yyyy-MM-dd')";			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, ymd);
@@ -191,7 +202,7 @@ public class DiaryDAO {
 		try {
 			getConnection();
 			for(int i=0; i<endDate; i++){
-				sql = "select count(*) from p_diary where id like ? and event_time=to_date(?, 'yyyy-MM-dd')";
+				sql = "select count(*) from p_diary where id like ? and event_time like to_date(?, 'yyyy-MM-dd')";
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, id);
 				ps.setString(2, year+"-"+month+"-"+(i+1));

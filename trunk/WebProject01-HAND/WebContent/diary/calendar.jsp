@@ -45,8 +45,8 @@ function openList(year, month, day){
 			content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
 			player:"iframe",
 			title:year+"."+month+"."+day+" 일의 일정",
-			width:"540",
-			height:"380",
+			width:"620",
+			height:"430",
             options:{  
                 onClose: function(){ parent.location.reload(true); }               
             } 			
