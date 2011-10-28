@@ -8,7 +8,9 @@
     //DB
     MemberDAO dao=MemberDAO.newInstance();
     String result=dao.isLogin(id,pw);
-    
+    String temp[] = result.split(":");
+    String name = temp[0];
+    String email = temp[1];		
     int admin=dao.isAdmin(id);
     
     
@@ -31,9 +33,10 @@
     else
     {
         session.setAttribute("id", id);
-        session.setAttribute("name", result);
+        session.setAttribute("name", name);
         session.setAttribute("admin", admin);
-        session.setAttribute("email", Email);
+        session.setAttribute("email", email);
+        
         
         response.sendRedirect("../login/logout.jsp");
     }
