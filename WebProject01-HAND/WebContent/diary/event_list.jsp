@@ -50,14 +50,14 @@ function deleteEvent(no){
 </head>
 <body>
 <center>
-	<table border=1 width=560 height=380 bgcolor="white">
+	<table border=0 width=550 height=380 bgcolor="white">
 		<tr>			
 			<td align="left" valign="top">			
 				<%--
 					출력해야할 항목
 					체크박스, 일시, 제목, 버튼(모두체크, 삭제, 신규)
 				 --%>
-				 <table border=1 width=100% height=100%>
+				 <table border=0 width=100% height=100%>
 				 	<tr>
 				 		<th width=10%>
 				 			<input type="checkbox">				 			
@@ -97,13 +97,20 @@ function deleteEvent(no){
 						 	</td>				 		
 					 	</tr>
 					 	<tr id="con${vo.getNo() }" style="display: none">
-					 		<td colspan=4 width=100%>
+					 		<td width=10%>&nbsp;</td>
+					 		<td width=10%>&nbsp;</td>
+					 		<td colspan=2 width=80%>
 					 			<%-- 
 					 			<textarea rows="5" cols="70">${vo.getContent() }</textarea>
 					 			--%>					 			
 					 			<pre>&nbsp;&nbsp;${vo.getContent() }</pre>
+					 		</td>					 		
+					 	</tr>					 
+					 	<tr>
+					 		<td colspan=4>
+					 			<hr>
 					 		</td>
-					 	</tr>
+					 	</tr>	
 				 	</c:forEach>
 				 </table>
 			</td>			

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="com.diary.*, com.db.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%	
 	DiaryDAO dao = DiaryDAO.getInstance();
 	String strYear = request.getParameter("year");
@@ -61,8 +62,8 @@ function openList(year, month, day){
 			<tr>
 
 			<%
-			for(int i=0; i<7; i++){
-				String[] week = {"일", "월", "화", "수", "목", "금", "토"};
+			String[] week = {"일", "월", "화", "수", "목", "금", "토"};
+			for(int i=0; i<7; i++){				
 			%>
 				<th width=14% height=5% bgcolor=#E8E8E8>
 				<%
@@ -84,7 +85,8 @@ function openList(year, month, day){
 				
 			<%	
 			}
-			%>			
+			%>
+						
 			<%
 			for(int i=0; i<6; i++){
 			%>
@@ -92,27 +94,44 @@ function openList(year, month, day){
 			<%	
 				for(int j=0; j<7; j++){
 				%>
-					<td align=left valign=top>					
+					<td height=14% valign="top">					
 					<%
 					if(i==0 && j<offset-1){
 					%>
-						&nbsp;					
+						<table border=0 width=100% height=100%>
+						<tr><td>&nbsp;</td></tr>
+						<tr><td>&nbsp;</td></tr>
+						</table>						
 					<%	
 					}else if(startDate <= endDate){
-					%>		
+					%>	
+						<table border=0 width=100% height=100%>	
+						<tr><td align="left">
 						<a href="javascript:openList(<%=year%>,<%=month%>,<%=startDate%>)"> 
 						<b><%=startDate%></b>													
-						</a>						
+						</a>
+						</td></tr>						
 					<%							
 						if(MonthlyEvent[startDate-1] != 0){
-						%>							
-							<%=MonthlyEvent[startDate-1] %>								
+						%>			
+							<tr><td valign="middle">				
+							<img src="../image/diary/note_edit.png" border="0"> : <%=MonthlyEvent[startDate-1] %>
+							</td></tr>
+							</table>															
 						<%	
+						}else{
+							%>
+							<tr><td>&nbsp;</td></tr>
+							</table>
+							<%
 						}
 						startDate++;
 					}else{
 					%>
-						&nbsp;						
+						<table border=0 width=100% height=100%>
+						<tr><td>&nbsp;</td></tr>
+						<tr><td>&nbsp;</td></tr>
+						</table>						
 					<%	
 					}
 					%>					
