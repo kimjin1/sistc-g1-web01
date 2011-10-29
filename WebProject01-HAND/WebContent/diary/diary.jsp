@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="com.diary.*" %>    
+<%@ page import="com.diary.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%
 	DiaryCalendar myCalendar = DiaryCalendar.getInstance();
 	int year = myCalendar.getCurrentYear();
 	int month = myCalendar.getCurrentMonth();
+	request.setAttribute("year", year);
+	request.setAttribute("month", month);
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,7 +26,7 @@
 		var select_month = document.getElementById("month");
 		var year = select_year.options[select_year.selectedIndex].value;
 		var month = select_month.options[select_month.selectedIndex].value;
-		calendar.location="../diary/calendar.jsp?year="+year+"&month="+month;
+		calendar.location="../diary/calendar.jsp?year="+year+"&month="+month;	
 	}
 </script>
 </head>
@@ -34,31 +37,15 @@
 			<tr>
 				<th colspan=2 valign="middle">
 					<select id=year onchange='refreshCalendar()'>
-						<%
-						for(int i=year-70; i<year+70; i++){
-							String output = "";
-							if(i==year){
-								output += "<option selected>"+i+"</option>";
-							}else{
-								output += "<option>"+i+"</option>";
-							}
-							out.println(output);
-						}
-						%>	
+						<c:forEach var="i" begin="${year-50 }" end="${year+50 }" step="1">
+							<option${i==year?" selected":" "}>${i }</option>							
+						</c:forEach>
 					</select>
 					년&nbsp;&nbsp;					
-					<select id=month onchange='refreshCalendar()'>
-						<%
-						for(int i=1; i<=12; i++){							
-							String output = "";
-							if(i==month){
-								output += "<option selected>"+i+"</option>";
-							}else{
-								output += "<option>"+i+"</option>";
-							}
-							out.println(output);
-						}
-						%>						
+					<select id=month onchange='refreshCalendar()'>						
+						<c:forEach var="i" begin="1" end="12" step="1">
+							<option${i==month?" selected":" " }>${i }</option>
+						</c:forEach>
 					</select>					
 					월&nbsp;&nbsp;
 					일정표
@@ -71,7 +58,7 @@
 				</iframe>															
 				</td>
 				<td width=20%>
-					해당월의 일정 목록이 표시됩니다
+					해당월의 일정 목록이 표시될 예정
 				</td>
 			</tr>
 		</table>

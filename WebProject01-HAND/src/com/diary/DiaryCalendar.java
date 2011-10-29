@@ -1,7 +1,6 @@
 package com.diary;
 
 import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DiaryCalendar {
@@ -12,11 +11,6 @@ public class DiaryCalendar {
 	
 	Calendar stDay = Calendar.getInstance();
 	Calendar edDay = Calendar.getInstance();
-	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_hh:mm");	
-	String today[] = sdf.format(new Date()).split("_");	
-	String currentYMD = today[0];
-	String currentHM = today[1];
 	
 	public static DiaryCalendar getInstance(){
 		if(instance==null){
