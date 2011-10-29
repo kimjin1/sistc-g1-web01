@@ -104,7 +104,27 @@ public class DiaryDAO {
 			ps.setInt(1, no);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("modifyEvent():"+e.getMessage());
+			System.out.println("deleteEvent():"+e.getMessage());
+		} finally {
+			disConnection();
+		}
+	}
+	// ÀÏ°ý »èÁ¦
+	public void deleteEvent(String strNo[]){		
+		try {
+			getConnection();
+			String sql = "";
+			for(int i=0; i<strNo.length; i++){
+				int no = Integer.parseInt(strNo[i]);
+				sql = "delete from p_diary where no=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, no);
+				ps.executeUpdate();
+				ps.close();
+			}
+
+		} catch (SQLException e) {
+			System.out.println("deleteEvent([]):"+e.getMessage());
 		} finally {
 			disConnection();
 		}

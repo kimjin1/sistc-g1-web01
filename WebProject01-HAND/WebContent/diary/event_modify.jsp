@@ -14,8 +14,12 @@
 	String year = event[0];
 	String month = event[1];
 	String day = event[2];
-	String hour = event[3];
-	String minute = event[4];
+	String strHour = event[3];
+	String strMin = event[4];
+	int hour = Integer.parseInt(strHour);
+	int minute = Integer.parseInt(strMin);			
+	request.setAttribute("hour", hour);
+	request.setAttribute("minute", minute);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -51,13 +55,13 @@ function event_modify(){
 							<input type="hidden" name="month" value="<%=month%>">
 							<input type="hidden" name="day" value="<%=day%>">
 							<select name="hour">							
-									<c:forEach var="i" begin="1" end="23" step="1">
-										<option value="${i }">${i }시</option>
+									<c:forEach var="i" begin="0" end="23" step="1">
+										<option${i==hour?" selected ":" "}value="${i }">${i }시</option>
 									</c:forEach>
 							</select>  
 							<select name="minute">
 									<c:forEach var="i" begin="0" end="59" step="1">
-										<option value="${i }">${i }분</option>
+										<option${i==minute?" selected ":" " }value="${i }">${i }분</option>
 									</c:forEach>
 							</select></td>
 						</tr>
