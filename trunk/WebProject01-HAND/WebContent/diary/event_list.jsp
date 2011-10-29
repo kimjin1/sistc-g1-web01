@@ -27,15 +27,12 @@
 var year = <%=strYear%>;
 var month = <%=strMonth%>;
 var day = <%=strDay%>;
-var flag = 0;
-function openClose(no){
+function openClose(no){	
 	var content = document.getElementById("con"+no);	
-	if(flag==0){
-		content.style.display='';
-		flag = 1;	
+	if(content.style.display=='none'){
+		content.style.display='';		
 	}else{
-		content.style.display='none';
-		flag = 0;
+		content.style.display='none';		
 	}	
 }
 function modifyEvent(no){
@@ -46,10 +43,40 @@ function deleteEvent(no){
 	var url = "../diary/event_delete.jsp?year="+year+"&month="+month+"&day="+day+"&no="+no;
 	self.location.href= url;
 }
+function selectAll(){
+	var chkall = frm.chkall;	
+	var check = frm.chklist;
+	var i = 0;
+	if(chkall.checked==true){		
+		for(i=0; i<check.length; i++){			
+			check[i].checked = true;				
+		}
+	}else{		
+		for(i=0; i<check.length; i++){			
+			check[i].checked = false;			
+		}		
+	}	
+}
+function delSelected(){
+	var check = frm.chklist;
+	var flag = false;
+	var i = 0;
+	for(i=0; i<check.length; i++){
+		if(check[i].checked==true){
+			flag = true;
+		}
+	}
+	if(flag==true){
+		frm.submit();
+	}else{
+		alert("선택된 항목이 없습니다");		
+	}
+}
 </script>
 </head>
 <body>
 <center>
+	<form name="frm" method="post" action="../diary/delete_all.jsp">	
 	<table border=0 width=550 height=380 bgcolor="white">
 		<tr>			
 			<td align="left" valign="top">			
@@ -60,14 +87,17 @@ function deleteEvent(no){
 				 <table border=0 width=100% height=100%>
 				 	<tr>
 				 		<th width=10%>
-				 			<input type="checkbox">				 			
+				 			<input type="checkbox" name="chkall" onclick="selectAll()">				 			
 				 		</th>
 				 		<th width=90% colspan=3 align="left">
 							<a href="../diary/event_write.jsp?year=${param.year}&month=${param.month}&day=${param.day}">
 								새 일정
 							</a>
-							&nbsp;&nbsp;
-							<a href="">삭제</a>				 			
+							&nbsp;
+							<input type="hidden" name="year" value="<%=strYear%>">
+							<input type="hidden" name="month" value="<%=strMonth%>">
+							<input type="hidden" name="day" value="<%=strDay%>">
+							<a href="javascript:delSelected()">선택삭제</a>				 			
 				 		</th>
 				 	</tr>
 				 	<tr>
@@ -79,7 +109,7 @@ function deleteEvent(no){
 				 	<c:forEach var="vo" items="<%=dList%>" varStatus="DiaryVO">
 					 	<tr>				 	
 						 	<td align="center" width=10%>
-						 		<input type="checkbox">
+						 		<input type="checkbox" name="chklist" value="${vo.getNo() }">
 						 	</td>
 						 	<td align="center" width=10%>
 						 		<fmt:formatDate var="hm" value="${vo.getEvent_time() }" type="time" pattern="HH:mm"/>						 		
@@ -116,6 +146,7 @@ function deleteEvent(no){
 			</td>			
 		</tr>
 	</table>
+	</form>	
 </center>
 </body>
 </html>

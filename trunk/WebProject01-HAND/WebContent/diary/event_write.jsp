@@ -34,7 +34,7 @@ function event_write(){
 							<input type="hidden" name="month" value="${param.month }">
 							<input type="hidden" name="day" value="${param.day }">
 							<select name="hour">							
-									<c:forEach var="i" begin="1" end="23" step="1">
+									<c:forEach var="i" begin="0" end="23" step="1">
 										<option value="${i }">${i }½Ã</option>
 									</c:forEach>
 							</select>  
