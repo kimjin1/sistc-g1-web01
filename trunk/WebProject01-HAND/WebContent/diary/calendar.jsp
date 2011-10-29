@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="com.diary.*, com.db.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%	
+<%
+	String[] strWeek = {"일", "월", "화", "수", "목", "금", "토"};
+	request.setAttribute("week", strWeek);
+	
 	DiaryDAO dao = DiaryDAO.getInstance();
 	String strYear = request.getParameter("year");
 	String strMonth = request.getParameter("month");
@@ -45,7 +48,7 @@ function openList(year, month, day){
 		Shadowbox.open({		
 			content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
 			player:"iframe",
-			title:year+"."+month+"."+day+" 일의 일정",
+			title:year+"."+month+"."+day+" 일정",
 			width:"620",
 			height:"430",
             options:{  
@@ -60,32 +63,15 @@ function openList(year, month, day){
 	<center>
 		<table width=100% height=480 border=1 bordercolor=#ccccff>
 			<tr>
-
-			<%
-			String[] week = {"일", "월", "화", "수", "목", "금", "토"};
-			for(int i=0; i<7; i++){				
-			%>
+			<c:forEach var="dow" items="${week }" varStatus="weekth">
 				<th width=14% height=5% bgcolor=#E8E8E8>
-				<%
-				if(i==0){
-				%>
-					<font color=red><%=week[i]%></font>	
-				<%
-				}else if(i==6){
-				%>
-					<font color=blue><%=week[i]%></font>
-				<%	
-				}else{
-				%>		
-					<%=week[i]%>									
-				<%
-				}
-				%>				
+					<c:choose>						
+						<c:when test="${weekth.getIndex() == 0}"><font color="red">${dow }</font></c:when>
+						<c:when test="${weekth.getIndex() == 6}"><font color="blue">${dow }</font></c:when>
+						<c:otherwise>${dow }</c:otherwise>
+					</c:choose>
 				</th>
-				
-			<%	
-			}
-			%>
+			</c:forEach>
 						
 			<%
 			for(int i=0; i<6; i++){
@@ -143,6 +129,19 @@ function openList(year, month, day){
 			<%
 			}
 			%>				
+			<%-- JSTL로 전환 준비중
+			<c:forEach var="i" begin="0" end="5" step="1" varStatus="week">
+				<tr>
+				<c:forEach var="j" begin="0" end="6" step="1" varStatus="day">
+					<td>
+					<c:when test=""></c:when>
+					<c:when test=""></c:when>
+					<c:otherwise></c:otherwise>
+					</td>
+				</c:forEach>
+				</tr>
+			</c:forEach>
+			--%>
 		</table>
 	</center>					 				
 </body>
