@@ -72,9 +72,21 @@ function delSelected(){
 		alert("선택된 항목이 없습니다");		
 	}
 }
+
+function currentTime(){
+	var time = new Date();
+	var hour = time.getHours();
+	hour = hour<10?"0"+hour:hour;
+	var minute = time.getMinutes();
+	minute = minute<10?"0"+minute:minute;
+	var second = time.getSeconds();
+	second = second<10?"0"+second:second;
+	var curTime = hour + " : " + minute + " : " + second;	
+	document.frm.clock.value = curTime;
+}
 </script>
 </head>
-<body>
+<body onload="currentTime(); setInterval('currentTime()', 1000)">
 <center>
 	<form name="frm" method="post" action="../diary/delete_all.jsp">	
 	<table border=0 width=550 height=380 bgcolor="white">
@@ -89,7 +101,7 @@ function delSelected(){
 				 		<th width=10%>
 				 			<input type="checkbox" name="chkall" onclick="selectAll()">				 			
 				 		</th>
-				 		<th width=90% colspan=3 align="left">
+				 		<th width=70% align="left" colspan=2>
 							<a href="../diary/event_write.jsp?year=${param.year}&month=${param.month}&day=${param.day}">
 								새 일정
 							</a>
@@ -97,8 +109,15 @@ function delSelected(){
 							<input type="hidden" name="year" value="<%=strYear%>">
 							<input type="hidden" name="month" value="<%=strMonth%>">
 							<input type="hidden" name="day" value="<%=strDay%>">
-							<a href="javascript:delSelected()">선택삭제</a>				 			
-				 		</th>
+							<a href="javascript:delSelected()">선택 삭제</a>
+							&nbsp;
+							<%-- 											 		
+							<a href="javascript:delSelected()">지난 일정삭제</a>
+							--%>
+				 		</th>				 		
+				 		<th width=20% align="right">				 			
+				 			<input type="text" name="clock" readonly="readonly" size=10 align="middle" alt="현재시간" style="border: none">				 			
+				 		</th>				 			
 				 	</tr>
 				 	<tr>
 				 		<td colspan=4>
@@ -112,7 +131,7 @@ function delSelected(){
 						 		<input type="checkbox" name="chklist" value="${vo.getNo() }">
 						 	</td>
 						 	<td align="center" width=10%>
-						 		<fmt:formatDate var="hm" value="${vo.getEvent_time() }" type="time" pattern="HH:mm"/>						 		
+						 		<fmt:formatDate var="hm" value="${vo.getEvent_time() }" type="time" pattern="HH:mm"/>
 						 		${hm }						 		
 						 	</td>
 						 	<td width=60%>
