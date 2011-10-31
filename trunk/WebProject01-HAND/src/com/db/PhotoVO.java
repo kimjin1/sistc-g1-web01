@@ -2,22 +2,46 @@ package com.db;
 import java.util.*;
 
 public class PhotoVO {
-	private int picture_seq;
-	private String name;
+	private int no;
+	private String id;
 	private String content;
 	private String path;
+	private Date regdate;
 	private int plag;
-	public int getPicture_seq() {
-		return picture_seq;
+	private String filename;
+	private int filesize;
+	private String filetype;
+	
+	
+	public String getFilename() {
+		return filename;
 	}
-	public void setPicture_seq(int picture_seq) {
-		this.picture_seq = picture_seq;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
-	public String getName() {
-		return name;
+	public int getFilesize() {
+		return filesize;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setFilesize(int filesize) {
+		this.filesize = filesize;
+	}
+	public String getFiletype() {
+		return filetype;
+	}
+	public void setFiletype(String filetype) {
+		this.filetype = filetype;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getContent() {
 		return content;
@@ -31,6 +55,12 @@ public class PhotoVO {
 	public void setPath(String path) {
 		this.path = path;
 	}
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 	public int getPlag() {
 		return plag;
 	}
@@ -38,5 +68,8 @@ public class PhotoVO {
 		this.plag = plag;
 	}
 	
+
+	
 	
 }
+	

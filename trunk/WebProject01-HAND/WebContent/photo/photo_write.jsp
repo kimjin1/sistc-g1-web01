@@ -1,21 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>사진 업로드</title>
+<title>Insert title here</title>
+<style type="text/css">
+ th{font-family: 휴먼매직체;font-size: 11pt;color:white}
+ td{font-family: 휴먼매직체;font-size: 10pt}
+ a{text-decoration: none;color:black}
+ a:hover{text-decoration: underline;color:green}
+</style>
 <script type="text/javascript">
-function send(){
+function send()
+{
+	var f=document.frm;
+	if(f.name.value=="")
+	{
+		alert("이름을 입력하세요");
+		f.name.focus();
+		return;
+	}
 	
-	var f=document.photo_frm;
 	if(f.subject.value=="")
-		{
-			alert("이름을 입력하세요");
-			f.subject.focus();
-			return;
-		}
-	
+	{
+		alert("제목을 입력하세요");
+		f.subject.focus();
+		return;
+	}
 	
 	if(f.content.value=="")
 	{
@@ -23,39 +35,83 @@ function send(){
 		f.content.focus();
 		return;
 	}
-	f.submit();
+	
+	if(f.pwd.value=="")
+	{
+		alert("비밀번호를 입력하세요");
+		f.pwd.focus();
+		return;
+	}
+	
+	//전송 (데이터를 action에게 전송)
+	f.submit();//<input type=submit>
+	//<input type=image>:submit
 }
 </script>
 </head>
 <body>
-	<center>
-		<h3>사진 올리기</h3>
-		<table border=0 width=800 bgcolor=#ccccff>
-			<tr>
-				<td align=right width=20%>제목
-				<td align=left width=80%><input type=text size=20>
-			</tr>
-			<tr>
-				<td align=right width=20% valign=top>내용</td>
-				<td align=left width=80%><textarea rows="15" cols="49"
-						name=content></textarea></td>
-			</tr>
-			<tr>
-				<td align=right width=20%>사진 업로드</td>
-				<td align=left width=80%><input type=file name=upload size=30>
-				</td>
-			</tr>
-		
-			
+   <center>
+    <p>
+    <img src="../include/image/title.gif">
+    <p>
+    <!-- 데이터 전송 -->
+    <form method=post action="photo_write_ok.jsp" 
+    name=frm enctype="multipart/form-data">
+    <table border=0 width=600>
+     <tr>
+      <td bgcolor="rgb(255,255,200)">
+       <p>
+        <table border=0 width=560>
          <tr>
-    
-          <td align=center colspan=2>
-           <input type=submit value=등록>&nbsp;&nbsp;
-           <input type=button value=취소 onclick="javascript:history.back()">
+          <td align=right width=20%>이름</td>
+          <td align=left width=80%>
+           <input type=text name=name size=15>
           </td>
          </tr>
-		</table>
-	</center>
-
+         <tr>
+          <td align=right width=20%>이메일</td>
+          <td align=left width=80%>
+           <input type=text name=email size=50>
+          </td>
+         </tr>
+         <tr>
+          <td align=right width=20%>제목</td>
+          <td align=left width=80%>
+           <input type=text name=subject size=50>
+          </td>
+         </tr>
+         <tr>
+          <td align=right width=20% valign=top>내용</td>
+          <td align=left width=80%>
+           <textarea rows="15" cols="49" name=content></textarea>
+          </td>
+         </tr>
+         <tr>
+          <td align=right width=20%>첨부파일</td>
+          <td align=left width=80%>
+           <input type=file name=upload size=30>
+          </td>
+         </tr>
+         <tr>
+          <td align=right width=20%>비밀번호</td>
+          <td align=left width=80%>
+           <input type=password name=pwd size=10>
+          </td>
+          <p>
+         </tr>
+         <tr>
+          <td align=center colspan=2>
+           <input type=button value=글쓰기 onclick="send()">
+           <input type=button value=취소 
+             onclick="javascript:history.back()">
+          </td>
+         </tr>
+        </table>
+      </td>
+     </tr>
+    </table>
+    </form>
+   </center>
 </body>
 </html>
+
