@@ -1,5 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%
+	request.setCharacterEncoding("euc-kr");
+
+	String type=request.getParameter("type");
+	if(type==null){
+		type="1";
+	}
+	
+	int no = Integer.parseInt(type);
+	String jsp="login.jsp";
+	switch(no){
+	case 1: jsp="main.jsp"; 
+		break;
+	case 2: jsp = "/login/join.jsp";		
+		break;
+	}
+	String id=(String)session.getAttribute("id");
+	String logJsp="";
+	if(id==null)
+		logJsp="login.jsp";
+	else
+		logJsp="logout.jsp";
+
+%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -21,7 +45,7 @@
     <frame name="top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/top.jsp">
     <frameset cols="200, 100%" border="0">
     <frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp">
-        <frame name="main" noresize scrolling="yes" marginwidth="0" marginheight="0"  src="main.jsp">
+        <frame name="main" noresize scrolling="yes" marginwidth="0" marginheight="0"  src=<%=jsp %>>
     </frameset>
     <noframes>
     
