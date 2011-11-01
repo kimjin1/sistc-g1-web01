@@ -7,7 +7,7 @@ public class PhotoVO {
 	private String content;
 	private String path;
 	private Date regdate;
-	private int plag;
+	private int flag;
 	private String filename;
 	private int filesize;
 	private String filetype;
@@ -61,11 +61,11 @@ public class PhotoVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public int getPlag() {
-		return plag;
+	public int getFlag() {
+		return flag;
 	}
-	public void setPlag(int plag) {
-		this.plag = plag;
+	public void setFlag(int flag) {
+		this.flag = flag;
 	}
 	
 

@@ -1,5 +1,6 @@
 package com.db;
-import java.sql.*;//Connection,PreparedStatement
+import java.sql.*;
+import java.util.*;//Connection,PreparedStatement
 
 import javax.sql.*;//DataSource(DB관련정보)
 import javax.naming.*;//Context
@@ -60,7 +61,7 @@ public class PhotoDAO {
 			return dao;
 		}
 		
-		//게시물 전체 출력
+		  //게시물 전체 출력
 		   public ArrayList<PhotoVO> getPhotoData(int page)
 		   {
 			   ArrayList<PhotoVO> list=new ArrayList<PhotoVO>();
@@ -69,7 +70,7 @@ public class PhotoDAO {
 				   //연결
 				   getConnection();
 				   //쿼리문장
-				   String sql="select * from p_file order by no desc";
+				   String sql="select no,id,content,regdate,filename,filesize,filetype,path from p_file order by no desc";
 				   //쿼리실행=결과값 : 오라클에서 데이터 10개씩(PL/SQL)
 				   ps=conn.prepareStatement(sql);
 				   ResultSet rs=ps.executeQuery();
@@ -84,10 +85,15 @@ public class PhotoDAO {
 					   {
 						   //값을 가지고 온다 
 						   PhotoVO vo=new PhotoVO();
-						  
+						   vo.setNo(rs.getInt(1));
+						   vo.setId(rs.getString(2));
 						   vo.setContent(rs.getString(3));
-						  vo.setPath(rs.getString(4));
-						   vo.setPlag(rs.getInt(5));
+						   vo.setRegdate(rs.getDate(4));
+						   vo.setFilename(rs.getString(5));
+						   vo.setFilesize(rs.getInt(6));
+						   vo.setFiletype(rs.getString(7));
+						   vo.setPath(rs.getString(8)); 
+						   
 						   list.add(vo);
 						   
 						   i++;
@@ -108,33 +114,7 @@ public class PhotoDAO {
 			   return list;
 		   }
 		   
-		   public void insert(PhotoVO vo)
-			 {
-				 try
-				 {
-					//연결
-					getConnection();
-					//시퀀스
-					String sql="select max(no)+1 from "
-							+"p_file";
-					ps=conn.prepareStatement(sql);
-					ResultSet rs=ps.executeQuery();
-					rs.next();
-					int no=rs.getInt(1);
-					rs.close();
-					ps.close();
-					//추가
-					
-					
-				 }catch(Exception ex)
-				 {
-					System.out.println(ex.getMessage());
-				 }
-				 finally
-				 {
-					disConnection();
-				 }
-			 }
+
 		   
 		 //총페이지 구하기
 		   public int getTotalPage()
@@ -164,6 +144,32 @@ public class PhotoDAO {
 			   }
 			   return total;
 		   }
+		   
+		  
+		   //게시판 번호 순차적 출력
+		   public int getPhotoCount()
+		   {
+			   int count=0;
+			   try
+			   {
+				   getConnection();
+				   String sql="select count(*) from p_file";
+				   ps=conn.prepareStatement(sql);
+				   ResultSet rs=ps.executeQuery();
+				   rs.next();
+				   count=rs.getInt(1);
+				   rs.close();
+			   }catch(Exception ex)
+			   {
+				   System.out.println(ex.getMessage());
+			   }
+			   finally
+			   {
+				   disConnection();
+			   }
+			   return count;
+		   }
+		   
 	
 		 //내용보기
 		   public PhotoVO getContent(int no)
@@ -174,21 +180,24 @@ public class PhotoDAO {
 				   //연결
 				   getConnection();
 				   //쿼리문장 생성
-				   //조회수 증가
-				   String sql="update p_file set "
-						   +"readnum=readnum+1 where no=?";
-				   ps=conn.prepareStatement(sql);
-				   ps.setInt(1,no);
-				   ps.executeUpdate();
-				   ps.close();
 				   
-				   sql="select ... from p_file where no=?";
+				
+				  String sql="select id,content,path,filename,filesize,regdate,flag,filetype from p_file where no=?";
 				   ps=conn.prepareStatement(sql);
 				   ps.setInt(1, no);
 				   //실행
 				   ResultSet rs=ps.executeQuery();
 				   rs.next();
+				   
 				   //PhotoVO에 값 입력
+				   vo.setId(rs.getString(1));
+				  vo.setContent(rs.getString(2));
+				   vo.setPath(rs.getString(3));
+				  vo.setFilename(rs.getString(4));
+				  vo.setFilesize(rs.getInt(5));
+				  vo.setRegdate(rs.getDate(6));
+				  vo.setFlag(rs.getInt(7));
+				  vo.setFiletype(rs.getString(8));
 				  
 				   
 				   rs.close();
@@ -208,10 +217,45 @@ public class PhotoDAO {
 		   
 		   //찾기
 		   //등록
+		   public void insert(PhotoVO vo) 
+		   {
+			   try
+			   {
+				   //연결
+				   getConnection();
+				   //그룹번호를 만들어 준다
+				 
+				   //추가
+				  String sql="insert into p_file values(p_file_no_seq.nextVal,?,?,?,SYSDATE,?,?,?,1)";
+				   ps=conn.prepareStatement(sql);
+				   ps.setString(1, vo.getId());
+				   ps.setString(2, vo.getContent());
+				   ps.setString(3, vo.getPath());
+				   ps.setString(4, vo.getFilename());
+				   ps.setInt(5, vo.getFilesize()); 
+				   ps.setString(6, vo.getFiletype());
+				   
+				 
+				  
+				   
+				   ps.executeUpdate();
+				   
+			   }catch(Exception ex)
+			   {
+				   System.out.println(ex.getMessage());
+			   }
+			   finally
+			   {
+				   disConnection();
+			   }
+		   }
+		 
+
 		   //수정
 		   //삭제
 		   
 		   
 		   
 }
+
 
