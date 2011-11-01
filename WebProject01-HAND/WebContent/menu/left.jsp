@@ -1,5 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%
+	request.setCharacterEncoding("euc-kr");
+
+	String type=request.getParameter("ltype");
+	
+	if(type==null){
+		type = "1";
+	}
+	
+	int no = Integer.parseInt(type);
+	String jsp="";
+	switch(no){
+	case 1: jsp = "../login/loginmain.jsp?type=1"; 
+		break;
+	case 2: jsp = "../login/loginmain.jsp?type=2";		
+		break;
+	}	
+%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +30,7 @@
 		<tr>
 		
 			<td>			
-				<jsp:include page="../login/loginmain.jsp"/>
+				<jsp:include page="<%=jsp %>"/>
 			</td>
 		</tr>
 		<tr>
@@ -22,7 +40,7 @@
 		</tr>
 		<tr>
 			<td align=center>
-				<a href=../setup/setup.jsp target="main" ><img src=../image/edit1.png width=20 height=20 broder=0>&nbsp;환경 설정</a>
+				<a href=../setup/setup.jsp target="main" ><img src=../image/edit1.png width=20 height=20 border=0>&nbsp;환경 설정</a>
 			</td>
 		</tr>
 	</table>

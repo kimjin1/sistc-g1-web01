@@ -9,19 +9,20 @@
 	}
 	
 	int no = Integer.parseInt(type);
-	String jsp="login.jsp";
+	String jsp="";
 	switch(no){
 	case 1: jsp="main.jsp"; 
 		break;
 	case 2: jsp = "/login/join.jsp";		
 		break;
 	}
+	
 	String id=(String)session.getAttribute("id");
-	String logJsp="";
+	String ltype="";
 	if(id==null)
-		logJsp="login.jsp";
+		ltype="1";
 	else
-		logJsp="logout.jsp";
+		ltype="2";
 
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -44,7 +45,7 @@
 <frameset rows="120, 1024" border="0">
     <frame name="top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/top.jsp">
     <frameset cols="200, 100%" border="0">
-    <frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp">
+    <frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp?ltype=<%=ltype%>">
         <frame name="main" noresize scrolling="yes" marginwidth="0" marginheight="0"  src=<%=jsp %>>
     </frameset>
     <noframes>

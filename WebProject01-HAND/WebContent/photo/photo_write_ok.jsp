@@ -5,8 +5,13 @@
 <%@ page import="com.oreilly.servlet.multipart.*"%>
 <%@ page import="java.io.*,com.db.*" %>
 <%
-     String path ="c:\\upload"; 
-	//String path = application.getRealPath("../photo/image");
+    String path ="c:\\upload"; 
+	//String path = application.getRealPath("/photo/upload");
+	/*
+	참고사이트, 경로구하기랑 썸네일 이미지 만들기
+	http://e2xist.tistory.com/233
+	*/
+	
      int size=1024*1024*100;
      String enctype="euc-kr";
      MultipartRequest mr=
