@@ -5,13 +5,7 @@
 <%@ page import="com.oreilly.servlet.multipart.*"%>
 <%@ page import="java.io.*,com.db.*" %>
 <%
-    String path ="c:\\upload"; 
-	//String path = application.getRealPath("/photo/upload");
-	/*
-	참고사이트, 경로구하기랑 썸네일 이미지 만들기
-	http://e2xist.tistory.com/233
-	*/
-	
+     String path="c:\\upload";
      int size=1024*1024*100;
      String enctype="euc-kr";
      MultipartRequest mr=
@@ -19,14 +13,20 @@
     			size,enctype,
     			new DefaultFileRenamePolicy());
      //a.jpg , a1.jpg ,a2.jpg
-    
+     String id=mr.getParameter("id"); 
+  
+     String content=mr.getParameter("content");
+   
      
-     String filename=mr.getFilesystemName("upload");
+     String filename=mr.getFilesystemName("upload"); 
     
      File f=new File(path+"\\"+filename);
      
      PhotoVO vo=new PhotoVO();
-     
+     vo.setPath(path+"\\"+filename);
+     vo.setId(id);
+     vo.setContent(content);	     
+   	
      
      if(filename==null)
      {
@@ -45,8 +45,8 @@
      }
      
      //DB연동
-     PhotoDAO dao=new PhotoDAO(); 
-     dao.insert(vo); 
+     PhotoDAO dao=new PhotoDAO();
+     dao.insert(vo);
      //이동
      response.sendRedirect("photo.jsp");
      
