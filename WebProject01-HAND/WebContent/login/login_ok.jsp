@@ -35,10 +35,9 @@
         session.setAttribute("id", id);
         session.setAttribute("name", name);
         session.setAttribute("admin", admin);
-        session.setAttribute("email", email);
+        session.setAttribute("email", email);        
         
-        
-        response.sendRedirect("index.jsp?no=1");
+        //response.sendRedirect("../index.jsp?no=1");        
         //  response.sendRedirect("../login/logout.jsp");
     }
 	
@@ -48,8 +47,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+function refreshIndex(){
+	parent.location.href = "../index.jsp?type=1";
+}
+</script>
 </head>
-<body>
+<body onload="refreshIndex()">
 
 </body>
 </html>
