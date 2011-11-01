@@ -78,7 +78,7 @@ function join_ok(){
 	<center>
 	<P>
 		<h3>회원가입</h3>
-		<form method=post action="join_ok.jsp" name=frm >
+		<form method=post action="./login/join_ok.jsp" name=frm >
 		 <table border=1 bordercolor=black width=600
      cellpadding="0" cellspacing="0">
        <tr>
