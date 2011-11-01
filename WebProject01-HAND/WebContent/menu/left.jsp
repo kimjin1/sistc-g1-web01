@@ -9,14 +9,12 @@
 		type = "1";
 	}
 	
+	String id=(String)session.getAttribute("id");	
+	if(id==null) type="1";
+	else type="2";
+	
 	int no = Integer.parseInt(type);
-	String jsp="";
-	switch(no){
-	case 1: jsp = "../login/loginmain.jsp?type=1"; 
-		break;
-	case 2: jsp = "../login/loginmain.jsp?type=2";		
-		break;
-	}	
+	String jsp="../login/loginmain.jsp?type="+type;;		
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
