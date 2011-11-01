@@ -47,12 +47,11 @@
 </body>
     </noframes>
 </frameset>
-<<<<<<< .mine
 --%>
 <frameset cols="20%, 80%" border="10" frameborder="no">
 	<frameset rows="10%, 90%" border="20" frameborder="no">
-	<frame name="left_top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left_top.jsp">
-	<frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp">
+		<frame name="left_top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left_top.jsp">
+		<frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp">
 	</frameset>
 	<frameset rows="10%, 90%" border="20" frameborder="no">
 	    <frame name="top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/top.jsp">	

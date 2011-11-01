@@ -54,21 +54,19 @@
     
         session.setAttribute("id", id);
         session.setAttribute("name", name);
-        session.setAttribute("admin", "2");
-        session.setAttribute("email", email);        
-   
+        session.setAttribute("admin", 2);
+        session.setAttribute("email", email);           
     %>
     
     
-    <html>
-    <head>
-    <script type="text/javascript">
+<html>
+<head>
+<script type="text/javascript">
 function refreshIndex(){
 	top.location.href = "../index.jsp?type=1";
 }
 </script>
-    </head>
-   <body onload="refreshIndex()">
-    
+</head>
+   <body onload="refreshIndex()">    
     </body>
-    </html>
+</html>
