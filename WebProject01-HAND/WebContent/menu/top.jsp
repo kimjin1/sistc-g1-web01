@@ -22,8 +22,9 @@
 			<font color="green" size="20"><b>HAND</b></font>
 			</a>
 		</td>
+		background="../image/login_image/log_bg.jpg"
 		--%>
-		<td valign=bottom align=center width=<%=width%> bgcolor="">
+		<td valign=bottom align=center width=<%=width%> background="../image/menu_bar/menu.png">
 			<a href="../home/home.jsp" target="main"><h3>HOME</h3></a>
 		</td>
 		<td valign=bottom align=center width=<%=width%>>
