@@ -101,7 +101,8 @@ function openList(year, month, day){
 						if(MonthlyEvent[startDate-1] != 0){
 						%>			
 							<tr><td valign="middle">				
-							<img src="../image/diary/note_edit.png" border="0"> : <%=MonthlyEvent[startDate-1] %>
+							<img src="../image/diary/note_edit.png" border="0" alt="일정이 <%=MonthlyEvent[startDate-1] %>건 있습니다 "> 
+							<%=MonthlyEvent[startDate-1] %>							
 							</td></tr>
 							</table>															
 						<%	
