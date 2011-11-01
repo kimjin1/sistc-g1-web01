@@ -7,21 +7,23 @@
 
 	String type=request.getParameter("type");
 	if(type==null){
-	type="1";
-}
+		type="1";
+	}
 
 	int no = Integer.parseInt(type);
-	String jsp="login.jsp";
+	String jsp = "login.jsp";
 	switch(no){
-	//case 1: jsp="join.jsp"; break;
+		case 1: jsp="login.jsp"; break;
+		case 2: jsp="logout.jsp"; break;
 	}
+	/*
 	String id=(String)session.getAttribute("id");
 	String logJsp="";
 	if(id==null)
 		logJsp="login.jsp";
 	else
 		logJsp="logout.jsp";
-
+	*/
 	
 %>
 
