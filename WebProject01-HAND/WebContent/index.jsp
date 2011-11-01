@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
 	var width = 1000;
-	var height = 850;
+	var height = 780;
 	//self.location.reload(true);		
 	self.moveTo((screen.width/2)-(width/2), (screen.height/2)-(height/2));	
 	self.resizeTo(width, height);	
@@ -49,12 +49,12 @@
 </frameset>
 --%>
 
-<frameset cols="20, 80" border="10" frameborder="yes">
-	<frameset rows="10, 90" border="20" frameborder="yes">
+<frameset cols="22, 78" border="20" frameborder="no">
+	<frameset rows="10, 90" border="20" frameborder="no">
 		<frame name="left_top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left_top.jsp">
 		<frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp">
 	</frameset>
-	<frameset rows="10, 90" border="20" frameborder="yes">
+	<frameset rows="10, 90" border="20" frameborder="no">
 	    <frame name="top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/top.jsp">	
 		<frame name="main" noresize scrolling="yes" marginwidth="0" marginheight="0"  src=<%=jsp %>>
     </frameset>
