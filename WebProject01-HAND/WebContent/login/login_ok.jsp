@@ -49,7 +49,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 function refreshIndex(){
-	parent.location.href = "../index.jsp?type=1";
+	top.location.href = "../index.jsp?type=1";
 }
 </script>
 </head>
