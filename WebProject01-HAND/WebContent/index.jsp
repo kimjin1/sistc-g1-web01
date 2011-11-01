@@ -13,7 +13,7 @@
 	switch(no){
 	case 1: jsp="main.jsp"; 
 		break;
-	case 2: jsp = "/login/join.jsp";		
+	case 2: jsp = "login/join.jsp";		
 		break;
 	}
 	
