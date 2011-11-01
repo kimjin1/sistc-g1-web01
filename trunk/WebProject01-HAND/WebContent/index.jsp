@@ -25,7 +25,7 @@
 <title>HAND에 오신걸 환영합니다.</title>
 
 <script type="text/javascript">
-	var width = 1000;
+	var width = 1100;
 	var height = 780;
 	//self.location.reload(true);		
 	self.moveTo((screen.width/2)-(width/2), (screen.height/2)-(height/2));	
@@ -49,7 +49,7 @@
 </frameset>
 --%>
 
-<frameset cols="22, 78" border="20" frameborder="no">
+<frameset cols="22, 78" border="20" frameborder="yes">
 	<frameset rows="10, 90" border="20" frameborder="no">
 		<frame name="left_top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left_top.jsp">
 		<frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp">
