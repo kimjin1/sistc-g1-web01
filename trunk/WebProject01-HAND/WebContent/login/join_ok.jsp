@@ -43,7 +43,7 @@
     
     dao.insert(vo);
     
-    //response.sendRedirect("../index.jsp?type=1");
+    response.sendRedirect("../index.jsp?type=1");
     //response.sendRedirect("../login/login.jsp?id="+vo.getId()+"&pw="+vo.getPw());
     
     //long time = vo.getBirth().getTime();
@@ -56,17 +56,21 @@
         session.setAttribute("name", name);
         session.setAttribute("admin", 2);
         session.setAttribute("email", email);           
-    %>
+   
+        
+        %>
     
-    
+    <%--
 <html>
 <head>
 <script type="text/javascript">
 function refreshIndex(){
-	top.location.href = "../index.jsp?type=1";
+	top.location.href = "./index.jsp?type=1";
 }
 </script>
 </head>
    <body onload="refreshIndex()">    
     </body>
 </html>
+
+ --%>

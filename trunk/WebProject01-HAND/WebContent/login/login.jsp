@@ -29,7 +29,7 @@ function login2()//로그인 창에 아무것도 적혀 있지 않으면 입력하라는 창이 나온다.
 function join_sb(){
 	//window.open("../login/join.jsp","small","width=950,heigh=700,scrollbars=yes,menubar=yes");
 	//window.location.href = "../index.jsp?type=2";
-	parent.location.href = "../index.jsp?type=2";
+	parent.location.href = "./index.jsp?type=2";
 	
 }
 </script>
@@ -37,14 +37,14 @@ function join_sb(){
 </head>
 <body>
 	<center>
-	<form method=post action="../login/login_ok.jsp" name="log_frm">
-		<table border=0 width=200 height=80 background="../image/login_image/log_bg.jpg">
+	<form method=post action="./login/login_ok.jsp" name="log_frm">
+		<table border=0 width=200 height=80 background="./image/login_image/log_bg.jpg">
 		<p>
 			<tr>
 				<td width=20% align=right>ID</td>
 				<td ><input type=text name=id size=14></td>
 				<td rowspan=2 >	
-				<a href=javascript:login2()><img src="../image/login_image/log_in.jpg" border=0></a></td>	
+				<a href=javascript:login2()><img src="./image/login_image/log_in.jpg" border=0></a></td>	
 				</tr>
 			<tr>
 				<td width=20% align=right>PW</td>
