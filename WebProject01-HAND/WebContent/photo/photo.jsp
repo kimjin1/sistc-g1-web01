@@ -31,23 +31,34 @@
 <title>사진방</title>
 </head>
 <body>
-<center>
-<h2>사진방ㅠㅠ</h2>
-	
-	
-	
+<center>	
 	<table border=0	width=600 >
 	<tr>
 	<td>
 	<a href="photo_write.jsp"><img src="../image/Photo/write.jpg" align=left></a>
-	</td></tr>
+	</td>
+	<td>
+		<b>사진방</b>
+	</td>
+	</tr>
 	</table>
 	<table border=3	width=800>
+	<tr>		
 	<%
+	int i = 0;
 	 for(PhotoVO vo:list){
 	%>
+	<%
+	if(i%3==0 && i!=0){		
+	%>
+		</tr><tr>	
+	<%
+	}
+	%>						
+	<td>
+	<table width=100% border=0>
 	<tr>
-		<td>
+		<td width=100 height=180>
 		 <%=vo.getPath() %>
 		 </td>
 	</tr>
@@ -57,9 +68,13 @@
 		<%=vo.getContent() %></a>
 		</td>
 	</tr>
+	</table>
+	</td>		
 	<%
+	i++;
 	}
-	%>
+	%>	
+	</tr>
 	</table>
 	<table>
 	<tr>
