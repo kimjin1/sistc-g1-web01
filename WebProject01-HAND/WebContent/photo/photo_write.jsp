@@ -15,34 +15,6 @@
 function send()
 {
 	var f=document.frm;
-	if(f.name.value=="")
-	{
-		alert("이름을 입력하세요");
-		f.name.focus();
-		return;
-	}
-	
-	if(f.subject.value=="")
-	{
-		alert("제목을 입력하세요");
-		f.subject.focus();
-		return;
-	}
-	
-	if(f.content.value=="")
-	{
-		alert("내용을 입력하세요");
-		f.content.focus();
-		return;
-	}
-	
-	if(f.pwd.value=="")
-	{
-		alert("비밀번호를 입력하세요");
-		f.pwd.focus();
-		return;
-	}
-	
 	//전송 (데이터를 action에게 전송)
 	f.submit();//<input type=submit>
 	//<input type=image>:submit
@@ -63,23 +35,12 @@ function send()
        <p>
         <table border=0 width=560>
          <tr>
-          <td align=right width=20%>이름</td>
+          <td align=right width=20%>아이디</td>
           <td align=left width=80%>
-           <input type=text name=name size=15>
+           <input type=text name=id size=15>
           </td>
          </tr>
-         <tr>
-          <td align=right width=20%>이메일</td>
-          <td align=left width=80%>
-           <input type=text name=email size=50>
-          </td>
-         </tr>
-         <tr>
-          <td align=right width=20%>제목</td>
-          <td align=left width=80%>
-           <input type=text name=subject size=50>
-          </td>
-         </tr>
+        
          <tr>
           <td align=right width=20% valign=top>내용</td>
           <td align=left width=80%>
@@ -92,13 +53,7 @@ function send()
            <input type=file name=upload size=30>
           </td>
          </tr>
-         <tr>
-          <td align=right width=20%>비밀번호</td>
-          <td align=left width=80%>
-           <input type=password name=pwd size=10>
-          </td>
-          <p>
-         </tr>
+        
          <tr>
           <td align=center colspan=2>
            <input type=button value=글쓰기 onclick="send()">
