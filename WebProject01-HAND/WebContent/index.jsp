@@ -48,7 +48,7 @@
     </noframes>
 </frameset>
 --%>
-<%-- 
+
 <frameset cols="20, 80" border="10" frameborder="yes">
 	<frameset rows="10, 90" border="20" frameborder="yes">
 		<frame name="left_top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left_top.jsp">
@@ -59,7 +59,8 @@
 		<frame name="main" noresize scrolling="yes" marginwidth="0" marginheight="0"  src=<%=jsp %>>
     </frameset>
 </frameset>
---%>
+
+<%--
 <body>
 <center>
 	<table border=1 width=900 height=650>
@@ -83,4 +84,6 @@
 	</table>
 </center>
 </body>
+ --%>
 </html>
+ 

@@ -24,7 +24,7 @@
 		</td>
 		background="../image/login_image/log_bg.jpg"
 		--%>
-		<td valign=bottom align=center width=<%=width%> background="../image/menu_bar/menu.png">
+		<td valign=bottom align=center width=<%=width%> background="">
 			<a href="../home/home.jsp" target="main"><h3>HOME</h3></a>
 		</td>
 		<td valign=bottom align=center width=<%=width%>>

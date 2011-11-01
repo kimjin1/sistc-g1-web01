@@ -9,7 +9,7 @@
 <body>
 	<center>
 	<form method=post action="../login/logout_ok.jsp">
-		<table border=0 width=200 height=80 background="./image/login_image/log_bg.jpg">
+		<table border=0 width=200 height=80 background="../image/login_image/log_bg.jpg">
 		
 			<tr>
 				<td align=right >
@@ -30,7 +30,7 @@
 			<%=session.getAttribute("name") %>님<br>로그인 중입니다
 				</td>
 				
-				<td rowspan=2><a href="./login/loginout_ok.jsp"><img src="./image/login_image/logout.jpg" border=0></a></td>	
+				<td rowspan=2><a href="../login/loginout_ok.jsp"><img src="../image/login_image/logout.jpg" border=0></a></td>	
 			</tr>
 			
 			
