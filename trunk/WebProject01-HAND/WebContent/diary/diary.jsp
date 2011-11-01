@@ -33,9 +33,9 @@
 <body>
 	<center>
 		<!-- 달력 부분 -->
-		<table width=100% height=540 cellspacing=0 cellpadding=0 border=1>
+		<table width=80% height=540 cellspacing=0 cellpadding=0 border=1>
 			<tr>
-				<th colspan=2 valign="middle">
+				<th colspan=2 valign="middle" bgcolor="#ccccff">
 					<select id=year onchange='refreshCalendar()'>
 						<c:forEach var="i" begin="${year-50 }" end="${year+50 }" step="1">
 							<option${i==year?" selected":" "}>${i }</option>							
@@ -52,13 +52,10 @@
 				</th>
 			</tr>
 			<tr>	
-				<td width=80% height=90%>
+				<td width=100% height=90%>
 				<iframe marginwidth=0 marginheight=0 src="../diary/calendar.jsp?year=<%=year%>&month=<%=month%>" id="calendar">		
 					<!-- 달력 출력 부분 -->
 				</iframe>															
-				</td>
-				<td width=20%>
-					해당월의 일정 목록이 표시될 예정
 				</td>
 			</tr>
 		</table>
