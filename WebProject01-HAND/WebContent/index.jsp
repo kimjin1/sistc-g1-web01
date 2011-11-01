@@ -9,21 +9,13 @@
 	}
 	
 	int no = Integer.parseInt(type);
-	String jsp="main.jsp";
+	String jsp="";
 	switch(no){
 	case 1: jsp="main.jsp"; 
 		break;
 	case 2: jsp = "login/join.jsp";		
 		break;
-	}
-	
-	String id=(String)session.getAttribute("id");
-	String ltype="";
-	if(id==null)
-		ltype="1";
-	else
-		ltype="2";
-
+	}	
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -41,11 +33,11 @@
 </script>
 
 </head>
- 
-<frameset rows="120, 1024" border="0">
+<%--  
+<frameset rows="120, 1024" border="0" frameborder="yes">
     <frame name="top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/top.jsp">
-    <frameset cols="200, 100%" border="0">
-    <frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp?ltype=<%=ltype%>">
+    <frameset cols="200, 100%" border="0" frameborder="yes">
+    <frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp">
         <frame name="main" noresize scrolling="yes" marginwidth="0" marginheight="0"  src=<%=jsp %>>
     </frameset>
     <noframes>
@@ -54,6 +46,18 @@
 <p>Have A Nice Day ^^</p>
 </body>
     </noframes>
+</frameset>
+<<<<<<< .mine
+--%>
+<frameset cols="20%, 80%" border="10" frameborder="no">
+	<frameset rows="10%, 90%" border="20" frameborder="no">
+	<frame name="left_top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left_top.jsp">
+	<frame name="left" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/left.jsp">
+	</frameset>
+	<frameset rows="10%, 90%" border="20" frameborder="no">
+	    <frame name="top" noresize scrolling="no" marginwidth="0" marginheight="0"  src="menu/top.jsp">	
+		<frame name="main" noresize scrolling="yes" marginwidth="0" marginheight="0"  src=<%=jsp %>>
+    </frameset>
 </frameset>
 </html>
 
