@@ -38,7 +38,8 @@
         session.setAttribute("email", email);
         
         
-        response.sendRedirect("../login/logout.jsp");
+        response.sendRedirect("index.jsp?no=1");
+        //  response.sendRedirect("../login/logout.jsp");
     }
 	
     %>
