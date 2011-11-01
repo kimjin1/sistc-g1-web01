@@ -47,6 +47,32 @@ function pwdCheck(){
 	}		
 }
 </script>
+<script type="text/javascript">
+function join_ok(){
+	
+	var f=document.frm;
+	if(f.id.value=="")
+	{
+		alert("ID를 입력하세요");
+		f.id.focus();
+		return;
+	} 
+	if(f.pw.value=="")
+	{
+		alert("Password를 입력하세요");
+		f.pw.focus();
+		return;
+	}
+	if(f.name.value=="")
+	{
+		alert("이름을 입력하세요");
+		f.name.focus();
+		return;
+	}
+	
+	f.submit();
+}
+</script>
 </head>
 <body>
 	<center>
@@ -178,18 +204,10 @@ function pwdCheck(){
                <textarea rows="12" cols="50" name=memo></textarea>
              </td>
            </tr>
-           
-            <tr>
-            <td align=right width=20%>프로필 사진</td>
-            <td align=left width=80%>
-              <input type=text size=12 name=photo>
-            </td>
-           </tr>
-           
-           
+     
            <tr>
              <td align=center colspan=2>
-              <input type=submit value="회원가입">
+              <input type=button value="회원가입" onclick="join_ok()" >
               <input type="reset" value="취소">
              </td>
            </tr>

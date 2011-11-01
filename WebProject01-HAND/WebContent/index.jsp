@@ -9,7 +9,7 @@
 	}
 	
 	int no = Integer.parseInt(type);
-	String jsp="";
+	String jsp="main.jsp";
 	switch(no){
 	case 1: jsp="main.jsp"; 
 		break;
@@ -55,7 +55,6 @@
 </body>
     </noframes>
 </frameset>
-
 </html>
 
 

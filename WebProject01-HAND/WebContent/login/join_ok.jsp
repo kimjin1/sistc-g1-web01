@@ -43,7 +43,8 @@
     
     dao.insert(vo);
     
-    response.sendRedirect("../login/login.jsp?id="+vo.getId()+"&pw="+vo.getPw());
+    response.sendRedirect("../index.jsp?type=1");
+    //response.sendRedirect("../login/login.jsp?id="+vo.getId()+"&pw="+vo.getPw());
     
     //long time = vo.getBirth().getTime();
 	//		   ps.setDate(3, new java.sql.Date(time));
