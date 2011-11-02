@@ -141,6 +141,20 @@ public class ReplyDAO {
 
 		}
 	//삭제 : 로그인해야 지운다,게시판주인은 지우게
+		public void delete(int no){
+			   try {
+				   getConnection();
+				   String sql="delete from p_reply where no=?";
+				   ps=conn.prepareStatement(sql);
+				   ps.setInt(1, no);
+				   ps.executeUpdate();
+				
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+			}finally{
+				disConnection();
+			}
+		   }
 	//총덥굴 갯수:글번호,게시판 번호
 
 }
