@@ -35,9 +35,9 @@ function send()
        <p>
         <table border=0 width=560>
          <tr>
-          <td align=right width=20%>아이디</td>
+          <td align=right width=20%>작성자</td>
           <td align=left width=80%>
-           <input type=text name=id size=15>
+           <input type=text name=id size=15 value="<%=session.getAttribute("name")%>"> 
           </td>
          </tr>
         
