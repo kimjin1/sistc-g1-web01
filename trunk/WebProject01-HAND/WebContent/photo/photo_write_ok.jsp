@@ -52,7 +52,7 @@
      dao.insert(vo);
      
      //½æ³×ÀÏ »ý¼º
-     int width = 100;
+     int width = 170;
      int height = 100;
      try{
     	 File file = new File(vo.getPath());
@@ -60,7 +60,7 @@
     	 BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
     	 Graphics2D g = img.createGraphics();
     	 g.drawImage(image, 0, 0, width, height, null);
-    	 File thumb = new File(vo.getPath()+"_tn");
+    	 File thumb = new File(vo.getPath()+"_tn.jpg");
     	 ImageIO.write(img, "jpeg", thumb);
      }catch(Exception e){
     	 System.out.println("making thumbnail:"+e.getMessage());

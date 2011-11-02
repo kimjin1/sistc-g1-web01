@@ -27,10 +27,7 @@ System.out.println(strNo);
         <td width=20% bgcolor=#ccccff>¿€º∫¿œ</td>
         <td width=30%><%=vo.getRegdate().toString() %></td>
       </tr>
-      <tr height=25>
-        <td width=20% bgcolor=#ccccff></td>
-        <td align=left colspan=3><%=vo.getContent() %></td> 
-      </tr>
+    
       <%
          if(vo.getFilesize()!=0)
          {
