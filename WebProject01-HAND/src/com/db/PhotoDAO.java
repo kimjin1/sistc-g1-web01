@@ -76,12 +76,12 @@ public class PhotoDAO {
 				   ResultSet rs=ps.executeQuery();
 				   
 				   //페이지별 출력
-				   int pagestart=(page*10)-10;//시작점
+				   int pagestart=(page*6)-6;//시작점
 				   int i=0;//10씩 나눠주는 변수 
 				   int j=0;//while의 횟수 
 				   while(rs.next())
 				   {
-					   if(i<10 && j>=pagestart)
+					   if(i<6 && j>=pagestart)
 					   {
 						   //값을 가지고 온다 
 						   PhotoVO vo=new PhotoVO();
@@ -130,8 +130,8 @@ public class PhotoDAO {
 				   int count=rs.getInt(1);
 				   rs.close();
 				   
-				   total=count/10;//19/10 2
-				   if(count%10>0)
+				   total=count/6;//19/10 2
+				   if(count%6>0)
 					   total++;
 				   
 			   }catch(Exception ex)
@@ -216,6 +216,78 @@ public class PhotoDAO {
 		   
 		   
 		   //찾기
+		   public int getFindCount(String fs,String ss)
+		   {
+			   int count=0;
+			   
+			   try
+			   {
+				  //연결
+				  getConnection();
+				  //쿼리문장 where name like '%?%'
+				  String sql="select count(*) from p_file "
+						 +"where "+fs+" like '%'||?||'%'";
+				  ps=conn.prepareStatement(sql);
+				  ps.setString(1,ss);
+				  ResultSet rs=ps.executeQuery();
+				  rs.next();
+				  count=rs.getInt(1);
+				  rs.close();
+			   }catch(Exception ex)
+			   {
+				  System.out.println(ex.getMessage());
+			   }
+			   finally
+			   {
+				  disConnection();
+			   }
+			   return count;
+		   }
+		   
+		   
+		   //찾기
+		   
+		   public ArrayList<PhotoVO> getFindData(String fs,String ss)
+		   {
+			   ArrayList<PhotoVO> list=
+					      new ArrayList<PhotoVO>();
+			   try
+			   {
+				  //연결
+				  getConnection();
+				  //쿼리문장 where name like '%?%'
+				  String sql="select id,content,path,filename,filesize,regdate,flag,filetype from p_file "
+						 +"where "+fs+" like '%'||?||'%'";
+				  ps=conn.prepareStatement(sql);
+				  ps.setString(1,ss);
+				  ResultSet rs=ps.executeQuery();
+				  while(rs.next())
+				  {
+					   PhotoVO vo=new PhotoVO();
+					   vo.setId(rs.getString(1));
+						  vo.setContent(rs.getString(2));
+						   vo.setPath(rs.getString(3));
+						  vo.setFilename(rs.getString(4));
+						  vo.setFilesize(rs.getInt(5));
+						  vo.setRegdate(rs.getDate(6));
+						  vo.setFlag(rs.getInt(7));
+						  vo.setFiletype(rs.getString(8));
+						  
+					   list.add(vo); 
+				  }
+				  rs.close();
+			   }catch(Exception ex)
+			   {
+				  System.out.println(ex.getMessage());
+			   }
+			   finally
+			   {
+				  disConnection();
+			   }
+			   return list;
+		   }
+		   
+		   
 		   //등록
 		   public void insert(PhotoVO vo) 
 		   {
@@ -251,7 +323,7 @@ public class PhotoDAO {
 		   }
 		 
 
-		   //수정
+		  
 		   //삭제
 		   
 		   

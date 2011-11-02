@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*,com.db.*"%> 
+    pageEncoding="EUC-KR" import="java.util.*,com.db.*,java.text.*"%> 
  <%!
      int totalpage=0;//총페이지(DB)
      int curpage=1;//현재(수시로 변경)
@@ -26,6 +26,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>사진방</title>
+<script type="text/javascript">
+function find()
+{
+	var f=document.frm;
+	if(f.ss.value=="")
+    {
+		alert("검색어를 입력하세요");
+		f.ss.focus();
+		return;
+    }
+	f.submit();
+}
+</script>
 <style type="text/css">
 	table {
 		table-layout: fixed;
@@ -34,17 +47,8 @@
 </head>
 <body>
 <center>	
-	<table border=0	width=600 >
-	<tr>
-	<td>
-	<a href="photo_write.jsp"><img src="../image/Photo/write.jpg" align=left></a>
-	</td>
-	<td>
-		<b>사진방</b>
-	</td>
-	</tr>
-	</table>
-	<table border=1	width=700>
+		<form method=post name=frm action="find.jsp">
+	<table border=1	width=550 height=200>
 	<tr>		
 	<%
 	int i = 0;
@@ -60,13 +64,10 @@
 	<td>
 	<table width=100% border=1>
 	<tr>
-		<td width=200 height=150><img src="../photo/upload/<%=vo.getFilename() %>"></td>
+		<td width=100 height=80><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>"></td>
 	</tr>
 	<tr>
-		<td width=100 height=20><a href="content.jsp?no=<%=vo.getNo()%>"><%=vo.getContent() %></a></td>
-	</tr>
-	<tr>
-		<td width=100 height=20><%=vo.getPath() %></td>
+		<td width=50 height=10><a href="content.jsp?no=<%=vo.getNo()%>"><%=vo.getContent() %></a></td>
 	</tr>
 	</table>
 	</td>		
@@ -76,32 +77,69 @@
 	%>	
 	</tr>
 	</table>
-	<table>
+	
+
+	<table width=550 height=40>
 	<tr>
-       <td align=left>
+	<td>
+	<a href="photo_write.jsp"><img src="../image/Photo/write.jpg" align=left></a>
+	</td>
+	
+	 <td align=right>
         <select name=fs>
          <option value=name>작성자</option>
-         <option value=subject>제목</option>
+         <option value=content>내용</option>
         
         </select>
-        <input type=text name=ss size=20>
-        
-        <input type=button value=찾기 >
+        <input type=text name=ss size=10>
+        <input type=hidden name=page value=<%=curpage %>>
+       <input type=button value=검색 onclick=find()>
        </td>
-           <tr align=center>
-       <td align=center>
-     
-         <img src="../image/Photo/prev.jpg" border=0>
-       		&nbsp;&nbsp;&nbsp;
-          	page /  pages
+       </tr>
        
-         <img src="../image/Photo/next.jpg" border=0>
-        
+           <tr>
+       <td align=center colspan=2>
+       
+        <%
+            if(curpage>1)
+            {
+            	back=curpage-1;
+         %>
+       <a href="photo.jsp?page=<%=back%>">
+     <img src="../image/board/prev.jpg" border=0>
+    	</a>
+    	<%
+            }
+         %>
+       
+     
+         
+         <%
+            for(int j=1;j<=totalpage;j++)
+            {
+         %>
+               [<a href="photo.jsp?page=<%=j%>"><%=j %></a>]
+         <%
+            }
+         %>
+         <%
+             if(curpage<totalpage) 
+             {
+            	 forward=curpage+1;
+         %>
+      	<a href="photo.jsp?page=<%=forward %>">
+         <img src="../image/board/next.jpg" border=0></a>
+         <%
+             }
+         %>
+      
+         &nbsp;&nbsp;&nbsp;
+  <%=curpage %> page / <%=totalpage %> pages
        
        </td>
        </tr>
 	</table>
-	
+	</form>
 	
 </center>
 </body>
