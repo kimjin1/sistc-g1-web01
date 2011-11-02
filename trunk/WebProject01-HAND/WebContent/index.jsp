@@ -67,9 +67,9 @@
 
 <body>
 <center>
-	<table border=1 width=950 height=600 cellpadding="0" cellspacing="0">		
+	<table border=0 width=950 height=600 cellpadding="0" cellspacing="0">		
 		<tr>
-			<td width=200 height=60>
+			<td width=200 height=60 >
 			<%--<jsp:include page="menu/left_top.jsp"></jsp:include> --%>
 			<iframe scrolling="no" src="menu/left_top.jsp"></iframe>
 			</td>
@@ -84,8 +84,13 @@
 			<iframe scrolling="no" src="menu/left.jsp"></iframe>
 			</td>
 			<td width=700 height=470>
+			<center>
+			<table border=0 width=705 height=445 background="image/main_bg/main_bg4.png">
+			
 			<%--<jsp:include page="<%=jsp %>"></jsp:include> --%>
-			<iframe scrolling="auto" src="<%=jsp %>" name="main" frameborder="0"></iframe>
+			<%--<iframe scrolling="auto" src="<%=jsp %>" name="main" frameborder="0"></iframe> --%>
+			</table>
+			</center>
 			</td>
 		</tr>		
 	</table>
