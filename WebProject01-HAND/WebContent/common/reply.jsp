@@ -46,8 +46,20 @@ function openclose()
 		p.style.display='none';
 	}
 }
-function del(){
-	document.no_frm.submit();
+function delSelected(){
+	var check = del_frm.delnum;
+	var flag = false;
+	var i = 0;
+	for(i=0; i<check.length; i++){
+		if(check[i].checked==true){
+			flag = true;
+		}
+	}
+	if(flag==true){
+		del_frm.submit();
+	}else{
+		alert("선택된 항목이 없습니다");		
+	}
 }
 </script>
 </head>
@@ -63,6 +75,13 @@ function del(){
 		--%>
 
 		<table width=600 border=5 bordercolor=cccccc height=100>
+		<tr>
+		<td>
+			<a href="javascript:del()">
+	         <img src="../image/board/delete.jpg" border=0>
+	         </a>
+	         </td>
+		</tr>
 			<tr>
 				<td width=15% bgcolor=cccccc><a href="javascript:openclose()">답글쓰기</a></td>
 				<td align=left colspan=4 valign=top><textarea rows="5"
@@ -75,9 +94,10 @@ function del(){
 				<td width=15% align=right><input type=button value=등록 size=20 onclick="send()">
 				</td>
 			</tr>
+			
 		</table>
 		</form>
-
+		<form method=post action="reply_delete.jsp " name="del_frm">
 		<table id="rep" width="600" border="0" style="display:none">
 
 			<tr>
@@ -89,8 +109,14 @@ function del(){
 			<%
 				for (ReplyVO vo : list) {
 			%>
-			<tr id="re<%=vo.getNo()%>" height=15>				
-				<td width=10%><%=vo.getId()%></td>
+			 
+                          
+			<tr id="re<%=vo.getNo()%>" height=15>
+							
+				<td width=10%><%=vo.getId()%> <input type=checkbox 
+                    name=delnum value="<%=vo.getNo()%>">
+                  <input type=hidden name=no value=<%=vo.getNo() %>>
+                    </td>
 		                          
 				<td width=70%><%=vo.getContent()%></td>
 				<td width=15%><%=vo.getRegdate().toString()%></td>
@@ -102,7 +128,7 @@ function del(){
 
 
 		</table>
-		
+		</form>
 	</center>
 </body>
 </html>
