@@ -1,10 +1,9 @@
 package com.db;
 import java.util.*;
+import java.util.Date;
 import java.sql.*;
 
-import org.apache.catalina.Session;
 
-import com.sun.org.apache.regexp.internal.RE;
 public class ReplyDAO {
 
 	private Connection conn;// 오라클 연결
@@ -61,7 +60,7 @@ public class ReplyDAO {
 	//출력
 	   //게시물 전체 출력
 	
-	   public ArrayList<ReplyVO> getReplyData(int page)
+	   public ArrayList<ReplyVO> getReplyData(int flag, int rootno)
 	   {
 		   
 		   ArrayList<ReplyVO> list=new ArrayList<ReplyVO>();
@@ -70,14 +69,13 @@ public class ReplyDAO {
 			   //연결
 			   getConnection();
 			   //쿼리문장
-			   String sql="select no,id,rootno,content,regdate,flag from p_reply order by no desc";
+			   String sql="select no,id,rootno,content,regdate,flag from p_reply where flag=? and rootno=? order by no desc";
 			   //쿼리실행=결과값 : 오라클에서 데이터 10개씩(PL/SQL)
 			   ps=conn.prepareStatement(sql);
+			   ps.setInt(1, flag);
+			   ps.setInt(2, rootno);
 			   ResultSet rs=ps.executeQuery();
-			   
-			 
-			  
-			  
+   		 			 
 			   while(rs.next())
 			   {
 				  
@@ -95,7 +93,8 @@ public class ReplyDAO {
 					   
 				rs.close();
 		   }
-			   //결과값을 ArrayList담아둔다
+			   
+		   //결과값을 ArrayList담아둔다
 		  catch(Exception ex)
 		   {
 			   System.out.println(ex.getMessage());
@@ -111,19 +110,29 @@ public class ReplyDAO {
 	//등록 : 로그인해야 쓴다
 	// 글 등록하기
 	
-		public void replyinsert(int flag,int rootno, ReplyVO vo) {
+		public void replyinsert(ReplyVO vo) {
 			try {
 				// 연결
 				getConnection();
 				// 추가
-				String sql = "insert into p_reply values(p_reply_no_seq.nextVal,'?',?,?,sysdate,?)";
+				String sql = "insert into p_reply values(p_reply_no_seq.nextVal,?,?,?,sysdate,?)";
+			
 				ps = conn.prepareStatement(sql);
 			
-				ps.setString(1, vo.getContent());
+				ps.setString(1, vo.getId());
+				ps.setInt(2, vo.getRootno());
+				ps.setString(3, vo.getContent());
+				ps.setInt(4, vo.getFlag());
 			
-
 				ps.executeUpdate();
 
+				ps.close();
+				
+				sql = "update p_board set depth=depth+1 where no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, vo.getRootno());
+				ps.executeUpdate();
+				
 			} catch (Exception ex) {
 				System.out.println(ex.getMessage());
 			} finally {

@@ -26,7 +26,7 @@
  	
  	String maxSubject = dao.maxSubject(maxNo);
  	String minSubject = dao.minSubject(minNo);
- 	 	 
+ 	String jsp="../common/reply.jsp?flag="+flag+"&rootno="+curNo; 	 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -155,7 +155,7 @@ function Login(no,page,type){
      <tr>      
 		<td width="300"valign="top">
          <% System.out.println(flag+":"+curNo);%>
-		<jsp:include page="../common/reply.jsp?flag=1&rootno=42"/>
+		<jsp:include page="<%=jsp %>"/>
         </td>
       </tr>
      </table>
