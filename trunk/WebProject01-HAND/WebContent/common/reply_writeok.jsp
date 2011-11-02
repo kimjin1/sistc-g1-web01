@@ -12,10 +12,10 @@
 
 <%
 //이게 DAO VO 가 틀려서 그런거아냐? 저그럴ㄷ스...케이스 문 가따쓰는건 보드jsp 저건 보드 D없다. 위에.
-
+	System.out.println(vo.toString());
 //DAO에 데이터를 전송(VO)
 	//insert 요청
-	//dao.replyinsert(vo); 
+	dao.replyinsert(vo); 
 	//list.jsp이동
-	response.sendRedirect("../board/board.jsp?type=3");
+	response.sendRedirect("../board/board.jsp?type=3&no="+vo.getRootno()+"&page=1");
 %>

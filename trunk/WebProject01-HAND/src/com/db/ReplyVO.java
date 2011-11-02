@@ -43,6 +43,10 @@ public class ReplyVO {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
+	@Override
+	public String toString() {
+		return no+"|"+id+"|"+rootno+"|"+content+"|"+regdate+"|"+flag;
+	}
 	
 	
 }
