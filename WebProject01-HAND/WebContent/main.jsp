@@ -21,7 +21,7 @@
 	else
 		logJsp="logout.jsp";
 
-	
+	//background="../image/login_image/log_bg.jpg"
 %>
 
 
@@ -36,9 +36,10 @@
 </head>
 
 <body>
-	<table width=100% height=100%>
+	<table border=1 width=100% height=100% >
 		<tr>
 			<td height=100% align=center valign=middle>
+				
 				<br><br><br><br><br><br><br><br>
 				<img src="image/fix.gif">
 			</td>
