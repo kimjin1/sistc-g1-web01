@@ -89,7 +89,13 @@ function Login(no,page,type){
 	          <%
 	             }
 	          %>
-	          	<%=vo.getDepth() %>
+	          <%if(vo.getDepth()!=0){ %>
+	          
+	          	[<%=vo.getDepth() %>]
+	          	
+	          	<%} %>
+	          	
+	          	
             <%
 	              Date date=new Date();
 	              SimpleDateFormat sdf=

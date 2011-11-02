@@ -68,7 +68,7 @@ public class BoardDAO {
 			   //연결
 			   getConnection();
 			   //쿼리문장
-			   String sql="select no,name,subject,email,regdate,readnum,grouplevel from p_board order by no desc";
+			   String sql="select no,name,subject,email,regdate,readnum,grouplevel,depth from p_board order by no desc";
 			   //쿼리실행=결과값 : 오라클에서 데이터 10개씩(PL/SQL)
 			   ps=conn.prepareStatement(sql);
 			   ResultSet rs=ps.executeQuery();
@@ -90,6 +90,7 @@ public class BoardDAO {
 					   vo.setRegdate(rs.getDate(5));
 					   vo.setReadnum(rs.getInt(6));
 					   vo.setGrouplevel(rs.getInt(7));
+					   vo.setDepth(rs.getInt(8));
 					   
 					   list.add(vo);
 					   
@@ -156,7 +157,7 @@ public class BoardDAO {
 			   ps.executeUpdate();
 			   ps.close();
 			   
-			   sql="select subject,name,regdate,readnum,content,id from p_board where no=?";
+			   sql="select subject,name,regdate,readnum,content,id,depth from p_board where no=?";
 			   ps=conn.prepareStatement(sql);
 			   ps.setInt(1, no);
 			   //실행
@@ -170,6 +171,7 @@ public class BoardDAO {
 			   vo.setReadnum(rs.getInt(4));
 			   vo.setContent(rs.getString(5));
 			   vo.setId(rs.getString(6));
+			   vo.setDepth(rs.getInt(7));
 			   
 			   rs.close();
 			   
