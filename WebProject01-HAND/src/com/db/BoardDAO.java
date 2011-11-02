@@ -249,7 +249,7 @@ public class BoardDAO {
 		   }
 		   return list;
 	   }
-	   
+	  
 	   //글 등록
 	   public void insert(BoardVO vo)
 	   {
@@ -287,7 +287,8 @@ public class BoardDAO {
 			   disConnection();
 		   }
 	   }
-
+	   
+	   
 	   
 	   //게시판 번호 순차적 출력
 	   public int getBoardCount()
@@ -579,7 +580,6 @@ public class BoardDAO {
 			}
 			return minSubject;
 		}
-	
-	
+
 	
 }

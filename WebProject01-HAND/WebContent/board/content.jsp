@@ -2,11 +2,13 @@
     pageEncoding="EUC-KR" import="com.db.*"%>
 <jsp:useBean id="dao" class="com.db.BoardDAO"/>
 <%	
-
+	int flag=(Integer.parseInt((String)session.getAttribute("flag")));
+	
 	String id=(String)session.getAttribute("id");
    //게시물 번호
    String strNo=request.getParameter("no");
 	int curNo = Integer.parseInt(strNo);
+	//System.out.println(curNo);
    //현재 보고 있던 페이지
    String strPage=request.getParameter("page");
    
@@ -149,23 +151,15 @@ function Login(no,page,type){
       </tr>
       
      </table>
-        <table width=700 border=5 bordercolor=cccccc height=100>
-     	<tr >
-     	<td width=15% bgcolor=cccccc >답글쓰기</td>
-     	<td align=left colspan=4 valign=top >
-         <pre></pre>
+     <table border="0">
+     <tr>      
+		<td width="300"valign="top">
+         <% System.out.println(flag+":"+curNo);%>
+		<jsp:include page="../common/reply.jsp?flag=1&rootno=42"/>
         </td>
-       
-        <td  width=15% align=right>
-   
-        <input type=button value=등록 size=20 >
-           
-        
-        
-     	</td>
-     	</tr>
-     	     
+      </tr>
      </table>
+        
 
   
 </center>

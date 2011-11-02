@@ -16,7 +16,7 @@
      case 4: jsp="../board/update.jsp";break;
      case 5: jsp="../board/delete.jsp";break;
      case 6: jsp="../common/reply.jsp";break;
-        
+
      }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

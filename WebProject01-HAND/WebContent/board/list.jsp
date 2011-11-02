@@ -11,6 +11,7 @@
 %> 
 <jsp:useBean id="dao" class="com.db.BoardDAO"/>
 <%
+	session.setAttribute("flag", "1");
 	String id=(String)session.getAttribute("id");
 	String strPage=request.getParameter("page");
 	String strNo=request.getParameter("no");
