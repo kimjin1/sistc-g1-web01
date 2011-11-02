@@ -50,7 +50,7 @@
          {
       %>
       <p>
-    <table border=3 width=400   background="../image/visitor/visitor.jpg" >
+    <table border=0 width=400   cellpadding="6" background="../image/visitor/visitor2.png" >
         <tr height=20 >
 
 	        <td width=15%>No.<%=vo.getNo() %></td>
