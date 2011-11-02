@@ -34,6 +34,7 @@
 	iframe{
 		width:100%;
 		height:100%;
+		border: 0px;
 	}
 </style>
 </head>
@@ -69,26 +70,27 @@
 <center>
 	<table border=0 width=950 height=600 cellpadding="0" cellspacing="0">		
 		<tr>
-			<td width=200 height=60 >
+			<td width=200 height=60  >
 			<%--<jsp:include page="menu/left_top.jsp"></jsp:include> --%>
-			<iframe scrolling="no" src="menu/left_top.jsp"></iframe>
+			<iframe scrolling="no" src="menu/left_top.jsp" frameborder="0"></iframe>
 			</td>
 			<td width=700 height=60>
 			<%-- <jsp:include page="menu/top.jsp"></jsp:include>--%>
-			<iframe scrolling="no" src="menu/top.jsp"></iframe>
+			<iframe scrolling="no" src="menu/top.jsp" frameborder="0"></iframe>
 			</td>
 		</tr>
 		<tr>
-			<td width=200 height=470 valign=top>
+			<td width=200 height=470 valign=top >
 			<%--<jsp:include page="menu/left.jsp"></jsp:include> --%>
-			<iframe scrolling="no" src="menu/left.jsp"></iframe>
+			<iframe scrolling="no" src="menu/left.jsp" frameborder="0"></iframe>
 			</td>
-			<td width=700 height=470>
+			<td width=700 height=470 valign="top">
 			<center>
-			<table border=0 width=705 height=445 background="image/main_bg/main_bg4.png">
-			
+			<table cellpadding="7" border=0 width=705 height=445 background="image/main_bg/main_bg4.png">
+			<tr><td height=425 valign="top">
 			<%--<jsp:include page="<%=jsp %>"></jsp:include> --%>
-			<%--<iframe scrolling="auto" src="<%=jsp %>" name="main" frameborder="0"></iframe> --%>
+			<iframe scrolling="auto" src="<%=jsp %>" name="main" frameborder="0"></iframe> 
+			</td></tr>
 			</table>
 			</center>
 			</td>
