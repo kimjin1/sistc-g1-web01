@@ -67,6 +67,10 @@ public class PhotoVO {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
+	@Override
+	public String toString() {		
+		return no+"|"+id+"|"+content+"|"+path+"|"+regdate +"|"+flag+"|"+filename+"|"+filesize+"|"+filetype;
+	}
 	
 
 	

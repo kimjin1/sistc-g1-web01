@@ -26,6 +26,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>사진방</title>
+<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
+<script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
+<script type="text/javascript">Shadowbox.init();</script>
 <script type="text/javascript">
 function find()
 {
@@ -38,12 +41,29 @@ function find()
     }
 	f.submit();
 }
+function Login(no,page){
+	var id = "<%=id%>";		
+	if(id=="null"){
+		alert("로그인 하세요");
+		return;
+		      
+	}   else{
+		//성공했을때위치이동
+		  self.location.href="photo_write.jsp?no="+no+"&page="+page;
+	}    		
+	
+	
+}
+function openPhoto(no){	
+	
+}
 </script>
 <style type="text/css">
 	table {
 		table-layout: fixed;
 	}	
 </style>
+
 </head>
 <body>
 <center>	
@@ -67,7 +87,10 @@ function find()
 		<td width=100 height=80><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>"></td>
 	</tr>
 	<tr>
-		<td width=50 height=10><a href="content.jsp?no=<%=vo.getNo()%>"><%=vo.getContent() %></a></td>
+		<td width=50 height=10><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>"><%=vo.getContent() %></a></td>		
+		<%--
+		 <td width=50 height=10><a href="javascript:openPhoto(<%=vo.getNo()%>)"><%=vo.getContent() %></a></td>
+		 --%>
 	</tr>
 	</table>
 	</td>		
@@ -82,7 +105,9 @@ function find()
 	<table width=550 height=40>
 	<tr>
 	<td>
-	<a href="photo_write.jsp"><img src="../image/Photo/write.jpg" align=left></a>
+	<a href="javascript:Login(<%=strNo%>,<%=strPage%>)">
+         <img src="../image/board/write.jpg" border=0>
+         </a>
 	</td>
 	
 	 <td align=right>

@@ -198,7 +198,7 @@ public class PhotoDAO {
 				  vo.setRegdate(rs.getDate(6));
 				  vo.setFlag(rs.getInt(7));
 				  vo.setFiletype(rs.getString(8));
-				  
+				  vo.setNo(no);
 				   
 				   rs.close();
 				   
@@ -325,6 +325,46 @@ public class PhotoDAO {
 
 		  
 		   //ªË¡¶
+		   public boolean delete(PhotoVO vo,String pw)
+		   {
+			   boolean bCheck=false;
+			   try
+			   {
+				  
+				   getConnection();
+					  String sql="select pw from p_person "
+							  +"where id=?";
+					  ps=conn.prepareStatement(sql);
+					  ps.setString(1, vo.getId());
+					  ResultSet rs=ps.executeQuery();
+					  rs.next();
+					  String db_pw=rs.getString(1);
+					  rs.close();
+					  ps.close();
+					  if(db_pw.equals(pw))
+					  {
+						  bCheck=true;
+					  sql="delete from p_file where no=?";
+					  ps=conn.prepareStatement(sql);
+					  ps.setInt(1, vo.getNo());
+					  ps.executeUpdate();	
+					  ps.close();
+				   }
+				   else
+				   {
+					   bCheck=false;
+				   }
+			   }catch(Exception ex)
+			   {
+				  System.out.println(ex.getMessage());
+			   }
+			   finally
+			   {
+				  disConnection();
+			   }
+			   return bCheck;
+		   }
+		  
 		   
 		   
 		   
