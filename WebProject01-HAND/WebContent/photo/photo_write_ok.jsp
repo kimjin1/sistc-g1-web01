@@ -5,7 +5,8 @@
 <%@ page import="com.oreilly.servlet.multipart.*"%>
 <%@ page import="java.io.*,com.db.*" %>
 <%
-     String path="c:\\upload";
+     //String path="c:\\upload";
+	 String path = application.getRealPath("/photo/upload");
      int size=1024*1024*100;
      String enctype="euc-kr";
      MultipartRequest mr=
@@ -23,7 +24,7 @@
      File f=new File(path+"\\"+filename);
      
      PhotoVO vo=new PhotoVO();
-     vo.setPath(path+"\\"+filename);
+     vo.setPath("../photo/upload/"+filename);
      vo.setId(id);
      vo.setContent(content);	     
    	
