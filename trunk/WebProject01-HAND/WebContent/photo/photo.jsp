@@ -12,6 +12,7 @@
 %> 
 <jsp:useBean id="dao" class="com.db.PhotoDAO"/>
 <%
+	request.setCharacterEncoding("euc-kr");
 	String id=(String)session.getAttribute("id"); 
 	String strPage=request.getParameter("page");
 	String strNo=request.getParameter("no"); 
@@ -58,8 +59,13 @@
 	<td>
 	<table width=100% border=0>
 	<tr>
-		<td width=100 height=180>
+		<td width=100 height=180 background="<%=vo.getPath()%>">
+										
 		 <%=vo.getPath() %>
+		  
+		<%--  
+		  <img src="<%=vo.getPath()%>">
+		  	 --%>	  		  		  	 		
 		 </td>
 	</tr>
 	<tr>
