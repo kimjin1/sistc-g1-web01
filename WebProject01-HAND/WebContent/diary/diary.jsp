@@ -33,9 +33,9 @@
 <body>
 	<center>
 		<!-- 달력 부분 -->
-		<table width=80% height=540 cellspacing=0 cellpadding=0 border=1>
+		<table width=90% height=405 cellspacing=0 cellpadding=0 border=1>
 			<tr>
-				<th colspan=2 valign="middle" bgcolor="#ccccff">
+				<th colspan=2 valign="middle" bgcolor="C2C2C2">
 					<select id=year onchange='refreshCalendar()'>
 						<c:forEach var="i" begin="${year-50 }" end="${year+50 }" step="1">
 							<option${i==year?" selected":" "}>${i }</option>							

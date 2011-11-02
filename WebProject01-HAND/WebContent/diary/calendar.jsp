@@ -61,7 +61,7 @@ function openList(year, month, day){
 </head>
 <body>
 	<center>
-		<table width=100% height=480 border=1 bordercolor=#ccccff>
+		<table width=100% height=350 border=1 bordercolor=#ccccff>
 			<tr>
 			<c:forEach var="dow" items="${week }" varStatus="weekth">
 				<th width=14% height=5% bgcolor=#E8E8E8>
