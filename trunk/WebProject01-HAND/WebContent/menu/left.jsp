@@ -32,11 +32,15 @@
 			</td>
 		</tr>
 		<tr>
-			<td align="center">
+			<td align=center >
 				<%-- 
 				<script src="http://widgetprovider.daum.net/view?url=http://widgetcfs1.daum.net/xml/3/widget/2011/01/26/17/13/4d3fd792c255e.xml&up_city=Seoul&up_color=aquamarine&&width=170&height=115&widgetId=1046&scrap=1" type="text/javascript"></script>
 				--%>				
-				<iframe src="http://bgm.music24.kr/weather/9.php"></iframe>
+				<%--<iframe scrolling="no" width=100% height=100% src="http://bgm.music24.kr/weather/9.php"></iframe> --%>
+				<%--<iframe scrolling="no" width=100% height=100% src="http://bgm.music24.kr/weather/9.php"></iframe> --%>
+				<DIV style="overflow: hidden; width:150; heigth:107">
+				<Embed src="http://freewiw.kweather.co.kr/freenal/flash/type_1.swf" 
+				flashVars="colorSet=1&dataPath=http://freewiw.kweather.co.kr/freenal/data/data9.txt" width=150 height=145></DIV>
 			</td>
 		</tr>
 		<tr>
