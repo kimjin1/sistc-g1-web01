@@ -41,6 +41,24 @@
 				<a href=../setup/setup.jsp target="main" ><img src=../image/edit1.png width=20 height=20 border=0>&nbsp;환경 설정</a>
 			</td>
 		</tr>
+		
+		<tr>
+		<td align=center>
+		<!-- background="../image/left_icon/facebook.png" -->
+			<a href="#" onclick="window.open('http://www.facebook.com', 'facebook', 'top=100px, left=100px, height=800px, width=800px')"><img src=../image/left_icon/facebook5.png border=0></a>
+		</td>
+		</tr>
+		<tr>
+			<td align=center> 
+		<a href="#" onclick="window.open('http://www.twitter.com', 'twitter', 'top=100px, left=100px, height=800px, width=800px')"><img src=../image/left_icon/twitter.png border=0></a>		
+			</td>
+		</tr>
+		
+		<tr>
+			<td align=center>
+		<a href="#" onclick="window.open('http://kr.youtube.com', 'youtube', 'top=100px, left=100px, height=800px, width=800px')"><img src=../image/left_icon/you_tube.png border=0></a>		
+			</td>
+		</tr>
 	</table>
 </body>
 </html>
