@@ -60,10 +60,13 @@
 	<td>
 	<table width=100% border=1>
 	<tr>
-		<td width=100 height=150><img src="<%=vo.getPath()%>"></td>
+		<td width=200 height=150><img src="../photo/upload/<%=vo.getFilename() %>"></td>
 	</tr>
 	<tr>
 		<td width=100 height=20><a href="content.jsp?no=<%=vo.getNo()%>"><%=vo.getContent() %></a></td>
+	</tr>
+	<tr>
+		<td width=100 height=20><%=vo.getPath() %></td>
 	</tr>
 	</table>
 	</td>		
