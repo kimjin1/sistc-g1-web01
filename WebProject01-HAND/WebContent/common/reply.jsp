@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <jsp:useBean id="dao" class="com.db.ReplyDAO" />
+
+
 <%
 	int flag=Integer.parseInt(request.getParameter("flag"));
 	int rootno=Integer.parseInt(request.getParameter("rootno"));
@@ -47,16 +49,18 @@ function openclose()
 	}
 }
 function delSelected(){
-	var check = del_frm.delnum;
-	var flag = false;
+	
+	var check = document.del_frm.delnum;
+	
+	var flg = false;
 	var i = 0;
 	for(i=0; i<check.length; i++){
 		if(check[i].checked==true){
-			flag = true;
+			flg = true;
 		}
 	}
-	if(flag==true){
-		del_frm.submit();
+	if(flg==true){
+		document.del_frm.submit();
 	}else{
 		alert("선택된 항목이 없습니다");		
 	}
@@ -74,14 +78,8 @@ function delSelected(){
 		 */
 		--%>
 
-		<table width=600 border=5 bordercolor=cccccc height=100>
-		<tr>
-		<td>
-			<a href="javascript:del()">
-	         <img src="../image/board/delete.jpg" border=0>
-	         </a>
-	         </td>
-		</tr>
+		<table width=450 border=0 bordercolor=cccccc height=100>
+		
 			<tr>
 				<td width=15% bgcolor=cccccc><a href="javascript:openclose()">답글쓰기</a></td>
 				<td align=left colspan=4 valign=top><textarea rows="5"
@@ -97,11 +95,18 @@ function delSelected(){
 			
 		</table>
 		</form>
-		<form method=post action="reply_delete.jsp " name="del_frm">
-		<table id="rep" width="600" border="0" style="display:none">
-
+		<form method=post action="../common/reply_delete.jsp " name="del_frm">
+		<table id="rep" width="400" border="0" style="display:none">
+		<tr>
+			<td>
+			<input type="hidden" name="rootno" value="<%=rootno%>">
+			<a href="javascript:delSelected()">
+	         <img src="../image/board/delete.jpg" border=0>
+	         </a>
+	         </td>
+		</tr>
 			<tr>
-				<th></th>
+				
 				<th></th>
 				<th></th>
 				<th></th>
@@ -113,9 +118,9 @@ function delSelected(){
                           
 			<tr id="re<%=vo.getNo()%>" height=15>
 							
-				<td width=10%><%=vo.getId()%> <input type=checkbox 
-                    name=delnum value="<%=vo.getNo()%>">
-                  <input type=hidden name=no value=<%=vo.getNo() %>>
+				<td width=10%><input type=hidden name=no value=<%=vo.getNo() %>>
+				<input type=checkbox name=delnum value="<%=vo.getNo()%>"><%=vo.getId()%> 
+                 
                     </td>
 		                          
 				<td width=70%><%=vo.getContent()%></td>

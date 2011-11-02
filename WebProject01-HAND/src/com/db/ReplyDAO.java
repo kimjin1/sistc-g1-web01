@@ -141,14 +141,18 @@ public class ReplyDAO {
 
 		}
 	//삭제 : 로그인해야 지운다,게시판주인은 지우게
-		public void delete(int no){
+		public void delete(int no, int rootno){
 			   try {
 				   getConnection();
 				   String sql="delete from p_reply where no=?";
 				   ps=conn.prepareStatement(sql);
 				   ps.setInt(1, no);
 				   ps.executeUpdate();
-				
+				   ps.close();
+				   sql = "update p_board set depth=depth-1 where no=?";
+				   ps=conn.prepareStatement(sql);
+				   ps.setInt(1, rootno);
+				   ps.executeUpdate();
 			} catch (Exception ex) {
 				System.out.println(ex.getMessage());
 			}finally{
