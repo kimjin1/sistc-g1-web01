@@ -32,8 +32,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td align=center>
+			<td align="center">
+				<%-- 
 				<script src="http://widgetprovider.daum.net/view?url=http://widgetcfs1.daum.net/xml/3/widget/2011/01/26/17/13/4d3fd792c255e.xml&up_city=Seoul&up_color=aquamarine&&width=170&height=115&widgetId=1046&scrap=1" type="text/javascript"></script>
+				--%>				
+				<iframe src="http://bgm.music24.kr/weather/9.php"></iframe>
 			</td>
 		</tr>
 		<tr>
