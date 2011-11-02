@@ -63,7 +63,7 @@ function Login(no,page,type){
 <center>
 
 
-	<table border=10 width="700" >
+	<table border=0 width="600" >
 	
      <tr>
      <td width=20%></td>
@@ -112,7 +112,7 @@ function Login(no,page,type){
      
      </table>
      
-	<table width=700 border=0 bordercolor=cccccc>
+	<table width=600 border=0 bordercolor=cccccc>
 	
 	
       <tr >
@@ -153,7 +153,7 @@ function Login(no,page,type){
      </table>
      <table border="0">
      <tr>      
-		<td width="300"valign="top">
+		<td width="200"valign="top">
          <% System.out.println(flag+":"+curNo);%>
 		<jsp:include page="<%=jsp %>"/>
         </td>
