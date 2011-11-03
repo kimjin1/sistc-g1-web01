@@ -92,8 +92,7 @@ function currentTime(){
 	<table border=0 width=100% height=100% bgcolor="white">
 		<tr>			
 			<td align="left" valign="top">			
-				<%--
-					출력해야할 항목
+				<%--					
 					체크박스, 일시, 제목, 버튼(모두체크, 삭제, 신규)
 				 --%>
 				 <table border=0 width=100% height=100%>

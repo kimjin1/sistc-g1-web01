@@ -5,12 +5,10 @@
 	String[] strWeek = {"일", "월", "화", "수", "목", "금", "토"};
 	request.setAttribute("week", strWeek);
 	
-	String id = (String)session.getAttribute("id");
-	
 	DiaryDAO dao = DiaryDAO.getInstance();
 	String strYear = request.getParameter("year");
 	String strMonth = request.getParameter("month");
-		 
+	String id = (String)session.getAttribute("id");	 
 	int year = Integer.parseInt(strYear);
 	int month = Integer.parseInt(strMonth);	
 	
@@ -29,7 +27,8 @@
 	request.setAttribute("offset", offset);	
 	request.setAttribute("endDate", endDate);
 	request.setAttribute("MonthlyEvent", MonthlyEvent);
-
+	request.setAttribute("year", year);	
+	request.setAttribute("month", month);
 	request.setAttribute("todayYear", todayYear);
 	request.setAttribute("todayMonth", todayMonth);
 	request.setAttribute("todayDate", todayDate);	
