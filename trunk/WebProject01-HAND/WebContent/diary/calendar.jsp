@@ -5,10 +5,12 @@
 	String[] strWeek = {"일", "월", "화", "수", "목", "금", "토"};
 	request.setAttribute("week", strWeek);
 	
+	String id = (String)session.getAttribute("id");
+	
 	DiaryDAO dao = DiaryDAO.getInstance();
 	String strYear = request.getParameter("year");
 	String strMonth = request.getParameter("month");
-	String id = (String)session.getAttribute("id");	 
+		 
 	int year = Integer.parseInt(strYear);
 	int month = Integer.parseInt(strMonth);	
 	
@@ -22,9 +24,15 @@
 	int startDate = 1;
 	int endDate = result[0];
 	int offset = result[1];
-
-	System.out.println(todayYear+"|"+todayMonth+"|"+todayDate);
+	
 	int MonthlyEvent[] = dao.getEventCount(id, strYear, strMonth);
+	request.setAttribute("offset", offset);	
+	request.setAttribute("endDate", endDate);
+	request.setAttribute("MonthlyEvent", MonthlyEvent);
+
+	request.setAttribute("todayYear", todayYear);
+	request.setAttribute("todayMonth", todayMonth);
+	request.setAttribute("todayDate", todayDate);	
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -75,10 +83,11 @@ function openList(year, month, day){
 </head>
 <body>
 	<center>
-		<table width=100% height=340 border=1 bgcolor="#ccccff">
+		<%-- 요일 글자 출력 --%>
+		<table width=100% height=350 border=1 bgcolor="#ccccff">
 			<tr>
 			<c:forEach var="dow" items="${week }" varStatus="weekth">
-				<th width=14% height=27 bgcolor=#E8E8E8>
+				<th width=14% height=10 bgcolor=#E8E8E8>
 					<c:choose>						
 						<c:when test="${weekth.getIndex() == 0}"><font color="red">${dow }</font></c:when>
 						<c:when test="${weekth.getIndex() == 6}"><font color="blue">${dow }</font></c:when>
@@ -86,89 +95,40 @@ function openList(year, month, day){
 					</c:choose>
 				</th>
 			</c:forEach>
-						
-			<%
-			for(int i=0; i<6; i++){
-			%>
-				<tr>
-			<%	
-				for(int j=0; j<7; j++){
-				%>
-					<td height=14% valign="top" bgcolor="white">					
-					<%
-					if(i==0 && j<offset-1){
-					%>
-						<table border=0 width=100% height=100%>
-						<tr><td height="30">&nbsp;</td></tr>						
-						</table>						
-					<%	
-					}else if(startDate <= endDate){
-					%>	
-						<table border=0 width=100% height=100%>	
-						<tr>
-						<td align="left" valign="top" height="10">
-						<a href="javascript:openList(<%=year%>,<%=month%>,<%=startDate%>)"> 
-						<b><%=startDate%></b>
-						&nbsp;													
-						</a>
-						<%
-						if(year==todayYear&&month==todayMonth&&startDate==todayDate){
-						%>
-							<img src="../image/diary/today_text.gif" border="0">
-						<%
-						}
-						%>						
-						</td>						
-						</tr>						
-					<%							
-						if(MonthlyEvent[startDate-1] != 0){
-						%>			
-							<tr><td valign="middle" height="20" background="../image/diary/note.png">
-							<%-- 				
-							<img src="../image/diary/note_edit.png" border="0" alt="일정이 <%=MonthlyEvent[startDate-1] %>건 있습니다 ">
-							--%>
-							<u>
-							<%=MonthlyEvent[startDate-1] %>
-							</u>						
-							</td></tr>
-							</table>															
-						<%	
-						}else{
-							%>
-							<tr><td height="20">&nbsp;</td></tr>
-							</table>
-							<%
-						}
-						startDate++;
-					}else{
-					%>
-						<table border=0 width=100% height=100%>
-						<tr><td height="30">&nbsp;</td></tr>						
-						</table>						
-					<%	
-					}
-					%>					
-					</td>
-				<%	
-				}
-			%>
-				</tr>
-			<%
-			}
-			%>				
-			<%-- JSTL로 전환 준비중
+			
+			<%-- 달력 출력 --%>		
+			<c:set var="startDate" value="1"/>
 			<c:forEach var="i" begin="0" end="5" step="1" varStatus="week">
 				<tr>
 				<c:forEach var="j" begin="0" end="6" step="1" varStatus="day">
-					<td>
-					<c:when test=""></c:when>
-					<c:when test=""></c:when>
-					<c:otherwise></c:otherwise>
+					<td height=50 valign="top" bgcolor="white">
+						<table width=100%>
+						<c:choose>							
+							<c:when test="${i==0 && j<offset-1}"><tr><td>&nbsp;</td></tr></c:when>
+							<c:otherwise>								
+								<c:if test="${startDate <= endDate }">
+									<tr><td valign="top" align="left">
+									<a href="javascript:openList(${year},${month},${startDate})">
+									<b>${startDate }</b>	
+									</a>
+									<c:if test="${year==todayYear&&month==todayMonth&&startDate==todayDate}">
+										&nbsp;&nbsp;<img src="../image/diary/today_text.gif" border="0">
+									</c:if>								
+									</td></tr>
+									<c:if test="${MonthlyEvent[startDate-1] != 0}">
+									<tr><td align="center" background="../image/diary/note.png">										
+										${MonthlyEvent[startDate-1] }										
+									</td></tr>
+									</c:if>	
+									<c:set var="startDate" value="${startDate+1 }"/>								
+								</c:if>																																
+							</c:otherwise>						
+						</c:choose>
+						</table>					
 					</td>
 				</c:forEach>
 				</tr>
-			</c:forEach>
-			--%>
+			</c:forEach>			
 		</table>
 	</center>					 				
 </body>
