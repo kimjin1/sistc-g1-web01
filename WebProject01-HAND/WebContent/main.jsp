@@ -1,49 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
-<%
-	request.setCharacterEncoding("euc-kr");
-
-	String type=request.getParameter("type");
-	if(type==null){
-	type="1";
-}
-
-	int no = Integer.parseInt(type);
-	String jsp="login.jsp";
-	switch(no){
-	//case 1: jsp="join.jsp"; break;
-	}
-	String id=(String)session.getAttribute("id");
-	String logJsp="";
-	if(id==null)
-		logJsp="login.jsp";
-	else
-		logJsp="logout.jsp";
-
-	//background="../image/login_image/log_bg.jpg"
-%>
-
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-
 </head>
-
 <body>
-	<table border=1 width=100% height=100% >
+<center>
+	<table border=0 width=665 height=405 cellspacing="0" scrolling="no">
 		<tr>
-			<td height=100% align=center valign=middle>
-				
-				<br><br><br><br><br><br><br><br>
-				<img src="image/fix.gif">
+			<td align="left" width=220 cellspacing=0 valign=top>
+				<img src="image/good.JPG" width=200 height=250>
+			</td>
+			<td valign=top align=left>
+			<font size="30" color="gray">
+			<b>Have A Nice Day </b></font><br>
+			<font size="20" color="violet">
+			<right><b>
+			영원히 살 것처럼 꿈을 꾸고, 내일 죽을 것처럼 오늘을 살아라.
+			</b>	
+			</right>
+			</font>
 			</td>
 		</tr>
+		<tr align="left" colspan=2>
+		
+		</tr>
 	</table>
+	
+</center>
+
 </body>
 </html>
