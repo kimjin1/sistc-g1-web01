@@ -8,13 +8,5 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  <context-param>
-  	<param-name>DB_URL</param-name>
-  	<param-value>jdbc:oracle:thin:@211.238.142.117:1521:ORCL</param-value>
-  </context-param>
-  <context-param>
-  	<param-name>DB_DRIVER</param-name>
-  	<param-value>oracle.jdbc.driver.oracleDriver</param-value>
-  </context-param>  
+  </welcome-file-list>  
 </web-app>

@@ -89,7 +89,7 @@ function currentTime(){
 <body onload="currentTime(); setInterval('currentTime()', 1000)">
 <center>
 	<form name="frm" method="post" action="../diary/delete_all.jsp">	
-	<table border=0 width=550 height=380 bgcolor="white">
+	<table border=0 width=500 height=250 bgcolor="white">
 		<tr>			
 			<td align="left" valign="top">			
 				<%--
@@ -134,13 +134,13 @@ function currentTime(){
 						 		<fmt:formatDate var="hm" value="${vo.getEvent_time() }" type="time" pattern="HH:mm"/>
 						 		${hm }						 		
 						 	</td>
-						 	<td width=60%>
+						 	<td width=50%>
 						 		&nbsp;
 						 		<a href="javascript:openClose(${vo.getNo() })">						 								 	
 								${vo.getSubject() }
 								</a>
 						 	</td>
-						 	<td align="center" width=20%>
+						 	<td align="center" width=30%>
 						 		<input type="button" value="수정" onclick="modifyEvent(${vo.getNo()})">
 						 		<input type="button" value="삭제" onclick="deleteEvent(${vo.getNo()})">						 		
 						 	</td>				 		
