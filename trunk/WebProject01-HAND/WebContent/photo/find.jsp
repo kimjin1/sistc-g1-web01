@@ -50,11 +50,11 @@ function open(id)
     <p>
     <p>
     <p>
-    <table border=5 width=800>
+    <table border=0 width=550>
      <tr>
       <td align=left>
        <a href="javascript:history.back()">
-       <img src="../image/board/main.gif" border=0>
+      
        </a>
       </td>
      </tr>
@@ -63,7 +63,7 @@ function open(id)
        if(count==0)
        {
     %>
-          <table border=0 width=800>
+          <table border=0 width=550>
            <tr>
             <td><font color=red><h2>검색결과가 없습니다</h2></font>
            </tr>
@@ -73,7 +73,7 @@ function open(id)
        else
        {
     %>
-    <table border=1	width=700>
+    <table border=1	width=550>
 	<tr>		
 	<%
 	int i = 0;
@@ -89,14 +89,13 @@ function open(id)
 	<td>
 	<table width=100% border=1>
 	<tr>
-		<td width=200 height=150><img src="../photo/upload/<%=vo.getFilename() %>"></td>
+		<td width=200 height=150><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg" %>"></td>
 	</tr>
 	<tr>
 		<td width=100 height=20><a href="content.jsp?no=<%=vo.getNo()%>"><%=vo.getContent() %></a></td>
 	</tr>
-	<tr>
-		<td width=100 height=20><%=vo.getPath() %></td>
-	</tr>
+	
+	
 	</table>
 	</td>		
 	<%
@@ -107,15 +106,15 @@ function open(id)
 	</table>
 	
 	
-	<table width=700>
+	<table width=550 border=0>
 	<tr>
 	<td>
-	<a href="photo_write.jsp"><img src="../image/Photo/write.jpg" align=left></a>
+	<a href="photo_write.jsp"><img src="../image/board/write.jpg" align=left border=0></a>
 	</td>
 	
 	 <td align=right>
         <select name=fs>
-         <option value=name>작성자</option>
+         <option value=name>내용</option>
          
         
         </select>

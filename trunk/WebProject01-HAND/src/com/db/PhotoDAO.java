@@ -256,7 +256,7 @@ public class PhotoDAO {
 				  //연결
 				  getConnection();
 				  //쿼리문장 where name like '%?%'
-				  String sql="select id,content,path,filename,filesize,regdate,flag,filetype from p_file "
+				  String sql="select no,id,content,path,filename,filesize,regdate,flag,filetype from p_file "
 						 +"where "+fs+" like '%'||?||'%'";
 				  ps=conn.prepareStatement(sql);
 				  ps.setString(1,ss);
@@ -264,14 +264,15 @@ public class PhotoDAO {
 				  while(rs.next())
 				  {
 					   PhotoVO vo=new PhotoVO();
-					   vo.setId(rs.getString(1));
-						  vo.setContent(rs.getString(2));
-						   vo.setPath(rs.getString(3));
-						  vo.setFilename(rs.getString(4));
-						  vo.setFilesize(rs.getInt(5));
-						  vo.setRegdate(rs.getDate(6));
-						  vo.setFlag(rs.getInt(7));
-						  vo.setFiletype(rs.getString(8));
+					   vo.setNo(rs.getInt(1));
+					   vo.setId(rs.getString(2));
+						  vo.setContent(rs.getString(3));
+						   vo.setPath(rs.getString(4));
+						  vo.setFilename(rs.getString(5));
+						  vo.setFilesize(rs.getInt(6));
+						  vo.setRegdate(rs.getDate(7));
+						  vo.setFlag(rs.getInt(8));
+						  vo.setFiletype(rs.getString(9));
 						  
 					   list.add(vo); 
 				  }
@@ -295,7 +296,7 @@ public class PhotoDAO {
 			   {
 				   //연결
 				   getConnection();
-				   //그룹번호를 만들어 준다
+		
 				 
 				   //추가
 				  String sql="insert into p_file values(p_file_no_seq.nextVal,?,?,?,SYSDATE,?,?,?,1)";
@@ -366,7 +367,82 @@ public class PhotoDAO {
 		   }
 		  
 		   
+		   //수정
 		   
+		 //글 수정 data
+		   public PhotoVO getUpdateData( int no)
+		   {
+			   PhotoVO vo=new PhotoVO();
+			   try
+			   {
+				  getConnection();
+				  String sql="select id,content from p_file where no=?";
+				 
+				  ps=conn.prepareStatement(sql);
+				  ps.setInt(1, no);
+				  ResultSet rs=ps.executeQuery();
+				  rs.next();
+				  vo.setNo(no);
+				  vo.setId(rs.getString(1));
+				  vo.setContent(rs.getString(2));
+				 
+				  rs.close();
+				  
+			   }catch(Exception ex)
+			   {
+				  System.out.println(ex.getMessage());   
+			   }
+			   finally
+			   {
+				  disConnection();
+			   }
+			   return vo;
+		   }
+		   
+		   //실제 수정
+		   public boolean update(PhotoVO vo,String pw)
+		   {
+			  boolean bCheck=false;
+			   try
+			   {
+				 
+				  getConnection();
+				  String sql="select pw from p_person "
+						  +"where id=?";
+				  ps=conn.prepareStatement(sql);
+				  ps.setString(1, vo.getId());
+				  ResultSet rs=ps.executeQuery();
+				  rs.next();
+				  String db_pw=rs.getString(1);
+				  rs.close();
+				  if(db_pw.equals(pw))
+				  {
+					  bCheck=true;
+					 
+					
+				 sql="update p_file set content=? where no=?";
+					 
+					 ps=conn.prepareStatement(sql);
+				
+					 ps.setString(1, vo.getContent());
+					
+					 ps.setInt(2,vo.getNo());
+					 ps.executeUpdate();
+				  }
+				  else{
+					  bCheck=false;
+				  }
+				  
+			   }catch(Exception ex)
+			   {
+				  System.out.println(ex.getMessage());
+			   }
+			   finally
+			   {
+				  disConnection(); 
+			   }
+			   return bCheck;
+		   }
 		   
 }
 
