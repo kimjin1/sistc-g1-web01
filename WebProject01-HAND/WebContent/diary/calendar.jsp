@@ -10,13 +10,16 @@
 	String strMonth = request.getParameter("month");
 	String id = (String)session.getAttribute("id");	 
 	int year = Integer.parseInt(strYear);
-	int month = Integer.parseInt(strMonth);
+	int month = Integer.parseInt(strMonth);	
 	
 	DiaryCalendar myDC = DiaryCalendar.getInstance();	
 	int result[] = myDC.getTodayCalendar(year, month);
 	int startDate = 1;
 	int endDate = result[0];
 	int offset = result[1];
+	int todayDate = myDC.getCurrentDay();
+	int todayYear = myDC.getCurrentYear();
+	int todayMonth = myDC.getCurrentMonth();
 	int MonthlyEvent[] = dao.getEventCount(id, strYear, strMonth);
 %>
     
@@ -26,6 +29,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
+	table {
+		table-layout: fixed;
+	}	
 	a{
 		text-decoration:none;
 		color:black;
@@ -49,8 +55,8 @@ function openList(year, month, day){
 			content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
 			player:"iframe",
 			title:year+"."+month+"."+day+" 일정",
-			width:"620",
-			height:"430",
+			width:"550",
+			height:"300",
             options:{  
                 onClose: function(){ parent.location.reload(true); }               
             } 			
@@ -61,7 +67,7 @@ function openList(year, month, day){
 </head>
 <body>
 	<center>
-		<table width=100% height=350 border=1 bordercolor=#ccccff>
+		<table width=100% height=340 border=1 bordercolor=#ccccff>
 			<tr>
 			<c:forEach var="dow" items="${week }" varStatus="weekth">
 				<th width=14% height=5% bgcolor=#E8E8E8>
@@ -92,16 +98,26 @@ function openList(year, month, day){
 					}else if(startDate <= endDate){
 					%>	
 						<table border=0 width=100% height=100%>	
-						<tr><td align="left">
+						<tr>
+						<td align="left" valign="top">
 						<a href="javascript:openList(<%=year%>,<%=month%>,<%=startDate%>)"> 
-						<b><%=startDate%></b>													
+						<b><%=startDate%></b>
+						&nbsp;													
 						</a>
-						</td></tr>						
+						<%
+						if(startDate==todayDate){
+						%>
+							<img src="../image/diary/today.gif" border="0">
+						<%
+						}
+						%>						
+						</td>						
+						</tr>						
 					<%							
 						if(MonthlyEvent[startDate-1] != 0){
 						%>			
 							<tr><td valign="middle">				
-							<img src="../image/diary/note_edit.png" border="0" alt="일정이 <%=MonthlyEvent[startDate-1] %>건 있습니다 "> 
+							<img src="../image/diary/note_edit.png" border="0" alt="일정이 <%=MonthlyEvent[startDate-1] %>건 있습니다 ">
 							<%=MonthlyEvent[startDate-1] %>							
 							</td></tr>
 							</table>															
