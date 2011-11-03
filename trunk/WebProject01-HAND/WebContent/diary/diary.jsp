@@ -33,7 +33,7 @@
 <body>
 	<center>
 		<!-- 달력 부분 -->
-		<table width=90% height=405 cellspacing=0 cellpadding=0 border=1>
+		<table width=90% height=408 cellspacing=0 cellpadding=0 border=1>
 			<tr>
 				<th colspan=2 valign="middle" bgcolor="C2C2C2">
 					<select id=year onchange='refreshCalendar()'>
@@ -53,7 +53,7 @@
 			</tr>
 			<tr>	
 				<td width=100% height=90%>
-				<iframe marginwidth=0 marginheight=0 src="../diary/calendar.jsp?year=<%=year%>&month=<%=month%>" id="calendar">		
+				<iframe frameborder="0" marginwidth=0 marginheight=0 src="../diary/calendar.jsp?year=<%=year%>&month=<%=month%>" id="calendar">		
 					<!-- 달력 출력 부분 -->
 				</iframe>															
 				</td>

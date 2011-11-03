@@ -20,16 +20,16 @@ function event_write(){
 </head>
 <body>
 	<center>
-		<table border=0 width=400 height=380 bgcolor="white">
+		<table border=0 width=80% height=100% bgcolor="white">
 			<tr>
 				<td valign="top">
 					<form method=post action="../diary/event_write_ok.jsp" name="frm">
 					<table width=100% height=100% border=0>
 						<tr>
 							<td colspan=2 height=10% align="center">
-								<%-- 년,월,일까지 자동표시 시, 분을 선택 --%>
-							${param.year }. ${param.month }. ${param.day }.
-							&nbsp;&nbsp;&nbsp;&nbsp;
+							<%-- 년,월,일까지 자동표시 시, 분을 선택 --%>
+							${param.year }년 ${param.month }월 ${param.day }일
+							&nbsp;&nbsp;
 							<input type="hidden" name="year" value="${param.year }">  	 
 							<input type="hidden" name="month" value="${param.month }">
 							<input type="hidden" name="day" value="${param.day }">
@@ -52,13 +52,13 @@ function event_write(){
 						<tr>
 							<td width=20%>제목</td>
 							<td width=80%>
-								<input type="text" name="subject" size="45">
+								<input type="text" name="subject" size="48">
 							</td>
 						</tr>
 						<tr>
 							<td width=20% valign="top">내용</td>
 							<td width=80%>
-								<textarea rows=16 cols=43 name=content></textarea>
+								<textarea rows=9 cols=46 name=content></textarea>
 							</td>
 						</tr>
 						<tr>
