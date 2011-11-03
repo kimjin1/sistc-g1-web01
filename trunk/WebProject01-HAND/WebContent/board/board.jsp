@@ -16,6 +16,7 @@
      case 4: jsp="../board/update.jsp";break;
      case 5: jsp="../board/delete.jsp";break;
      case 6: jsp="../common/reply.jsp";break;
+     case 7: jsp="../common/reply_delete.jsp";break;
 
      }
 %>
