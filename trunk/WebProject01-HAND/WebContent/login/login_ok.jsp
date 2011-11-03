@@ -8,9 +8,7 @@
     //DB
     MemberDAO dao=MemberDAO.newInstance();
     String result=dao.isLogin(id,pw);
-    String temp[] = result.split(":");
-    String name = temp[0];
-    String email = temp[1];		
+
     int admin=dao.isAdmin(id);
     
     
@@ -32,6 +30,9 @@
     }
     else
     {
+        String temp[] = result.split(":");
+        String name = temp[0];
+        String email = temp[1];		
         session.setAttribute("id", id);
         session.setAttribute("name", name);
         session.setAttribute("admin", admin);
