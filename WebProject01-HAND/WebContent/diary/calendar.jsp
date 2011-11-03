@@ -12,14 +12,18 @@
 	int year = Integer.parseInt(strYear);
 	int month = Integer.parseInt(strMonth);	
 	
-	DiaryCalendar myDC = DiaryCalendar.getInstance();	
+	DiaryCalendar myDC = DiaryCalendar.getInstance();
+	
+	int todayDate = myDC.getCurrentDay();
+	int todayYear = myDC.getCurrentYear();
+	int todayMonth = myDC.getCurrentMonth();
+	
 	int result[] = myDC.getTodayCalendar(year, month);
 	int startDate = 1;
 	int endDate = result[0];
 	int offset = result[1];
-	int todayDate = myDC.getCurrentDay();
-	int todayYear = myDC.getCurrentYear();
-	int todayMonth = myDC.getCurrentMonth();
+
+	System.out.println(todayYear+"|"+todayMonth+"|"+todayDate);
 	int MonthlyEvent[] = dao.getEventCount(id, strYear, strMonth);
 %>
     
@@ -39,6 +43,10 @@
 	a:hover{
 		text-decoration:underline;
 		color:orange;
+	}
+	td{
+		background-repeat: no-repeat;
+		background-position: center;
 	}	
 </style>
 <link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
@@ -67,10 +75,10 @@ function openList(year, month, day){
 </head>
 <body>
 	<center>
-		<table width=100% height=340 border=1 bordercolor=#ccccff>
+		<table width=100% height=340 border=1 bgcolor="#ccccff">
 			<tr>
 			<c:forEach var="dow" items="${week }" varStatus="weekth">
-				<th width=14% height=5% bgcolor=#E8E8E8>
+				<th width=14% height=27 bgcolor=#E8E8E8>
 					<c:choose>						
 						<c:when test="${weekth.getIndex() == 0}"><font color="red">${dow }</font></c:when>
 						<c:when test="${weekth.getIndex() == 6}"><font color="blue">${dow }</font></c:when>
@@ -86,28 +94,27 @@ function openList(year, month, day){
 			<%	
 				for(int j=0; j<7; j++){
 				%>
-					<td height=14% valign="top">					
+					<td height=14% valign="top" bgcolor="white">					
 					<%
 					if(i==0 && j<offset-1){
 					%>
 						<table border=0 width=100% height=100%>
-						<tr><td>&nbsp;</td></tr>
-						<tr><td>&nbsp;</td></tr>
+						<tr><td height="30">&nbsp;</td></tr>						
 						</table>						
 					<%	
 					}else if(startDate <= endDate){
 					%>	
 						<table border=0 width=100% height=100%>	
 						<tr>
-						<td align="left" valign="top">
+						<td align="left" valign="top" height="10">
 						<a href="javascript:openList(<%=year%>,<%=month%>,<%=startDate%>)"> 
 						<b><%=startDate%></b>
 						&nbsp;													
 						</a>
 						<%
-						if(startDate==todayDate){
+						if(year==todayYear&&month==todayMonth&&startDate==todayDate){
 						%>
-							<img src="../image/diary/today.gif" border="0">
+							<img src="../image/diary/today_text.gif" border="0">
 						<%
 						}
 						%>						
@@ -116,15 +123,19 @@ function openList(year, month, day){
 					<%							
 						if(MonthlyEvent[startDate-1] != 0){
 						%>			
-							<tr><td valign="middle">				
+							<tr><td valign="middle" height="20" background="../image/diary/note.png">
+							<%-- 				
 							<img src="../image/diary/note_edit.png" border="0" alt="일정이 <%=MonthlyEvent[startDate-1] %>건 있습니다 ">
-							<%=MonthlyEvent[startDate-1] %>							
+							--%>
+							<u>
+							<%=MonthlyEvent[startDate-1] %>
+							</u>						
 							</td></tr>
 							</table>															
 						<%	
 						}else{
 							%>
-							<tr><td>&nbsp;</td></tr>
+							<tr><td height="20">&nbsp;</td></tr>
 							</table>
 							<%
 						}
@@ -132,8 +143,7 @@ function openList(year, month, day){
 					}else{
 					%>
 						<table border=0 width=100% height=100%>
-						<tr><td>&nbsp;</td></tr>
-						<tr><td>&nbsp;</td></tr>
+						<tr><td height="30">&nbsp;</td></tr>						
 						</table>						
 					<%	
 					}

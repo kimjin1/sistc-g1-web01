@@ -40,7 +40,7 @@ function event_modify(){
 </head>
 <body>
 	<center>
-		<table border=0 width=400 height=380 bgcolor="white">
+		<table border=0 width=80% height=100% bgcolor="white">
 			<tr>
 				<td valign="top">
 					<form method=post action="../diary/event_modify_ok.jsp" name="frm">
@@ -48,8 +48,8 @@ function event_modify(){
 						<tr>
 							<td colspan=2 height=10% align="center">
 								<%-- 년,월,일까지 자동표시 시, 분을 선택 --%>
-							<%=year %>. <%=month %>. <%=day %>.
-							&nbsp;&nbsp;&nbsp;&nbsp;
+							${param.year }년 ${param.month }월 ${param.day }일
+							&nbsp;&nbsp;
 							<input type="hidden" name="no" value="<%=no%>">
 							<input type="hidden" name="year" value="<%=year%>">  	 
 							<input type="hidden" name="month" value="<%=month%>">
@@ -73,13 +73,13 @@ function event_modify(){
 						<tr>
 							<td width=20%>제목</td>
 							<td width=80%>
-								<input type="text" name="subject" size="45" value=<%=dVO.getSubject() %>>
+								<input type="text" name="subject" size="48" value=<%=dVO.getSubject() %>>
 							</td>
 						</tr>
 						<tr>
 							<td width=20% valign="top">내용</td>
 							<td width=80%>
-								<textarea rows=16 cols=43 name=content><%=dVO.getContent() %></textarea>
+								<textarea rows=9 cols=46 name=content><%=dVO.getContent() %></textarea>
 							</td>
 						</tr>
 						<tr>

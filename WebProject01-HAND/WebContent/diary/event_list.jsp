@@ -89,7 +89,7 @@ function currentTime(){
 <body onload="currentTime(); setInterval('currentTime()', 1000)">
 <center>
 	<form name="frm" method="post" action="../diary/delete_all.jsp">	
-	<table border=0 width=500 height=250 bgcolor="white">
+	<table border=0 width=100% height=100% bgcolor="white">
 		<tr>			
 			<td align="left" valign="top">			
 				<%--

@@ -8,10 +8,9 @@ public class DiaryCalendar {
 	private static DiaryCalendar instance;
 	
 	private DiaryCalendar() {}
-	
+	private Calendar currentDay = Calendar.getInstance();
 	private Calendar stDay = Calendar.getInstance();
-	private Calendar edDay = Calendar.getInstance();
-	private int today = stDay.get(Calendar.DAY_OF_MONTH);
+	private Calendar edDay = Calendar.getInstance();	
 	
 	public static DiaryCalendar getInstance(){
 		if(instance==null){
@@ -36,18 +35,20 @@ public class DiaryCalendar {
 		
 	public int getCurrentYear(){
 		int year = 0;
-		year = stDay.get(Calendar.YEAR);
+		year = currentDay.get(Calendar.YEAR);
 		return year;
 	}
 	
 	public int getCurrentMonth(){
 		int month = 0;
-		month = stDay.get(Calendar.MONTH)+1;
+		month = currentDay.get(Calendar.MONTH)+1;
 		return month;
 	}
 	
 	public int getCurrentDay(){
-		return today;
+		int day = 0;
+		day = currentDay.get(Calendar.DAY_OF_MONTH);
+		return day;
 	}
 	
 	public Date valueToDate(int[] ymdhm){
