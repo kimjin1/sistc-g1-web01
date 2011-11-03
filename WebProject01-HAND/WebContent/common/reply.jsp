@@ -6,6 +6,9 @@
 
 
 <%
+	String id=(String)session.getAttribute("id");
+	String strPage=request.getParameter("page");
+	String strNo=request.getParameter("no");
 	int flag=Integer.parseInt(request.getParameter("flag"));
 	int rootno=Integer.parseInt(request.getParameter("rootno"));
 	
@@ -22,6 +25,11 @@
 function send()
 {
 	var f=document.frm;
+	var id = "<%=id%>";
+	if(id=="null"){
+		alert("로그인 하세요");
+		return;
+	}
 	if(f.content.value=="")
 	{
 		alert("내용을 입력하세요");
@@ -33,6 +41,7 @@ function send()
 	f.submit();
 	
 } 
+
 </script>
 <script type="text/javascript">
 function openclose()
@@ -49,7 +58,11 @@ function openclose()
 	}
 }
 function delSelected(){
-	
+	var num = <%=list.size()%>
+	if(num==0){
+		alert("답글이 없습니다.");
+		return;
+	}
 	var check = document.del_frm.delnum;
 	
 	var flg = false;
@@ -64,6 +77,8 @@ function delSelected(){
 	}else{
 		alert("선택된 항목이 없습니다");		
 	}
+	
+		
 }
 </script>
 </head>
@@ -79,9 +94,11 @@ function delSelected(){
 		--%>
 
 		<table width=450 border=0 bordercolor=cccccc height=100>
-		
 			<tr>
-				<td width=15% bgcolor=cccccc><a href="javascript:openclose()">답글쓰기</a></td>
+				<td align="left" width=20% bgcolor=cccccc><a href="javascript:openclose()">답글쓰기</a></td>
+			</tr>
+			<tr>
+				
 				<td align=left colspan=4 valign=top><textarea rows="5"
 						cols="85" name=content></textarea>
 				<input type="hidden" name="id" value="<%=session.getAttribute("id")%>">
@@ -89,7 +106,7 @@ function delSelected(){
 				<input type="hidden" name="rootno" value="<%=rootno%>">
 						</td>
 						
-				<td width=15% align=right><input type=button value=등록 size=20 onclick="send()">
+               	<td width=15% align=right><input type=button value=등록 size=20 onclick="send()">
 				</td>
 			</tr>
 			

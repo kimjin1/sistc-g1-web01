@@ -60,7 +60,7 @@ public class ReplyDAO {
 	//출력
 	   //게시물 전체 출력
 	
-	   public ArrayList<ReplyVO> getReplyData(int flag, int rootno)
+	   public ArrayList<ReplyVO> getReplyData( int flag, int rootno)
 	   {
 		   
 		   ArrayList<ReplyVO> list=new ArrayList<ReplyVO>();
@@ -69,11 +69,12 @@ public class ReplyDAO {
 			   //연결
 			   getConnection();
 			   //쿼리문장
-			   String sql="select no,id,rootno,content,regdate,flag from p_reply where flag=? and rootno=? order by no desc";
+			   String sql="select no,id,rootno,content,regdate,flag from p_reply where flag=? and rootno=?  order by no desc";
 			   //쿼리실행=결과값 : 오라클에서 데이터 10개씩(PL/SQL)
 			   ps=conn.prepareStatement(sql);
 			   ps.setInt(1, flag);
 			   ps.setInt(2, rootno);
+			  
 			   ResultSet rs=ps.executeQuery();
    		 			 
 			   while(rs.next())

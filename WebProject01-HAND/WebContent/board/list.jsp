@@ -18,7 +18,7 @@
 	if(strPage==null)
 		strPage="1";
 	curpage=Integer.parseInt(strPage);
-	ArrayList<BoardVO> list=dao.getBoardData(curpage);
+	ArrayList<BoardVO> list=dao.getBoardData(id,curpage);
 	totalpage=dao.getTotalPage();
 	int count=dao.getBoardCount();
 	count=count-((curpage*10)-10);
