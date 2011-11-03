@@ -23,8 +23,7 @@ function send()
 </head>
 <body>
    <center>
-    <p>
-    <img src="../include/image/title.gif">
+
     <p>
     <!-- 데이터 전송 -->
     <form method=post action="photo_write_ok.jsp" 

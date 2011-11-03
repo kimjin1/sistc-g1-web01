@@ -5,7 +5,7 @@
    //게시물 번호
    String strNo=request.getParameter("no");
 	String strPage = request.getParameter("page");
-System.out.println(strNo);
+
    PhotoVO vo= 
 		   dao.getContent(Integer.parseInt(strNo));
    
@@ -19,9 +19,7 @@ System.out.println(strNo);
 </head>
 <body>
     <center>
-     <p>
-     <img src="../include/image/title.gif" width=600 height=50>
-     <p>
+    
      <table width=600 border=1 bordercolor=#ccccff>
      
     
@@ -42,7 +40,12 @@ System.out.println(strNo);
          }
       %>
       <tr>
-        <td align=left colspan=4 valign=top height=200>
+      	<td>
+      	<img src="../photo/upload/<%=vo.getFilename()%>">
+      	</td>
+      </tr>
+      <tr>
+        <td align=left colspan=4 valign=top height=50>
          <pre><%=vo.getContent() %></pre>
         </td>
       </tr>
@@ -50,7 +53,7 @@ System.out.println(strNo);
      <table border=0 width=600>
       <tr>
        <td align=right>
-        <a href="#">
+        <a href="update.jsp?no=<%=vo.getNo()%>&page=<%=strPage%>">
         <img src="../image/board/update.jpg" border=0>
         </a>
         <a href="delete.jsp?no=<%=vo.getNo()%>&page=<%=strPage%>">

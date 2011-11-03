@@ -13,6 +13,7 @@
 	String id=(String)session.getAttribute("id"); 
 	String strPage=request.getParameter("page");
 	String strNo=request.getParameter("no"); 
+	
 	if(strPage==null)
 		strPage="1"; 
 	curpage=Integer.parseInt(strPage);
@@ -84,13 +85,11 @@ function openPhoto(no){
 	<td>
 	<table width=100% border=1>
 	<tr>
-		<td width=100 height=80><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>"></td>
+		<td width=100 height=80><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>"><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>" border=0></a></td>
 	</tr>
 	<tr>
-		<td width=50 height=10><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>"><%=vo.getContent() %></a></td>		
-		<%--
-		 <td width=50 height=10><a href="javascript:openPhoto(<%=vo.getNo()%>)"><%=vo.getContent() %></a></td>
-		 --%>
+		<td width=100 height=10><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>"><%=vo.getContent() %></a></td>		
+		
 	</tr>
 	</table>
 	</td>		
@@ -118,6 +117,7 @@ function openPhoto(no){
         </select>
         <input type=text name=ss size=10>
         <input type=hidden name=page value=<%=curpage %>>
+        <input type=hidden name=no value=<%=strNo %>>
        <input type=button value=°Ë»ö onclick=find()>
        </td>
        </tr>
