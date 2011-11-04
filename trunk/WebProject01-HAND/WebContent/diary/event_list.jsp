@@ -44,17 +44,19 @@ function deleteEvent(no){
 	self.location.href= url;
 }
 function selectAll(){
-	var chkall = frm.chkall;	
-	var check = frm.chklist;
+	var chkall = document.frm.chkall;	
+	var check = document.frm.chklist;
+		
+	if(check=="undefined"){
+		alert("안됨");
+	}
 	var i = 0;
 	if(chkall.checked==true){		
 		for(i=0; i<check.length; i++){
-			alert(check.length);
 			check[i].checked = true;				
 		}
-	}else{		
-		for(i=0; i<check.length; i++){
-			alert(check.length);
+	}else{				
+		for(i=0; i<check.length; i++){						
 			check[i].checked = false;			
 		}		
 	}	
@@ -91,15 +93,15 @@ function currentTime(){
 <body onload="currentTime(); setInterval('currentTime()', 1000)">
 <center>
 	<form name="frm" method="post" action="../diary/delete_all.jsp">	
-	<table border=0 width=100% height=100% bgcolor="white">
+	<table border=0 width="100%" height="100%" bgcolor="white">
 		<tr>			
 			<td align="left" valign="top">			
 				<%--					
 					체크박스, 일시, 제목, 버튼(모두체크, 삭제, 신규)
 				 --%>
-				 <table border=0 width=100% height=100%>
+				 <table border=0 width="100%" height="100%">
 				 	<tr>
-				 		<th width=10%>
+				 		<th width="10%">
 				 			<input type="checkbox" name="chkall" onclick="selectAll()">				 			
 				 		</th>
 				 		<th width=70% align="left" colspan=2>
@@ -116,7 +118,7 @@ function currentTime(){
 							<a href="javascript:delSelected()">지난 일정삭제</a>
 							--%>
 				 		</th>				 		
-				 		<th width=20% align="right">				 			
+				 		<th width="20%" align="right">				 			
 				 			<input type="text" name="clock" readonly="readonly" size=10 align="middle" alt="현재시간" style="border: none">				 			
 				 		</th>				 			
 				 	</tr>
@@ -128,27 +130,27 @@ function currentTime(){
 				 	<%-- 일정 목록 출력 부분 --%>
 				 	<c:forEach var="vo" items="<%=dList%>" varStatus="DiaryVO">
 					 	<tr>				 	
-						 	<td align="center" width=10%>
+						 	<td align="center" width="10%">
 						 		<input type="checkbox" name="chklist" value="${vo.getNo() }">
 						 	</td>
-						 	<td align="center" width=10%>
+						 	<td align="center" width="10%">
 						 		<fmt:formatDate var="hm" value="${vo.getEvent_time() }" type="time" pattern="HH:mm"/>
 						 		${hm }						 		
 						 	</td>
-						 	<td width=50%>
+						 	<td width="50%">
 						 		&nbsp;
 						 		<a href="javascript:openClose(${vo.getNo() })">						 								 	
 								${vo.getSubject() }
 								</a>
 						 	</td>
-						 	<td align="center" width=30%>
+						 	<td align="center" width="30%">
 						 		<input type="button" value="수정" onclick="modifyEvent(${vo.getNo()})">
 						 		<input type="button" value="삭제" onclick="deleteEvent(${vo.getNo()})">						 		
 						 	</td>				 		
 					 	</tr>
 					 	<tr id="con${vo.getNo() }" style="display: none">
-					 		<td width=10%>&nbsp;</td>
-					 		<td width=10%>&nbsp;</td>
+					 		<td width="10%">&nbsp;</td>
+					 		<td width="10%">&nbsp;</td>
 					 		<td colspan=2 width=80%>
 					 			<%-- 
 					 			<textarea rows="5" cols="70">${vo.getContent() }</textarea>
@@ -157,7 +159,7 @@ function currentTime(){
 					 		</td>					 		
 					 	</tr>					 
 					 	<tr>
-					 		<td colspan=4>
+					 		<td colspan="4">
 					 			<hr>
 					 		</td>
 					 	</tr>	
