@@ -18,12 +18,7 @@
 	case 2: jsp = "login/join.jsp";		
 		break;
 	}
-	
-	String size="auto";
-	if(jsp.equals("main.jsp"))
-	{
-		size="no";
-	}
+
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -97,7 +92,9 @@
 			<table cellpadding="7" border=0 width=705 height=445 background="image/main_bg/main_bg4.png">
 			<tr><td height=425 valign="top">
 			<%--<jsp:include page="<%=jsp %>"></jsp:include> --%>
-			<iframe scrolling="<%=size %>" src="<%=jsp %>" name="main" frameborder="0"></iframe> 
+			<iframe scrolling="auto" src="<%=jsp %>" name="main" frameborder="0">
+			
+			</iframe> 
 			</td></tr>
 			</table>
 			</center>

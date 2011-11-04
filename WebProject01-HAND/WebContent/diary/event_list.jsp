@@ -48,11 +48,13 @@ function selectAll(){
 	var check = frm.chklist;
 	var i = 0;
 	if(chkall.checked==true){		
-		for(i=0; i<check.length; i++){			
+		for(i=0; i<check.length; i++){
+			alert(check.length);
 			check[i].checked = true;				
 		}
 	}else{		
-		for(i=0; i<check.length; i++){			
+		for(i=0; i<check.length; i++){
+			alert(check.length);
 			check[i].checked = false;			
 		}		
 	}	
