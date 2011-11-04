@@ -43,11 +43,13 @@
 				flashVars="colorSet=1&dataPath=http://freewiw.kweather.co.kr/freenal/data/data9.txt" width=150 height=145></DIV>
 			</td>
 		</tr>
+		<%--
 		<tr>
 			<td align=center>
 				<a href=../setup/setup.jsp target="main" ><img src=../image/edit1.png width=20 height=20 border=0>&nbsp;환경 설정</a>
 			</td>
 		</tr>
+		 --%>
 		<tr>
 		<td>
 			&nbsp;

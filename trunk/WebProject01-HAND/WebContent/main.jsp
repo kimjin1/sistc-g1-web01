@@ -11,14 +11,14 @@
 	<table border=0 width=665 height=405 cellspacing="0" scrolling="no">
 		<tr>
 			<td align="left" width=220 cellspacing=0 valign=top>
-				<img src="image/good.JPG" width=200 height=250>
+				<img src="image/main_bg.png" width=705 height=445 >
 			</td>
 			<td valign=top align=left>
 			<font size="30" color="gray">
-			<b>Have A Nice Day </b></font><br>
+		<%--	<b>Have A Nice Day </b></font><br> --%>
 			<font size="20" color="violet">
 			<right><b>
-			영원히 살 것처럼 꿈을 꾸고, 내일 죽을 것처럼 오늘을 살아라.
+			<%--영원히 살 것처럼 꿈을 꾸고, 내일 죽을 것처럼 오늘을 살아라. --%>
 			</b>	
 			</right>
 			</font>
