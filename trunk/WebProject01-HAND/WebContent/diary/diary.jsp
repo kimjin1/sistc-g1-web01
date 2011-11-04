@@ -33,7 +33,29 @@
 <body>
 	<center>
 		<!-- 달력 부분 -->
-		<table width=90% height=408 cellspacing=0 cellpadding=0 border=1>
+		<table border=0 width=100%>		
+			<tr>			
+			<td width=5%>
+				<%-- 
+				<table border=0>
+				<tr>
+					<td>△</td><td>▽</td>
+				</tr>
+				<tr>
+				<td colspan=2>			
+				<select id=year onchange='refreshCalendar()'>
+					<c:forEach var="i" begin="${year-50 }" end="${year+50 }" step="1">
+						<option${i==year?" selected":" "}>${i }</option>							
+					</c:forEach>
+				</select>			
+				</td>
+				</tr>				
+				<tr><td colspan=2>년</td></tr>				
+				</table>
+				--%>							
+			</td>
+			<td width=90%>
+		<table width=100% height=408 cellspacing=0 cellpadding=0 border=0>
 			<tr>
 				<th colspan=2 valign="middle" bgcolor="C2C2C2">
 					<select id=year onchange='refreshCalendar()'>
@@ -57,6 +79,28 @@
 					<!-- 달력 출력 부분 -->
 				</iframe>															
 				</td>
+			</tr>
+		</table>
+			</td>
+			<td width=5%>
+				<%-- 
+				<table border=0>
+				<tr>
+					<td>△</td><td>▽</td>
+				</tr>
+				<tr>
+				<td colspan=2>
+				<select id=month onchange='refreshCalendar()' >						
+					<c:forEach var="i" begin="1" end="12" step="1">
+						<option${i==month?" selected":" " }>&nbsp;&nbsp;${i }</option>
+					</c:forEach>
+				</select>
+				</td>
+				</tr>				
+				<tr><td colspan=2>월</td></tr>				
+				</table>
+				--%>			
+			</td>
 			</tr>
 		</table>
 	</center>
