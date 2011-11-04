@@ -62,17 +62,20 @@ public class PhotoDAO {
 		}
 		
 		  //게시물 전체 출력
-		   public ArrayList<PhotoVO> getPhotoData(int page)
+		   public ArrayList<PhotoVO> getPhotoData(String id,int page)
 		   {
 			   ArrayList<PhotoVO> list=new ArrayList<PhotoVO>();
 			   try
 			   {
+	   
+		 if(id!=null){
 				   //연결
 				   getConnection();
 				   //쿼리문장
-				   String sql="select no,id,content,regdate,filename,filesize,filetype,path from p_file order by no desc";
+				   String sql="select no,id,content,regdate,filename,filesize,filetype,path from p_file where id like ? order by no desc";
 				   //쿼리실행=결과값 : 오라클에서 데이터 10개씩(PL/SQL)
 				   ps=conn.prepareStatement(sql);
+				   ps.setString(1, id);
 				   ResultSet rs=ps.executeQuery();
 				   
 				   //페이지별 출력
@@ -100,6 +103,42 @@ public class PhotoDAO {
 					   }
 					   j++;
 				   }
+		 }else{
+			   getConnection();
+			   //쿼리문장
+			   String sql="select no,id,content,regdate,filename,filesize,filetype,path from p_file  order by no desc";
+			   //쿼리실행=결과값 : 오라클에서 데이터 10개씩(PL/SQL)
+			   ps=conn.prepareStatement(sql);
+			
+			   ResultSet rs=ps.executeQuery();
+			   
+			   //페이지별 출력
+			   int pagestart=(page*6)-6;//시작점
+			   int i=0;//10씩 나눠주는 변수 
+			   int j=0;//while의 횟수 
+			   while(rs.next())
+			   {
+				   if(i<6 && j>=pagestart)
+				   {
+					   //값을 가지고 온다 
+					   PhotoVO vo=new PhotoVO();
+					   vo.setNo(rs.getInt(1));
+					   vo.setId(rs.getString(2));
+					   vo.setContent(rs.getString(3));
+					   vo.setRegdate(rs.getDate(4));
+					   vo.setFilename(rs.getString(5));
+					   vo.setFilesize(rs.getInt(6));
+					   vo.setFiletype(rs.getString(7));
+					   vo.setPath(rs.getString(8)); 
+					   
+					   list.add(vo);
+					   
+					   i++;
+				   }
+				   j++;
+			   }
+		 }
+		  
 				  
 				   //결과값을 ArrayList담아둔다
 			   }catch(Exception ex)

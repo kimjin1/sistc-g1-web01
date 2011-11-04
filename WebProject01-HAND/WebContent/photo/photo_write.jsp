@@ -36,7 +36,8 @@ function send()
          <tr>
           <td align=right width=20%>ÀÛ¼ºÀÚ</td>
           <td align=left width=80%>
-           <input type=text name=id size=15 value="<%=session.getAttribute("name")%>"> 
+           <input type=text name=name size=15 value="<%=session.getAttribute("name")%>">
+           <input type="hidden" name=id value="<%=session.getAttribute("id")%>"> 
           </td>
          </tr>
         

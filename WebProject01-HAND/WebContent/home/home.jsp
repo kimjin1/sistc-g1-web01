@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="com.db.*, java.util.*,java.text.*"%>
+<jsp:useBean id="dao" class="com.db.MainDAO"></jsp:useBean>
+
+    <%
+    
+   ArrayList<PhotoVO> list=dao.getPhotoData();
+    ArrayList<BoardVO> list2=dao.getBoardData(); 
+    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +14,51 @@
 <title>Insert title here</title>
 </head>
 <body>
-로그인시 첫페이지 입니다
+
+<table>
+<h3>최근 사진목록</h3>
+<tr>
+<%
+ for(PhotoVO vo:list){
+	 %>
+	 <td>
+<table width=100% border=1>
+
+	<tr>
+		<td width=100 height=80><a href="../photo/content.jsp?no=<%=vo.getNo()%>"><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>" border=0></a></td>
+	</tr>
+	<tr>
+		<td width=100 height=10><a href="../photo/content.jsp?no=<%=vo.getNo()%>"><%=vo.getContent() %></a></td>		
+		
+	</tr>
+	
+	</table>
+	</td>
+	<% } %>
+	</tr>
+	</table>
+	
+	---------------------------------------------------------------------
+	<p>
+	진짜 거지같네요 ..
+	 <table>
+	 <%
+         for(BoardVO vo:list2)
+         {
+      %>
+<tr>
+  <td>  
+  <a href="../board/content.jsp?&no=<%=vo.getNo()%>"><%=vo.getSubject() %></a> &nbsp;&nbsp;&nbsp;<%=vo.getName() %> &nbsp;&nbsp;&nbsp;
+
+</td>
+</tr>
+
+
+
+<%
+         }
+%>
+
+</table>
 </body>
 </html>
