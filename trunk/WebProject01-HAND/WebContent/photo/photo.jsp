@@ -17,7 +17,7 @@
 	if(strPage==null)
 		strPage="1"; 
 	curpage=Integer.parseInt(strPage);
-	ArrayList<PhotoVO> list=dao.getPhotoData(curpage); 
+	ArrayList<PhotoVO> list=dao.getPhotoData(id,curpage); 
 	totalpage=dao.getTotalPage(); 
 	int count=dao.getPhotoCount();
 	count=count-((curpage*10)-10); 
