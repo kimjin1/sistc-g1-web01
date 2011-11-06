@@ -9,8 +9,9 @@
 <body>
 	<center>
 		<a href="../main.jsp" target="main">		
-			<font color="green" size="20"><b>HAND</b></font>
-		</a>
+			<img src="../image/hand.png" border="0"
+			width="200" height="80">
+			</a>
 	</center>
 </body>
 </html>

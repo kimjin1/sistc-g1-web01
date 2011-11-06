@@ -25,26 +25,55 @@
 		background="../image/login_image/log_bg.jpg"
 		--%>
 		<td valign=bottom align=center width=<%=width%> background="">
-			<a href="../home/home.jsp" target="main"><h3>HOME</h3></a>
+			<a href="../home/home.jsp" target="main">
+			<img src="../image/home1.png" border="0"
+			width="120" height="60"
+			OnMouseOver="this.src='../image/home2.png'"
+			OnMouseOut="this.src='../image/home1.png'">
+			</a>
 		</td>
 		<td valign=bottom align=center width=<%=width%>>
-			<a href="../photo/photo.jsp" target="main"><h3>PHOTO</h3></a>
+			<a href="../photo/photo.jsp" target="main">
+			<img src="../image/photo1.png" border="0"
+			width="120" height="60"
+			OnMouseOver="this.src='../image/photo2.png'"
+			OnMouseOut="this.src='../image/photo1.png'">
+			</a>
 		</td>
-		<td valign=bottom align=center width=<%=width%>>
+<!--		
+ 		<td valign=bottom align=center width=110>
 			<a href="../file/file.jsp" target="main"><h3>FILE</h3></a>
 		</td>
+ -->
 		<td valign=bottom align=center width=<%=width%>>
-			<a href="../board/board.jsp" target="main"><h3>BOARD</h3></a>
+			<a href="../board/board.jsp" target="main">
+			<img src="../image/board1.png" border="0"
+			width="120" height="60"
+			OnMouseOver="this.src='../image/board2.png'"
+			OnMouseOut="this.src='../image/board1.png'">
+			</a>
 		</td>
 		<td valign=bottom align=center width=<%=width%>>
-			<a href="../visitor/visitor.jsp" target="main"><h3>VISITOR</h3></a>
+			<a href="../visitor/visitor.jsp" target="main">
+			<img src="../image/visitor1.png" border="0"
+			width="120" height="60"
+			OnMouseOver="this.src='../image/visitor2.png'"
+			OnMouseOut="this.src='../image/visitor1.png'">
+			</a>
 		</td>
 		<td valign=bottom align=center width=<%=width%>>
-			<a href="../diary/diary.jsp" target="main"><h3>DIARY</h3></a>
+			<a href="../diary/diary.jsp" target="main">
+			<img src="../image/diary1.png" border="0"
+			width="120" height="60"
+			OnMouseOver="this.src='../image/diary2.png'"
+			OnMouseOut="this.src='../image/diary1.png'">
+			</a>
 		</td>
-		<td valign=bottom align=center width=<%=width%>>
+<!--
+		<td valign=bottom align=center width=110>
 			<a href="../menual.jsp" target="main"><h3>MENUAL</h3></a>
 		</td>
+  -->
 	</tr>
 	</table>
 </body>
