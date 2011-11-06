@@ -18,7 +18,7 @@
 		<%--	<b>Have A Nice Day </b></font><br> --%>
 			<font size="20" color="violet">
 			<right><b>
-			
+			Çï·Î¿ì
 			</b>	
 			</right>
 			</font>
