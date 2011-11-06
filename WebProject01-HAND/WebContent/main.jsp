@@ -18,7 +18,7 @@
 		<%--	<b>Have A Nice Day </b></font><br> --%>
 			<font size="20" color="violet">
 			<right><b>
-			<%--영원히 살 것처럼 꿈을 꾸고, 내일 죽을 것처럼 오늘을 살아라. --%>
+			
 			</b>	
 			</right>
 			</font>
