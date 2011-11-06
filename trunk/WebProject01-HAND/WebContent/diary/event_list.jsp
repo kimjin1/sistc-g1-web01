@@ -114,11 +114,12 @@ function currentTime(){
 							<input type="hidden" name="day" value="<%=strDay%>">
 							<a href="javascript:delSelected()">선택 삭제</a>
 							&nbsp;
-							<%-- 											 		
+							<%-- 시간이 지난 일정을 모두 삭제. 최종본에서 사용안함  											 		
 							<a href="javascript:delSelected()">지난 일정삭제</a>
 							--%>
 				 		</th>				 		
-				 		<th width="20%" align="right">				 			
+				 		<th width="20%" align="right">
+				 			<%-- 현재 시간 출력 택스트창 --%>				 			
 				 			<input type="text" name="clock" readonly="readonly" size=10 align="middle" alt="현재시간" style="border: none">				 			
 				 		</th>				 			
 				 	</tr>

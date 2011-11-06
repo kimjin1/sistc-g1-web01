@@ -66,6 +66,7 @@ function openList(year, month, day){
 		alert("로그인 하세요");
 		return;
 	}else{
+		// 일정 작정, 수정, 삭제등은 별도의 쉐도오 박스로 띄운 iframe안에서 표시
 		Shadowbox.open({		
 			content:"event_list.jsp?year="+year+"&month="+month+"&day="+day,
 			player:"iframe",
@@ -88,6 +89,7 @@ function openList(year, month, day){
 			<c:forEach var="dow" items="${week }" varStatus="weekth">
 				<th width=14% height=12 bgcolor=#E8E8E8>
 					<c:choose>						
+						<%-- 일요일, 토요일은 각각 붉은색, 파란색으로 제목 표시 --%>
 						<c:when test="${weekth.getIndex() == 0}"><font color="red">${dow }</font></c:when>
 						<c:when test="${weekth.getIndex() == 6}"><font color="blue">${dow }</font></c:when>
 						<c:otherwise>${dow }</c:otherwise>
@@ -103,17 +105,21 @@ function openList(year, month, day){
 					<td height=53 valign="top" bgcolor="white">
 						<table width=100%>
 						<c:choose>							
+							<%-- 첫주일땐 1일의 Day of week만큼 건너뛴후 시작 --%>
 							<c:when test="${i==0 && j<offset-1}"><tr><td>&nbsp;</td></tr></c:when>
 							<c:otherwise>								
 								<c:if test="${startDate <= endDate }">
 									<tr><td valign="top" align="left">
+									<%-- 날짜를 클릭시 해당일의 일정목록을 띄운다 --%>
 									<a href="javascript:openList(${year},${month},${startDate})">
 									<b>${startDate }</b>	
 									</a>
+									<%-- 오늘자 표시 --%>
 									<c:if test="${year==todayYear&&month==todayMonth&&startDate==todayDate}">
 										&nbsp;&nbsp;<img src="../image/diary/today_text.gif" border="0" alt="오늘입니다"/>
 									</c:if>								
 									</td></tr>
+									<%-- 해당 날의 일정갯수를 아이콘과 함께 출력 --%>
 									<c:if test="${MonthlyEvent[startDate-1] != 0}">
 									<tr><td align="center" background="../image/diary/note.png">										
 										<u>${MonthlyEvent[startDate-1] }</u>										
