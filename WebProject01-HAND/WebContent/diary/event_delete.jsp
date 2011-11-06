@@ -9,6 +9,7 @@
 </head>
 <body>
 <%
+	// 개별 일정 삭제
 	int no = Integer.parseInt(request.getParameter("no"));
 	String year = request.getParameter("year");
 	String month = request.getParameter("month");

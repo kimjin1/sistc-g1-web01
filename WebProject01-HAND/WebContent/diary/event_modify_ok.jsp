@@ -29,6 +29,7 @@
 	dVO.setId(id);	
 	dVO.setSubject(request.getParameter("subject"));
 	dVO.setContent(request.getParameter("content"));	
+	// 년,월,일,시,분 정보를 받아 Date타입으로 반환
 	Date event_time = myCal.valueToDate(ymdhm);
 	dVO.setEvent_time(event_time);
 	dao.modifyEvent(dVO);
