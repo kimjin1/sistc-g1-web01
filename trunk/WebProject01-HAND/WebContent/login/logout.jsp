@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+function update(){
+	parent.location.href = "../index.jsp?type=3";	
+}
+</script>
 </head>
 <body>
 	<center>
@@ -32,7 +37,11 @@
 				
 				<td rowspan=2><a href="../login/loginout_ok.jsp"><img src="../image/login_image/logout.jpg" border=0></a></td>	
 			</tr>
-			
+			<tr>
+				<td colspan=2 align="left">
+					<input type="button" value="개인정보수정" onclick="update()">
+				</td>
+			</tr>
 			
 		</table>
 		</form>

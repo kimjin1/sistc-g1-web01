@@ -52,9 +52,13 @@ function join_sb(){
 			</tr>
 			<tr>
 				
-				<td colspan=3 width=20% align=right  ><input type="checkbox" >아이디 저장
-				<input type=button value=회원가입 onclick="join_sb()">
+				<td colspan=3 width=20% align=right  >
+				<%-- 최종본에서 사용 안함
+				<input type="checkbox" >아이디 저장
+				--%>				
+				<input type=button value=회원가입 onclick="join_sb()">				
 				</td>			
+				
 			</tr>
 		</table>
 		</form>
