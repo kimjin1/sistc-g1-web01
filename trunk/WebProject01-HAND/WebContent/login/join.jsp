@@ -73,6 +73,32 @@ function join_ok(){
 	f.submit();
 }
 </script>
+<script type="text/javascript">
+function avatar()
+{
+	/*
+	var f=document.frm;
+	if(f.id.value=="")
+	{
+		alert("ID를 입력하세요");
+		f.id.focus();
+		return;
+	}
+	*/
+	var f=document.frm;
+	
+	
+	Shadowbox.open(
+	   {
+		   content:"../login/avatarcheck.jsp?photo="+f.photo.value,
+		   player:"iframe",
+		   title:"아바타 선택",
+		   width:600,
+		   height:400
+	   }
+	);
+}
+</script>
 </head>
 <body>
 	<center>
@@ -181,7 +207,8 @@ function join_ok(){
             <td align=right width=20%>별명</td>
             <td align=left width=80%>
               <input type=text size=12 name=nickname>
-            </td>
+              <input type=button value="아바타 선택" onclick="avatar()">
+            </td>        
            </tr>
            
            <tr>
@@ -190,6 +217,8 @@ function join_ok(){
              <input type=text size=50 name=email>
             </td>
            </tr>
+           
+          
            
            <tr>
             <td align=right width=20%>홈페이지</td>
