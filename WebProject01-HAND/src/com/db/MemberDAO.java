@@ -178,6 +178,52 @@ public class MemberDAO {
 		   }
 	   }
 	  
+	   // 개인정보 수정
+	   // 정보 얻어오기
+	   public MemberVO getMemberData(String id){
+		   MemberVO vo = new MemberVO();
+		   try {
+			getConnection();
+			String sql = "select pw, name, birth, nickname, memo, email, photo, homepage from p_person where id like ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			vo.setPw(rs.getString(1));
+			vo.setName(rs.getString(2));
+			vo.setBirth(rs.getDate(3));
+			vo.setNickname(rs.getString(4));
+			vo.setMemo(rs.getString(5));
+			vo.setEmail(rs.getString(6));
+			vo.setPhoto(rs.getString(7));
+			vo.setHomepage(rs.getString(8));						
+		} catch (Exception e) {
+			System.out.println("getMemberData():"+e.getMessage());
+		} finally {
+			disConnection();
+		}
+		   return vo;
+	   }
+	   // 정보 수정하기
+	   public void updateMemberData(MemberVO vo){
+		   try {
+			getConnection();
+			String sql = "update p_person set pw=?, nickname=?, memo=?, email=?, photo=?, homepage=? where id like ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, vo.getPw());
+			ps.setString(2, vo.getNickname());
+			ps.setString(3, vo.getMemo());
+			ps.setString(4, vo.getEmail());
+			ps.setString(5, vo.getPhoto());
+			ps.setString(6, vo.getHomepage());
+			ps.setString(7, vo.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("updateMemberData():"+e.getMessage());
+		} finally {
+			disConnection();
+		}
+	   }
 }
 	   
 
