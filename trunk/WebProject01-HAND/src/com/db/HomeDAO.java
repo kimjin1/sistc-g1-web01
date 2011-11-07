@@ -22,7 +22,7 @@ public class HomeDAO {
 		try 
 		{
 			getConnection();
-			String sql="select nickname, photo, memo from p_person where id=?";
+			String sql="select nickname, memo, photo from p_person where id=?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, id);
 			ResultSet rs=ps.executeQuery();
