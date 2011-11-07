@@ -48,11 +48,11 @@ function open(id)
     <p>
     <p>
     <p>
-    <table border=5 width=800>
+    <table border=0 width=600>
      <tr>
       <td align=left>
        <a href="javascript:history.back()">
-       <img src="../image/board/main.gif" border=0>
+       <img src="../image/board/main.jpg" border=0>
        </a>
       </td>
      </tr>
@@ -61,7 +61,7 @@ function open(id)
        if(count==0)
        {
     %>
-          <table border=0 width=800>
+          <table border=0 width=600>
            <tr>
             <td><font color=red><h2>검색결과가 없습니다</h2></font>
            </tr>
@@ -111,7 +111,7 @@ function open(id)
      <%
        }
      %>
-     <hr width=800>
+     <hr width=600>
   </center>
 </body>
 </html>
