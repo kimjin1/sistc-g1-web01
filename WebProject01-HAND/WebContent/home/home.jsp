@@ -27,9 +27,10 @@
 			<tr>
 				<td width=200 align="center" valign="middle">
 					<%if(photo!=null){ %>
-						<%=photo %>
+						<img src="<%=photo %>" width="180" height="250">
 					<%}else{ %>
-						<%=d_photo %>
+						<%=d_photo //널포인트로 값이 넘어올 경우 디폴트 그림이 뜬다. 
+						%> 
 					<%} %>
 				</td>
 				<td width=400 align="left">
