@@ -15,6 +15,12 @@ function send(){
 			f.name.focus();
 			return ;
 		}			
+	if(f.pw.value=="")
+	{
+		alert("pw를 입력하세요");
+		f.pw.focus();
+		return ;
+	}			
 	if(f.content.value=="")
 	{
 		alert("내용을 입력하세요");
@@ -53,9 +59,9 @@ function send(){
 				</td>
 			</tr>
 			<tr>
-			<td align=right width=50%>홈페이지</td>
+			<td align=right width=50%>비밀번호</td>
 			<td align=left width=30%>
-			<input type=text name=homepage size=25></td>
+			<input type=password name=pw size=25></td>
 			</tr>
 			
 			<tr>

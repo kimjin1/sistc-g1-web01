@@ -8,6 +8,17 @@ public class VisitorVO {
 	private String homepage;
 	private String content;
 	private Date regdate;
+	private String pw;
+	
+	
+	
+	
+	public String getpw() {
+		return pw;
+	}
+	public void setpw(String pw) {
+		this.pw = pw;
+	}
 	public int getNo() {
 		return no;
 	}

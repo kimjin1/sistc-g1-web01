@@ -13,6 +13,9 @@
   <jsp:useBean id="dao" class="com.db.VisitorDAO"/>
   <%
     String strPage=request.getParameter("page");
+  String pw=request.getParameter("pw");
+  String name=request.getParameter("name");
+
     if(strPage==null)
     	strPage="1";
     curpage=Integer.parseInt(strPage);
@@ -50,25 +53,32 @@
          {
       %>
       <p>
+      <form action="visitor_delete.jsp" method="post">
     <table border=0 width=400   cellpadding="6" background="../image/visitor/visitor2.png" >
-        <tr height=20 >
+        <tr height=40 >
 
 	        <td width=15%>No.<%=vo.getNo() %></td>
-	        <td width=15%><%=vo.getName() %></td>
-	        <td width=30%><%=vo.getRegdate() %></td>
-       		
-		</tr>     
-	    <tr height=65 >
-	        <td width=45% colspan="3" align=center><%=vo.getContent() %>
-	        </td>
+	        <td width=30% align=left><%=vo.getName() %></td>
+	        
+	         
+	        </tr>
 	        <tr>
-	       
-	        <td align=right colspan=3>
-	        <input type=button value=삭제>
+	        <td  width=90% colspan="3" align=left><%=vo.getContent() %>
 	        </td>
+	          <td  width=10% align=right  >
+	        <input type=hidden name= page value="<%=curpage %>">
+	        <input type=hidden name=no value="<%=vo.getNo()%>">
+	         <input type=hidden name=name value="<%=vo.getName()%>">
+	        
+	        <input type=submit value=삭제>
+	        
+	        </td>
+	       
+	      
 	   </tr> 
 
 	</table>
+	</form>
 	<p>
 	<%
          }
