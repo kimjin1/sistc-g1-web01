@@ -37,7 +37,8 @@ create table p_visitor(no number primary key,
                         name varchar2(30) not null,
                         homepage varchar2(50),
                         content varchar2(1000),
-                        regdate date default sysdate);
+                        regdate date default sysdate,
+                        pw varchar2(10) not null);
 --ÆÄÀÏ¹æ     
 drop table p_file;
 drop sequence p_file_no_seq;
