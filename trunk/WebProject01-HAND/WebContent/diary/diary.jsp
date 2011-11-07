@@ -58,7 +58,7 @@
 				--%>							
 			</td>
 			<td width=90%>
-		<table width=100% height=408 cellspacing=0 cellpadding=0 border=0>
+		<table width=100% height=400 cellspacing=0 cellpadding=0 border=0>
 			<tr>
 				
 				<th colspan=2 valign="middle" bgcolor="C2C2C2">
