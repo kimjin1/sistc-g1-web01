@@ -41,25 +41,25 @@ function send()
 <body>
 <center>
 <form method=post action="update_ok.jsp" name=frm>
-	<table border=5 width=800>
+	<table border=0 width=600  >
 		
         
         <tr>
-       	 	<td align=left colspan=4 valign=top height=200>
-        	 	<textarea rows="25" cols="50" name=content><%=vo.getContent() %></textarea>
+       	 	<td align=center colspan=2 valign=top height=50>
+        	 	<textarea rows="17" cols="55" name=content><%=vo.getContent() %></textarea>
         	 	<input type="hidden" name=id value="<%=session.getAttribute("id")%>">
         	 	<input type="hidden" name="no" value="<%=strNo%>">
         	 	<input type="hidden" name="page" value="<%=strPage%>">
         	</td>
        </tr>
        <tr>
-          <td align=right width=20%>비밀번호</td>
-          <td align=left width=80%>
-           <input type=password name=pw size=10>
+          <td align=right>비밀번호</td>
+          <td align=left>
+           <input type=password name=pw size=13>
           </td>
        
 	</table>
-	<table border=5 width=800>
+	<table border=0 width=600>
 		<tr>
 		   <td align=center colspan=2>
           	 <input type=button value=수정 onclick="send()" >

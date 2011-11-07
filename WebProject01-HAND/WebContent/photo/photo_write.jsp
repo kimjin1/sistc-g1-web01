@@ -28,11 +28,11 @@ function send()
     <!-- 데이터 전송 -->
     <form method=post action="photo_write_ok.jsp" 
     name=frm enctype="multipart/form-data">
-    <table border=0 width=600>
+    <table border=0 width=500>
      <tr>
-      <td bgcolor="rgb(255,255,200)">
+      <td bgcolor=cccccc>
        <p>
-        <table border=0 width=560>
+        <table border=0 width=500>
          <tr>
           <td align=right width=20%>작성자</td>
           <td align=left width=80%>

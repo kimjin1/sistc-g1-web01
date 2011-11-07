@@ -1,23 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="com.db.*"%>
 <jsp:useBean id="dao" class="com.db.PhotoDAO"/>
+
 <%
    //게시물 번호
+   	String id=(String)session.getAttribute("id"); 
    String strNo=request.getParameter("no");
 	String strPage = request.getParameter("page");
 
    PhotoVO vo= 
 		   dao.getContent(Integer.parseInt(strNo));
    
+ 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
 <script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
 <script type="text/javascript">Shadowbox.init();</script>
+<script type="text/javascript">
+function send(no,page){
+	var id = "<%=id%>";		   
+	if(id=="null"){
+		alert("로그인 하세요");
+		return;
+		      
+	}   else{
+		//성공했을때위치이동
+		  self.location.href="update.jsp?no="+no+"&page="+page;
+	}    		
+}
+</script>
+
 </head>
 <body>
     <center>
@@ -68,9 +87,11 @@
      <table border=0 width=600>
       <tr>
        <td align=right>
-        <a href="update.jsp?no=<%=vo.getNo()%>&page=<%=strPage%>">
-        <img src="../image/board/update.jpg" border=0>
-        </a>
+       <a href = "javascript:send(<%=strNo %>,<%=strPage %>)">
+      <img src="../image/board/update.jpg" border=0 ></a>
+        <%-- <a href="update.jsp?no=<%=vo.getNo()%>&page=<%=strPage%>">
+        <img src="../image/board/update.jpg" border=0 >
+        </a> --%>
         <a href="delete.jsp?no=<%=vo.getNo()%>&page=<%=strPage%>">
         <img src="../image/board/delete.jpg" border=0>
         </a>
