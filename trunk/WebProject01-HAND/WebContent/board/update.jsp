@@ -53,39 +53,45 @@ function send()
 <body>
 <center>
 <form method=post action="../board/update_ok.jsp" name=frm>
-	<table border=5 width=800>
+	<table border=0 width=600>
 		<tr>
-	   		 <td width=20% bgcolor=cccccc>제목</td>
-       		 <td align=left colspan=3><input type=text name=subject size=50 value="<%=vo.getSubject() %>">
+	   		 <td width=20% bgcolor=cccccc align="left">제목</td>
+       		 <td align=left colspan=4><input type=text name=subject size=50 value="<%=vo.getSubject() %>">
        		
        		 </td>
         </tr>
         <tr>
         	<td width=15% align=left bgcolor=cccccc>이름</td>
-        	<td width=25%><input type=text name=name size=15 value=<%=vo.getName() %>>
+        	<td width=25% align="left"><input type=text name=name size=15 value=<%=vo.getName() %>>
         	<input type=hidden name=no value=<%=strNo %>>
            <input type=hidden name=page value=<%=strPage %>>
         	</td>
         	
         	<td width=15% align=left bgcolor=cccccc>Email</td>
-        	<td width=45%><input type=text name=email size=50 value=<%=vo.getEmail() %>>
+        	<td width=45% align="left"><input type=text name=email size=40 value=<%=vo.getEmail() %>>
         	</td>
         </tr>
         
         <tr>
        	 	<td align=left colspan=4 valign=top height=200>
-        	 	<textarea rows="25" cols="109" name=content><%=vo.getContent() %></textarea>
+        	 	<textarea rows="15" cols="80" name=content><%=vo.getContent() %></textarea>
         	 	<input type="hidden" name=id value="<%=session.getAttribute("id")%>">
         	</td>
        </tr>
-       <tr>
-          <td align=right width=20%>비밀번호</td>
-          <td align=left width=80%>
-           <input type=password name=pw size=10>
-          </td>
+     
        
 	</table>
-	<table border=5 width=800>
+	
+	<table border=0 width=600>
+	
+	  <tr>
+          <td align="left" width="12%" bgcolor="cccccc">비밀번호</td>
+      
+          <td align="left"  width="88%"  >
+           <input type=password name=pw size=10>
+          </td>
+         </tr>
+          
 		<tr>
 		   <td align=center colspan=2>
           	 <input type=button value=수정 onclick="send()" >
@@ -93,6 +99,7 @@ function send()
              onclick="javascript:history.back()">
           </td>
          </tr>
+         
 	</table>
 	</form>
 </center>

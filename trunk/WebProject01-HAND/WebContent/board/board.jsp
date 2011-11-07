@@ -28,7 +28,7 @@
 </head>
 <body>
 <center>
-    <table border=1 width=600 height=440>
+    <table border=0 width=600 height=440>
       <tr>
        <td align="left" valign="top">
         

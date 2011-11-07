@@ -66,8 +66,8 @@ function Login(no,page,type){
 	<table border=0 width="600" >
 	
      <tr>
-     <td width=20%></td>
-	<td width=80% align=left>
+
+	<td  align=left>
 
      <%
 			//윗글이 존재한다면  출력
@@ -90,8 +90,8 @@ function Login(no,page,type){
    </tr>
      
      <tr>
-     <td width=20%></td>
-	<td width=80% align=left>
+   </td>
+	<td align=left>
      <%											
 		if(Integer.parseInt(strNo) > min){
 	%>
@@ -112,13 +112,14 @@ function Login(no,page,type){
      
      </table>
      
-	<table width=600 border=0 bordercolor=cccccc>
 	
+
+<table width=600 border=0 bordercolor=cccccc>
 	
-      <tr >
+	<tr>
         <td width=15% bgcolor=cccccc height=25>제목</td>
-            <td align=left colspan=3><%=vo.getSubject() %></td>
-            <td align=right colspan=2 >	
+            <td align=left colspan=1><%=vo.getSubject() %></td>
+            <td align=right colspan=4 >	
            
             <a href="javascript:Login(<%=strNo%>,<%=strPage%>,4)">
    			<img src="../image/board/update.jpg" border=0>
@@ -145,13 +146,13 @@ function Login(no,page,type){
         <td width=15%><%=vo.getReadnum() %></td>
       </tr>
         <tr>
-        <td align=left colspan=4 valign=top height=200>
+        <td align=left colspan=6 valign=top height=200>
          <pre><%=vo.getContent() %></pre>
         </td>
       </tr>
       
      </table>
-     <table border="0">
+     <table border="0" bgcolor="cccccc">
      <tr>      
 		<td width="200"valign="top">
          <% System.out.println(flag+":"+curNo);%>
@@ -162,6 +163,6 @@ function Login(no,page,type){
         
 
   
-</center>
+</center> 
 </body>
 </html>

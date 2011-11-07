@@ -64,7 +64,7 @@ function Login(no,page,type){
 <body>
 <center>
     
-    <table border=0 width=550 height=10 cellpadding="0" cellspacing="3">
+    <table border=0 width=600 height=10 cellpadding="0" cellspacing="3">
       <tr bgcolor=cccccc>
        <th width=10%>번호</th>
        <th width=45%>제목</th>
@@ -125,9 +125,9 @@ function Login(no,page,type){
     </table>
  
 
-    <hr width=550>
+    <hr width=600>
     <form method=post name=frm action="find.jsp">
-    <table border=0 width=550>
+    <table border=0 width=600>
       <tr>
        <td align=center>
     	 <%
