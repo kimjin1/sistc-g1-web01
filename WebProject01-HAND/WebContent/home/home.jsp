@@ -19,7 +19,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title></title>
+<style type="text/css">
+  a{text-decoration: none;color:black}
+ a:hover{text-decoration: underline;color:green}
+</style>
 </head>
 <body>
 	<center>
