@@ -14,6 +14,14 @@
     	String photo=h_vo.getPhoto();
     	
     	String d_photo="<img src='../image/home/default.png' width=140 height=150>";
+    	
+    	if(id==null){
+    		%><script language="javascript">
+ 				alert("로그인 하세요^^");
+ 				document.location.href = "javascript:history.back()" ;
+ 			</script>
+<%
+    	}
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
