@@ -9,7 +9,8 @@ create table p_person(id varchar2(10) primary key,
                       memo varchar2(1000),
                       email varchar2(50),
                       photo varchar2(1000),
-                      homepage varchar2(50));
+                      homepage varchar2(50),
+                      admin number(1,0));
 --°Ô½ÃÆÇ
 drop table p_board;
 drop sequence p_board_no_seq;
