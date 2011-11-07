@@ -20,7 +20,7 @@ function event_write(){
 </head>
 <body>
 	<center>
-		<table border=0 width=80% height=100% bgcolor="white">
+		<table border=0 width=85% height=100% bgcolor="white">
 			<tr>
 				<td valign="top">
 					<form method=post action="../diary/event_write_ok.jsp" name="frm">
@@ -58,7 +58,7 @@ function event_write(){
 						<tr>
 							<td width=20% valign="top">³»¿ë</td>
 							<td width=80%>
-								<textarea rows=9 cols=46 name=content></textarea>
+								<textarea rows=8 cols=46 name=content></textarea>
 							</td>
 						</tr>
 						<tr>
