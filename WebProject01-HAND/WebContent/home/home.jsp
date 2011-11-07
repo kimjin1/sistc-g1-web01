@@ -13,7 +13,7 @@
     	String memo=h_vo.getMemo();
     	String photo=h_vo.getPhoto();
     	
-    	String d_photo="<img src='../image/home/default.png' width=180 height=250>";
+    	String d_photo="<img src='../image/home/default.png' width=140 height=150>";
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,22 +23,24 @@
 </head>
 <body>
 	<center>
-		<table width=600 height=280 border=0>
+		<table width=600 height=200 border=0>
 			<tr>
 				<td width=200 align="center" valign="middle">
 					<%if(photo!=null){ %>
-						<img src="<%=photo %>" width="180" height="250">
+						<img src="<%=photo %>" width="140" height="150">
 					<%}else{ %>
-						<%=d_photo //널포인트로 값이 넘어올 경우 디폴트 그림이 뜬다. 
+						<%=d_photo //널포인트로 값이 넘어올 경우 디폴트 그림이 뜬다.
 						%> 
 					<%} %>
 				</td>
 				<td width=400 align="left">
-					<%=nick %><br>
+					<font face="맑은고딕" size=5 color="Blue"><%=nick %></font>&nbsp;님 즐거운 하루!!
+					<br><br><P>
 					<%=memo %>
 				</td>
 			</tr>
 		</table>
+		<hr border=20 width=500 color="gray">
 		<table width=600 height=100 border=0>
 			<tr>
 <%
