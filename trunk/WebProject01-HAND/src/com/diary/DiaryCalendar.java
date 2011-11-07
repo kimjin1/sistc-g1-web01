@@ -1,5 +1,6 @@
 package com.diary;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Calendar;
 
@@ -72,5 +73,12 @@ public class DiaryCalendar {
 		cal.set(Calendar.DATE, day);
 		Date event = new Date(cal.getTimeInMillis());
 		return event;
+	}
+	
+	public String[] dateToValue(Date dt){		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String ymd = sdf.format(dt);
+		String result[] = ymd.split("-");		
+		return result;
 	}
 }
