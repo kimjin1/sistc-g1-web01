@@ -8,7 +8,7 @@ public class VisitorDAO {
 	private PreparedStatement ps;// 오라클에 쿼리 문장 전송
 
 	// 오라클 연결 (오라클주소)
-	private final String URL = "jdbc:oracle:thin:@211.238.142.117:1521:ORCL";// 문자열
+	private final String URL = "jdbc:oracle:thin:@211.238.142.118:1521:ORCL";// 문자열
 																				// 상수
 	private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private final String USERNAME = "scott";
