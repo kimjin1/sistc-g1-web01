@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR" import="com.db.*"%>
     <jsp:useBean id="dao" class="com.db.MemberDAO"/>
      <%
-    	//String photo=request.getParameter("photo");
+    	
   	 	 
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,21 +15,10 @@
 <script type="text/javascript">	
 
 function ok(){
-		parent.frm.id.value=document.frm.photo.value;
+		//parent.frm.photo.value=document.frm.photo.value;
 		parent.Shadowbox.close();
 	}
 
-/*
-	function idcheck(){
-		var f=document.frm;
-		if(f.id.value==""){
-			alert("ID를 입력하세요");
-			f.id.focus();
-			return;
-		}
-		f.submit();
-	}
-*/
 </script>
 </head>
 <body>
@@ -39,7 +28,41 @@ function ok(){
 		<table border=0 width=300>
 			<tr>
 				<td >	
-				<img src="../image/avatar/character01.png" border=0>
+				<img src="../image/avatar/chracter01.png" width=100 height=100  border=1>
+				</td>
+				<td>
+				<img src="../image/avatar/chracter02.png" width=100 height=100 border=1>
+				</td>
+				<td >	
+				<img src="../image/avatar/chracter03.png" width=100 height=100  border=1>
+				</td>
+				<td>
+				<img src="../image/avatar/chracter04.png" width=100 height=100 border=1>
+				</td>
+			</tr>
+			<tr>
+			<td >	
+				<img src="../image/avatar/chracter05.png" width=100 height=100  border=1>
+				</td>
+				<td>
+				<img src="../image/avatar/character06.png" width=100 height=100 border=1>
+				</td>
+				<td >	
+				<img src="../image/avatar/character07.png" width=100 height=100  border=1>
+				</td>
+				<td>
+				<img src="../image/avatar/character08.png" width=100 height=100 border=1>
+				</td>
+			</tr>
+			<tr>
+			<td>
+				<img src="../image/avatar/character09.png" width=100 height=100 border=1>
+				</td>
+				<td >	
+				<img src="../image/avatar/character10.png" width=100 height=100  border=1>
+				</td>
+				<td>
+				<img src="../image/avatar/character11.png" width=100 height=100 border=1>
 				</td>
 			</tr>
 	

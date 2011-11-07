@@ -85,16 +85,13 @@ function avatar()
 		return;
 	}
 	*/
-	var f=document.frm;
-	
-	
 	Shadowbox.open(
 	   {
-		   content:"../login/avatarcheck.jsp?photo="+f.photo.value,
+		   content:"../login/avatarcheck.jsp",
 		   player:"iframe",
 		   title:"아바타 선택",
-		   width:600,
-		   height:400
+		   width:750,
+		   height:500,
 	   }
 	);
 }
