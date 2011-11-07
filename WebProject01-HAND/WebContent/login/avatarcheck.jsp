@@ -14,8 +14,9 @@
 
 <script type="text/javascript">	
 
-function ok(){
-		//parent.frm.photo.value=document.frm.photo.value;
+function ok(photo){
+		
+		parent.frm.path.value = photo;
 		parent.Shadowbox.close();
 	}
 
@@ -28,41 +29,63 @@ function ok(){
 		<table border=0 width=300>
 			<tr>
 				<td >	
-				<img src="../image/avatar/chracter01.png" width=100 height=100  border=1>
+				<a href="javascript:ok('../image/avatar/chracter01.png')">
+				<img src="../image/avatar/chracter01.png" width=95 height=95  border=1>
+				</a>
 				</td>
 				<td>
-				<img src="../image/avatar/chracter02.png" width=100 height=100 border=1>
+				<a href="javascript:ok('../image/avatar/chracter02.png')">
+				<img src="../image/avatar/chracter02.png" width=95 height=95 border=1>
+				</a>
 				</td>
-				<td >	
-				<img src="../image/avatar/chracter03.png" width=100 height=100  border=1>
+				<td >
+				<a href="javascript:ok('../image/avatar/chracter03.png')">	
+				<img src="../image/avatar/chracter03.png" width=95 height=95  border=1>
+				</a>
 				</td>
 				<td>
-				<img src="../image/avatar/chracter04.png" width=100 height=100 border=1>
+				<a href="javascript:ok('../image/avatar/chracter04.png')">	
+				<img src="../image/avatar/chracter04.png" width=95 height=95 border=1>
+				</a>
 				</td>
 			</tr>
 			<tr>
-			<td >	
-				<img src="../image/avatar/chracter05.png" width=100 height=100  border=1>
+			<td >
+			<a href="javascript:ok('../image/avatar/chracter05.png')">	
+				<img src="../image/avatar/chracter05.png" width=95 height=95  border=1>
+				</a>
 				</td>
 				<td>
-				<img src="../image/avatar/character06.png" width=100 height=100 border=1>
+				<a href="javascript:ok('../image/avatar/character06.png')">
+				<img src="../image/avatar/character06.png" width=95 height=95 border=1>
+				</a>
 				</td>
-				<td >	
-				<img src="../image/avatar/character07.png" width=100 height=100  border=1>
+				<td >
+				<a href="javascript:ok('../image/avatar/character07.png')">	
+				<img src="../image/avatar/character07.png" width=95 height=95  border=1>
+				</a>
 				</td>
 				<td>
-				<img src="../image/avatar/character08.png" width=100 height=100 border=1>
+				<a href="javascript:ok('../image/avatar/character08.png')">
+				<img src="../image/avatar/character08.png" width=95 height=95 border=1>
+				</a>
 				</td>
 			</tr>
 			<tr>
 			<td>
-				<img src="../image/avatar/character09.png" width=100 height=100 border=1>
+				<a href="javascript:ok('../image/avatar/character09.png')">
+				<img src="../image/avatar/character09.png" width=95 height=95 border=1>
+				</a>
 				</td>
 				<td >	
-				<img src="../image/avatar/character10.png" width=100 height=100  border=1>
+				<a href="javascript:ok('../image/avatar/character10.png')">
+				<img src="../image/avatar/character10.png" width=95 height=95  border=1>
+				</a>
 				</td>
 				<td>
-				<img src="../image/avatar/character11.png" width=100 height=100 border=1>
+				<a href="javascript:ok('../image/avatar/character11.png')">
+				<img src="../image/avatar/character11.png" width=95 height=95 border=1>
+				</a>
 				</td>
 			</tr>
 	

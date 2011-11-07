@@ -15,6 +15,7 @@ public class MemberVO {
 	private int admin;
 	
 	
+	
 	public String getId() {
 		return id;
 	}

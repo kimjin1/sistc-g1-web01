@@ -76,15 +76,7 @@ function join_ok(){
 <script type="text/javascript">
 function avatar()
 {
-	/*
-	var f=document.frm;
-	if(f.id.value=="")
-	{
-		alert("ID를 입력하세요");
-		f.id.focus();
-		return;
-	}
-	*/
+	
 	Shadowbox.open(
 	   {
 		   content:"../login/avatarcheck.jsp",
@@ -205,6 +197,9 @@ function avatar()
             <td align=left width=80%>
               <input type=text size=12 name=nickname>
               <input type=button value="아바타 선택" onclick="avatar()">
+              <input type="hidden" name=path>
+             
+              
             </td>        
            </tr>
            
@@ -212,6 +207,7 @@ function avatar()
             <td align=right width=20%>이메일</td>
             <td align=left width=80%>
              <input type=text size=50 name=email>
+        
             </td>
            </tr>
            

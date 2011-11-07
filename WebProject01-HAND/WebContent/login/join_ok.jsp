@@ -14,8 +14,9 @@
     String nickname=request.getParameter("nickname");
     String memo=request.getParameter("memo");
     String email=request.getParameter("email");
-    String photo=request.getParameter("photo");
+    String photo=request.getParameter("path");
     String homepage=request.getParameter("homepage");
+    
     
   
   	
