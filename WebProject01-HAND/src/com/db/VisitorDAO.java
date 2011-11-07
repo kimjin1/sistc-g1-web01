@@ -75,6 +75,8 @@ public class VisitorDAO {
 			vo.setHomepage(rs.getString(2));
 			vo.setContent(rs.getString(3));
 			vo.setRegdate(rs.getDate(4));
+			vo.setpw(rs.getString(5));
+			
 
 			rs.close();
 
@@ -109,6 +111,7 @@ public class VisitorDAO {
 				vo.setHomepage(rs.getString(3));
 				vo.setContent(rs.getString(4));
 				vo.setRegdate(rs.getDate(5));
+				vo.setpw(rs.getString(6));
 				list.add(vo);
 				
 				i++;
@@ -135,11 +138,12 @@ public class VisitorDAO {
 			getConnection();
 
 			// 추가
-			String sql = "insert into p_visitor values(p_visitor_no_seq.nextVal,?,?,?,sysdate)";
+			String sql = "insert into p_visitor values(p_visitor_no_seq.nextVal,?,?,?,sysdate,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, vo.getName());
 			ps.setString(2, vo.getHomepage());
 			ps.setString(3, vo.getContent());
+			ps.setString(4, vo.getpw());
 
 			ps.executeUpdate();
 
@@ -203,4 +207,48 @@ public class VisitorDAO {
 		   return count;
 	   }
 
+	 //삭제
+	 
+	  public boolean delete(VisitorVO vo)
+	   {
+		   boolean bCheck=false;
+		   try
+		   {
+			  System.out.println("dao:"+vo.getName()+"|"+vo.getNo()+"|"+vo.getpw());
+			   getConnection();
+				  String sql="select pw from p_visitor "
+						  +"where name=?";
+				  ps=conn.prepareStatement(sql);
+				  ps.setString(1, vo.getName()); 
+				  ResultSet rs=ps.executeQuery(); 
+				  rs.next();
+				  String db_pw=rs.getString(1);
+				  rs.close();
+				  ps.close();
+				  if(db_pw.equals(vo.getpw())) 
+				  {
+					  bCheck=true;
+				  sql="delete from p_visitor where no=?";
+				  ps=conn.prepareStatement(sql);
+				  ps.setInt(1, vo.getNo());
+				  ps.executeUpdate();	
+				  ps.close();
+			   }
+			   else
+			   {
+				   bCheck=false;
+			   }
+		   }catch(Exception ex)
+		   {
+			  System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			  disConnection();
+		   }
+		   return bCheck;
+	   }
+	 
 }
+
+
