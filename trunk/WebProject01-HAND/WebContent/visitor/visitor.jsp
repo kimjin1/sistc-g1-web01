@@ -55,16 +55,11 @@
       <p>
       <form action="visitor_delete.jsp" method="post">
     <table border=0 width=400   cellpadding="6" background="../image/visitor/visitor2.png" >
-        <tr height=40 >
+        <tr >
 
 	        <td width=15%>No.<%=vo.getNo() %></td>
 	        <td width=30% align=left><%=vo.getName() %></td>
 	        
-	         
-	        </tr>
-	        <tr>
-	        <td  width=90% colspan="3" align=left><%=vo.getContent() %>
-	        </td>
 	          <td  width=10% align=right  >
 	        <input type=hidden name= page value="<%=curpage %>">
 	        <input type=hidden name=no value="<%=vo.getNo()%>">
@@ -72,6 +67,11 @@
 	        
 	        <input type=submit value=»èÁ¦>
 	        
+	        </td>
+	         
+	        </tr>
+	        <tr>
+	        <td  width=90% colspan="3" align=left height=100><%=vo.getContent() %>
 	        </td>
 	       
 	      
