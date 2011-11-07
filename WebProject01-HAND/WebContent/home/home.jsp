@@ -11,18 +11,21 @@
     	
     	String nick=h_vo.getNickname();
     	String memo=h_vo.getMemo();
+    			memo="<br>"+memo;
     	String photo=h_vo.getPhoto();
     	
     	String d_photo="<img src='../image/home/default.png' width=140 height=150>";
     	
-    	if(id==null){
-    		%><script language="javascript">
+    	if(id==null)
+    	{
+%>			<script language="javascript">
  				alert("로그인 하세요^^");
  				document.location.href = "javascript:history.back()" ;
+ 				//로그인 전에 개인정보 보여지는 경로이기 때문에 보여지면 안된다.
  			</script>
 <%
     	}
-    %>
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,9 +49,10 @@
 					<%} %>
 				</td>
 				<td width=400 align="left">
-					<font face="맑은고딕" size=5 color="Blue"><%=nick %></font>&nbsp;님 즐거운 하루!!
-					<br><br><P>
+					<font face="Serif" size=5 color="Blue"><b><%=nick %></b></font>&nbsp;님 즐거운 하루!!
+					<pre>
 					<%=memo %>
+					</pre>
 				</td>
 			</tr>
 		</table>
