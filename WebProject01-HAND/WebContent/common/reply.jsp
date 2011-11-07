@@ -93,27 +93,27 @@ function delSelected(){
 		 */
 		--%>
 
-		<table width=450 border=0 bordercolor=cccccc height=100>
+		<table width=600 border=0 bordercolor=cccccc height=100>
 			<tr>
-				<td align="left" width=20% bgcolor=cccccc><a href="javascript:openclose()">답글쓰기</a></td>
+				<td align="left"  bgcolor=cccccc><a href="javascript:openclose()">답글보기</a></td>
 			</tr>
 			<tr>
 				
-				<td align=left colspan=4 valign=top><textarea rows="5"
-						cols="85" name=content></textarea>
+				<td align=left  valign=top><textarea rows="4"
+						cols="80" name=content></textarea>
 				<input type="hidden" name="id" value="<%=session.getAttribute("id")%>">
 				<input type="hidden" name="flag" value="<%=flag%>">
 				<input type="hidden" name="rootno" value="<%=rootno%>">
 						</td>
 						
-               	<td width=15% align=right><input type=button value=등록 size=20 onclick="send()">
+               	<td width=15% align=right bgcolor="cccccc"><input type=button value=등록 size=20 onclick="send()">
 				</td>
 			</tr>
 			
 		</table>
 		</form>
 		<form method=post action="../common/reply_delete.jsp " name="del_frm">
-		<table id="rep" width="400" border="0" style="display:none">
+		<table id="rep" width="600" border="0" style="display:none">
 		<tr>
 			<td>
 			<input type="hidden" name="rootno" value="<%=rootno%>">
