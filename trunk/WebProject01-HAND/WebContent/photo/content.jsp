@@ -15,7 +15,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-
+<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
+<script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
+<script type="text/javascript">Shadowbox.init();</script>
 </head>
 <body>
     <center>
@@ -41,7 +43,10 @@
       %>
       <tr>
       	<td>
-      	<img src="../photo/upload/<%=vo.getFilename()%>">
+      	
+      	<a href="../photo/upload/<%=vo.getFilename()%>" rel="shadowbox">
+      	<img src="../photo/upload/<%=vo.getFilename()%>_md.jpg" border="0">
+      	</a>
       	</td>
       </tr>
       </table>
