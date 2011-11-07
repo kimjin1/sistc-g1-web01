@@ -69,7 +69,7 @@ function openPhoto(no){
 <body>
 <center>	
 		<form method=post name=frm action="find.jsp">
-	<table border=1	width=550 height=200>
+	<table border=0 	width=550 height=200>
 	<tr>		
 	<%
 	int i = 0;
@@ -83,7 +83,7 @@ function openPhoto(no){
 	}
 	%>						
 	<td>
-	<table width=100% border=1>
+	<table width=100% border=0>
 	<tr>
 		<td width=100 height=80><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>"><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>" border=0></a></td>
 	</tr>

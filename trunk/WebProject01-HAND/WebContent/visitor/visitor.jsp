@@ -38,7 +38,7 @@
     <p>
   
     <p>
-    <table border=0 width=400>
+    <table border=0 width=387>
      <tr>
       <td align=left>
        
@@ -54,7 +54,7 @@
       %>
       <p>
       <form action="visitor_delete.jsp" method="post">
-    <table border=0 width=400   cellpadding="6" background="../image/visitor/visitor2.png" >
+    <table border=0 width=387   cellpadding="8" background="../image/visitor/visitor4.png" >
         <tr >
 
 	        <td width=15% >No.<%=vo.getNo() %></td>
@@ -88,7 +88,7 @@
 	<p>
 	
 
-    <table border=5 width=400>
+    <table border=0 width=387>
       <tr>
       
        <td align=right>
