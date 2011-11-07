@@ -74,7 +74,7 @@
 <center>
 	<table border=0 width=950 height=600 cellpadding="0" cellspacing="0">		
 		<tr>
-			<td width=200 height=60  >
+			<td width=200 height=60>
 			<%--<jsp:include page="menu/left_top.jsp"></jsp:include> --%>
 			<iframe scrolling="no" src="menu/left_top.jsp" frameborder="0"></iframe>
 			</td>
