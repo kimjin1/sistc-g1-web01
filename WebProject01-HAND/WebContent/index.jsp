@@ -17,6 +17,7 @@
 		break;
 	case 2: jsp = "login/join.jsp";		
 		break;
+	case 3: jsp = "login/update.jsp";	
 	}
 	
 
