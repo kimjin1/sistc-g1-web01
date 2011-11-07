@@ -43,8 +43,7 @@
     	 vo.setFilename(filename);
     	 vo.setFilesize((int)f.length());
     	 vo.setFiletype(filename.substring(
-    			 filename.lastIndexOf('.')+1));
-    	 System.out.println(vo.getFiletype());
+    			 filename.lastIndexOf('.')+1));    	 
      }
      
      //DB연동
@@ -52,18 +51,42 @@
      dao.insert(vo);
      
      //썸네일 생성
-     int width = 170;
-     int height = 100;
+     int tn_width = 170;
+     int tn_height = 100;
      try{
-    	 File file = new File(vo.getPath());
+    	 File file = new File(vo.getPath());    	 
+    	 String fileName = vo.getPath();
+    	 //fileName = fileName.substring(0, fileName.lastIndexOf('.'));
+    	 System.out.println(fileName);
     	 BufferedImage image = ImageIO.read(file);
-    	 BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
+    	 BufferedImage img = new BufferedImage(tn_width, tn_height, BufferedImage.TYPE_3BYTE_BGR);
     	 Graphics2D g = img.createGraphics();
-    	 g.drawImage(image, 0, 0, width, height, null);
-    	 File thumb = new File(vo.getPath()+"_tn.jpg");
+    	 g.drawImage(image, 0, 0, tn_width, tn_height, null);
+    	 File thumb = new File(fileName+"_tn.jpg");
     	 ImageIO.write(img, "jpeg", thumb);
      }catch(Exception e){
     	 System.out.println("making thumbnail:"+e.getMessage());
+     }
+     
+     //중간 이미지 생성 (원본의 50%정도)
+     int md_width = 0;
+     int md_height = 0;
+     try {
+    	 File file = new File(vo.getPath());
+    	 String fileName = vo.getPath();
+    	 //fileName = fileName.substring(0, fileName.lastIndexOf('.'));
+    	 BufferedImage image = ImageIO.read(file);
+    	 int ori_width = image.getWidth();
+    	 int ori_height = image.getHeight();
+    	 md_width = (int)ori_width/2;
+    	 md_height = (int)ori_height/2;
+    	 BufferedImage img = new BufferedImage(md_width, md_height, BufferedImage.TYPE_3BYTE_BGR);
+    	 Graphics2D g = img.createGraphics();
+    	 g.drawImage(image, 0, 0, md_width, md_height, null);
+    	 File middle = new File(fileName+"_md.jpg");
+    	 ImageIO.write(img, "jpeg", middle);
+     } catch(Exception e){
+    	 System.out.println("making middle:"+e.getMessage());
      }
      
      //이동
