@@ -7,7 +7,7 @@ public class MemberDAO {
 	private PreparedStatement ps;
 	
 	//오라클 연결
-	private final String URL="jdbc:oracle:thin:@211.238.142.117:1521:ORCL";
+	private final String URL="jdbc:oracle:thin:@211.238.142.118:1521:ORCL";
 	private final String DRIVER="oracle.jdbc.driver.OracleDriver";
 	private final String USERNAME="scott";
 	private final String PWD="tiger";
