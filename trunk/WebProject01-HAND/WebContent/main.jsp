@@ -22,7 +22,7 @@
 	<table border=0 width=665 height=405 cellspacing="0" scrolling="no">
 		<tr>
 			<td>
-				<script>document.write("<img src="+img_array[r]+" border=0>");</script>
+				<script>document.write("<img src="+img_array[r]+" border=0 width=550 height=340>");</script>
 			</td>			
 		</tr>
 	</table>
