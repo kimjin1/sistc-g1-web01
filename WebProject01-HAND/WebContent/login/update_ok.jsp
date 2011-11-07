@@ -4,44 +4,14 @@
 
 <%
 	request.setCharacterEncoding("euc-kr");
-
-	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");
-	String name = request.getParameter("name");
-	String year = request.getParameter("year");
-	String month = request.getParameter("month");
-	String day = request.getParameter("day");
-	String nickname = request.getParameter("nickname");
-	String memo = request.getParameter("memo");
-	String email = request.getParameter("email");
-	String photo = request.getParameter("photo");
-	String homepage = request.getParameter("homepage");
 %>
 <jsp:useBean id="dao" class="com.db.MemberDAO" />
 <jsp:useBean id="vo" class="com.db.MemberVO" />
-
+<jsp:setProperty property="*" name="vo"/>
 
 <%
-	DiaryCalendar cal = DiaryCalendar.getInstance();
-	Date birth = cal.valueToDate(year, month, day);
-
-	vo.setId(id);
-	vo.setPw(pw);
-	vo.setName(name);
-	vo.setBirth(birth);
-	vo.setNickname(nickname);
-	vo.setMemo(memo);
-	vo.setEmail(email);
-	vo.setPhoto(photo);
-	vo.setEmail(email);
-	vo.setHomepage(homepage);
-
-	dao.insert(vo);
-
-	session.setAttribute("id", id);
-	session.setAttribute("name", name);
-	session.setAttribute("admin", 2);
-	session.setAttribute("email", email);
+	System.out.println(vo.toString());
+	dao.updateMemberData(vo);
 %>
 
 <html>

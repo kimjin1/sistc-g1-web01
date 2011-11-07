@@ -1,5 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="com.db.*, com.diary.*"%>
+<%
+	String id = (String)session.getAttribute("id");
+
+	MemberDAO dao = new MemberDAO();
+	MemberVO vo = dao.getMemberData(id);
+	
+	DiaryCalendar dc = DiaryCalendar.getInstance();
+	String ymd[] = dc.dateToValue(vo.getBirth());
+	String strYear = ymd[0];
+	String strMonth = ymd[1];
+	String strDay = ymd[2];
+	int bYear = Integer.parseInt(strYear);
+	int bMonth = Integer.parseInt(strMonth);
+	int bDay = Integer.parseInt(strDay);
+%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,40 +29,18 @@
 <script type="text/javascript">Shadowbox.init();</script>
 
 <script type="text/javascript">
-function login()
-{
-	var f=document.frm;
-	if(f.id.value=="")
-	{
-		alert("ID를 입력하세요");
-		f.id.focus();
-		return;
-	}
-	Shadowbox.open(
-	   {
-		   content:"../login/idcheck.jsp?id="+f.id.value,
-		   player:"iframe",
-		   title:"ID중복체크",
-		   width:300,
-		   height:150
-	   }
-	);
-}
-</script>
-<script type="text/javascript">
 function pwdCheck(){
 	var f = document.frm;		
 	if(f.pw.value==f.pw2.value){
 		f.pwdchk.style.color="blue";
 		f.pwdchk.value="※비밀번호가 일치합니다";
-		f.name.focus();
+		f.nickname.focus();
 	}else{			
 		f.pwdchk.style.color="red";
 		f.pwdchk.value="※비밀번호가 일치하지 않습니다";
 	}		
 }
-</script>
-<script type="text/javascript">
+
 function update_ok(){
 	
 	var f=document.frm;
@@ -87,7 +80,7 @@ function update_ok(){
            <tr>
             <td align=right width=20%>ID</td>
             <td align=left width=80%>
-              <input type=text size=12 name=id readonly="readonly">
+              <input type=text size=12 name=id readonly="readonly" value="<%=id%>" onfocus="javascript:document.password.focus()">
             </td>
            </tr>
            
@@ -106,7 +99,7 @@ function update_ok(){
            <tr>
             <td align=right width=20%>이름</td>
             <td align=left width=80%>
-              <input type=text size=12 name=name readonly="readonly">
+              <input type=text size=12 name=name readonly="readonly" value="<%=vo.getName()%>">
               <input type=text size=27 name=pwdchk readonly>
             </td>
            </tr>
@@ -115,11 +108,11 @@ function update_ok(){
            <tr>
             <td align=right width=20%>생일</td>
             <td align=left width=80%>
-             <select name=year>
+             <select name=year disabled="disabled">
              <%
              int year =0;
              for(int i=1900;i<2050; i++){
-            	 if(i==year){
+            	 if(i==bYear){
             		 %>
             		 <option selected><%=i %></option>
             		 <%
@@ -134,11 +127,11 @@ function update_ok(){
              %>
           
              </select> 년 
-            <select name=month>
+            <select name=month disabled="disabled">
              <%
              int month =0;
              for(int i=01;i<13; i++){
-            	 if(i==month){
+            	 if(i==bMonth){
             		 %>
             		 <option selected><%=i %></option>
             		 <%
@@ -153,11 +146,11 @@ function update_ok(){
              %>
           
              </select> 월
-            <select name=day>
+            <select name=day disabled="disabled">
              <%
              int day =0;
              for(int i=1;i<32; i++){
-            	 if(i==day){
+            	 if(i==bDay){
             		 %>
             		 <option selected><%=i %></option>
             		 <%
@@ -178,34 +171,34 @@ function update_ok(){
            <tr>
             <td align=right width=20%>별명</td>
             <td align=left width=80%>
-              <input type=text size=12 name=nickname>
+              <input type=text size=12 name=nickname value="<%=vo.getNickname()%>">
             </td>
            </tr>
            
            <tr>
             <td align=right width=20%>이메일</td>
             <td align=left width=80%>
-             <input type=text size=50 name=email>
+             <input type=text size=50 name=email value="<%=vo.getEmail()%>">
             </td>
            </tr>
            
            <tr>
             <td align=right width=20%>홈페이지</td>
             <td align=left width=80%>
-             <input type=text size=50 name=homepage>
+             <input type=text size=50 name=homepage value="<%=vo.getHomepage()%>">
             </td>
            </tr>
            
            <tr>
              <td align=right width=20% valign=top>소개</td>
              <td align=left width=80%>
-               <textarea rows="12" cols="50" name=memo></textarea>
+               <textarea rows="12" cols="50" name=memo><%=vo.getMemo()%></textarea>
              </td>
            </tr>
      
            <tr>
              <td align=center colspan=2>
-              <input type=button value="수정 onclick="update_ok()" >
+              <input type=button value="수정" onclick="update_ok()" >
               <input type="reset" value="취소">
              </td>
            </tr>

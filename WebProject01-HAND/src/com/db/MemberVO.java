@@ -81,6 +81,9 @@ public class MemberVO {
 	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
-	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return id+"|"+pw+"|"+name+"|"+birth+"|"+nickname+"|"+joinus+"|"+memo+"|"+email+"|"+photo+"|"+homepage+"|"+admin;
+	}		
 }
