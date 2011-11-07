@@ -14,7 +14,7 @@
 				img_array[2]="image/bg3.png";
 				img_array[3]="image/bg4.png";
 				img_array[4]="image/bg5.png";
-				
+				 
 				</script>
 </head>
 <body>
