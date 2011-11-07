@@ -44,6 +44,16 @@
       	<img src="../photo/upload/<%=vo.getFilename()%>">
       	</td>
       </tr>
+      </table>
+       <table width=600 border=1 bordercolor=#ccccff>
+      <tr>
+      <td width=15% >작성자
+      </td>
+      <td width=20%><%=session.getAttribute("name")%>
+      </td>
+      <td width=15%>작성일</td>
+      <td width=40%><%=vo.getRegdate() %></td>
+      </tr>
       <tr>
         <td align=left colspan=4 valign=top height=50>
          <pre><%=vo.getContent() %></pre>
