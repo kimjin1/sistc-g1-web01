@@ -60,19 +60,19 @@ public class BoardDAO {
 	}
 	
 	   //게시물 전체 출력
-	   public ArrayList<BoardVO> getBoardData(String id, int page)
+	   public ArrayList<BoardVO> getBoardData( int page)
 	   {
 		   ArrayList<BoardVO> list=new ArrayList<BoardVO>();
 		   try
 		   {
-	 if(id!=null){
+	
 			   //연결
 			   getConnection();
 			   //쿼리문장
-			   String sql="select no,name,subject,email,regdate,readnum,grouplevel,depth from p_board where id like ? order by no desc";
+			   String sql="select no,name,subject,email,regdate,readnum,grouplevel,depth from p_board  order by no desc";
 			   //쿼리실행=결과값 : 오라클에서 데이터 10개씩(PL/SQL)
 			   ps=conn.prepareStatement(sql);
-			   ps.setString(1, id);
+			 
 			   ResultSet rs=ps.executeQuery();
 			   
 			   //페이지별 출력
@@ -100,40 +100,8 @@ public class BoardDAO {
 				   }
 				   j++;
 			   }
-	}else{
-		   getConnection();
-		   //쿼리문장
-		   String sql="select no,name,subject,email,regdate,readnum,grouplevel,depth from p_board  order by no desc";
-		   //쿼리실행=결과값 : 오라클에서 데이터 10개씩(PL/SQL)
-		   ps=conn.prepareStatement(sql);
-		   ResultSet rs=ps.executeQuery();
-		   
-		   //페이지별 출력
-		   int pagestart=(page*10)-10;//시작점
-		   int i=0;//10씩 나눠주는 변수 
-		   int j=0;//while의 횟수 
-		   while(rs.next())
-		   {
-			   if(i<10 && j>=pagestart)
-			   {
-				   //값을 가지고 온다 
-				   BoardVO vo=new BoardVO();
-				   vo.setNo(rs.getInt(1));
-				   vo.setName(rs.getString(2));
-				   vo.setSubject(rs.getString(3));
-				   vo.setEmail(rs.getString(4));
-				   vo.setRegdate(rs.getDate(5));
-				   vo.setReadnum(rs.getInt(6));
-				   vo.setGrouplevel(rs.getInt(7));
-				   vo.setDepth(rs.getInt(8));
-				   
-				   list.add(vo);
-				   
-				   i++;
-			   }
-			   j++;
-		   }
-	}
+	
+	
 			  
 			  
 			   //결과값을 ArrayList담아둔다
