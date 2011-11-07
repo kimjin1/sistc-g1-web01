@@ -57,21 +57,21 @@
     <table border=0 width=400   cellpadding="6" background="../image/visitor/visitor2.png" >
         <tr >
 
-	        <td width=15%>No.<%=vo.getNo() %></td>
+	        <td width=15% >No.<%=vo.getNo() %></td>
 	        <td width=30% align=left><%=vo.getName() %></td>
 	        
-	          <td  width=10% align=right  >
+	          <td  width=10% align=right >
 	        <input type=hidden name= page value="<%=curpage %>">
 	        <input type=hidden name=no value="<%=vo.getNo()%>">
 	         <input type=hidden name=name value="<%=vo.getName()%>">
 	        
-	        <input type=submit value=삭제>
+	        <input type=submit value=삭제  border=0>
 	        
 	        </td>
 	         
 	        </tr>
 	        <tr>
-	        <td  width=90% colspan="3" align=left height=100><%=vo.getContent() %>
+	        <td  width=90% colspan="3" align=left height=115><%=vo.getContent() %>
 	        </td>
 	       
 	      
