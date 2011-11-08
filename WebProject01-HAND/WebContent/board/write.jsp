@@ -42,7 +42,7 @@ function send()
         </tr>
         <tr>
         	<td  align=left width="20%" bgcolor=cccccc>¿Ã∏ß</td>
-        	<td align="left"><input type=text name=name size=10 value="<%=session.getAttribute("name")%>">
+        	<td align="left"><input type=text name=name size=10 readonly="readonly" value="<%=session.getAttribute("name")%>">
         	</td>
         	
         	<td  align=left width="20%" bgcolor=cccccc>Email</td>

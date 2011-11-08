@@ -4,9 +4,9 @@
     request.setCharacterEncoding("EUC-KR");
 %>
 <%
-     String strNo=request.getParameter("no");
      String strPage=request.getParameter("page");
      String pw=request.getParameter("pw");
+ 
 %>
 <jsp:useBean id="dao" class="com.db.BoardDAO"/>
 <jsp:useBean id="vo" class="com.db.BoardVO">

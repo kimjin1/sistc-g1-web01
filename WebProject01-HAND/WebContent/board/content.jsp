@@ -58,7 +58,7 @@ function Login(no,page,type){
 		return;		      
 	}   else{
 		//성공했을때위치이동
-		if(type==5 || type==4){
+		if(type==4 || type==5){
 			if(id != gid){
 				alert("본인 글만 변경할 수 있습니다");
 				return;
@@ -133,13 +133,14 @@ function Login(no,page,type){
 	
 	<tr>
         <td width=15% bgcolor=cccccc height=25>제목</td>
-            <td align=left colspan=1><%=vo.getSubject() %></td>
-            <td align=right colspan=4 >	
+            <td align=left colspan=3 width="50%"><%=vo.getSubject() %></td>
+            <td align=right colspan=3 >	
            
             <a href="javascript:Login(<%=strNo%>,<%=strPage%>,4)">
    			<img src="../image/board/update.jpg" border=0>
    			</a>
    			<a href="javascript:Login(<%=strNo%>,<%=strPage%>,5)">
+   			<input type="hidden" id="gid" value="<%=vo.getId()%>">
    			<img src="../image/board/delete.jpg" border=0>
    			</a>
    			<a href="javascript:Login(<%=strNo%>,<%=strPage%>,2)">
@@ -153,17 +154,24 @@ function Login(no,page,type){
       </tr>
       
       
-      <tr  >
-        <td width=15% bgcolor=cccccc height=25>글쓴이</td>
-        <td width=20%><%=vo.getName() %></td>
-        <td width=15% bgcolor=cccccc>작성일</td>
-        <td width=20%><%=vo.getRegdate().toString() %></td>
+      <tr >
+        <td width=10% bgcolor=cccccc height=25>글쓴이</td>
+        <td width=15%><%=vo.getName() %></td>
+        <td width=10% bgcolor=cccccc>작성일</td>
+        <td width=35%><%=vo.getRegdate().toString() %></td>
         <td width=15% bgcolor=cccccc>조회수</td>
         <td width=15%><%=vo.getReadnum() %></td>
       </tr>
+      <%
+      String Content=vo.getContent();
+ 	 if(Content.length()>=1950){
+ 		Content=Content.substring(0,1950);
+ 		Content=Content+"!!!!!!!!!!!!!!The End...";
+ 	 }
+      %>
         <tr>
         <td align=left colspan=6 valign=top height=200>
-         <pre><%=vo.getContent() %></pre>
+         <pre><%=Content %></pre>
         </td>
       </tr>
       

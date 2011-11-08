@@ -62,7 +62,7 @@ function send()
         </tr>
         <tr>
         	<td width=15% align=left bgcolor=cccccc>¿Ã∏ß</td>
-        	<td width=25% align="left"><input type=text name=name size=15 value=<%=vo.getName() %>>
+        	<td width=25% align="left"><input type=text name=name size=15  readonly="readonly" value=<%=vo.getName() %>>
         	<input type=hidden name=no value=<%=strNo %>>
            <input type=hidden name=page value=<%=strPage %>>
         	</td>
