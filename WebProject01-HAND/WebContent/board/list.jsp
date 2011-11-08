@@ -37,6 +37,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
+	table{
+		background-repeat: no-repeat;
+	}
   a{text-decoration: none;color:black}
  a:hover{text-decoration: underline;color:green}
 </style>
@@ -70,8 +73,8 @@ function Login(no,page,type){
 <body>
 <center>
     
-    <table border=0 width=600 height=10 cellpadding="0" cellspacing="3">
-      <tr bgcolor=cccccc>
+    <table border=0 width=600 height=12 cellpadding="3" cellspacing="3" background="../image/board/board_bg.png">
+      <tr >
        <th width=10%>번호</th>
        <th width=45%>제목</th>
        <th width=15%>이름</th>
