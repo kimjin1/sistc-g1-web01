@@ -17,7 +17,13 @@
 	String strNo=request.getParameter("no");
 	if(strPage==null)
 		strPage="1";
-	curpage=Integer.parseInt(strPage);
+	
+	try{
+		curpage=Integer.parseInt(strPage);
+	}catch(NumberFormatException e){
+		curpage=1;
+	}
+	
 	ArrayList<BoardVO> list=dao.getBoardData(curpage);
 	totalpage=dao.getTotalPage();
 	int count=dao.getBoardCount();
