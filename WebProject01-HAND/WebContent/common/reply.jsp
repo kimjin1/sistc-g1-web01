@@ -11,10 +11,9 @@
 	String strNo=request.getParameter("no");
 	int flag=Integer.parseInt(request.getParameter("flag"));
 	int rootno=Integer.parseInt(request.getParameter("rootno"));
-	
-	
-	
+	String rootid = dao.getRootId(rootno, flag);
 	ArrayList<ReplyVO> list = dao.getReplyData(flag,rootno);
+	System.out.println("reply:"+id+"|"+rootid);
 %>
 
 <html>
@@ -59,27 +58,32 @@ function openclose()
 }
 
 function delSelected(){
-	var num = <%=list.size()%>
-	if(num==0){
-		alert("답글이 없습니다.");
+	var id = "<%=id%>";
+	var rid = "<%=rootid%>";	
+	if(id != rid){
+		alert("게시물 작성자만 삭제할 수 있습니다")
 		return;
-	}
-	var check = document.del_frm.delnum;
-	
-	var flg = false;
-	var i = 0;
-	for(i=0; i<check.length; i++){
-		if(check[i].checked==true){
-			flg = true;
+	}	else{
+		var num = <%=list.size()%>;
+		if(num==0){
+			alert("답글이 없습니다.");
+			return;
 		}
-	}
-	if(flg==true){
-		document.del_frm.submit();
-	}else{
-		alert("선택된 항목이 없습니다");		
-	}
-	
+		var check = document.del_frm.delnum;
 		
+		var flg = false;
+		var i = 0;
+		for(i=0; i<check.length; i++){
+			if(check[i].checked==true){
+				flg = true;
+			}
+		}
+		if(flg==true){
+			document.del_frm.submit();
+		}else{
+			alert("선택된 항목이 없습니다");		
+		}		
+	}
 }
 </script>
 </head>
