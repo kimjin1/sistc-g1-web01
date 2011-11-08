@@ -38,7 +38,8 @@ function del()
                   value=<%=strNo %>>
         <input type=hidden name=page 
                   value=<%=strPage %>>
-        <input type="hidden" name=id value="<%=id%>">
+        <input type="hidden" name=id value="<%=session.getAttribute("id")%>">
+      
        </td>
       </tr>
       <tr>

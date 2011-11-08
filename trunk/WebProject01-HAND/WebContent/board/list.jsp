@@ -86,10 +86,16 @@ function Login(no,page,type){
 	        <td width=10%><%=vo.getNo() %></td>
 	        <td width=45% align=left>
 	        <%
+	        	
 	             if(vo.getGrouplevel()==0)//»õ±Û
 	             {
+	            	 String Subject=vo.getSubject();
+	            	 if(Subject.length()>=15){
+	            		 Subject=Subject.substring(0,15);
+	            		 Subject=Subject+"...";
+	            	 }
 	        %>
-	               <a href="board.jsp?type=3&no=<%=vo.getNo()%>&page=<%=curpage%>"><%=vo.getSubject() %></a>
+	               <a href="board.jsp?type=3&no=<%=vo.getNo()%>&page=<%=curpage%>"><%=Subject %></a>
 	       
 	                
 	          <%
