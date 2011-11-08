@@ -34,11 +34,13 @@
 <style type="text/css">
   a{text-decoration: none;color:black}
  a:hover{text-decoration: underline;color:green}
+ table{ table-layout: fixed; word-wrap: break-word;
+ } 
 </style>
 </head>
 <body>
 	<center>
-		<table width=600 height=200 border=0>
+		<table width=600 height=200 border=0 >
 			<tr>
 				<td width=200 align="center" valign="middle">
 					<%if(photo!=null){ %>
@@ -49,6 +51,7 @@
 					<%} %>
 				</td>
 				<td width=400 align="left">
+				
 					<font face="Serif" size=5 color="Blue"><b><%=nick %></b></font>&nbsp;´Ô Áñ°Å¿î ÇÏ·ç!!
 					<pre>
 					<%=memo %>
