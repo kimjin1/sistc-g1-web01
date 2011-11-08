@@ -162,4 +162,25 @@ public class ReplyDAO {
 		   }
 	//ÃÑ´þ±¼ °¹¼ö:±Û¹øÈ£,°Ô½ÃÆÇ ¹øÈ£
 
+		public String getRootId(int rootno, int flag){
+			String rid = "";
+			String loc = "";
+			if(flag==1){
+				loc = "p_board";
+			}
+			try {
+				getConnection();
+				String sql = "select id from "+loc+" where no=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, rootno);
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				rid = rs.getString(1);
+			} catch (Exception e) {
+				System.out.println("getRootId():"+e.getMessage());
+			} finally {
+				disConnection();
+			}
+			return rid;
+		}
 }
