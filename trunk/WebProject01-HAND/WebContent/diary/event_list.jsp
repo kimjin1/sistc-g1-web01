@@ -47,6 +47,21 @@ function deleteEvent(no){
 	var url = "../diary/event_delete.jsp?year="+year+"&month="+month+"&day="+day+"&no="+no;
 	self.location.href= url;
 }
+function delSelected(){
+	var check = frm.chklist;
+	var flag = false;
+	var i = 0;
+	for(i=0; i<check.length; i++){
+		if(check[i].checked==true){
+			flag = true;
+		}
+	}
+	if(flag==true){
+		frm.submit();
+	}else{
+		alert("선택된 항목이 없습니다");		
+	}
+}
 function selectAll(){
 	var chkall = document.frm.chkall;	
 	var check = document.frm.chklist;
@@ -65,22 +80,6 @@ function selectAll(){
 		}		
 	}	
 }
-function delSelected(){
-	var check = frm.chklist;
-	var flag = false;
-	var i = 0;
-	for(i=0; i<check.length; i++){
-		if(check[i].checked==true){
-			flag = true;
-		}
-	}
-	if(flag==true){
-		frm.submit();
-	}else{
-		alert("선택된 항목이 없습니다");		
-	}
-}
-
 function currentTime(){
 	var time = new Date();
 	var hour = time.getHours();
@@ -108,21 +107,19 @@ function currentTime(){
 				 		<th width="10%">
 				 			<input type="checkbox" name="chkall" onclick="selectAll()">				 			
 				 		</th>
-				 		<th width=70% align="left" colspan=2>
+				 		<th width=10% align="left">
 							<a href="../diary/event_write.jsp?year=${param.year}&month=${param.month}&day=${param.day}">
 								새 일정
 							</a>
-							&nbsp;
+						</th>
+						<th width=55% align="left">
 							<input type="hidden" name="year" value="<%=strYear%>">
 							<input type="hidden" name="month" value="<%=strMonth%>">
 							<input type="hidden" name="day" value="<%=strDay%>">
 							<a href="javascript:delSelected()">선택 삭제</a>
 							&nbsp;
-							<%-- 시간이 지난 일정을 모두 삭제. 최종본에서 사용안함  											 		
-							<a href="javascript:delSelected()">지난 일정삭제</a>
-							--%>
 				 		</th>				 		
-				 		<th width="20%" align="right">
+				 		<th width="25%" align="right">
 				 			<%-- 현재 시간 출력 택스트창 --%>				 			
 				 			<input type="text" name="clock" readonly="readonly" size=10 align="middle" alt="현재시간" style="border: none">				 			
 				 		</th>				 			
@@ -135,28 +132,28 @@ function currentTime(){
 				 	<%-- 일정 목록 출력 부분 --%>
 				 	<c:forEach var="vo" items="<%=dList%>" varStatus="DiaryVO">
 					 	<tr>				 	
-						 	<td align="center" width="10%">
+						 	<td align="center">
 						 		<input type="checkbox" name="chklist" value="${vo.getNo() }">
 						 	</td>
-						 	<td align="center" width="10%">
+						 	<td align="center">
 						 		<fmt:formatDate var="hm" value="${vo.getEvent_time() }" type="time" pattern="HH:mm"/>
 						 		${hm }						 		
 						 	</td>
-						 	<td width="50%">
+						 	<td>
 						 		&nbsp;
 						 		<a href="javascript:openClose(${vo.getNo() })">						 								 	
 								${vo.getSubject() }
 								</a>
 						 	</td>
-						 	<td align="center" width="30%">
+						 	<td align="center">
 						 		<input type="button" value="수정" onclick="modifyEvent(${vo.getNo()})">
 						 		<input type="button" value="삭제" onclick="deleteEvent(${vo.getNo()})">						 		
 						 	</td>				 		
 					 	</tr>
 					 	<tr id="con${vo.getNo() }" style="display: none">
 					 		<td width="10%">&nbsp;</td>
-					 		<td width="10%">&nbsp;</td>
-					 		<td colspan=2 width=80%>
+					 		
+					 		<td colspan=3 width=80%>
 					 			<%-- 
 					 			<textarea rows="5" cols="70">${vo.getContent() }</textarea>
 					 			--%>					 			
