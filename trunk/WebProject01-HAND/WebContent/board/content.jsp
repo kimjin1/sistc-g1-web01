@@ -88,10 +88,17 @@ function Login(no,page,type){
      <%
 			//윗글이 존재한다면  출력
 			if(Integer.parseInt(strNo) < max){
+				
+				 String subject=vo.getSubject();
+			 	 if(subject.length()>=30){
+			 		subject=subject.substring(0,30);
+			 		subject=subject+"...";
+			 	 }
+				
 	%>
      <img src="../image/board/prev1.jpg" border=0>
      <a href="board.jsp?type=3&no=<%=maxNo%>&page=<%=strPage%>">
-     <%=maxSubject%>
+     <%=subject%> 
 	</a>
 	<%		
 			}else{
@@ -106,14 +113,22 @@ function Login(no,page,type){
    </tr>
      
      <tr>
-   </td>
+ 
 	<td align=left>
      <%											
 		if(Integer.parseInt(strNo) > min){
+			
+			 String suject=vo.getSubject();
+		 	 if(suject.length()>=30){
+		 		suject=suject.substring(0,30);
+		 		suject=suject+"...";
+		 	 }
+			
+			
 	%>
      <img src="../image/board/next1.jpg" border=0>
      <a href="board.jsp?type=3&no=<%=minNo%>&page=<%=strPage%>">
-		<%=minSubject%>		
+		<%=suject%>		
 	 </a> 
 	<%
 			}else{

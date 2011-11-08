@@ -40,6 +40,8 @@
 	table{
 		background-repeat: no-repeat;
 	}
+	th{font-family: 휴먼매직체; font-size:10pt; color:white}
+	td{font-family: 휴먼매직체; font-size:10pt;}
   a{text-decoration: none;color:black}
  a:hover{text-decoration: underline;color:green}
 </style>
