@@ -20,6 +20,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
+	table{
+		table-layout: fixed;
+		word-wrap: break-word;
+	}
 	a{text-decoration:none; color:black;}
 	a:hover{text-decoration:underline; color:green}
 </style>
