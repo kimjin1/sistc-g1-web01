@@ -70,8 +70,15 @@
 	        </td>
 	         
 	        </tr>
+	        <%
+	        	String content = vo.getContent();
+			if(content.length()>=110){
+				content = content.substring(0, 110);
+				content=content+"...";
+			}
+			%>
 	        <tr>
-	        <td  width=90% colspan="3" align=left height=115><%=vo.getContent() %>
+	        <td  width=90% colspan="3" align=left height=115><%=content %>
 	        </td>
 	       
 	      
