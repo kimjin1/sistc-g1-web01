@@ -27,6 +27,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>사진방</title>
+<style type="text/css">
+ th{font-family: 휴먼매직체; font-size:14pt; color:white}
+ td{font-family: 휴먼매직체; font-size:12pt;}
+
+  a{text-decoration: none;color:black}
+ a:hover{text-decoration: underline;color:green}
+</style>
 <link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
 <script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
 <script type="text/javascript">Shadowbox.init();</script>
@@ -88,7 +95,7 @@ function openPhoto(no){
 		<td width=100 height=80><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>"><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>" border=0></a></td>
 	</tr>
 	<tr>
-		<td width=100 height=10><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>"><%=vo.getContent() %></a></td>		
+		<td width=100 height=10><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>" ><%=vo.getContent() %></a></td>		
 		
 	</tr>
 	</table>
@@ -111,8 +118,8 @@ function openPhoto(no){
 	
 	 <td align=right>
         <select name=fs>
-         <option value=name>작성자</option>
          <option value=content>내용</option>
+         <option value=name>작성자</option>
         
         </select>
         <input type=text name=ss size=10>

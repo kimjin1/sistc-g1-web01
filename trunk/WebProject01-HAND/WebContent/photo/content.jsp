@@ -79,8 +79,8 @@ function send(no,page){
       <td width=40%><%=vo.getRegdate() %></td>
       </tr>
       <tr>
-        <td align=left colspan=4 valign=top height=50>
-         <pre><%=vo.getContent() %></pre>
+        <td align=left colspan=4 valign=top height=50 >
+         <pre> <%=vo.getContent() %></pre>
         </td>
       </tr>
      </table>

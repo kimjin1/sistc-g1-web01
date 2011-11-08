@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%    
+	request.setCharacterEncoding("EUC-KR");
     String strNo=request.getParameter("no");
     String strPage=request.getParameter("page");    
     String name = request.getParameter("name");
+
+    
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
