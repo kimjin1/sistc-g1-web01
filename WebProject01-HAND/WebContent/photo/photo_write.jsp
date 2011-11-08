@@ -40,6 +40,13 @@ function send()
            <input type="hidden" name=id value="<%=session.getAttribute("id")%>"> 
           </td>
          </tr>
+         <tr>
+          <td align=right width=20%>이메일</td>
+          <td align=left width=80%>
+           <input type=text name=email size=25 value="<%=session.getAttribute("email")%>">
+           
+          </td>
+         </tr>
         
          <tr>
           <td align=right width=20% valign=top>내용</td>

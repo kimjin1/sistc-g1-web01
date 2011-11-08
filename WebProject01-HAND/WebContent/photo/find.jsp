@@ -24,7 +24,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
-a{text-decoration: none;color:black}
+ th{font-family: 휴먼매직체; font-size:14pt; color:white}
+ td{font-family: 휴먼매직체; font-size:12pt;}
+
+  a{text-decoration: none;color:black}
  a:hover{text-decoration: underline;color:green}
 </style>
 <script type="text/javascript">
@@ -73,7 +76,7 @@ function open(id)
        else
        {
     %>
-    <table border=1	width=550>
+    <table border=0width=550>
 	<tr>		
 	<%
 	int i = 0;
@@ -87,9 +90,9 @@ function open(id)
 	}
 	%>						
 	<td>
-	<table width=100% border=1>
+	<table width=100% border=0>
 	<tr>
-		<td width=200 height=150><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg" %>"></td>
+		<td width=200 height=150><a href="content.jsp?no=<%=vo.getNo()%>"><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg" %>"></a></td>
 	</tr>
 	<tr>
 		<td width=100 height=20><a href="content.jsp?no=<%=vo.getNo()%>"><%=vo.getContent() %></a></td>
@@ -106,22 +109,17 @@ function open(id)
 	</table>
 	
 	
-	<table width=550 border=0>
+	<table width=450 border=0>
 	<tr>
 	<td>
-	<a href="photo_write.jsp"><img src="../image/board/write.jpg" align=left border=0></a>
-	</td>
-	
-	 <td align=right>
-        <select name=fs>
-         <option value=name>내용</option>
-         
-        
-        </select>
-        <input type=text name=ss size=20>
-        
-        <input type=button value=찾기 >
+	<a href="photo_write.jsp"><img src="../image/board/write.jpg" align=left border=0></a></td>
+
+	<td align =right >
+       <input type = button value=뒤로 onclick="javascript:history.back()">
        </td>
+      
+	
+	
        </tr>
            <tr  >
        <td align=center colspan=2>
@@ -134,7 +132,7 @@ function open(id)
        }
          %>
        
-       </td>
+       
        </tr>
 	</table>
 	
