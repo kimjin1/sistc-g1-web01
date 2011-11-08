@@ -23,21 +23,35 @@
 <title>Insert title here</title>
 
 <script language="javascript">
-	function weatherChange(){
 	
-	var wc = document.getElementById("wn");
-	weather="<Embed src='http://freewiw.kweather.co.kr/freenal/flash/type_1.swf'";
+	var wc ="";
+	var wt ="";
+	
+	
+	function weatherChange(){
+	wc = document.getElementById("w_select");
+	var weather="";
+	weather="<Embed src='http://freewiw.kweather.co.kr/freenal/flash/type_2.swf'";
 	weather+="flashVars='colorSet=1&dataPath=http://freewiw.kweather.co.kr/freenal/data/data";
 	weather+= wc.value+".txt' width=150 height=145>";
 	
-	document.getElementById("wl").innerHTML = weather;	
+	document.getElementById("wl").innerHTML = weather;
+	}
 	
+	function wetherType(){
+	wt = document.getElementById("w_type");
+	type="";
+	type="<Embed src='http://freewiw.kweather.co.kr/freenal/flash/type_";
+	type+=wt.value;
+	type+=".swf'flashVars='colorSet=1&dataPath=http://freewiw.kweather.co.kr/freenal/data/data";
+	type+= wc.value+".txt' width=150 height=145>";		
+	document.getElementById("wl").innerHTML = type;
 	}
 </script>
 </head>
 <body>
 <p><p><p><p>
-	<table border=0 width=200>
+	<table border=0 width=200 CellPadding=0 CellSpacing=0>
 		<tr>
 		
 			<td>			
@@ -45,8 +59,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
-				<select id=wn onchange='weatherChange()'>
+			<td align=center>
+			<br>
+				<select id=w_select onchange='weatherChange()'>
 					<option value="0"> 속초 </option>
 					<option value="20">추풍령 </option>
 					<option value="40">진주 </option>
@@ -124,15 +139,17 @@
 					<option value="39"> 서귀포 </option>
 					<option value="59"> 장흥 </option>
 				</select>
+				<select id=w_type onchange='wetherType()'>
+					<option value="1">타입1</option>
+					<option value="2">타입2</option>
+					<option value="3">타입3</option>
+					<option value="4">타입4</option>
+				</select>
+					
 			</td>
 		</tr>
 		<tr>
-			<td align=center >
-				<%-- 
-				<script src="http://widgetprovider.daum.net/view?url=http://widgetcfs1.daum.net/xml/3/widget/2011/01/26/17/13/4d3fd792c255e.xml&up_city=Seoul&up_color=aquamarine&&width=170&height=115&widgetId=1046&scrap=1" type="text/javascript"></script>
-				--%>				
-				<%--<iframe scrolling="no" width=100% height=100% src="http://bgm.music24.kr/weather/9.php"></iframe> --%>
-				<%--<iframe scrolling="no" width=100% height=100% src="http://bgm.music24.kr/weather/9.php"></iframe> --%>
+			<td align=center valign="top">
 				<DIV id="wl" style="overflow: hidden; width:150; heigth:107">
 				<script language="javascript">
 					weatherChange();
@@ -140,17 +157,7 @@
 				</DIV>
 			</td>
 		</tr>
-		<%--
 		<tr>
-			<td align=center>
-				<a href=../setup/setup.jsp target="main" ><img src=../image/edit1.png width=20 height=20 border=0>&nbsp;환경 설정</a>
-			</td>
-		</tr>
-		 --%>
-		<tr>
-		<td>
-			&nbsp;
-		</td>
 		</tr>
 		<tr>
 		<td align=center>
