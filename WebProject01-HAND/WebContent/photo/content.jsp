@@ -1,15 +1,19 @@
+<%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="com.db.*"%>
 <jsp:useBean id="dao" class="com.db.PhotoDAO"/>
 
 <%
    //게시물 번호
-   	String id=(String)session.getAttribute("id"); 
+   	//String id=(String)session.getAttribute("id"); 
    String strNo=request.getParameter("no");
 	String strPage = request.getParameter("page");
-
+	String lid = (String)session.getAttribute("id");
    PhotoVO vo= 
 		   dao.getContent(Integer.parseInt(strNo));
+   String id = vo.getId();
+   String name = dao.getName(id);
+   System.out.println("히히"+id);
    
  
 %>
@@ -20,21 +24,44 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
-<script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
-<script type="text/javascript">Shadowbox.init();</script>
+<style type="text/css">
+table{
+  table-layout: fixed;
+  word-wrap: break-word;
+ }
+ </style>
+
 <script type="text/javascript">
-function send(no,page){
-	var id = "<%=id%>";		   
+function send(no,page){	
+	var id = "<%=lid%>";
+	var gid = document.getElementById("gid").getAttribute("value");
 	if(id=="null"){
 		alert("로그인 하세요");
-		return;
-		      
+		return;		      
 	}   else{
+		if(id != gid){
+			alert("본인의 게시물만 변경할 수 있습니다");
+			return;
+		}else{
 		//성공했을때위치이동
 		  self.location.href="update.jsp?no="+no+"&page="+page;
+		}
 	}    		
 }
+
+function send2(no,page)
+{
+	var id = "<%=lid%>";
+	var gid = document.getElementById("gid").getAttribute("value");
+	if(id != gid){
+		alert("본인의 게시물만 변경할 수 있습니다");
+		return;
+	}else{
+	//성공했을때위치이동
+	  self.location.href="delete.jsp?no="+no+"&page="+page;
+	}
+	}
+
 </script>
 
 </head>
@@ -63,7 +90,10 @@ function send(no,page){
       <tr>
       	<td>
       	
-      	<a href="../photo/upload/<%=vo.getFilename()%>" rel="shadowbox">
+      	<%--
+     	<a href="../photo/upload/<%=vo.getFilename()%>" target="_blank">
+     	 --%>
+     	 <a href="../photo/upload/<%=vo.getFilename()%>" target="_blank">
       	<img src="../photo/upload/<%=vo.getFilename()%>_md.jpg" border="0">
       	</a>
       	</td>
@@ -73,7 +103,7 @@ function send(no,page){
       <tr>
       <td width=15% >작성자
       </td>
-      <td width=20%><%=session.getAttribute("name")%>
+      <td width=20%><%=name%>
       </td>
       <td width=15%>작성일</td>
       <td width=40%><%=vo.getRegdate() %></td>
@@ -92,7 +122,8 @@ function send(no,page){
         <%-- <a href="update.jsp?no=<%=vo.getNo()%>&page=<%=strPage%>">
         <img src="../image/board/update.jpg" border=0 >
         </a> --%>
-        <a href="delete.jsp?no=<%=vo.getNo()%>&page=<%=strPage%>">
+        <a href="javascript:send2(<%=strNo%>,<%=strPage%>)">
+        <input type="hidden" value="<%=vo.getId() %>" id="gid">
         <img src="../image/board/delete.jpg" border=0>
         </a>
         <a href="javascript:history.back()">

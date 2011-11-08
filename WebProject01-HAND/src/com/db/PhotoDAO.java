@@ -451,6 +451,33 @@ public class PhotoDAO {
 			   return bCheck;
 		   }
 		   
+		   public String getName(String id){
+			   
+			   String name = "";
+			   try
+			   {
+				   getConnection();
+				   String sql = "select name from p_person where id like ?";
+				   
+				   ps=conn.prepareStatement(sql);
+				   ps.setString(1, id);
+				   ResultSet rs = ps.executeQuery();
+				   rs.next();
+				   name=rs.getString(1);
+				   System.out.println("То"+id+"|"+name);
+				   rs.close();
+				   
+			   }catch(Exception ex)
+			   {
+				   System.out.println(ex.getMessage());
+			   }
+			   finally
+			   {
+				   disConnection();
+				   
+			   }
+			   return name;
+		   }
 }
 
 

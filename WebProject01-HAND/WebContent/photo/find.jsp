@@ -2,10 +2,12 @@
     pageEncoding="EUC-KR" import="com.db.*,java.util.*"%>
     
     <%
+    int curpage=1;
    request.setCharacterEncoding("EUC-KR");
    String fs=request.getParameter("fs");
    String ss=request.getParameter("ss");
    String strPage=request.getParameter("page");
+	String id=(String)session.getAttribute("id"); 
    
    PhotoDAO dao=new PhotoDAO();
    int count=dao.getFindCount(fs, ss); 
@@ -45,6 +47,16 @@ function open(id)
 		p.style.display='none';
 		click=0;
 	}
+}
+function content(no,page){
+	var id = "<%=id%>";		 
+	if(id=="null"){
+		alert("로그인 하세요");
+		return;		      
+	}   else{
+		//성공했을때위치이동
+		  self.location.href="content.jsp?no="+no+"&page="+page;
+	}    				
 }
 </script>
 </head>
@@ -92,10 +104,13 @@ function open(id)
 	<td>
 	<table width=100% border=0>
 	<tr>
-		<td width=200 height=150><a href="content.jsp?no=<%=vo.getNo()%>"><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg" %>"></a></td>
+
+		<td width=200 height=150><a href="javascript:content(<%=vo.getNo()%>, <%=curpage%>)">
+				<img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>" border=0>
+		</a></td>
 	</tr>
 	<tr>
-		<td width=100 height=20><a href="content.jsp?no=<%=vo.getNo()%>"><%=vo.getContent() %></a></td>
+		<td width=100 height=20><%=vo.getContent() %></td>
 	</tr>
 	
 	
@@ -111,8 +126,8 @@ function open(id)
 	
 	<table width=450 border=0>
 	<tr>
-	<td>
-	<a href="photo_write.jsp"><img src="../image/board/write.jpg" align=left border=0></a></td>
+	
+	
 
 	<td align =right >
        <input type = button value=뒤로 onclick="javascript:history.back()">
