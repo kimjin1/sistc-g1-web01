@@ -4,6 +4,7 @@
     
     String strNo=request.getParameter("no");
     String strPage=request.getParameter("page");
+    String id = request.getParameter("id");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +38,7 @@ function del()
                   value=<%=strNo %>>
         <input type=hidden name=page 
                   value=<%=strPage %>>
-        <input type="hidden" name=id value="<%=session.getAttribute("id")%>">
+        <input type="hidden" name=id value="<%=id%>">
        </td>
       </tr>
       <tr>

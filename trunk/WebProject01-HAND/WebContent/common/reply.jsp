@@ -57,6 +57,7 @@ function openclose()
 		p.style.display='none';
 	}
 }
+
 function delSelected(){
 	var num = <%=list.size()%>
 	if(num==0){
@@ -100,7 +101,7 @@ function delSelected(){
 			<tr>
 				
 				<td align=left  valign=top><textarea rows="4"
-						cols="80" name=content></textarea>
+						cols="75" name=content></textarea>
 				<input type="hidden" name="id" value="<%=session.getAttribute("id")%>">
 				<input type="hidden" name="flag" value="<%=flag%>">
 				<input type="hidden" name="rootno" value="<%=rootno%>">

@@ -96,9 +96,9 @@ function Login(no,page,type){
 	             }
 	          %>
 	          <%if(vo.getDepth()!=0){ %>
-	          
+	          <font color="996699">
 	          	[<%=vo.getDepth() %>]
-	          	
+	          	</font>
 	          	<%} %>
 	          	
 	          	

@@ -26,6 +26,7 @@
  	
  	String maxSubject = dao.maxSubject(maxNo);
  	String minSubject = dao.minSubject(minNo);
+ 	String gid = "";
  	String jsp="../common/reply.jsp?flag="+flag+"&rootno="+curNo; 	 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,18 +42,32 @@
 	a:hover{
 		text-decoration:underline;
 		color:orange;
-	}	
+	}
+	
+ table{
+  table-layout: fixed;
+  word-wrap: break-word;
+ }
 </style>
 <script type="text/javascript">
 function Login(no,page,type){
-	var id = "<%=id%>";		
+	var id = "<%=id%>";
+	var gid = document.getElementById("gid").getAttribute("value");	
 	if(id=="null"){
 		alert("로그인 하세요");
-		return;
-		      
+		return;		      
 	}   else{
 		//성공했을때위치이동
-		  self.location.href="../board/board.jsp?type="+type+"&no="+no+"&page="+page;
+		if(type==5 || type==4){
+			if(id != gid){
+				alert("본인 글만 변경할 수 있습니다");
+				return;
+			}else{
+				self.location.href="../board/board.jsp?type="+type+"&no="+no+"&page="+page;
+			}			
+		}else{
+			self.location.href="../board/board.jsp?type="+type+"&no="+no+"&page="+page;
+		}
 	}    		
 	
 	
@@ -128,6 +143,7 @@ function Login(no,page,type){
    			<img src="../image/board/delete.jpg" border=0>
    			</a>
    			<a href="javascript:Login(<%=strNo%>,<%=strPage%>,2)">
+   			<input type="hidden" id="gid" value="<%=vo.getId()%>">
  			<img src="../image/board/write.jpg" border=0>
  			</a>
  			<a href="board.jsp?type=1&page=<%=strPage%>">
