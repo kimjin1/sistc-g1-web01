@@ -9,7 +9,7 @@
 <body>
 	<center>
 		<a href="../main.jsp" target="main">		
-			<img src="../image/hand.png" border="0"
+			<img src="../image/hand2.png" border="0"
 			width="200" height="80">
 			</a>
 	</center>

@@ -207,7 +207,7 @@ function avatar()
             <td align=right width=20%>이메일</td>
             <td align=left width=80%>
              <input type=text size=50 name=email>
-        
+              <br>이메일 50글자 이하로 작성하세요
             </td>
            </tr>
            
