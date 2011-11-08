@@ -48,6 +48,7 @@
   table-layout: fixed;
   word-wrap: break-word;
  }
+	
 </style>
 <script type="text/javascript">
 function Login(no,page,type){
