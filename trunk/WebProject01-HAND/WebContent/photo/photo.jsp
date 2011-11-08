@@ -58,9 +58,17 @@ function Login(no,page){
 	}   else{
 		//성공했을때위치이동
 		  self.location.href="photo_write.jsp?no="+no+"&page="+page;
-	}    		
-	
-	
+	}    				
+}
+function content(no,page){
+	var id = "<%=id%>";		
+	if(id=="null"){
+		alert("로그인 하세요");
+		return;		      
+	}   else{
+		//성공했을때위치이동
+		  self.location.href="content.jsp?no="+no+"&page="+page;
+	}    				
 }
 function openPhoto(no){	
 	
@@ -92,10 +100,23 @@ function openPhoto(no){
 	<td>
 	<table width=100% border=0>
 	<tr>
-		<td width=100 height=80><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>"><img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>" border=0></a></td>
+		<td width=100 height=80>
+		<%--
+		<a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>">
+		 --%>
+		 <a href="javascript:content(<%=vo.getNo()%>, <%=curpage%>)">
+				<img src="../photo/upload/<%=vo.getFilename()+"_tn.jpg"%>" border=0>
+		</a></td>
 	</tr>
 	<tr>
-		<td width=100 height=10><a href="content.jsp?no=<%=vo.getNo()%>&page=<%=curpage%>" ><%=vo.getContent() %></a></td>		
+		<%
+			String content = vo.getContent();
+			if(content.length()>=8){
+				content = content.substring(0, 8);
+				content=content+"...";
+			}
+		%>
+		<td width=100 height=10><%=content %></td>		
 		
 	</tr>
 	</table>
