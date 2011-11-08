@@ -73,7 +73,7 @@ function event_modify(){
 						<tr>
 							<td width=20%>Á¦¸ñ</td>
 							<td width=80%>
-								<input type="text" name="subject" size="48" value=<%=dVO.getSubject() %>>
+								<input type="text" name="subject" size="48" value='<%=dVO.getSubject() %>'>
 							</td>
 						</tr>
 						<tr>
