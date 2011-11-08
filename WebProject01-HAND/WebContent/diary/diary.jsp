@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="com.db.*"%>
 <%@ page import="com.diary.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%
@@ -31,6 +31,9 @@
 		var month = select_month.options[select_month.selectedIndex].value;
 		calendar.location="../diary/calendar.jsp?year="+year+"&month="+month;	
 	}
+	function delExp(){		
+		self.location.reload = "../diary/delete_expired.jsp";
+	}
 </script>
 </head>
 <body>
@@ -58,36 +61,39 @@
 				--%>							
 			</td>
 			<td width=90%>
-		<table width=100% height=400 cellspacing=0 cellpadding=0 border=0>
-			<tr>
-				
-				<th colspan=2 valign="middle" bgcolor="C2C2C2">
-					<%-- 현재 연도 기준 -50 ~ +50까지 출력. 현재 연도는 기본 선택 --%>
-					<select id=year onchange='refreshCalendar()'>
-						<c:forEach var="i" begin="${year-50 }" end="${year+50 }" step="1">
-							<option${i==year?" selected":" "}>${i }</option>							
-						</c:forEach>
-					</select>
-					년&nbsp;&nbsp;
-					<%-- 1~12월 까지 출력 --%>					
-					<select id=month onchange='refreshCalendar()'>						
-						<c:forEach var="i" begin="1" end="12" step="1">
-							<option${i==month?" selected":" " }>${i }</option>
-						</c:forEach>
-					</select>					
-					월&nbsp;&nbsp;
-					일정표
-				</th>
-			</tr>
-			<tr>	
-				<td width=100% height=90%>
-				<%-- 실제 달력 출력부분은 iframe으로 분리 (변경시 부분만 갱신하기 위함) --%>
-				<iframe frameborder="0" marginwidth=0 marginheight=0 src="../diary/calendar.jsp?year=<%=year%>&month=<%=month%>" id="calendar">		
-					<!-- 달력 출력 부분 -->
-				</iframe>															
-				</td>
-			</tr>
-		</table>
+				<table width=100% height=400 cellspacing=0 cellpadding=0 border=0>
+					<tr>				
+						<th width="25%" align="left" valign="middle" bgcolor="C2C2C2">&nbsp;</th>
+						<th width="50%" align="center" valign="middle" bgcolor="C2C2C2">
+							<%-- 현재 연도 기준 -50 ~ +50까지 출력. 현재 연도는 기본 선택 --%>
+							<select id=year onchange='refreshCalendar()'>
+								<c:forEach var="i" begin="${year-50 }" end="${year+50 }" step="1">
+									<option${i==year?" selected":" "}>${i }</option>							
+								</c:forEach>
+							</select>
+							년&nbsp;&nbsp;
+							<%-- 1~12월 까지 출력 --%>					
+							<select id=month onchange='refreshCalendar()'>						
+								<c:forEach var="i" begin="1" end="12" step="1">
+									<option${i==month?" selected":" " }>${i }</option>
+								</c:forEach>
+							</select>					
+							월&nbsp;&nbsp;
+							일정표							
+						</th>
+						<th width="25%" align="right" valign="middle" bgcolor="C2C2C2">
+							<input type="button" value="지난일정삭제" onclick="javascript:delExp()">
+						</th>
+					</tr>
+					<tr>	
+						<td width=100% height=90% colspan="3" bgcolor="orange">
+						<%-- 실제 달력 출력부분은 iframe으로 분리 (변경시 부분만 갱신하기 위함) --%>
+						<iframe frameborder="0" marginwidth=0 marginheight=0 src="../diary/calendar.jsp?year=<%=year%>&month=<%=month%>" id="calendar">		
+							<!-- 달력 출력 부분 -->
+						</iframe>															
+						</td>
+					</tr>
+				</table>
 			</td>
 			<td width=5%>
 				<%-- 달력 측면에 월 표시. 최종본에서 사용 안함

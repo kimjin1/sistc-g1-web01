@@ -130,6 +130,24 @@ public class DiaryDAO {
 		}
 	}
 	
+	// 지난 일정 삭제
+	public void deleteExpired(){
+		java.util.Date today = new java.util.Date();
+		long time = today.getTime();
+		Timestamp ts = new Timestamp(time);
+		try {
+			getConnection();
+			String sql = "delete from p_diary where event_time < ?";
+			ps = conn.prepareStatement(sql);					
+			ps.setTimestamp(1, ts);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("deleteExpired():"+e.getMessage());
+		} finally {
+			disConnection();
+		}
+	}
+	
 	// 일정 목록 출력
 	public ArrayList<DiaryVO> getEventList(String id, String ymd){
 		ArrayList<DiaryVO> eventList = new ArrayList<DiaryVO>();
