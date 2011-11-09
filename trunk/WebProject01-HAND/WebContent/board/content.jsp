@@ -38,6 +38,8 @@
 <script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
 <script type="text/javascript">Shadowbox.init();</script>
 <style type="text/css">
+	th{font-family: 휴먼매직체; font-size:10pt;}
+	td{font-family: 휴먼매직체; font-size:10pt;}
 	a{
 		text-decoration:none;
 		color:black;
