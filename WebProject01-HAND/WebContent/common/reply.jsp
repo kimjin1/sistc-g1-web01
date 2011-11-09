@@ -5,15 +5,19 @@
 <jsp:useBean id="dao" class="com.db.ReplyDAO" />
 
 
+
 <%
-	String id=(String)session.getAttribute("id");
-	String strPage=request.getParameter("page");
-	String strNo=request.getParameter("no");
-	int flag=Integer.parseInt(request.getParameter("flag"));
-	int rootno=Integer.parseInt(request.getParameter("rootno"));
-	String rootid = dao.getRootId(rootno, flag);
-	ArrayList<ReplyVO> list = dao.getReplyData(flag,rootno);
-	System.out.println("reply:"+id+"|"+rootid);
+	
+String id=(String)session.getAttribute("id");
+
+String strPage=request.getParameter("page");
+String strNo=request.getParameter("no");
+int flag=Integer.parseInt(request.getParameter("flag"));
+int rootno=Integer.parseInt(request.getParameter("rootno"));
+String rootid = dao.getRootId(rootno, flag);
+ArrayList<ReplyVO> list = dao.getReplyData(flag,rootno);
+
+	
 %>
 
 <html>
@@ -141,7 +145,10 @@ function delSelected(){
 			<tr id="re<%=vo.getNo()%>" height=15>
 							
 				<td width=10%><input type=hidden name=no value=<%=vo.getNo() %>>
-				<input type=checkbox name=delnum value="<%=vo.getNo()%>"><%=vo.getId()%> 
+				<%
+					String rname=dao.getName(vo.getId());
+				%>
+				<input type=checkbox name=delnum value="<%=vo.getNo()%>"><%=rname%> 
                  
                     </td>
 		                          

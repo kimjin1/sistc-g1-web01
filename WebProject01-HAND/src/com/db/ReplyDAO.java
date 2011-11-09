@@ -57,6 +57,34 @@ public class ReplyDAO {
 			dao = new BoardDAO();
 		return dao;
 	}
+	//이름값이 테이블에 없어서 다른 테이블에서 불러오는
+	 public String getName(String id){
+		   
+		   String name = "";
+		   try
+		   {
+			   getConnection();
+			   String sql = "select name from p_person where id like ?";
+			   
+			   ps=conn.prepareStatement(sql);
+			   ps.setString(1, id);
+			   ResultSet rs = ps.executeQuery();
+			   rs.next();
+			   name=rs.getString(1);
+			
+			   rs.close();
+			   
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   disConnection();
+			   
+		   }
+		   return name;
+	   }
 	//출력
 	   //게시물 전체 출력
 	
