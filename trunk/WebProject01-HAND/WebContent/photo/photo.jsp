@@ -84,7 +84,7 @@ function openPhoto(no){
 <body>
 <center>	
 		<form method=post name=frm action="find.jsp">
-	<table border=0 	width=550 height=200>
+	<table border=0 	width=550 height=200 background="">
 	<tr>		
 	<%
 	int i = 0;
