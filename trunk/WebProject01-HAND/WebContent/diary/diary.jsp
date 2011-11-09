@@ -32,7 +32,10 @@
 		calendar.location="../diary/calendar.jsp?year="+year+"&month="+month;	
 	}
 	function delExp(){		
-		self.location.reload = "../diary/delete_expired.jsp";
+		var flag = window.confirm("지난 일정이 일괄 삭제 됩니다. 실행 하시겠습니까?")
+		if(flag==true){
+			self.location.reload = "../diary/delete_expired.jsp";	
+		}		
 	}
 </script>
 </head>
@@ -83,6 +86,7 @@
 						</th>
 						<th width="25%" align="right" valign="middle" bgcolor="C2C2C2">
 							<input type="button" value="지난일정삭제" onclick="javascript:delExp()">
+							&nbsp;
 						</th>
 					</tr>
 					<tr>	
