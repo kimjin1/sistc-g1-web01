@@ -464,7 +464,7 @@ public class PhotoDAO {
 				   ResultSet rs = ps.executeQuery();
 				   rs.next();
 				   name=rs.getString(1);
-				   System.out.println("То"+id+"|"+name);
+				
 				   rs.close();
 				   
 			   }catch(Exception ex)
