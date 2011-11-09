@@ -11,6 +11,7 @@
 	String lid = (String)session.getAttribute("id");
    PhotoVO vo= 
 		   dao.getContent(Integer.parseInt(strNo));
+   
    String id = vo.getId();
    String name = dao.getName(id);
  

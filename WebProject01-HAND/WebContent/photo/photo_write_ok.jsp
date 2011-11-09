@@ -57,7 +57,7 @@
     	 File file = new File(vo.getPath());    	 
     	 String fileName = vo.getPath();
     	 //fileName = fileName.substring(0, fileName.lastIndexOf('.'));
-    	 System.out.println(fileName);
+    	
     	 BufferedImage image = ImageIO.read(file);
     	 BufferedImage img = new BufferedImage(tn_width, tn_height, BufferedImage.TYPE_3BYTE_BGR);
     	 Graphics2D g = img.createGraphics();
