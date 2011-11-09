@@ -47,7 +47,7 @@
 	a:hover{
 		text-decoration:underline;
 		color:orange;
-	}
+	} 
 	
  table{
   table-layout: fixed;
@@ -185,7 +185,7 @@ function Login(no,page,type){
         <td width=10% bgcolor=cccccc height=25>글쓴이</td>
         <td width=15%>
             <a href="javascript:info('<%=vo.getId()%>')">
-	            <%=vo.getName() %></a>
+	            <u><%=vo.getName() %></u></a>
 	            </td>
         <td width=10% bgcolor=cccccc>작성일</td>
         <td width=35%><%=vo.getRegdate().toString() %></td>

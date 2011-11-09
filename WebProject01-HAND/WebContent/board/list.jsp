@@ -46,7 +46,7 @@
 	th{font-family: 휴먼매직체; font-size:10pt; color:white}
 	td{font-family: 휴먼매직체; font-size:10pt;}
   a{text-decoration: none;color:black}
- a:hover{text-decoration: underline;color:green}
+ a:hover{text-decoration: underline;color:green} 
 </style>
 <script type="text/javascript">
 function find()
@@ -147,7 +147,7 @@ function info(id){
 	         
 	            <td width=15%>
 	            <a href="javascript:info('<%=vo.getId()%>')">
-	            <%=vo.getName() %></a>
+	           <u><%=vo.getName() %></u></a>
 	            </td>
 	        <td width=20%><%=vo.getRegdate().toString() %></td>
 	        <td width=10%><%=vo.getReadnum() %></td>
