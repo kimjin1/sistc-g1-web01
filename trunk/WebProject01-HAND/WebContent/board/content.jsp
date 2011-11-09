@@ -3,12 +3,12 @@
 <jsp:useBean id="dao" class="com.db.BoardDAO"/>
 <%	
 	int flag=(Integer.parseInt((String)session.getAttribute("flag")));
-	
+
 	String id=(String)session.getAttribute("id");
    //게시물 번호
    String strNo=request.getParameter("no");
 	int curNo = Integer.parseInt(strNo);
-	//System.out.println(curNo);
+
    //현재 보고 있던 페이지
    String strPage=request.getParameter("page");
    
@@ -209,7 +209,7 @@ function Login(no,page,type){
      <table border="0" bgcolor="cccccc">
      <tr>      
 		<td width="200"valign="top">
-         <% System.out.println(flag+":"+curNo);%>
+     
 		<jsp:include page="<%=jsp %>"/>
         </td>
       </tr>

@@ -476,7 +476,7 @@ public class BoardDAO {
 			return maxmin;
 		}
 		
-		public boolean isPwCheck(String id,String pw)
+		/*public boolean isPwCheck(String id,String pw)
 		   {
 			   boolean bCheck=false;
 			   try
@@ -505,7 +505,7 @@ public class BoardDAO {
 				  disConnection();  
 			   }
 			   return bCheck;
-		   }
+		   }*/
 		// 글의 최대번호 최소 번호
 		public int[] getMaxnum(){
 			int[] count = new int[2];;
