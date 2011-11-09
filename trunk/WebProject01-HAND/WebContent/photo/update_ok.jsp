@@ -18,7 +18,7 @@
 	if(pCheck==true){
 		
 		//업데이트실행
-		System.out.println("uok:"+strPage+"|"+vo.getNo());
+
 	 response.sendRedirect("photo.jsp?page="+strPage+"&no="+vo.getNo());
 				
 	}

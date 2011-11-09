@@ -3,7 +3,7 @@
 <%
     request.setCharacterEncoding("EUC-KR");
     String fn=request.getParameter("fn");
-    System.out.println(fn);
+
     
     response.setHeader("Content-Disposition",
     		"attachment;filename="
