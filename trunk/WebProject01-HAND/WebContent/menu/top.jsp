@@ -26,18 +26,18 @@
 		--%>
 		<td valign=bottom align=center width=<%=width%> background="">
 			<a href="../home/home.jsp" target="main">
-			<img src="../image/home1.png" border="0"
+			<img src="../image/home_bg.png" border="0"
 			width="120" height="60"
-			OnMouseOver="this.src='../image/home2.png'"
-			OnMouseOut="this.src='../image/home1.png'">
+			OnMouseOver="this.src='../image/home1.png'"
+			OnMouseOut="this.src='../image/home_bg.png'">
 			</a>
 		</td>
 		<td valign=bottom align=center width=<%=width%>>
 			<a href="../photo/photo.jsp" target="main">
-			<img src="../image/photo1.png" border="0"
+			<img src="../image/photo_bg.png" border="0"
 			width="120" height="60"
-			OnMouseOver="this.src='../image/photo2.png'"
-			OnMouseOut="this.src='../image/photo1.png'">
+			OnMouseOver="this.src='../image/photo1.png'"
+			OnMouseOut="this.src='../image/photo_bg.png'">
 			</a>
 		</td>
 <!--		
@@ -47,26 +47,26 @@
  -->
 		<td valign=bottom align=center width=<%=width%>>
 			<a href="../board/board.jsp" target="main">
-			<img src="../image/board1.png" border="0"
+			<img src="../image/board_bg.png" border="0"
 			width="120" height="60"
-			OnMouseOver="this.src='../image/board2.png'"
-			OnMouseOut="this.src='../image/board1.png'">
+			OnMouseOver="this.src='../image/board1.png'"
+			OnMouseOut="this.src='../image/board_bg.png'">
 			</a>
 		</td>
 		<td valign=bottom align=center width=<%=width%>>
 			<a href="../visitor/visitor.jsp" target="main">
-			<img src="../image/visitor1.png" border="0"
+			<img src="../image/visitor_bg.png" border="0"
 			width="120" height="60"
-			OnMouseOver="this.src='../image/visitor2.png'"
-			OnMouseOut="this.src='../image/visitor1.png'">
+			OnMouseOver="this.src='../image/visitor1.png'"
+			OnMouseOut="this.src='../image/visitor_bg.png'">
 			</a>
 		</td>
 		<td valign=bottom align=center width=<%=width%>>
 			<a href="../diary/diary.jsp" target="main">
-			<img src="../image/diary1.png" border="0"
+			<img src="../image/diary_bg.png" border="0"
 			width="120" height="60"
-			OnMouseOver="this.src='../image/diary2.png'"
-			OnMouseOut="this.src='../image/diary1.png'">
+			OnMouseOver="this.src='../image/diary1.png'"
+			OnMouseOut="this.src='../image/diary_bg.png'">
 			</a>
 		</td>
 <!--
