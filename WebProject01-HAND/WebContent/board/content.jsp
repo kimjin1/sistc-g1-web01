@@ -34,6 +34,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
+<script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
+<script type="text/javascript">Shadowbox.init();</script>
 <style type="text/css">
 	a{
 		text-decoration:none;
@@ -69,10 +72,20 @@ function Login(no,page,type){
 		}else{
 			self.location.href="../board/board.jsp?type="+type+"&no="+no+"&page="+page;
 		}
-	}    		
-	
-	
+	}    	
 }
+	function info(id){
+		Shadowbox.open({		
+			content:"../common/userinfo.jsp?id="+id,
+			player:"iframe",
+			title:"간이 프로필",
+			width:"300",
+			height:"150",
+	      
+		}); 	
+		
+	}
+
 </script>
 </head>
 <body>
@@ -149,30 +162,29 @@ function Login(no,page,type){
 	
 	<tr>
         <td width=15% bgcolor=cccccc height=25>제목</td>
-            <td align=left colspan=3 width="50%"><%=vo.getSubject() %></td>
-            <td align=right colspan=3 >	
+            <td align=left colspan=2 width="50%"><%=vo.getSubject() %></td>
+            <td align=right colspan=4 >	
            
             <a href="javascript:Login(<%=strNo%>,<%=strPage%>,4)">
-   			<img src="../image/board/update.jpg" border=0>
-   			</a>
+   			<img src="../image/board/update.jpg" border=0></a>
    			<a href="javascript:Login(<%=strNo%>,<%=strPage%>,5)">
    			<input type="hidden" id="gid" value="<%=vo.getId()%>">
-   			<img src="../image/board/delete.jpg" border=0>
-   			</a>
+   			<img src="../image/board/delete.jpg" border=0></a>
    			<a href="javascript:Login(<%=strNo%>,<%=strPage%>,2)">
    			<input type="hidden" id="gid" value="<%=vo.getId()%>">
- 			<img src="../image/board/write.jpg" border=0>
- 			</a>
+ 			<img src="../image/board/write.jpg" border=0></a>
  			<a href="board.jsp?type=1&page=<%=strPage%>">
-			<img src="../image/board/main.jpg" border=0>
-			</a>	 
+			<img src="../image/board/main.jpg" border=0></a>	 
             </td>  
       </tr>
       
       
       <tr >
         <td width=10% bgcolor=cccccc height=25>글쓴이</td>
-        <td width=15%><%=vo.getName() %></td>
+        <td width=15%>
+            <a href="javascript:info('<%=vo.getId()%>')">
+	            <%=vo.getName() %></a>
+	            </td>
         <td width=10% bgcolor=cccccc>작성일</td>
         <td width=35%><%=vo.getRegdate().toString() %></td>
         <td width=15% bgcolor=cccccc>조회수</td>
