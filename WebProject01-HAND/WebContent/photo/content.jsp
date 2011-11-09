@@ -13,7 +13,7 @@
 		   dao.getContent(Integer.parseInt(strNo));
    String id = vo.getId();
    String name = dao.getName(id);
-   System.out.println("히히"+id);
+ 
    
  
 %>
@@ -24,6 +24,9 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
+<script type="text/javascript" src="../shadowbox/shadowbox.js"></script> 
+<script type="text/javascript">Shadowbox.init();</script>
 <style type="text/css">
 table{
   table-layout: fixed;
@@ -61,6 +64,17 @@ function send2(no,page)
 	  self.location.href="delete.jsp?no="+no+"&page="+page;
 	}
 	}
+function info(id){
+	  Shadowbox.open({  
+	   content:"../common/userinfo.jsp?id="+id,
+	   player:"iframe",
+	   title:"간이 프로필",
+	   width:"300",
+	   height:"100",
+	       
+	  });  
+	  
+	 }
 
 </script>
 
@@ -68,7 +82,7 @@ function send2(no,page)
 <body>
     <center>
     
-     <table width=600 border=1 bordercolor=#ccccff>
+     <table width=600 border=0 bordercolor=#ccccff>
      
     
       <%
@@ -99,14 +113,21 @@ function send2(no,page)
       	</td>
       </tr>
       </table>
-       <table width=600 border=1 bordercolor=#ccccff>
+       <table width=600 border=0 bordercolor=#ccccff>
       <tr>
-      <td width=15% >작성자
+      <td width=15% bgcolor="cccccc" >작성자
       </td>
-      <td width=20%><%=name%>
+      <td width=20%> <a href="javascript:info('<%=vo.getId()%>')">
+             <%=name %></a> 
+           
       </td>
-      <td width=15%>작성일</td>
+      <td width=15% bgcolor="cccccc">작성일</td>
       <td width=40%><%=vo.getRegdate() %></td>
+      </tr>
+      <tr>
+      	<td colspan=4  >
+      	<hr>
+      	</td>
       </tr>
       <tr>
         <td align=left colspan=4 valign=top height=50 >
@@ -124,8 +145,7 @@ function send2(no,page)
         </a> --%>
         <a href="javascript:send2(<%=strNo%>,<%=strPage%>)">
         <input type="hidden" value="<%=vo.getId() %>" id="gid">
-        <img src="../image/board/delete.jpg" border=0>
-        </a>
+        <img src="../image/board/delete.jpg" border=0></a>
         <a href="javascript:history.back()">
         <img src="../image/board/main.jpg" border=0>
         </a>
