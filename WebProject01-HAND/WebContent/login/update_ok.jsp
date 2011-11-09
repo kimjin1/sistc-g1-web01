@@ -10,7 +10,9 @@
 <jsp:setProperty property="*" name="vo"/>
 
 <%
-	System.out.println(vo.toString());
+	//System.out.println(vo.toString());
+	String photo = request.getParameter("path");
+	vo.setPhoto(photo);
 	dao.updateMemberData(vo);
 %>
 

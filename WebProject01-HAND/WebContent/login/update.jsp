@@ -65,6 +65,20 @@ function update_ok(){
 	
 	f.submit();
 }
+
+function avatar()
+{
+	
+	Shadowbox.open(
+	   {
+		   content:"../login/avatarcheck.jsp",
+		   player:"iframe",
+		   title:"아바타 선택",
+		   width:750,
+		   height:500,
+	   }
+	);
+}
 </script>
 </head>
 <body>
@@ -172,6 +186,8 @@ function update_ok(){
             <td align=right width=20%>별명</td>
             <td align=left width=80%>
               <input type=text size=12 name=nickname value="<%=vo.getNickname()%>">
+              <input type=button value="아바타 선택" onclick="avatar()">
+              <input type="hidden" name=path>
             </td>
            </tr>
            
@@ -199,7 +215,7 @@ function update_ok(){
            <tr>
              <td align=center colspan=2>
               <input type=button value="수정" onclick="update_ok()" >
-              <input type="reset" value="취소">
+              <input type="reset" value="취소" onclick="javascript:history.back()">
              </td>
            </tr>
            </table>
