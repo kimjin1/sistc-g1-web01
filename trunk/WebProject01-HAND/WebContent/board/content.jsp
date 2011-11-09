@@ -80,7 +80,7 @@ function Login(no,page,type){
 			player:"iframe",
 			title:"간이 프로필",
 			width:"300",
-			height:"150",
+			height:"100",
 	      
 		}); 	
 		

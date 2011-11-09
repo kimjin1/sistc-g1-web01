@@ -68,7 +68,7 @@ function send()
         	</td>
         	
         	<td width=15% align=left bgcolor=cccccc>Email</td>
-        	<td width=45% align="left"><input type=text name=email size=40 value=<%=vo.getEmail() %>>
+        	<td width=45% align="left"><input type=text name=email size=40 readonly="readonly" value=<%=vo.getEmail() %>>
         	</td>
         </tr>
         
