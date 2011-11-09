@@ -118,7 +118,7 @@ function avatar()
               <input type=password size=12 name=pw maxlength=10>
               &nbsp;&nbsp;&nbsp;
      			         비밀번호 확인
-     		 <input type=password size=12 name=pw2 onkeyup="pwdCheck()">
+     		 <input type=password size=12 name=pw2 onkeyup="pwdCheck()" maxlength=10>
      	
      		 
             </td>
@@ -199,7 +199,7 @@ function avatar()
            <tr>
             <td align=right width=20%>별명</td>
             <td align=left width=80%>
-              <input type=text size=12 name=nickname maxlength=30>
+              <input type=text size=12 name=nickname maxlength=15>
               <input type=button value="아바타 선택" onclick="avatar()">
               <input type="hidden" name=path>
              
