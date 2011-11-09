@@ -113,7 +113,7 @@ function Login(no,page,type){
 	%>
      <img src="../image/board/prev1.jpg" border=0>
      <a href="board.jsp?type=3&no=<%=maxNo%>&page=<%=strPage%>">
-     <%=subject%> 
+     <%=maxSubject%> 
 	</a>
 	<%		
 			}else{
@@ -143,7 +143,7 @@ function Login(no,page,type){
 	%>
      <img src="../image/board/next1.jpg" border=0>
      <a href="board.jsp?type=3&no=<%=minNo%>&page=<%=strPage%>">
-		<%=suject%>		
+		<%=minSubject%>		
 	 </a> 
 	<%
 			}else{
