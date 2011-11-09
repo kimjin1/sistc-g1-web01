@@ -134,6 +134,11 @@ function info(id){
          <pre> <%=vo.getContent() %></pre>
         </td>
       </tr>
+      <tr>
+      <td colspan=4>
+      <hr>
+      </td>
+      </tr>
      </table>
      <table border=0 width=600>
       <tr>

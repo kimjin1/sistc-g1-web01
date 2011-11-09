@@ -230,7 +230,7 @@ function avatar()
            <tr>
              <td align=center colspan=2>
               <input type=button value="회원가입" onclick="join_ok()" >
-              <input type="reset" value="취소">
+              <input type="reset" value="취소" onclick="javascript:history.back()">
              </td>
            </tr>
            </table>

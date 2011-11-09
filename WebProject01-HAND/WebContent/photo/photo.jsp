@@ -131,24 +131,11 @@ function openPhoto(no){
 
 	<table width=550 height=40>
 	<tr>
-	<td>
-	<a href="javascript:Login(<%=strNo%>,<%=strPage%>)">
-         <img src="../image/board/write.jpg" border=0>
-         </a>
+	<td colspan=2>
+	<hr>
 	</td>
+	</tr>
 	
-	 <td align=right>
-        <select name=fs>
-         <option value=content>내용</option>
-         <option value=name>작성자</option>
-        
-        </select>
-        <input type=text name=ss size=10>
-        <input type=hidden name=page value=<%=curpage %>>
-        <input type=hidden name=no value=<%=strNo %>>
-       <input type=button value=검색 onclick=find()>
-       </td>
-       </tr>
        
            <tr>
        <td align=center colspan=2>
@@ -189,6 +176,25 @@ function openPhoto(no){
          &nbsp;&nbsp;&nbsp;
   <%=curpage %> page / <%=totalpage %> pages
        
+       </td>
+       </tr>
+       <tr>
+	<td align=left>
+	<a href="javascript:Login(<%=strNo%>,<%=strPage%>)">
+         <img src="../image/board/write.jpg" border=0>
+         </a>
+	</td>
+	
+	 <td align=right>
+        <select name=fs>
+         <option value=content>내용</option>
+         <option value=name>작성자</option>
+        
+        </select>
+        <input type=text name=ss size=10>
+        <input type=hidden name=page value=<%=curpage %>>
+        <input type=hidden name=no value=<%=strNo %>>
+       <input type=button value=검색 onclick=find()>
        </td>
        </tr>
 	</table>
