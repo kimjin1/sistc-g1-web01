@@ -36,6 +36,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../shadowbox/shadowbox.css">
+<script type="text/javascript" src="../shadowbox/shadowbox.js"></script>	
+<script type="text/javascript">Shadowbox.init();</script>
 <style type="text/css">
 	table{
 		background-repeat: no-repeat;
@@ -68,6 +71,17 @@ function Login(no,page,type){
 		  self.location.href="../board/board.jsp?type="+type+"&no="+no+"&page="+page;
 	}    		
 	
+	
+}
+function info(id){
+	Shadowbox.open({		
+		content:"../common/userinfo.jsp?id="+id,
+		player:"iframe",
+		title:"간이 프로필",
+		width:"300",
+		height:"150",
+      
+	}); 	
 	
 }
 </script>
@@ -131,7 +145,10 @@ function Login(no,page,type){
        </td>
 	       
 	         
-	            <td width=15%><%=vo.getName() %></td>
+	            <td width=15%>
+	            <a href="javascript:info('<%=vo.getId()%>')">
+	            <%=vo.getName() %></a>
+	            </td>
 	        <td width=20%><%=vo.getRegdate().toString() %></td>
 	        <td width=10%><%=vo.getReadnum() %></td>
 	       </tr> 

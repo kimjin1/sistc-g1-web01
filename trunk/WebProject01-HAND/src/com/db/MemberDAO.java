@@ -224,6 +224,34 @@ public class MemberDAO {
 			disConnection();
 		}
 	   }
+	   //간이 프로필 보이게 하는 부분
+	   // 정보 얻어오기
+	   
+	   public MemberVO getUserinfoData(String id){
+		   MemberVO vo = new MemberVO();
+		   try {
+			getConnection();
+			String sql = "select  name, birth, nickname, email from p_person where id like ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,id);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			
+			vo.setName(rs.getString(1));
+			vo.setBirth(rs.getDate(2));
+			vo.setNickname(rs.getString(3));
+			vo.setEmail(rs.getString(4));
+			
+									
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			disConnection();
+		}
+		   return vo;
+	   }
+	   
+	   
 }
 	   
 

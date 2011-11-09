@@ -69,7 +69,7 @@ public class BoardDAO {
 			   //연결
 			   getConnection();
 			   //쿼리문장
-			   String sql="select no,name,subject,email,regdate,readnum,grouplevel,depth from p_board  order by no desc";
+			   String sql="select no,name,subject,email,regdate,readnum,grouplevel,depth,id from p_board  order by no desc";
 			   //쿼리실행=결과값 : 오라클에서 데이터 10개씩(PL/SQL)
 			   ps=conn.prepareStatement(sql);
 			 
@@ -93,6 +93,7 @@ public class BoardDAO {
 					   vo.setReadnum(rs.getInt(6));
 					   vo.setGrouplevel(rs.getInt(7));
 					   vo.setDepth(rs.getInt(8));
+					   vo.setId(rs.getString(9));
 					   
 					   list.add(vo);
 					   
