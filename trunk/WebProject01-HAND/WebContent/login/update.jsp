@@ -101,10 +101,10 @@ function avatar()
            <tr>
             <td align=right width=20%>비밀번호</td>
             <td align=left width=80%>
-              <input type=password size=12 name=pw>
+              <input type=password size=12 name=pw maxlength="10">
               &nbsp;&nbsp;&nbsp;
      			         비밀번호 확인
-     		 <input type=password size=12 name=pw2 onkeyup="pwdCheck()">
+     		 <input type=password size=12 name=pw2 onkeyup="pwdCheck()" maxlength="10">
      	
      		 
             </td>
@@ -185,7 +185,7 @@ function avatar()
            <tr>
             <td align=right width=20%>별명</td>
             <td align=left width=80%>
-              <input type=text size=12 name=nickname value="<%=vo.getNickname()%>">
+              <input type=text size=12 name=nickname value="<%=vo.getNickname()%>" maxlength="15">
               <input type=button value="아바타 선택" onclick="avatar()">
               <input type="hidden" name=path>
             </td>
@@ -194,14 +194,14 @@ function avatar()
            <tr>
             <td align=right width=20%>이메일</td>
             <td align=left width=80%>
-             <input type=text size=50 name=email value="<%=vo.getEmail()%>">
+             <input type=text size=50 name=email value="<%=vo.getEmail()%>" maxlength="50">
             </td>
            </tr>
            
            <tr>
             <td align=right width=20%>홈페이지</td>
             <td align=left width=80%>
-             <input type=text size=50 name=homepage value="<%=vo.getHomepage()%>">
+             <input type=text size=50 name=homepage value="<%=vo.getHomepage()%>" maxlength="50">
             </td>
            </tr>
            
