@@ -40,8 +40,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
-	table {
+	table{
 		table-layout: fixed;
+		word-wrap: break-word;
 	}	
 	a{
 		text-decoration:none;
@@ -102,11 +103,13 @@ function openList(year, month, day){
 			<c:forEach var="i" begin="0" end="5" step="1" varStatus="week">
 				<tr>
 				<c:forEach var="j" begin="0" end="6" step="1" varStatus="day">
-					<td height=40 valign="top" bgcolor="white">
+					<td height=14% valign="top" bgcolor="white">
 						<table width=100%>
 						<c:choose>							
 							<%-- 첫주일땐 1일의 Day of week만큼 건너뛴후 시작 --%>
-							<c:when test="${i==0 && j<offset-1}"><tr><td>&nbsp;</td></tr></c:when>
+							<c:when test="${i==0 && j<offset-1}">
+								<tr><td>&nbsp;</td></tr>
+							</c:when>
 							<c:otherwise>								
 								<c:if test="${startDate <= endDate }">
 									<tr><td valign="top" align="left">
@@ -121,8 +124,10 @@ function openList(year, month, day){
 									</td></tr>
 									<%-- 해당 날의 일정갯수를 아이콘과 함께 출력 --%>
 									<c:if test="${MonthlyEvent[startDate-1] != 0}">
-									<tr><td align="center" background="../image/diary/note.png">										
+									<tr><td align="center" background="../image/diary/note.png">
+										<a href="javascript:openList(${year},${month},${startDate})">										
 										<u>${MonthlyEvent[startDate-1] }</u>										
+										</a>
 									</td></tr>
 									</c:if>	
 									<c:set var="startDate" value="${startDate+1 }"/>								

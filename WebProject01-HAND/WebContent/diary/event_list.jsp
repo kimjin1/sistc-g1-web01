@@ -20,6 +20,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
+	hr{
+		margin-bottom: -2px;
+		margin-top: -2px;
+	}
 	table{
 		table-layout: fixed;
 		word-wrap: break-word;
@@ -107,12 +111,12 @@ function currentTime(){
 				 		<th width="10%">
 				 			<input type="checkbox" name="chkall" onclick="selectAll()">				 			
 				 		</th>
-				 		<th width=10% align="left">
+				 		<th width=15% align="left">
 							<a href="../diary/event_write.jsp?year=${param.year}&month=${param.month}&day=${param.day}">
 								새 일정
 							</a>
 						</th>
-						<th width=55% align="left">
+						<th width=50% align="left">
 							<input type="hidden" name="year" value="<%=strYear%>">
 							<input type="hidden" name="month" value="<%=strMonth%>">
 							<input type="hidden" name="day" value="<%=strDay%>">
