@@ -69,6 +69,10 @@ function join_ok(){
 		f.name.focus();
 		return;
 	}
+	if(f.path.value==""){
+		alert("아바타를 선택하세요");
+		return;
+	}
 	
 	f.submit();
 }
