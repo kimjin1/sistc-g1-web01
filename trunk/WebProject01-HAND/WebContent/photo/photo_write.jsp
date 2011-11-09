@@ -15,6 +15,13 @@
 function send()
 {
 	var f=document.frm;
+	if(f.content.value=="")
+	{
+		alert("내용을 입력하세요");
+		f.content.focus();
+		return;
+	}
+	
 	//전송 (데이터를 action에게 전송)
 	f.submit();//<input type=submit>
 	//<input type=image>:submit
