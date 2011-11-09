@@ -86,7 +86,7 @@ function avatar()
 		   height:500,
 	   }
 	);
-}
+} 
 </script>
 </head>
 <body>
@@ -102,7 +102,7 @@ function avatar()
            <tr>
             <td align=right width=20%>ID</td>
             <td align=left width=80%>
-              <input type=text size=12 name=id>
+              <input type=text size=12 name=id maxlength=10>
               <input type=button 
               value="중복체크" onclick="login()">
             </td>
@@ -111,7 +111,7 @@ function avatar()
            <tr>
             <td align=right width=20%>비밀번호</td>
             <td align=left width=80%>
-              <input type=password size=12 name=pw>
+              <input type=password size=12 name=pw maxlength=10>
               &nbsp;&nbsp;&nbsp;
      			         비밀번호 확인
      		 <input type=password size=12 name=pw2 onkeyup="pwdCheck()">
@@ -123,7 +123,7 @@ function avatar()
            <tr>
             <td align=right width=20%>이름</td>
             <td align=left width=80%>
-              <input type=text size=12 name=name>
+              <input type=text size=12 name=name maxlength=10>
               <input type=text size=27 name=pwdchk readonly>
             </td>
            </tr>
@@ -195,7 +195,7 @@ function avatar()
            <tr>
             <td align=right width=20%>별명</td>
             <td align=left width=80%>
-              <input type=text size=12 name=nickname>
+              <input type=text size=12 name=nickname maxlength=30>
               <input type=button value="아바타 선택" onclick="avatar()">
               <input type="hidden" name=path>
              
@@ -206,7 +206,7 @@ function avatar()
            <tr>
             <td align=right width=20%>이메일</td>
             <td align=left width=80%>
-             <input type=text size=50 name=email>
+             <input type=text size=50 name=email maxlength=50>
               <br>이메일 50글자 이하로 작성하세요
             </td>
            </tr>
@@ -216,14 +216,14 @@ function avatar()
            <tr>
             <td align=right width=20%>홈페이지</td>
             <td align=left width=80%>
-             <input type=text size=50 name=homepage>
+             <input type=text size=50 name=homepage maxlength=50>
             </td>
            </tr>
            
            <tr>
              <td align=right width=20% valign=top>소개</td>
              <td align=left width=80%>
-               <textarea rows="12" cols="50" name=memo></textarea>
+               <textarea rows="12" cols="50" name=memo maxlength=2000></textarea>
              </td>
            </tr>
      
