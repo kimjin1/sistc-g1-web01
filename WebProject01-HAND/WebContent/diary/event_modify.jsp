@@ -79,7 +79,7 @@ function event_modify(){
 						<tr>
 							<td width=20% valign="top">³»¿ë</td>
 							<td width=80%>
-								<textarea rows=8 cols=46 name=content><%=dVO.getContent() %></textarea>
+								<textarea rows=8 cols=49 name=content><%=dVO.getContent() %></textarea>
 							</td>
 						</tr>
 						<tr>

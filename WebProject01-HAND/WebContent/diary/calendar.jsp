@@ -103,7 +103,7 @@ function openList(year, month, day){
 			<c:forEach var="i" begin="0" end="5" step="1" varStatus="week">
 				<tr>
 				<c:forEach var="j" begin="0" end="6" step="1" varStatus="day">
-					<td height=14% valign="top" bgcolor="white">
+					<td height=13% valign="top" bgcolor="white">
 						<table width=100%>
 						<c:choose>							
 							<%-- 첫주일땐 1일의 Day of week만큼 건너뛴후 시작 --%>
