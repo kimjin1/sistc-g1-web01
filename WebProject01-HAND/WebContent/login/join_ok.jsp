@@ -66,7 +66,7 @@
 <head>
 <script type="text/javascript">
 function refreshIndex(){
-	top.location.href = "../index.jsp?type=1";
+	top.location.href = "../index.jsp?type=4";
 }
 </script>
 </head>
