@@ -163,8 +163,8 @@ function Login(no,page,type){
 <table width=600 border=0 bordercolor=cccccc>
 	
 	<tr>
-        <td width=15% bgcolor=cccccc height=25>제목</td>
-            <td align=left colspan=2 width="50%"><%=vo.getSubject() %></td>
+        <td bgcolor=cccccc height=25>제목</td>
+            <td align=left colspan=2><%=vo.getSubject() %></td>
             <td align=right colspan=4 >	
            
             <a href="javascript:Login(<%=strNo%>,<%=strPage%>,4)">
@@ -182,15 +182,15 @@ function Login(no,page,type){
       
       
       <tr >
-        <td width=10% bgcolor=cccccc height=25>글쓴이</td>
-        <td width=15%>
+        <td  bgcolor=cccccc height=25>글쓴이</td>
+        <td >
             <a href="javascript:info('<%=vo.getId()%>')">
 	            <u><%=vo.getName() %></u></a>
 	            </td>
-        <td width=10% bgcolor=cccccc>작성일</td>
-        <td width=35%><%=vo.getRegdate().toString() %></td>
-        <td width=15% bgcolor=cccccc>조회수</td>
-        <td width=15%><%=vo.getReadnum() %></td>
+        <td  bgcolor=cccccc>작성일</td>
+        <td ><%=vo.getRegdate().toString() %></td>
+        <td  bgcolor=cccccc>조회수</td>
+        <td ><%=vo.getReadnum() %></td>
       </tr>
       <%
       String Content=vo.getContent();
