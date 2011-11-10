@@ -20,7 +20,8 @@
     	{
 %>			<script language="javascript">
  				alert("로그인 하세요^^");
- 				document.location.href = "javascript:history.back()" ;
+ 				//document.location.href = "javascript:history.back()" ;
+ 				document.location.href = "../index.jsp?type=1" ;
  				//로그인 전에 개인정보 보여지는 경로이기 때문에 보여지면 안된다.
  			</script>
 <%
