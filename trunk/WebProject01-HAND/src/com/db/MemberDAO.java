@@ -251,6 +251,48 @@ public class MemberDAO {
 		   return vo;
 	   }
 	   
+	   //È¸¿ø Å»Åð
+	   public boolean delete(String pw, String id)
+	   {
+		   boolean bCheck=false;
+		   try
+		   {
+			  
+			   getConnection();
+				  String sql="select pw from p_person "
+						  +"where id=?";
+				  ps=conn.prepareStatement(sql);
+				  ps.setString(1,id);
+				
+				  ResultSet rs=ps.executeQuery();
+				  rs.next();
+				  String db_pw=rs.getString(1);
+				  rs.close();
+				  ps.close();
+				  if(db_pw.equals(pw))
+				  {
+					  bCheck=true;
+				  sql="delete from p_person where id like ?";
+				  ps=conn.prepareStatement(sql);
+				  ps.setString(1, id);
+				  ps.executeUpdate();	
+				  ps.close();
+			   }
+			   else
+			   {
+				   bCheck=false;
+			   }
+		   }catch(Exception ex)
+		   {
+			  System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			  disConnection();
+		   }
+		   return bCheck;
+	   }
+	   
 	   
 }
 	   

@@ -57,15 +57,16 @@
     <table border=0 width=387   cellpadding="8" background="../image/visitor/visitor4.png" >
         <tr >
 
-	        <td width=10% >No.<%=vo.getNo() %></td>
-	        <td width=30% align=left><%=vo.getName() %></td>
-	        <td width=25% align=right>작성일</td>
-	        <td width=35% align=left><%=vo.getRegdate() %></td>
+	
+	        <td width=25% align=left><%=vo.getName() %></td>
+	        
+	        <td width=35% align=right><%=vo.getRegdate() %></td>
 	        
 	          <td  width=10% align=right >
 	        <input type=hidden name= page value="<%=curpage %>">
 	        <input type=hidden name=no value="<%=vo.getNo()%>">
 	         <input type=hidden name=name value="<%=vo.getName()%>">
+	         
 	        
 	        <input type=submit value=삭제  border=0>
 	        
