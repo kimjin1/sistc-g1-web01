@@ -57,8 +57,10 @@
     <table border=0 width=387   cellpadding="8" background="../image/visitor/visitor4.png" >
         <tr >
 
-	        <td width=15% >No.<%=vo.getNo() %></td>
+	        <td width=10% >No.<%=vo.getNo() %></td>
 	        <td width=30% align=left><%=vo.getName() %></td>
+	        <td width=25% align=right>¿€º∫¿œ</td>
+	        <td width=35% align=left><%=vo.getRegdate() %></td>
 	        
 	          <td  width=10% align=right >
 	        <input type=hidden name= page value="<%=curpage %>">
@@ -78,7 +80,7 @@
 			}
 			%>
 	        <tr>
-	        <td  width=90% colspan="3" align=left height=115><%=content %>
+	        <td  width=90% colspan="5" align=left height=115><%=content %>
 	        </td>
 	       
 	      
