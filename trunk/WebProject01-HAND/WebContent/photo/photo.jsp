@@ -188,7 +188,7 @@ function openPhoto(no){
 	 <td align=right>
         <select name=fs>
          <option value=content>내용</option>
-         <option value=name>작성자</option>
+         <%--<option value=name>작성자</option> --%>
         
         </select>
         <input type=text name=ss size=10>
