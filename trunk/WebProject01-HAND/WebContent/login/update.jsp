@@ -80,7 +80,15 @@ function avatar()
 	);
 }
 </script>
-
+<script type="text/javascript">
+function delete_ok(){
+		
+	var flag = window.confirm("진짜 너 제정신으로 누르는거 맞죠?")
+	if(flag==true){
+		parent.location.href = "../index.jsp?type=5";	
+	}		
+}
+</script>
 <script type="text/javascript">
 function avatar()
 {
@@ -233,7 +241,7 @@ function avatar()
              <td align=center colspan=2>
               <input type=button value="수정" onclick="update_ok()" >
               <input type="reset" value="취소" onclick="javascript:history.back()">
-              <input type="button" value="회원탈퇴" onclick="">
+              <input type="button" value="회원탈퇴" onclick="delete_ok()">
              </td>
            </tr>
            </table>
