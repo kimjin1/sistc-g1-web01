@@ -108,7 +108,7 @@ function info(id){
       	<%--
      	<a href="../photo/upload/<%=vo.getFilename()%>" target="_blank">
      	 --%>
-     	 <a href="../photo/upload/<%=vo.getFilename()%>" target="_blank">
+     	 <a href="../photo/upload/<%=vo.getFilename()%>" target="_blank ">
       	<img src="../photo/upload/<%=vo.getFilename()%>_md.jpg" border="0">
       	</a>
       	</td>
