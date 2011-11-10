@@ -80,36 +80,7 @@ function avatar()
 	);
 }
 </script>
-<script type="text/javascript">
-function delete_ok(){
-	
-	var f=document.frm;
-	if(f.id.value=="")
-	{
-		alert("ID를 입력하세요");
-		f.id.focus();
-		return;
-	} 
-	if(f.pw.value=="")
-	{
-		alert("Password를 입력하세요");
-		f.pw.focus();
-		return;
-	}
-	if(f.name.value=="")
-	{
-		alert("이름을 입력하세요");
-		f.name.focus();
-		return;
-	}
-	if(f.path.value==""){
-		alert("아바타를 선택하세요");
-		return;
-	}
-	
-	f.submit();
-}
-</script>
+
 <script type="text/javascript">
 function avatar()
 {
@@ -262,7 +233,7 @@ function avatar()
              <td align=center colspan=2>
               <input type=button value="수정" onclick="update_ok()" >
               <input type="reset" value="취소" onclick="javascript:history.back()">
-              <input type="button" value="회원탈퇴" onclick="delete_ok()">
+              <input type="button" value="회원탈퇴" onclick="">
              </td>
            </tr>
            </table>
