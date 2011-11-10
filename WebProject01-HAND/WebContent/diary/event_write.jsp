@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR" import="java.util.Date, java.text.SimpleDateFormat"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	Date dt = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+	String hm[] = sdf.format(dt).split(":");
+	request.setAttribute("hour", hm[0]);
+	request.setAttribute("minute", hm[1]);
+ %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,12 +42,12 @@ function event_write(){
 							<input type="hidden" name="day" value="${param.day }">
 							<select name="hour">							
 									<c:forEach var="i" begin="0" end="23" step="1">
-										<option value="${i }">${i }시</option>
+										<option${i==hour?" selected ":" "}value="${i }">${i }시</option>										
 									</c:forEach>
 							</select>  
 							<select name="minute">
 									<c:forEach var="i" begin="0" end="59" step="1">
-										<option value="${i }">${i }분</option>
+										<option${i==minute?" selected ":" "}value="${i }">${i }분</option>
 									</c:forEach>
 							</select></td>
 						</tr>

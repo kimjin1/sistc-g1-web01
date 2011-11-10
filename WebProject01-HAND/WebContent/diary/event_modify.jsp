@@ -8,7 +8,7 @@
 	DiaryDAO dao = DiaryDAO.getInstance();
 	int no = Integer.parseInt(request.getParameter("no"));
 	DiaryVO dVO = dao.getEventContent(no);
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm");
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
 	String date = sdf.format(dVO.getEvent_time());
 	String event[] = date.split("-");
 	String year = event[0];
