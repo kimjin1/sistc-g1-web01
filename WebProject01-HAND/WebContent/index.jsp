@@ -21,6 +21,8 @@
 		break;
 	case 4: jsp = "home/home.jsp";
 		break;
+	case 5:jsp = "login/delete.jsp";
+		break;
 	}
 	
 
